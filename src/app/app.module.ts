@@ -3,8 +3,8 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { MenuComponent } from './menu/menu.component';
-import { AceptacionTerminosYCondComponent } from './aceptacion-terminos-ycond/aceptacion-terminos-ycond.component';
+import { MenuComponent } from './components/menu/menu.component';
+import { AceptacionTerminosYCondComponent } from './components/aceptacion-terminos-ycond/aceptacion-terminos-ycond.component';
 
 @NgModule({
   declarations: [
