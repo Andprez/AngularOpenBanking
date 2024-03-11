@@ -1,0 +1,36 @@
+.frame-3 {
+    border: rgb(15, 15, 15) 1px solid;
+    height: 734px;
+    width: 390px;
+    background-color: #0b2574;
+  }
+  .rectangle-1-6 {
+    margin: 0 auto;
+    border-radius: 5px;
+    height: 3520px;
+    width: 340px;
+    background-color: #f7f7f7;
+  }
+  .text-1 {
+    text-align: justify;
+    vertical-align: top;
+    font-size: 16px;
+    font-family: Open Sans;
+    line-height: auto;
+    color: #000000;
+  }
+  .rectangle-5 {
+    border-radius: 10px;
+    height: 58px;
+    width: 192px;
+    background-color: #000000;
+    border: 1px solid #1d5dc9;
+  }
+  .text-2 {
+    text-align: center;
+    vertical-align: top;
+    font-size: 20px;
+    font-family: Open Sans;
+    line-height: auto;
+    color: #ffffff;
+  }
