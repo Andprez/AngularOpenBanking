@@ -1,7 +1,5 @@
 .frame-3 {
     border: rgb(15, 15, 15) 1px solid;
-    height: 734px;
-    width: 390px;
     background-color: #0b2574;
   }
   .rectangle-1-6 {
@@ -25,6 +23,8 @@
     width: 192px;
     background-color: #000000;
     border: 1px solid #1d5dc9;
+  }.button-row{
+    align-items: first baseline;
   }
   .button-row {
     display: flex;
