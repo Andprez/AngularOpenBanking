@@ -1,63 +1,112 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Encabezado azul con logo</title>
+    <link rel="stylesheet" href="pantalla1.component.css">
+
+  </head>
+
 
 <body>
-    <header>
-        <div class="logo">
-            
-            <img src="../assets/logo.png" alt="Logo CBit">
+  <header>
+      <div class="logo">
+          
+          <img src="../assets/logo.png" alt="Logo CBit">
+      </div>
+     
+  </header>
+
+  <nav>
+    <a href="" class="nav-link"> Agregar Productos </a>
+  
+    <a href="" class="nav-link"> Mis Productos </a>
+  
+  </nav>
+
+  <div class="carrousel">
+    <div class="conteCarrousel">
+        <div class="itemCarrousel" id="itemCarrousel-1">
+            <div class="itemCarrouselTarjeta">
+               <li><a href="enlace1.html"><img src="../assets/BnCbia.png" alt="Imagen 1"></a><span class="nombre-imagen">Credito Libranza $ 2.652.298,98</span></li>
+
+              </div>
+      <div class="itemCarrouselArrows">
+        <a href="#itemCarrousel-3"><img src="../assets/izqi.png" alt="izq"></a>
+        <a href="#itemCarrousel-2"><img src="../assets/dere.png" alt="dere"></a>
+      </div>
+    </div>
+        <div class="itemCarrousel" id="itemCarrousel-2">
+            <div class="itemCarrouselTarjeta"><img src="../assets/davip.png" alt="Imagen 2">
+    </div>
+            <div class="itemCarrouselArrows">
+      <a href="#itemCarrousel-1"><img src="../assets/izqi.png" alt="izq"></a>
+                <a href="#itemCarrousel-3"><img src="../assets/dere.png" alt="dere"></a>
+            </div>
         </div>
-       
-    </header>
-
-    <nav>
-      <a href="" class="nav-link"> Agregar Productos </a>
-    
-      <a href="" class="nav-link"> Mis Productos </a>
-    
-    </nav>
-
-
-
-    <div class="slider">
-      <ul class="slides">
-          <li><img src="../assets/BnCbia.png" alt="Imagen 1"></li>
-          <li><img src="../assets/davip.png" alt="Imagen 2"></li>
-          <li><img src="../assets/bbva.png" alt="Imagen 3"></li>
-          <li><img src="../assets/BBog.jpg" alt="Imagen 4"></li>
-          <li><img src="../assets/BCS.jpg" alt="Imagen 5"></li>
-          <li><img src="../assets/bocc.png" alt="Imagen 6"></li>
-          <li><img src="../assets/bpop.jpg" alt="Imagen 7"></li>
-          <li><img src="../assets/bavv.png" alt="Imagen 8"></li>
-          <li><img src="../assets/scot.png" alt="Imagen 9"></li>
-
-
-
-
-
-      </ul>
+        <div class="itemCarrousel" id="itemCarrousel-3">
+            <div class="itemCarrouselTarjeta"><img src="../assets/bbva.png" alt="Imagen 3">
     </div>
-    
-    <nav>
-        <a href="" class="nav-link"> Te Conviene Saber</a>
-    </nav>
-
-    <div class="slider">
-      <ul class="slides">
-          <li><img src="../assets/nubank.jpg" alt="Imagen 10"></li>
-          <li><img src="../assets/cdt.jpg" alt="Imagen 11"></li>
-          <li><img src="../assets/bmia.GIF" alt="Imagen 12"></li>
-          <li><img src="../assets/Bbog.GIF" alt="Imagen 13"></li>
-          <li><img src="../assets/bavv.GIF" alt="Imagen 14"></li>
-          <li><img src="../assets/bbva.GIF" alt="Imagen 15"></li>
-          <li><img src="../assets/bAgr.GIF" alt="Imagen 16"></li>
-          <li><img src="../assets/colp.GIF" alt="Imagen 17"></li>
-          <li><img src="../assets/bcold.GIF" alt="Imagen 18"></li>
-          <li><img src="../assets/bpop.GIF" alt="Imagen 19"></li>
-
-      </ul>
+            <div class="itemCarrouselArrows">
+      <a href="#itemCarrousel-2"><img src="../assets/izqi.png" alt="izq"></a>
+                <a href="#itemCarrousel-1"><img src="../assets/dere.png" alt="dere"></a>
+            </div>
+        </div>
     </div>
+    <div class="conteCarrouselController">
+        <a href="#itemCarrousel-1">•</a>
+        <a href="#itemCarrousel-2">•</a>
+        <a href="#itemCarrousel-3">•</a>
+    </div>
+    <div class="controles">
+      <button class="ocultar-nombres">Ocultar </button>
+      <button class="mostrar-nombres">Mostrar </button>
+  </div>
+</div>
 
+ 
+  
+    <nav>
+      <a href="" class="nav-link"> Te Conviene Saber</a>
+  </nav>
+
+
+
+
+  <div class="carrousel">
+    <div class="conteCarrousel">
+        <div class="itemCarrousel" id="itemCarrousel-4">
+            <div class="itemCarrouselTarjeta"><img src="../assets/nubank.jpg" alt="Imagen 10">
+    </div>
+      <div class="itemCarrouselArrows">
+        <a href="#itemCarrousel-6"><img src="../assets/izqi.png" alt="izq"></a>
+        <a href="#itemCarrousel-5"><img src="../assets/dere.png" alt="dere"></a>
+      </div>
+    </div>
+        <div class="itemCarrousel" id="itemCarrousel-5">
+            <div class="itemCarrouselTarjeta"><img src="../assets/cdt.jpg" alt="Imagen 11">
+    </div>
+            <div class="itemCarrouselArrows">
+      <a href="#itemCarrousel-4"><img src="../assets/izqi.png" alt="izq"></a>
+                <a href="#itemCarrousel-6"><img src="../assets/dere.png" alt="dere"></a>
+            </div>
+        </div>
+        <div class="itemCarrousel" id="itemCarrousel-6">
+            <div class="itemCarrouselTarjeta"><img src="../assets/TarCred.jpg" alt="Imagen 12">
+    </div>
+            <div class="itemCarrouselArrows">
+      <a href="#itemCarrousel-5"><img src="../assets/izqi.png" alt="izq"></a>
+                <a href="#itemCarrousel-4"><img src="../assets/dere.png" alt="dere"></a>
+            </div>
+        </div>
+    </div>
+    <div class="conteCarrouselController">
+        <a href="#itemCarrousel-4">•</a>
+        <a href="#itemCarrousel-5">•</a>
+        <a href="#itemCarrousel-6">•</a>
+    </div>
+</div>
 
 </body>
-
-
-
+</html>
