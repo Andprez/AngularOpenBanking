@@ -1,6 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
-import { AceptacionTerminosYCondComponent } from './aceptacion-terminos-ycond.component';
+import { AceptacionTerminosYCondComponent } from './aceptacionterminosycond.component';
 
 describe('AceptacionTerminosYCondComponent', () => {
   let component: AceptacionTerminosYCondComponent;

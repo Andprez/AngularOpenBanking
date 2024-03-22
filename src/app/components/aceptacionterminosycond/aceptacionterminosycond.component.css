@@ -1,40 +1,21 @@
-.app-aceptacion-terminos-ycond {
+.app-aceptacionterminosycond {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start;
     padding: 360px 37px;
     gap: 10px;
-    background-color: #ffffff;
-    border: 1px solid #000000;
+    background: linear-gradient(-225deg, rgba(85, 99, 224, 0.6) 5%, rgba(40, 92, 133, 0.6) 95%);
+    border: 1px solid #000000
   }
-  .text-1 {
-    text-align: left;
-    vertical-align: top;
-    font-size: 40px;
-    font-family: undefined;
-    line-height: auto;
+  .aceptarTeminos{
     color: #ffffff;
   }
-  .img-2 {
-    height: 90px;
-    width: 80px;
+  .tittle-cbit{
+    align-items: baseline;
   }
-  .img-3 {
-    height: 40px;
-    width: 40px;
-  }
-  .img-4 {
-    height: 60px;
-    width: 30px;
-  }
-  .img-5 {
-    height: 60px;
-    width: 30px;
-  }
-  .img-6 {
-    height: 60px;
-    width: 30px;
+  .check-margin {
+    margin: 0 10px;
   }
   .text-7 {
     text-align: left;

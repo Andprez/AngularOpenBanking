@@ -3,13 +3,14 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { MenuComponent } from './components/menu/menu.component';
-import { AceptacionTerminosYCondComponent } from './components/aceptacion-terminos-ycond/aceptacion-terminos-ycond.component';
+import { terminosycondisionesinicioComponent } from './components/terminosycondisionesinicio/terminosycondisionesinicio.component';
+import { AceptacionTerminosYCondComponent } from './components/aceptacionterminosycond/aceptacionterminosycond.component';
+import { LogoCbitComponent } from './components/header/logo-cbit/logo-cbit.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    MenuComponent,
+    terminosycondisionesinicioComponent,
     AceptacionTerminosYCondComponent
   ],
   imports: [
