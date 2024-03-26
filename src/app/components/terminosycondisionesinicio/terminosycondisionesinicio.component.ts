@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { MatButtonModule } from '@angular/material/button';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-terminosycondisionesinicio',
@@ -7,5 +7,9 @@ import { MatButtonModule } from '@angular/material/button';
   styleUrls: ['./terminosycondisionesinicio.component.css'],
 })
 export class terminosycondisionesinicioComponent {
-
+  constructor(private router: Router){}
+  aceptacionterminos(){
+    this.router.navigate(['/acepterminos']);
+    console.log("Hola mundo.")
+  }
 }
