@@ -10,8 +10,11 @@
     width: 340px;
     background-color: #f7f7f7;
   }
+  .tittle-text-1{
+    text-align: left;
+  }
   .text-1 {
-    text-align: justify;
+    text-align: left;
     vertical-align: top;
     font-size: 16px;
     font-family: Open Sans;

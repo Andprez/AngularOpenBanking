@@ -9,6 +9,11 @@
     background-size: 100% 100%;
     border: 1px solid #000000
   }
+  .list{
+    list-style-image: url("../../../assets/misc/flecha.png");
+    list-style-position: outside;
+    align-items: center;
+  }
   .aceptarTeminos{
     color: #ffffff;
   }
@@ -70,4 +75,13 @@
     font-family: Open Sans;
     line-height: auto;
     color: rgba(109, 100, 100, 0.4699999988079071);
+  }
+  .aceptarTeminos{
+    margin-right: 10px;
+    text-align: left;
+    vertical-align: top;
+    font-size: 16px;
+    font-family: Open Sans;
+    line-height: auto;
+    color: #ffffff;
   }
