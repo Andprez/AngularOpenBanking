@@ -5,7 +5,8 @@
     align-items: flex-start;
     padding: 360px 37px;
     gap: 10px;
-    background: linear-gradient(-225deg, rgba(85, 99, 224, 0.6) 5%, rgba(40, 92, 133, 0.6) 95%);
+    background: linear-gradient(100deg, #00B0F9, #00BFCF);
+    background-size: 100% 100%;
     border: 1px solid #000000
   }
   .aceptarTeminos{
