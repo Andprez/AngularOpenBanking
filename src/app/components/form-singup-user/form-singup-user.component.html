@@ -1,7 +1,11 @@
 <div class="container text-center">
   <h1 class="titulo">Ingrese sus datos</h1>
   <app-indicator-signin-user></app-indicator-signin-user>
-  <form [formGroup]="formUser" class="form-user needs-validation" novalidate>
+  <form
+    [formGroup]="formUser"
+    class="form-user"
+    (ngSubmit)="formUser.valid && createCliente()"
+  >
     <!-- (ngSubmit)="!formUser.invalid && registraUsuario()"> -->
 
     <div class="campos-labels has-validation">
@@ -59,9 +63,9 @@
       <label for="docType" class="form-label">Tipo de documento</label>
       <select class="form-select" formControlName="docType">
         <option selected disabled>Selecciona una opción</option>
-        <option value="1">Cédula de ciudadanía</option>
-        <option value="2">Cédula de extranjería</option>
-        <option value="3">Pasaporte</option>
+        <option *ngFor="let tipo of tiposIdentificacion" [value]="tipo.codigo">
+          {{ tipo.nombre }}
+        </option>
       </select>
     </div>
 
@@ -93,9 +97,9 @@
       >
       <select class="form-select" aria-label="" formControlName="docCity">
         <option selected disabled>Selecciona una opción</option>
-        <option value="1">Ciudad 1</option>
-        <option value="2">Ciudad 2</option>
-        <option value="3">Ciudad 3</option>
+        <option *ngFor="let ciudad of ciudades" [value]="ciudad.codigo">
+          {{ ciudad.nombre }}
+        </option>
       </select>
     </div>
 
@@ -130,9 +134,24 @@
         formControlName="confirmEmail"
       />
     </div>
+    <div
+      class="alert alert-danger"
+      *ngIf="
+        formUser.get('email') != formUser.get('confirmEmail') &&
+        formUser.get('email')!.touched
+      "
+    >
+      Los emails no coinciden
+    </div>
 
     <div class="boton">
-      <button type="submit" class="btn btn-primary" [disabled]="formUser.invalid">Continuar</button>
+      <button
+        type="submit"
+        class="btn btn-primary"
+        [disabled]="formUser.invalid"
+      >
+        Continuar
+      </button>
     </div>
   </form>
 </div>

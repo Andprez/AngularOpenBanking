@@ -46,9 +46,6 @@
   font-weight: normal;
   font-size: 20px;
 }
-.boton{
-  margin: 1rem 0;
-}
 .invalid {
   width: 100%;
   margin-top: .25rem;
@@ -56,4 +53,7 @@
   color: rgb(1, 31, 114);
   font-weight: bold;
   text-align: center;
+}
+.boton{
+  padding: 3rem;
 }
