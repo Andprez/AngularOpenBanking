@@ -1,0 +1,138 @@
+<div class="container text-center">
+  <h1 class="titulo">Ingrese sus datos</h1>
+  <app-indicator-signin-user></app-indicator-signin-user>
+  <form [formGroup]="formUser" class="form-user needs-validation" novalidate>
+    <!-- (ngSubmit)="!formUser.invalid && registraUsuario()"> -->
+
+    <div class="campos-labels has-validation">
+      <label for="primerNombre" class="form-label">Primer nombre</label>
+      <input
+        type="text"
+        class="form-control"
+        id="primerNombre"
+        formControlName="primerNombre"
+      />
+      <!-- <div *ngIf="true" class="invalid">Campo requerido</div> -->
+    </div>
+
+    <div class="campos-labels">
+      <label for="segundoNombre" class="form-label">Segundo nombre</label>
+      <input
+        type="text"
+        class="form-control"
+        id="segundoNombre"
+        formControlName="segundoNombre"
+      />
+    </div>
+
+    <div class="campos-labels">
+      <label for="primerApellido" class="form-label">Primer apellido</label>
+      <input
+        type="text"
+        class="form-control"
+        id="primerApellido"
+        formControlName="primerApellido"
+      />
+    </div>
+
+    <div class="campos-labels">
+      <label for="segundoApellido" class="form-label">Segundo apellido</label>
+      <input
+        type="text"
+        class="form-control"
+        id="segundoApellido"
+        formControlName="segundoApellido"
+      />
+    </div>
+
+    <div class="campos-labels">
+      <label for="birthDate" class="form-label">Fecha de nacimiento</label>
+      <input
+        type="date"
+        class="form-control"
+        id="birthDate"
+        formControlName="birthDate"
+      />
+    </div>
+
+    <div class="campos-labels">
+      <label for="docType" class="form-label">Tipo de documento</label>
+      <select class="form-select" formControlName="docType">
+        <option selected disabled>Selecciona una opción</option>
+        <option value="1">Cédula de ciudadanía</option>
+        <option value="2">Cédula de extranjería</option>
+        <option value="3">Pasaporte</option>
+      </select>
+    </div>
+
+    <div class="campos-labels">
+      <label for="docNumber" class="form-label">Número de documento</label>
+      <input
+        type="tel"
+        class="form-control"
+        id="docNumber"
+        formControlName="docNumber"
+      />
+    </div>
+
+    <div class="campos-labels">
+      <label for="docDate" class="form-label"
+        >Fecha de expedición del documento</label
+      >
+      <input
+        type="date"
+        class="form-control"
+        id="docDate"
+        formControlName="docDate"
+      />
+    </div>
+
+    <div class="campos-labels">
+      <label for="docCity" class="form-label"
+        >Ciudad del expedición del documento</label
+      >
+      <select class="form-select" aria-label="" formControlName="docCity">
+        <option selected disabled>Selecciona una opción</option>
+        <option value="1">Ciudad 1</option>
+        <option value="2">Ciudad 2</option>
+        <option value="3">Ciudad 3</option>
+      </select>
+    </div>
+
+    <div class="campos-labels">
+      <label for="phone" class="form-label">Número de celular</label>
+      <input
+        type="tel"
+        class="form-control"
+        id="phone"
+        formControlName="phone"
+      />
+    </div>
+
+    <div class="campos-labels">
+      <label for="email" class="form-label">Correo electrónico</label>
+      <input
+        type="email"
+        class="form-control"
+        id="email"
+        formControlName="email"
+      />
+    </div>
+
+    <div class="campos-labels">
+      <label for="confirmEmail" class="form-label"
+        >Confirme su correo electrónico</label
+      >
+      <input
+        type="email"
+        class="form-control"
+        id="confirmEmail"
+        formControlName="confirmEmail"
+      />
+    </div>
+
+    <div class="boton">
+      <button type="submit" class="btn btn-primary" [disabled]="formUser.invalid">Continuar</button>
+    </div>
+  </form>
+</div>

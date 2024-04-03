@@ -1,9 +1,15 @@
+.container{
+  padding-top: 5rem;
+  display: flex;
+  flex-direction: column;
+}
 .titulo{
   font-family: 'Open Sans', sans-serif;
   font-size: 24px;
   font-weight: regular;
   text-align: center;
-  margin: 2rem 0;
+  padding-top: 2rem;
+  margin-bottom: 2rem;
   color: white;
 }
 .card-body{
@@ -51,8 +57,15 @@
   font-size: 20px;
 }
 .boton{
-  position: absolute;
-  top: 85%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  text-align: center;
+  padding: 3rem;
+}
+@media (min-height: 800px){
+  .boton{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    /* background-color: #fff; */
+  }
 }

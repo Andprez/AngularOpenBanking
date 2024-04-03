@@ -1,0 +1,13 @@
+body{
+  background: linear-gradient(135deg, #00B0F9, #0B2794);
+  min-height: 100vh;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+.header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 10;
+}

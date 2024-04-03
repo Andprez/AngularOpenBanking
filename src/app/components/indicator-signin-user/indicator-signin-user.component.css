@@ -1,0 +1,19 @@
+.indicadores-avance {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  column-gap: 0.5rem;
+  max-width: 80%;
+  margin: 0 auto;
+  padding: 1rem;
+}
+.linea{
+  height: 0.3rem;
+  border-radius: 0.5rem;
+}
+.completo {
+  background-color: #00EAFF;
+}
+.incompleto {
+  background-color: #fff;
+}
+
