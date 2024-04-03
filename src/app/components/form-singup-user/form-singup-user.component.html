@@ -136,10 +136,7 @@
     </div>
     <div
       class="alert alert-danger"
-      *ngIf="
-        formUser.get('email') != formUser.get('confirmEmail') &&
-        formUser.get('email')!.touched
-      "
+      *ngIf="formUser.get('email')!.value !== formUser.get('confirmEmail')!.value && formUser.get('confirmEmail')!.value.length > 0"
     >
       Los emails no coinciden
     </div>

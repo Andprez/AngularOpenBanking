@@ -47,8 +47,18 @@ export class FormSingupUserComponent implements OnInit {
       docCity: ['', Validators.required],
       phone: ['', Validators.required],
       email: ['', [Validators.email, Validators.required]],
-      confirmEmail: ['', [Validators.email, Validators.required]],
-    });
+      confirmEmail: ['', [Validators.email, Validators.required]]
+    }, {validators: this.compareEmails});
+  }
+
+  compareEmails(formUser: FormGroup){
+    let email = formUser.get('email')?.value;
+    let confirmEmail = formUser.get('confirmEmail')?.value;
+    if (email === confirmEmail) {
+      formUser.get('confirmEmail')?.setErrors(null);
+    } else {
+      formUser.get('confirmEmail')?.setErrors({ emailsDiferentes: true });
+    }
   }
 
   createCliente() {

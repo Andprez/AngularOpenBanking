@@ -29,6 +29,7 @@
   height: 3rem;
   font-size: 20px;
   color: black;
+  border-radius: 8px;
 }
 .btn{
   background: linear-gradient(100deg, #1BC5FF, #1860BF);
