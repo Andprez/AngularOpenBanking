@@ -1,0 +1,62 @@
+.contenedor {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(100deg, #00B0F9, #180B94, #00BFCF, #0B2794);
+  background-size: 400% 400%;
+  animation: gradientAnimation 10s linear infinite;
+}
+@keyframes gradientAnimation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+.logo {
+  width: 25%;
+  height: fit-content;
+  transform: rotate(-30deg);
+  opacity: 0;
+  animation: logo-animation 2s ease-in-out 1 forwards;
+}
+.logo img {
+  width: 100%;
+  height: 100%;
+}
+@keyframes logo-animation {
+  0% {
+    opacity: 0;
+    transform: rotate(-30deg);
+  }
+  100% {
+    opacity: 1;
+    transform: rotate(0deg);
+  }
+}
+
+.nombre-empresa {
+  font-weight: 300;
+  font-size: 60px;
+  color: white;
+  opacity: 0;
+  animation: nombre-empresa-animation 1s ease-in-out 1.5s 1 forwards;
+}
+.nombre-empresa span {
+  font-weight: 500;
+}
+@keyframes nombre-empresa-animation {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}

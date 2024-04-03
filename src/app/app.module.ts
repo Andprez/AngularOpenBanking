@@ -11,6 +11,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { Background1Component } from './components/background1/background1.component';
 import { Background2Component } from './components/background2/background2.component';
 import { IndicatorSigninUserComponent } from './components/indicator-signin-user/indicator-signin-user.component';
+import { LoadingBeginComponent } from './components/loading-begin/loading-begin.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { IndicatorSigninUserComponent } from './components/indicator-signin-user
     Background1Component,
     Background2Component,
     IndicatorSigninUserComponent,
+    LoadingBeginComponent,
   ],
   imports: [
     BrowserModule,
