@@ -20,5 +20,6 @@ body{
   }
   .bi{
     position: absolute;
+    color: antiquewhite;
     left: 1rem;
   }
