@@ -1,5 +1,24 @@
-.logo-cbit{
-    align-self: center;
-    vertical-align: center;
-    align-items: center;
-}
+body{
+    background: linear-gradient(135deg, #01AFF9, #038BDE);
+    position: sticky;
+    top: 0;
+  }
+  img{
+    width: 50%;
+    height: auto;
+  }
+  .logo-cbit{
+    text-align: center;
+    padding: 1.5rem 0 0.5rem 0;
+    display: flex;
+    justify-content: center;
+    position: sticky;
+    top: 0;
+  }
+  h1{
+    font-size: 2.5rem;
+  }
+  .bi{
+    position: absolute;
+    left: 1rem;
+  }
