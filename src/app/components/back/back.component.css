@@ -1,0 +1,12 @@
+h1 {
+  font-size: 2.5rem;
+  cursor: pointer;
+}
+.bi {
+  position: absolute;
+  color: white;
+  left: 1rem;
+}
+.bi:hover {
+  color: #0158f9;
+}

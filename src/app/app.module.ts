@@ -12,6 +12,7 @@ import { LoadingBeginComponent } from './pages/loading-begin/loading-begin.compo
 import { ItemRegistroComponent } from './components/item-registro/item-registro.component';
 import { BtnCbitComponent } from './components/btn-cbit/btn-cbit.component';
 import { FormRegistrationComponent } from './pages/form-registration/form-registration.component';
+import { BackComponent } from './components/back/back.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { FormRegistrationComponent } from './pages/form-registration/form-regist
     ItemRegistroComponent,
     BtnCbitComponent,
     FormRegistrationComponent,
+    BackComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,14 +1,14 @@
-body{
-  background: linear-gradient(135deg, #01AFF9, #038BDE);
+body {
+  background: linear-gradient(135deg, #01aff9, #038bde);
   /* background: transparent; */
   position: sticky;
   top: 0;
 }
-img{
+img {
   width: 50%;
   height: auto;
 }
-.container{
+.container {
   text-align: center;
   padding: 1.5rem 0 0.5rem 0;
   display: flex;
@@ -16,13 +16,3 @@ img{
   position: sticky;
   top: 0;
 }
-h1{
-  font-size: 2.5rem;
-}
-.bi{
-  position: absolute;
-  color: white;
-  left: 1rem;
-}
-
-
