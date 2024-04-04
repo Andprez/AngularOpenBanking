@@ -11,7 +11,7 @@ import { environment } from 'src/environments/environment.development';
 })
 export class ClientesService {
 
-  baseUrl: string = environment.URL_BABKEND;
+  baseUrl: string = environment.URL_BACKEND;
 
   constructor(
     private httpClient: HttpClient
