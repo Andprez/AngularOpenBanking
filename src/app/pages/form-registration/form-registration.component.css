@@ -1,5 +1,4 @@
 .container{
-  padding-top: 5rem;
   display: flex;
   flex-direction: column;
   max-width: 95%;
@@ -31,22 +30,6 @@
   color: black;
   border-radius: 8px;
 }
-.btn{
-  background: linear-gradient(100deg, #1BC5FF, #1860BF);
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  color: white;
-  height: 58px;
-  width: 192px;
-  border: none;
-  border-radius: 10px;
-  padding: 0.5rem 1rem;
-  font-size: 16px;
-  cursor: pointer;
-  transition: 0.3s;
-  color: white;
-  font-weight: normal;
-  font-size: 20px;
-}
 .invalid {
   width: 100%;
   margin-top: .25rem;
@@ -55,6 +38,4 @@
   font-weight: bold;
   text-align: center;
 }
-.boton{
-  padding: 3rem;
-}
+

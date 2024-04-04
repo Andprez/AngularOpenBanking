@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Component } from '@angular/core';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Ciudad } from 'src/app/models/ciudad';
 import { Cliente } from 'src/app/models/cliente';
 import { TipoIdentificacion } from 'src/app/models/tipo-identificacion';
@@ -7,11 +7,11 @@ import { ClientesService } from 'src/app/services/clientes.service';
 import { LocalizacionService } from 'src/app/services/localizacion.service';
 
 @Component({
-  selector: 'app-form-singup-user',
-  templateUrl: './form-singup-user.component.html',
-  styleUrls: ['./form-singup-user.component.css'],
+  selector: 'app-form-registration',
+  templateUrl: './form-registration.component.html',
+  styleUrls: ['./form-registration.component.css', '../../templates/background2.css']
 })
-export class FormSingupUserComponent implements OnInit {
+export class FormRegistrationComponent {
   formUser!: FormGroup;
   ciudades!: Ciudad[];
   tiposIdentificacion!: TipoIdentificacion[];

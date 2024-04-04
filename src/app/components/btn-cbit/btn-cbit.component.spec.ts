@@ -1,16 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { HeaderComponent } from './header.component';
+import { BtnCbitComponent } from './btn-cbit.component';
 
-describe('HeaderComponent', () => {
-  let component: HeaderComponent;
-  let fixture: ComponentFixture<HeaderComponent>;
+describe('BtnCbitComponent', () => {
+  let component: BtnCbitComponent;
+  let fixture: ComponentFixture<BtnCbitComponent>;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [HeaderComponent]
+      declarations: [BtnCbitComponent]
     });
-    fixture = TestBed.createComponent(HeaderComponent);
+    fixture = TestBed.createComponent(BtnCbitComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

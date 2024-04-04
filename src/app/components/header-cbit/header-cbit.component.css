@@ -1,6 +1,8 @@
 body{
   background: linear-gradient(135deg, #01AFF9, #038BDE);
   /* background: transparent; */
+  position: sticky;
+  top: 0;
 }
 img{
   width: 50%;

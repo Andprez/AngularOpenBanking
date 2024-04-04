@@ -2,10 +2,10 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-indicator-signin-user',
-  templateUrl: './indicator-signin-user.component.html',
-  styleUrls: ['./indicator-signin-user.component.css']
+  templateUrl: './indicator.component.html',
+  styleUrls: ['./indicator.component.css']
 })
-export class IndicatorSigninUserComponent implements OnInit{
+export class IndicatorComponent implements OnInit{
   avances: boolean[] = new Array(4);
   completados: number = 3;
 
