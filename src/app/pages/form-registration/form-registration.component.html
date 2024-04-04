@@ -65,7 +65,7 @@
         <label for="docType" class="form-label">Tipo de documento</label>
         <select class="form-select" formControlName="docType">
           <option selected disabled>Selecciona una opción</option>
-          <option *ngFor="let tipo of tiposIdentificacion" [value]="tipo.codigo">
+          <option *ngFor="let tipo of tiposIdentificacion" [value]="tipo.idTipoIdentificacion">
             {{ tipo.nombre }}
           </option>
         </select>
@@ -99,7 +99,7 @@
         >
         <select class="form-select" aria-label="" formControlName="docCity">
           <option selected disabled>Selecciona una opción</option>
-          <option *ngFor="let ciudad of ciudades" [value]="ciudad.codigo">
+          <option *ngFor="let ciudad of ciudades" [value]="ciudad.idCiudad">
             {{ ciudad.nombre }}
           </option>
         </select>
@@ -112,6 +112,16 @@
           class="form-control"
           id="phone"
           formControlName="phone"
+        />
+      </div>
+
+      <div class="campos-labels">
+        <label for="address" class="form-label">Dirección</label>
+        <input
+          type="text"
+          class="form-control"
+          id="address"
+          formControlName="address"
         />
       </div>
 

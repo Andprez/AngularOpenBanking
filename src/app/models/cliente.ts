@@ -1,4 +1,5 @@
 export interface Cliente {
+  idCliente?: number;
   primerNombre: string;
   segundoNombre?: string;
   primerApellido: string;

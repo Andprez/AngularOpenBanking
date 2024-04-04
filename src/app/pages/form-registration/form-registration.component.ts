@@ -46,6 +46,7 @@ export class FormRegistrationComponent {
       docDate: ['', Validators.required],
       docCity: ['', Validators.required],
       phone: ['', Validators.required],
+      address: ['', Validators.required],
       email: ['', [Validators.email, Validators.required]],
       confirmEmail: ['', [Validators.email, Validators.required]]
     }, {validators: this.compareEmails});
@@ -71,7 +72,7 @@ export class FormRegistrationComponent {
       idTipoIdentificacion: this.formUser.get('docType')?.value,
       telefono: this.formUser.get('phone')?.value,
       email: this.formUser.get('email')?.value,
-      direccion: '',
+      direccion: this.formUser.get('address')?.value,
       idBilleteraCBITBank: undefined,
       fechaNacimiento: this.formUser.get('birthDate')?.value,
       fechaExpedicion: this.formUser.get('docDate')?.value,
