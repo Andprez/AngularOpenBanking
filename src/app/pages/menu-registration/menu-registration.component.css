@@ -1,0 +1,15 @@
+.container{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  flex-grow: 1;
+}
+.titulo{
+  font-family: 'Open Sans', sans-serif;
+  font-size: 24px;
+  font-weight: regular;
+  text-align: center;
+  padding-top: 2rem;
+  margin-bottom: 2rem;
+  color: white;
+}

@@ -1,0 +1,18 @@
+body {
+  background: linear-gradient(135deg, #01aff9, #038bde);
+  /* background: transparent; */
+  position: sticky;
+  top: 0;
+}
+img {
+  width: 50%;
+  height: auto;
+}
+.container {
+  text-align: center;
+  padding: 1.5rem 0 0.5rem 0;
+  display: flex;
+  justify-content: center;
+  position: sticky;
+  top: 0;
+}

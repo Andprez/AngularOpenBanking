@@ -1,0 +1,29 @@
+.card-body{
+  display: grid;
+  grid-template-columns: 1fr 6fr 1fr;
+  font-size: medium;
+  gap: 1rem;
+}
+.card{
+  margin-bottom: 1rem;
+}
+.card-title{
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 0;
+  margin-top: 0.5rem;
+}
+.bi{
+  font-size: 30px;
+  color: #00B8E2;
+}
+.texto{
+  justify-content: center;
+}
+.icono{
+  border-radius: 50%;
+  height: 50px;
+  width: 50px;
+  border: #00B8E2 2px solid;
+  text-align: center;
+}

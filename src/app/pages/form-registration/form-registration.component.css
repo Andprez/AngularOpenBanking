@@ -1,0 +1,41 @@
+.container{
+  display: flex;
+  flex-direction: column;
+  max-width: 95%;
+}
+.titulo{
+  font-family: 'Open Sans', sans-serif;
+  font-size: 24px;
+  font-weight: regular;
+  text-align: center;
+  margin-top: 2rem;
+  color: white;
+}
+.campos-labels{
+  text-align: left;
+  font-size: 16px;
+}
+.form-label{
+  color: white;
+  text-align: left;
+}
+.form-user{
+  display: flex;
+  flex-direction: column;
+  row-gap: 1rem;
+}
+.form-control, .form-select{
+  height: 3rem;
+  font-size: 20px;
+  color: black;
+  border-radius: 8px;
+}
+.invalid {
+  width: 100%;
+  margin-top: .25rem;
+  font-size: 1rem;
+  color: rgb(1, 31, 114);
+  font-weight: bold;
+  text-align: center;
+}
+

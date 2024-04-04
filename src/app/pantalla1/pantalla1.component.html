@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Encabezado azul con logo</title>
     <link rel="stylesheet" href="pantalla1.component.css">
+   
+
 
   </head>
 
@@ -25,12 +27,24 @@
   
   </nav>
 
+  <script>
+    function ocula () {
+      document.getElementById('ocultar').style.display = 'none';
+      document.getElementById('mostrar').style.display = 'block';
+      document.getElementById('detalle').style.display = 'none';
+    }
+    function muestra () {
+      document.getElementById('ocultar').style.display = 'block';
+      document.getElementById('mostrar').style.display = 'none';
+      document.getElementById('detalle').style.display = 'block';
+    }
+    </script>
+
+
   <div class="carrousel">
     <div class="conteCarrousel">
         <div class="itemCarrousel" id="itemCarrousel-1">
-            <div class="itemCarrouselTarjeta">
-               <li><a href="enlace1.html"><img src="../assets/BnCbia.png" alt="Imagen 1"></a><span class="nombre-imagen">Credito Libranza $ 2.652.298,98</span></li>
-
+          <div class="itemCarrouselTarjeta"><img src="../assets/BnCbia.png" alt="Imagen 1">
               </div>
       <div class="itemCarrouselArrows">
         <a href="#itemCarrousel-3"><img src="../assets/izqi.png" alt="izq"></a>
@@ -59,13 +73,24 @@
         <a href="#itemCarrousel-2">•</a>
         <a href="#itemCarrousel-3">•</a>
     </div>
-    <div class="controles">
-      <button class="ocultar-nombres">Ocultar </button>
-      <button class="mostrar-nombres">Mostrar </button>
-  </div>
+
+
+
+    
 </div>
 
- 
+
+<div class="controles">
+  <p id="mostrar"onclick="muestra()">  ¤ </p>
+  <p id="ocultar" onclick="ocula()"> Ø </p>
+</div>
+
+
+<div class="detalle" id="detalle">
+<p>Crédito Libranza $ 2.652.298,98 </p>
+</div>
+
+
   
     <nav>
       <a href="" class="nav-link"> Te Conviene Saber</a>
