@@ -1,7 +1,7 @@
-.app-aceptacionterminosycond {
+.app-terms-accept {
     padding: 360px 37px;
     gap: 10px;
-    background: linear-gradient(100deg, #00B0F9, #00BFCF);
+    background: linear-gradient(100deg, #07648b, #079caa);
     background-size: 100% 100%;
     border: 1px solid #000000
   }
@@ -58,7 +58,7 @@
     height: 58px;
     width: 192px;
     background-color: #ffffff;
-    border: 1px solid #1d5dc9;
+    border: 1px solid #738bb3;
   }
   .text-1-1 {
     text-align: left;

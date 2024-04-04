@@ -2,11 +2,11 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-terminosycondisionesinicio',
-  templateUrl: './terminosycondisionesinicio.component.html',
-  styleUrls: ['./terminosycondisionesinicio.component.css'],
+  selector: 'app-terms-and-conditions',
+  templateUrl: './terms-conditions.component.html',
+  styleUrls: ['./terms-conditions.component.css'],
 })
-export class terminosycondisionesinicioComponent {
+export class termsConditionsComponent{
   constructor(private router: Router){}
   aceptacionterminos(){
     this.router.navigate(['/acepterminos']);
