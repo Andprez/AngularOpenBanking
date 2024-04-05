@@ -1,6 +1,6 @@
 <div class="frame-3">  
 <div class="tittle-cbit">
-  <app-header-cbit></app-header-cbit>
+  <app-header-cbit [routerLink]="'/acepterminos'"></app-header-cbit>
 </div> 
     <div class="rectangle-1-6">
       <p class="tittle-text-1">
@@ -29,7 +29,12 @@
 
   <section>
     <div class="button-row">  
-      <button mat-raised-button color="primary" (click)='aceptacionterminos()'>Continuar</button>
+      <app-btn-cbit
+        [text]="'Continuar'"
+        [type]="'submit'"
+        [routerLink]="'/acepterminos'"
+        >
+      </app-btn-cbit>
     </div>
   </section>
   </div>  
