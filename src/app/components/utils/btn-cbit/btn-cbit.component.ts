@@ -6,7 +6,7 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./btn-cbit.component.css']
 })
 export class BtnCbitComponent {
-  @Input() type: string = 'button';
+  @Input() type!: string;
   @Input() disabled: boolean = false;
   @Input() text!: string;
   @Input() routerLink!: string;
