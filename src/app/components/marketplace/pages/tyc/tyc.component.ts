@@ -21,7 +21,6 @@ export class TycComponent implements OnInit {
   constructor(private generalService: GeneralService) {}
 
   ngOnInit(): void {
-    this.totalValue = this.generalService.getTotalValue();
     this.selectedBank = this.generalService.getSelectedBank();
     if (this.selectedBank.name == 'Bancolombia') {
       this.bancolombiaProcess();

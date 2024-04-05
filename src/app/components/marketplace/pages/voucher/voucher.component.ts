@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { GeneralService } from '../../services/general.service';
+import { Transaction } from '../../models/transaction';
 
 @Component({
   selector: 'app-voucher',
@@ -7,23 +8,15 @@ import { GeneralService } from '../../services/general.service';
   styleUrls: ['./voucher.component.css']
 })
 export class VoucherComponent implements OnInit{
-  idTransaccion: string = '';
-  fechaTransaccion: string = '';
-  clientePruebas: any = {};
-  comercioPruebas: any = {};
-  totalValue: number = 0;
-  estado: string = '';
-  numAprobacion: string = '';
+  transaccion!: Transaction;
+  clientePruebas: any;
+  comercioPruebas: any;
 
   constructor(private generalService: GeneralService) { }
 
   ngOnInit(): void {
-    this.idTransaccion = this.generalService.getIdTransaccionAutorizador().toString();
-    this.fechaTransaccion = this.generalService.getFechaTransaccion();
+    this.transaccion = this.generalService.getTransaccion();
     this.clientePruebas = this.generalService.getClientePruebas();
     this.comercioPruebas = this.generalService.getComercioPruebas();
-    this.totalValue = this.generalService.getTotalValue();
-    this.estado = this.generalService.getEstado();
-    this.numAprobacion = this.generalService.getNumAprobacion();
   }
 }

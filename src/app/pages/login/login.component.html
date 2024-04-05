@@ -1,4 +1,7 @@
-<body>
+<body *ngIf="loading">
+  <app-loading-begin></app-loading-begin>
+</body>
+<body *ngIf="!loading">
   <app-header-login></app-header-login>
   <div class="container">
     <form

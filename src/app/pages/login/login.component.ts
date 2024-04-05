@@ -14,6 +14,7 @@ export class LoginComponent implements OnInit {
   formLogin!: FormGroup;
   tiposIdentificacion!: TipoIdentificacion[];
   clienteExiste: boolean = true;
+  loading: boolean = true;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -23,6 +24,9 @@ export class LoginComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    setTimeout(() => {
+      this.loading = false;
+    }, 3000);
     this.clienteService.getTiposIdentificacion().subscribe((data) => {
       this.tiposIdentificacion = data;
     });

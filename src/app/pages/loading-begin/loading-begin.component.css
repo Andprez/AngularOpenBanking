@@ -5,19 +5,19 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background: linear-gradient(100deg, #00B0F9, #180B94, #00BFCF, #0B2794);
-  background-size: 400% 400%;
-  animation: gradientAnimation 12s linear infinite;
+  background: linear-gradient(135deg, #00BFCF, #00B0F9, #0B2794, #180B94);
+  background-size: 200% 200%;
+  animation: gradientAnimation 2s linear forwards;
 }
 @keyframes gradientAnimation {
   0% {
-    background-position: 0% 50%;
+    background-position: 25% 25%;
   }
   50% {
-    background-position: 100% 50%;
+    background-position: 50% 50%;
   }
   100% {
-    background-position: 0% 50%;
+    background-position: 75% 75%;
   }
 }
 .logo {
@@ -36,8 +36,12 @@
     opacity: 0;
     transform: rotate(-30deg);
   }
-  100% {
+  80% {
     opacity: 1;
+    transform: rotate(0deg);
+  }
+  100% {
+    opacity: 0;
     transform: rotate(0deg);
   }
 }
@@ -47,7 +51,7 @@
   font-size: 60px;
   color: white;
   opacity: 0;
-  animation: nombre-empresa-animation 1s ease-in-out 1.5s 1 forwards;
+  animation: nombre-empresa-animation 2s ease-in-out 1 forwards;
 }
 .nombre-empresa span {
   font-weight: 500;
@@ -56,7 +60,10 @@
   0% {
     opacity: 0;
   }
-  100% {
+  80% {
     opacity: 1;
+  }
+  100% {
+    opacity: 0;
   }
 }

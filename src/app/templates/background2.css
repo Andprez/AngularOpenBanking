@@ -1,7 +1,8 @@
 body{
-  background: linear-gradient(135deg, #00B0F9, #1F2A95);
+  background: linear-gradient(135deg, #00BFCF, #00B0F9, #0B2794, #180B94);
   min-height: 100vh;
-  background-size: 100% 100%;
+  background-size: 200% 200%;
   background-repeat: no-repeat;
+  background-position: 75% 75%;
   background-attachment: fixed;
 }

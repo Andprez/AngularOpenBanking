@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { GeneralService } from '../../services/general.service';
+import { Transaction } from '../../models/transaction';
 
 @Component({
   selector: 'app-otp',
@@ -63,23 +64,13 @@ export class OtpComponent {
         )
         .subscribe({
           next: (data: any) => {
-            if (data.estado) {
-              this.generalService.setFechaTransaccion(data.fechaTransaccion);
-              this.generalService.setNumAprobacion(data.numAprobacion);
-              this.generalService.setEstado(data.estado);
-              this.generalService.setIdTransaccionAutorizador(
-                data.idTransaccionAutorizador
-              );
-              this.router.navigate(['/voucher']);
-            } else {
-              this.error = true;
-              this.mensajeError = data.error;
-            }
+            this.generalService.setTransaccion(data.transaccion);
             console.log('Data autorizacionCompra', data);
+            this.router.navigate(['/voucher']);
           },
           error: (error: any) => {
             this.error = true;
-            this.mensajeError = "Error al autorizar la compra";
+            this.mensajeError = 'Error al autorizar la compra';
             console.log(error);
           },
         });

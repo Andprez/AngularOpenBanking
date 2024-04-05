@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Product } from '../models/product';
 import { environment } from 'src/environments/environment.development';
+import { Transaction } from '../models/transaction';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +13,6 @@ export class GeneralService {
   // Variables iniciales
   private productDetail?: Product;
   private shopingCart?: Product[];
-  private totalValue: number = 0;
   private selectedBank?: any = null;
 
   // Variables de configuración
@@ -37,14 +37,11 @@ export class GeneralService {
   private idSession_Token: string = '';
   private notification_type: string = 'API_DAVIPLATA';
   private idComercio: string = '0010203040';
-  private idTransaccion: number = 0;
   private idTerminal: string = 'ESB10934';
+  private totalValue: number = 0;
 
   // Variables de respuesta autorización
-  private fechaTransaccion: string = '';
-  private numAprobacion: string = '';
-  private estado: string = '';
-  private idTransaccionAutorizador: string = '';
+  private transaction?: Transaction;
 
   // Variables aleatorias para pruebas
   private cliente = {
@@ -90,6 +87,22 @@ export class GeneralService {
     })
   }
 
+  setTotalValue(total: number) {
+    this.totalValue = total;
+  }
+
+  getTotalValue(): number {
+    return this.totalValue;
+  }
+
+  setTransaccion(transaction: Transaction) {
+    this.transaction = transaction;
+  }
+
+  getTransaccion(): Transaction {
+    return this.transaction!;
+  }
+
   setProductDetail(product: Product) {
     this.productDetail = product;
   }
@@ -104,14 +117,6 @@ export class GeneralService {
 
   getShopingCart(): Product[] {
     return this.shopingCart!;
-  }
-
-  setTotalValue(value: number) {
-    this.totalValue = value;
-  }
-
-  getTotalValue(): number {
-    return this.totalValue;
   }
 
   setSelectedBank(bank: any) {
@@ -170,53 +175,12 @@ export class GeneralService {
     return this.idComercio;
   }
 
-  setIdTransaccion() {
-    this.idTransaccion = Math.floor(Math.random() * 1000000);
-  }
-
-  getIdTransaccion(): number {
-    this.setIdTransaccion();
-    return this.idTransaccion;
-  }
-
   setIdTerminal(idTerminal: string) {
     this.idTerminal = idTerminal;
   }
 
   getIdTerminal(): string {
     return this.idTerminal;
-  }
-
-  setFechaTransaccion(fechaTransaccion: string) {
-    this.fechaTransaccion = fechaTransaccion;
-  }
-
-  getFechaTransaccion(): string {
-    return this.fechaTransaccion;
-  }
-
-  setNumAprobacion(numAprobacion: string) {
-    this.numAprobacion = numAprobacion;
-  }
-
-  getNumAprobacion(): string {
-    return this.numAprobacion;
-  }
-
-  setEstado(estado: string) {
-    this.estado = estado;
-  }
-
-  getEstado(): string {
-    return this.estado;
-  }
-
-  setIdTransaccionAutorizador(idTransaccionAutorizador: string) {
-    this.idTransaccionAutorizador = idTransaccionAutorizador;
-  }
-
-  getIdTransaccionAutorizador(): string {
-    return this.idTransaccionAutorizador;
   }
 
   getClientePruebas() {
