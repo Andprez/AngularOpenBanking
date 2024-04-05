@@ -1,0 +1,31 @@
+<a routerLink="/tyc" class="atras">
+  <i class="bi bi-arrow-left"></i>
+</a>
+<div class="container">
+  <h2 class="text-center titulo">Transacción realizada</h2>
+  <div class="comprobante">
+    <b>Transacción No.</b>
+    <p>{{ idTransaccion }}</p>
+    <b>Fecha de transacción</b>
+    <p>{{ fechaTransaccion | date: 'dd-MMM-yyyy HH:mm:ss' }}</p>
+    <b>NIT Comercio</b>
+    <p>{{ comercioPruebas.idComercio }}</p>
+    <b>Razón social</b>
+    <p>{{ comercioPruebas.razonSocial }}</p>
+    <b>Tipo de documento</b>
+    <p>Cédula de ciudadanía</p>
+    <b>Número de documento</b>
+    <p>{{ clientePruebas.numeroIdentificacion }}</p>
+    <b>Nombre</b>
+    <p>{{ clientePruebas.nombre }}</p>
+    <b>Correo electrónico</b>
+    <p>{{ clientePruebas.email }}</p>
+    <br>
+    <b>Valor</b>
+    <p>{{ totalValue | currency }}</p>
+    <b>Estado</b>
+    <p>{{ estado }}</p>
+    <b>Número de aprobación </b>
+    <p>{{ numAprobacion }}</p>
+  </div>
+</div>

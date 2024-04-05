@@ -5,6 +5,9 @@ import { DetailProductComponent } from './components/marketplace/pages/detail-pr
 import { CartComponent } from './components/marketplace/pages/cart/cart.component';
 import { WalletComponent } from './components/marketplace/pages/wallet/wallet.component';
 import { LoginComponent } from './pages/login/login.component';
+import { TycComponent } from './components/marketplace/pages/tyc/tyc.component';
+import { OtpComponent } from './components/marketplace/pages/otp/otp.component';
+import { VoucherComponent } from './components/marketplace/pages/voucher/voucher.component';
 
 const routes: Routes = [
   { path: 'products', component: ListProductsComponent },
@@ -12,9 +15,9 @@ const routes: Routes = [
   { path: 'cart', component: CartComponent },
   { path: 'login', component: LoginComponent},
   { path: 'wallet', component: WalletComponent },
-  // { path: 'tyc', component: TycComponent },
-  // { path: 'otp', component: OtpComponent },
-  // { path: 'voucher', component: VoucherComponent },
+  { path: 'tyc', component: TycComponent },
+  { path: 'otp', component: OtpComponent },
+  { path: 'voucher', component: VoucherComponent },
   { path: '**', redirectTo: '/products', pathMatch: 'full' },
 ];
 

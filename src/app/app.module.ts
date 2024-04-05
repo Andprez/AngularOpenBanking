@@ -23,6 +23,9 @@ import { CartComponent } from './components/marketplace/pages/cart/cart.componen
 import { DetailProductComponent } from './components/marketplace/pages/detail-product/detail-product.component';
 import { HeaderMarketplaceComponent } from './components/marketplace/utils/header-marketplace/header-marketplace.component';
 import { WalletComponent } from './components/marketplace/pages/wallet/wallet.component';
+import { TycComponent } from './components/marketplace/pages/tyc/tyc.component';
+import { OtpComponent } from './components/marketplace/pages/otp/otp.component';
+import { VoucherComponent } from './components/marketplace/pages/voucher/voucher.component';
 
 @NgModule({
   declarations: [
@@ -45,6 +48,9 @@ import { WalletComponent } from './components/marketplace/pages/wallet/wallet.co
     DetailProductComponent,
     HeaderMarketplaceComponent,
     WalletComponent,
+    TycComponent,
+    OtpComponent,
+    VoucherComponent,
   ],
   imports: [
     BrowserModule,

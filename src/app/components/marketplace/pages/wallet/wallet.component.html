@@ -4,8 +4,9 @@
 </a>
 <div class="container">
   <h2 class="text-center titulo">Billetera</h2>
-
-  <h4 class="text-center ">Hola {{ nombreCliente }}!. Selecciona la cuenta con la que deseas pagar.</h4>
+  <br>
+  <h5>Hola {{ nombreCliente }}!</h5>
+  <p>Selecciona la cuenta con la que deseas pagar</p>
   <div class="card mb-2 " *ngFor="let bank of banks" [ngClass]="{'card-active': bank.name == selectedBank?.name}">
     <div class="card-body" (click)="selectBank(bank)">
       <img src="{{ bank.img }}" alt="Imagen {{ bank.name }}" class="img-fluid col-3">

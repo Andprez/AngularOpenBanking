@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Product } from '../models/product';
+import { environment } from 'src/environments/environment.development';
 
 @Injectable({
   providedIn: 'root'
@@ -53,7 +54,16 @@ export class GeneralService {
 
   constructor(
     private httpClient: HttpClient
-  ) { }
+  ) {
+    this.urlProducts = environment.url.products;
+    this.urlDaviplata = environment.url.daviplata;
+    this.GRANT_TYPE = environment.dav.GRANT_TYPE;
+    this.CLIENT_ID = environment.dav.CLIENT_ID;
+    this.CLIENT_SECRET = environment.dav.CLIENT_SECRET;
+    this.SCOPE = environment.dav.SCOPE;
+    this.ACCOUNT_TWILIO = environment.twilio.ACCOUNT;
+    this.tokenTwilio = environment.twilio.TOKEN;
+  }
 
   setClienteBilletera(cliente: any) {
     this.cliente.tipoDocumento = cliente.idTipoIdentificacion;

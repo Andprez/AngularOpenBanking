@@ -1,0 +1,12 @@
+.atras{
+  position: absolute;
+  font-size: 1.5rem;
+  color: #000;
+  margin: 0.9rem 0.5rem;
+}
+.titulo{
+  padding: 1rem 0;
+}
+.comprobante{
+  text-align: center;
+}

@@ -1,0 +1,32 @@
+<app-header-cbit></app-header-cbit>
+<a routerLink="/tyc" class="atras">
+  <i class="bi bi-arrow-left"></i>
+</a>
+<div class="container">
+  <h2 class="text-center titulo">Confirmar pago</h2>
+  <div class="icono">
+    <img src="../../assets/message.png" alt="Icono mensaje" />
+  </div>
+  <form [formGroup]="formOTP"
+  (ngSubmit)="!formOTP.invalid && confirmarCodigo()">
+    <label for="otp">Ingresa el código de verificación</label>
+    <input
+      type="tel"
+      class="form-control"
+      id="otp"
+      formControlName="otp"
+      placeholder="XXXXXX"
+      (keypress)="validarSoloNumeros($event)"
+    />
+
+    <!-- Notificación de código errado -->
+    <div class="alert alert-danger " *ngIf="error">
+      <p><b>Error: </b>{{mensajeError}}</p>
+    </div>
+
+      <button
+        type="submit"
+        [disabled]="formOTP.invalid"
+        class="btn btn-primary">Confirmar</button>
+  </form>
+</div>

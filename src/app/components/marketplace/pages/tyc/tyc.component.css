@@ -1,0 +1,26 @@
+.atras{
+  position: absolute;
+  font-size: 1.5rem;
+  color: #000;
+  margin: 0.9rem 0.5rem;
+}
+.titulo{
+  padding: 1rem 0;
+}
+.btn-next{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  box-shadow: 0 0 15px #a6b1bd;
+  background-color: #fff;
+}
+.btn-next p{
+  margin: 0;
+}
+.form-check{
+  margin-bottom: 5rem;
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+}
