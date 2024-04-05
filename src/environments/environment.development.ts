@@ -7,8 +7,7 @@ export const environment = {
     SCOPE: 'daviplata'
   },
   twilio: {
-    ACCOUNT: 'AC95dc22adb5573de09122822d3e625f26',
-    TOKEN: '4bd22a6b941264c068b34406c924e596',
+
     FROM: '+19254063393',
     TO: '+573143071634',
   },
