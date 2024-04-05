@@ -1,0 +1,28 @@
+body {
+  text-align: center;
+
+}
+.card {
+  max-width: 22rem;
+  margin-bottom: 1rem;
+  justify-content: center;
+}
+.card-text,
+.card-title {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.card-title {
+  -webkit-line-clamp: 1;
+}
+img {
+  object-fit: contain;
+  max-height: 12rem;
+}
+.actions {
+  gap: 0.5rem;
+  display: flex;
+  justify-content: flex-end;
+}
