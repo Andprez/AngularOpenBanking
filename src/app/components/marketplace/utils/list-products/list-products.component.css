@@ -1,0 +1,30 @@
+.titulo {
+  padding: 1rem 0;
+}
+button {
+  width: auto;
+  height: auto;
+}
+.items-carrito {
+  background-color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  box-shadow: 0 0 15px #a6b1bd;
+}
+.items-carrito p {
+  margin: 0;
+}
+
+@media screen and (min-width: 768px) {
+  .items-carrito {
+    justify-content: center;
+    gap: 1rem;
+  }
+}
+
+.container:last-child {
+  margin-bottom: 4.2rem;
+}
+
