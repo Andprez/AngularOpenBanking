@@ -5,10 +5,10 @@ import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { SeleccionarProductoComponent } from './MIAS/seleccionar-producto/seleccionar-producto.component';
-import { BannerEntityComponent } from './MIAS/banner-entity/banner-entity.component';
-import { HelpComponent } from './MIAS/help/help.component';
+import { HeaderEntityComponent } from './components/headers/header-entity/header-entity.component';
+import { HelpComponent } from './components/utils/help/help.component';
 import { EntityComponent } from './MIAS/entity/entity.component';
-import { AddProductComponent } from './MIAS/add-product/add-product.component';
+import { AddProductComponent } from './pages/add-product/add-product.component';
 import { LabsComponent } from './MIAS/labs/labs.component';
 import { HeaderCbitComponent } from './components/headers/header-cbit/header-cbit.component';
 import { MenuRegistrationComponent } from './pages/menu-registration/menu-registration.component';
@@ -25,12 +25,11 @@ import { HeaderLoginComponent } from './components/headers/header-login/header-l
 @NgModule({
   declarations: [
     AppComponent,
-    BannerEntityComponent,
+    HeaderEntityComponent,
     LabsComponent,
     LoginComponent,
     SeleccionarProductoComponent,
     BackComponent,
-    BannerEntityComponent,
     HelpComponent,
     EntityComponent,
     AddProductComponent,

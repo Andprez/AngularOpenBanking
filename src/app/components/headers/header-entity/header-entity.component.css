@@ -1,0 +1,26 @@
+body{
+  background: linear-gradient(135deg, #00B0F9, #1F2A95);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+.contenedor {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-bottom: 4rem;
+}
+.iconos{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 0.7rem 1rem 0;
+}
+.help{
+  height: 32px;
+}
+.logo-entidad{
+  text-align: center;
+}
+
