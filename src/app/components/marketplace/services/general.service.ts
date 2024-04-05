@@ -61,8 +61,8 @@ export class GeneralService {
     this.CLIENT_ID = environment.dav.CLIENT_ID;
     this.CLIENT_SECRET = environment.dav.CLIENT_SECRET;
     this.SCOPE = environment.dav.SCOPE;
-    // this.ACCOUNT_TWILIO = environment.twilio.ACCOUNT;
-    // this.tokenTwilio = environment.twilio.TOKEN;
+    this.ACCOUNT_TWILIO = environment.twilio.ACCOUNT;
+    this.tokenTwilio = environment.twilio.TOKEN;
   }
 
   setClienteBilletera(cliente: any) {
