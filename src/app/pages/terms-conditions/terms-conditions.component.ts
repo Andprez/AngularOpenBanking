@@ -6,7 +6,7 @@ import { Router } from '@angular/router';
   templateUrl: './terms-conditions.component.html',
   styleUrls: ['./terms-conditions.component.css'],
 })
-export class termsConditionsComponent{
+export class TermsConditionsComponent{
   constructor(private router: Router){}
   aceptacionterminos(){
     this.router.navigate(['/acepterminos']);

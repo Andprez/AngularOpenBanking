@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { TermsAcceptComponent } from './components/terms-accept/terms-accept.component';
-import { termsConditionsComponent } from './components/terms-conditions/terms-conditions.component';
+import { TermsAcceptComponent } from './pages/terms-accept/terms-accept.component';
+import { TermsConditionsComponent } from './pages/terms-conditions/terms-conditions.component';
 
 const routes: Routes = [
   {
     path: 'terminosinicial',
-    component: termsConditionsComponent
+    component: TermsConditionsComponent
   },
   {
     path: 'acepterminos',

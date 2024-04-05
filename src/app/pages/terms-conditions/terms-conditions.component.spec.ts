@@ -1,9 +1,9 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { termsConditionsComponent } from './terms-conditions.component';
+import { TermsConditionsComponent } from './terms-conditions.component';
 
 describe('termsConditionsComponent', () => {
-  let component: termsConditionsComponent;
+  let component: TermsConditionsComponent;
   let fixture: ComponentFixture<termsConditionsComponent>;
 
   beforeEach(() => {

@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-terms-accept',
   templateUrl: './terms-accept.component.html',
-  styleUrls: ['./terms-accept.component.css']
+  styleUrls: ['./terms-accept.component.css', '../../templates/background2.css']
 })
 export class TermsAcceptComponent{
   constructor(private router: Router){

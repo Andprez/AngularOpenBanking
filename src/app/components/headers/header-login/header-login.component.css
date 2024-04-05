@@ -1,0 +1,15 @@
+.container {
+  background-color: aqua;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  padding: calc(100vh * 0.15) 0 calc(100vh * 0.05) 0;
+}
+.nombre-empresa {
+  width: 70%;
+}
+.logo-cbit {
+  width: 30%;
+}
