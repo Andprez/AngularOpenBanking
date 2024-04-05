@@ -4,7 +4,7 @@ import { GeneralService } from '../../services/general.service';
 @Component({
   selector: 'app-tyc',
   templateUrl: './tyc.component.html',
-  styleUrls: ['./tyc.component.css']
+  styleUrls: ['./tyc.component.css'],
 })
 export class TycComponent implements OnInit {
   isChecked: boolean = false;
@@ -21,6 +21,9 @@ export class TycComponent implements OnInit {
   ngOnInit(): void {
     this.totalValue = this.generalService.getTotalValue();
     this.selectedBank = this.generalService.getSelectedBank();
+    if (this.selectedBank.name == 'Bancolombia') {
+      this.bancolombiaProcess();
+    }
     // this.fromTwilio = environment.twilio.FROM;
     // this.toTwilio = environment.twilio.TO;
   }
@@ -34,18 +37,37 @@ export class TycComponent implements OnInit {
       this.daviplataProcess();
     }
   }
+  bancolombiaProcess() {
+    this.generalService.generateTokenBancolombia().subscribe({
+      next: (data: any) => {
+        console.log('Data generateTokenBancolombia', data);
+        this.generalService.setTokenBancolombia(data.access_token);
+        this.generalService.getTyCBancolombia(data.access_token).subscribe({
+          next: (data: any) => {
+            console.log('Data getTyCBancolombia', data);
+          }
+        })
+      }
+    })
+  }
 
-  daviplataProcess(){
+  daviplataProcess() {
     this.generalService.generateToken().subscribe({
       next: (data: any) => {
         console.log('Data setTokenDaviplata', data);
         this.generalService.setTokenDaviplata(data.access_token);
-        this.generalService.intencionCompra(this.totalValue, this.tipoDocumento, this.numeroIdentificacion)
+        this.generalService
+          .intencionCompra(
+            this.totalValue,
+            this.tipoDocumento,
+            this.numeroIdentificacion
+          )
           .subscribe({
             next: (data: any) => {
               console.log('Data intencionCompra', data);
               this.generalService.setIdSession_Token(data.idSessionToken);
-              this.generalService.generarOTP(this.tipoDocumento, this.numeroIdentificacion)
+              this.generalService
+                .generarOTP(this.tipoDocumento, this.numeroIdentificacion)
                 .subscribe({
                   next: (data: any) => {
                     console.log('Data generarOTP', data);
@@ -59,9 +81,10 @@ export class TycComponent implements OnInit {
                     //     console.log('Error al enviar SMS', error);
                     //   }
                     // })
-                  }, error: (error: any) => {
+                  },
+                  error: (error: any) => {
                     console.log('Error al generar OTP', error);
-                  }
+                  },
                 });
             },
             error: (error: any) => {

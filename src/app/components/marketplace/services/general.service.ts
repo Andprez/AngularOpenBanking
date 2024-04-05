@@ -18,15 +18,21 @@ export class GeneralService {
   // Variables de configuración
   private urlProducts: string = 'https://fakestoreapi.com';
   private urlDaviplata: string = '';
-  private GRANT_TYPE: string = '';
-  private CLIENT_ID: string = '';
-  private CLIENT_SECRET: string = '';
-  private SCOPE: string = '';
+  private urlBancolombia: string = '';
+  private DAV_GRANT_TYPE: string = '';
+  private DAV_CLIENT_ID: string = '';
+  private DAV_CLIENT_SECRET: string = '';
+  private DAV_SCOPE: string = '';
+  private BAN_GRANT_TYPE: string = '';
+  private BAN_CLIENT_ID: string = '';
+  private BAN_CLIENT_SECRET: string = '';
+  private BAN_SCOPE: string = '';
   private ACCOUNT_TWILIO: string = '';
   private tokenTwilio: string = '';
 
   // Variables de uso
   private tokenDaviplata: string = '';
+  private tokenBancolombia: string = '';
   private otp: string = '';
   private idSession_Token: string = '';
   private notification_type: string = 'API_DAVIPLATA';
@@ -57,10 +63,15 @@ export class GeneralService {
   ) {
     this.urlProducts = environment.url.products;
     this.urlDaviplata = environment.url.daviplata;
-    this.GRANT_TYPE = environment.dav.GRANT_TYPE;
-    this.CLIENT_ID = environment.dav.CLIENT_ID;
-    this.CLIENT_SECRET = environment.dav.CLIENT_SECRET;
-    this.SCOPE = environment.dav.SCOPE;
+    this.urlBancolombia = environment.url.bancolombia;
+    this.DAV_GRANT_TYPE = environment.dav.GRANT_TYPE;
+    this.DAV_CLIENT_ID = environment.dav.CLIENT_ID;
+    this.DAV_CLIENT_SECRET = environment.dav.CLIENT_SECRET;
+    this.DAV_SCOPE = environment.dav.SCOPE;
+    this.BAN_GRANT_TYPE = environment.ban.GRANT_TYPE;
+    this.BAN_CLIENT_ID = environment.ban.CLIENT_ID;
+    this.BAN_CLIENT_SECRET = environment.ban.CLIENT_SECRET;
+    this.BAN_SCOPE = environment.ban.SCOPE;
     this.ACCOUNT_TWILIO = environment.twilio.ACCOUNT;
     this.tokenTwilio = environment.twilio.TOKEN;
   }
@@ -117,6 +128,14 @@ export class GeneralService {
 
   getTokenDaviplata(): string {
     return this.tokenDaviplata;
+  }
+
+  setTokenBancolombia(token: string) {
+    this.tokenBancolombia = token;
+  }
+
+  getTokenBancolombia(): string {
+    return this.tokenBancolombia;
   }
 
   setOtp(otp: string) {
@@ -221,10 +240,10 @@ export class GeneralService {
   generateToken(): Observable<any> {
     let url = `${this.urlDaviplata}/generarToken`;
     let body = {
-      grant_type: this.GRANT_TYPE,
-      client_id: this.CLIENT_ID,
-      client_secret: this.CLIENT_SECRET,
-      scope: this.SCOPE,
+      grant_type: this.DAV_GRANT_TYPE,
+      client_id: this.DAV_CLIENT_ID,
+      client_secret: this.DAV_CLIENT_SECRET,
+      scope: this.DAV_SCOPE,
     };
     return this.httpClient.post<any>(url, body);
   }
@@ -238,7 +257,7 @@ export class GeneralService {
     let url = `${this.urlDaviplata}/intencionCompra`;
     let body = {
       token: this.getTokenDaviplata(),
-      customer_key: this.CLIENT_ID,
+      customer_key: this.DAV_CLIENT_ID,
       valor: total.toString(),
       tipoDocumento: tipoDocumento,
       numeroIdentificacion: numeroIdentificacion,
@@ -253,7 +272,7 @@ export class GeneralService {
     // CLIENT_ID, notification_type, numeroIdentificacion, tipoDocumento
     let url = `${this.urlDaviplata}/generarOTP`;
     let body = {
-      customer_key: this.CLIENT_ID,
+      customer_key: this.DAV_CLIENT_ID,
       notification_type: this.notification_type,
       tipoDocumento: tipoDocumento,
       numeroIdentificacion: numeroIdentificacion,
@@ -290,11 +309,30 @@ export class GeneralService {
       token: this.getTokenDaviplata(),
       otp: this.getOtp(),
       idSession_Token: this.getIdSession_Token(),
-      customer_key: this.CLIENT_ID,
+      customer_key: this.DAV_CLIENT_ID,
       idComercio: idComercio,
       idTerminal: idTerminal,
       idTransaccion: idTransaccion,
     };
+    return this.httpClient.post<any>(url, body);
+  }
+
+  generateTokenBancolombia(): Observable<any> {
+    let url = `${this.urlBancolombia}/tokenBancolombia`;
+    let body = {
+      grant_type: this.BAN_GRANT_TYPE,
+      client_id: this.BAN_CLIENT_ID,
+      client_secret: this.BAN_CLIENT_SECRET,
+      scope: this.BAN_SCOPE,
+    };
+    return this.httpClient.post<any>(url, body);
+  }
+
+  getTyCBancolombia(access_token: string): Observable<any> {
+    let url = `${this.urlBancolombia}/tyc`;
+    let body = {
+      access_token: access_token
+    }
     return this.httpClient.post<any>(url, body);
   }
 }
