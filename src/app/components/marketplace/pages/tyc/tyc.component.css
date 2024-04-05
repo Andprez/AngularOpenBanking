@@ -24,3 +24,10 @@
   justify-content: center;
   gap: 0.5rem;
 }
+.accordion-body{
+  display: flex;
+  justify-content: space-between;
+}
+.accordion{
+  height: 15rem;
+}

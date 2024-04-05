@@ -15,6 +15,8 @@ export class TycComponent implements OnInit {
   numeroIdentificacion: string = '1389123506';
   fromTwilio: string = '';
   toTwilio: string = '';
+  linkTyCCliente: string = '';
+  linkTyCBilletera: string = '';
 
   constructor(private generalService: GeneralService) {}
 
@@ -45,6 +47,8 @@ export class TycComponent implements OnInit {
         this.generalService.getTyCBancolombia(data.access_token).subscribe({
           next: (data: any) => {
             console.log('Data getTyCBancolombia', data);
+            this.linkTyCCliente = data.data.termsCondition.clausesCustomer.url;
+            this.linkTyCBilletera = data.data.termsCondition.walletTerms.url;
           }
         })
       }
