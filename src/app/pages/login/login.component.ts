@@ -20,13 +20,26 @@ export class LoginComponent implements OnInit{
   ngOnInit(): void {
     this.clienteService.getTiposIdentificacion().subscribe((data) => {
       this.tiposIdentificacion = data;
+      console.log("datos: "+data);
     });
+    
     this.formLogin = this.formBuilder.group({
       docType: ['', Validators.required],
       docNumber: ['', Validators.required]
     });
   }
+
+  //accion del btn
   login(): void {
+    let cliente: any;
+    cliente ={
+      tipoIdentificacion: this.formLogin.get('docType')?.value,
+      numeroIdentificacion: this.formLogin.get('docNumber')?.value
+    }
+    this.clienteService.getBilletera(cliente).subscribe({
+      next: (response) => console.log(response),
+      error: (error) => console.log(error)
+    });
     console.log(this.formLogin.value);
   }
 }

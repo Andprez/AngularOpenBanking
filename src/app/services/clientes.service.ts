@@ -26,4 +26,9 @@ export class ClientesService {
     let url = this.baseUrl + '/tipoIdentificacion';
     return this.httpClient.get<TipoIdentificacion[]>(url);
   }
+  
+  getBilletera(cliente: any): Observable<Cliente> {
+    let url = this.baseUrl + '/cliente/find';
+    return this.httpClient.post<Cliente>(url, cliente);
+  }
 }
