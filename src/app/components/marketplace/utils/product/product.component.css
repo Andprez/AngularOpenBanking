@@ -1,10 +1,9 @@
 body {
   text-align: center;
-
 }
 .card {
   max-width: 22rem;
-  margin-bottom: 1rem;
+  margin: 0 auto 1rem auto;
   justify-content: center;
 }
 .card-text,

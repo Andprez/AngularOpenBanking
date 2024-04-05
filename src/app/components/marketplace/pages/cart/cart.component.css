@@ -1,0 +1,58 @@
+.atras{
+  position: absolute;
+  font-size: 1.5rem;
+  color: #000;
+  margin: 0.9rem 0.5rem;
+
+}
+.titulo{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 1rem 0;
+}
+.imagen img{
+  max-width: 5rem;
+  max-height: 5rem;
+}
+.card-mobile{
+  display: flex;
+  flex-direction: column;
+  border-radius: 20px;
+  box-shadow: 0 0 5px #dddfe1;
+  padding: 1rem;
+}
+.producto{
+  display: flex;
+  align-items: center;
+  padding-bottom: 0.5rem;
+  gap: 1rem;
+}
+.cantidad-precio{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.cantidad-precio p {
+  margin: 0;
+}
+.operacion{
+  background-color: #85C1E9;
+  padding: 0.3rem;
+  border-radius: 50%;
+}
+.total-pagar{
+  background-color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  box-shadow: 0 0 15px #a6b1bd;
+}
+.total-pagar p{
+  margin: 0;
+}
+.container:last-child{
+  margin-bottom: 4.2rem;
+}
+

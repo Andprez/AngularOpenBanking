@@ -24,6 +24,6 @@ export class ListProductsComponent {
   }
   agregarAlCarrito(producto: Product) {
     this.carrito.push(producto);
-    // this.obService.setShopingCart(this.carrito);
+    this.generalService.setShopingCart(this.carrito);
   }
 }

@@ -1,0 +1,23 @@
+<app-header-cbit></app-header-cbit>
+<a routerLink="/cart" class="atras">
+  <i class="bi bi-arrow-left"></i>
+</a>
+<div class="container">
+  <h2 class="text-center titulo">Billetera</h2>
+  <div class="card mb-2 " *ngFor="let bank of banks" [ngClass]="{'card-active': bank.name == selectedBank?.name}">
+    <div class="card-body" (click)="selectBank(bank)">
+      <img src="{{ bank.img }}" alt="Imagen {{ bank.name }}" class="img-fluid col-3">
+      <div class="card-content col-9">
+        <h5 class="card-title">{{ bank.name }}</h5>
+        <h6 class="card-subtitle mb-2 text-body-secondary">{{ bank.balance | currency }}</h6>
+        <p class="card-text mb-0 ">{{ bank.product }}</p>
+      </div>
+    </div>
+  </div>
+  <div class="fixed-bottom btn-next">
+    <div>
+      <p class="text-center ">Total: {{ total | currency }}</p>
+    </div>
+    <button class="btn btn-success" [disabled]="!selectedBank" routerLink="/tyc">Siguiente</button>
+  </div>
+</div>
