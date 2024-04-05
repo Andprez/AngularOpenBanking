@@ -1,0 +1,48 @@
+.container {
+  max-width: 90%;
+}
+.form-login {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+label {
+  color: white;
+  font-weight: bold;
+  font-size: 16px;
+}
+.input-group {
+  font-weight: 400;
+  height: 3rem;
+  border-radius: 10px;
+}
+.campos-labels {
+  width: 100%;
+}
+.form-control .form-select {
+  color: black;
+}
+.input-group-text {
+  padding: 0 0.8rem;
+  background-color: #d9d9d9;
+  border-radius: 10px;
+}
+.input-group-text i {
+  /* background-color: red; */
+  color: #2f69c5;
+  width: 100%;
+  font-size: 1.5rem;
+}
+.texto-final {
+  color: white;
+  font-size: 16px;
+  text-align: center;
+  padding: 1rem;
+}
+.texto-final a {
+  font-weight: bold;
+  cursor: pointer;
+  text-decoration: underline;
+}

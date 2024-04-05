@@ -15,6 +15,7 @@ import { FormRegistrationComponent } from './pages/form-registration/form-regist
 import { BackComponent } from './components/utils/back/back.component';
 import { LoginComponent } from './pages/login/login.component';
 import { HeaderLoginComponent } from './components/headers/header-login/header-login.component';
+import { HelpComponent } from './components/utils/help/help.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { HeaderLoginComponent } from './components/headers/header-login/header-l
     BackComponent,
     LoginComponent,
     HeaderLoginComponent,
+    HelpComponent,
   ],
   imports: [
     BrowserModule,

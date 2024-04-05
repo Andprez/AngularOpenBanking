@@ -1,12 +1,4 @@
-h1 {
-  font-size: 2.5rem;
-  cursor: pointer;
-}
-.bi {
-  position: absolute;
+.bi-chevron-compact-left{
   color: white;
-  left: 1rem;
-}
-.bi:hover {
-  color: #0158f9;
+  font-size: 32px;
 }
