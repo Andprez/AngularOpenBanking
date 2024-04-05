@@ -15,6 +15,7 @@ export class WalletComponent {
   numeroIdentificacion: string = "1134568019";
   idComercio: string = "0010203040";
   idTransaccion: string = "";
+  nombreCliente?: string;
   //---------------------------------------
 
   banks: any[] = [
@@ -38,6 +39,11 @@ export class WalletComponent {
 
   ngOnInit(): void {
     this.total = this.generalService.getTotalValue();
+    this.generalService.getClienteBilletera().subscribe({
+      next: (data: any) => {
+        this.nombreCliente = data.nombre;
+      }
+    })
   }
 
   selectBank(bank: any){

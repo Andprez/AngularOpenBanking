@@ -20,7 +20,7 @@ import { MarketplaceComponent } from './components/marketplace/pages/marketplace
 import { ProductComponent } from './components/marketplace/utils/product/product.component';
 import { ListProductsComponent } from './components/marketplace/utils/list-products/list-products.component';
 import { CartComponent } from './components/marketplace/pages/cart/cart.component';
-import { DetailProductComponent } from './components/marketplace/utils/detail-product/detail-product.component';
+import { DetailProductComponent } from './components/marketplace/pages/detail-product/detail-product.component';
 import { HeaderMarketplaceComponent } from './components/marketplace/utils/header-marketplace/header-marketplace.component';
 import { WalletComponent } from './components/marketplace/pages/wallet/wallet.component';
 

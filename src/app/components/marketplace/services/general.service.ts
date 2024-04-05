@@ -15,7 +15,7 @@ export class GeneralService {
   private selectedBank?: any = null;
 
   // Variables de configuración
-  private urlProducts: string = '';
+  private urlProducts: string = 'https://fakestoreapi.com';
   private urlDaviplata: string = '';
   private GRANT_TYPE: string = '';
   private CLIENT_ID: string = '';
@@ -54,6 +54,20 @@ export class GeneralService {
   constructor(
     private httpClient: HttpClient
   ) { }
+
+  setClienteBilletera(cliente: any) {
+    this.cliente.tipoDocumento = cliente.idTipoIdentificacion;
+    this.cliente.numeroIdentificacion = cliente.numeroIdentificacion;
+    this.cliente.nombre = cliente.primerNombre;
+    this.cliente.email = cliente.email;
+  }
+
+  getClienteBilletera(): Observable<any> {
+    return new Observable((observer) => {
+      observer.next(this.cliente);
+      observer.complete();
+    })
+  }
 
   setProductDetail(product: Product) {
     this.productDetail = product;
@@ -186,7 +200,7 @@ export class GeneralService {
 
   getProducts(): Observable<Product[]> {
     let url = `${this.urlProducts}/products`;
-    return this.httpClient.get<Product[]>('https://fakestoreapi.com/products');
+    return this.httpClient.get<Product[]>(url);
   }
 
   getProduct(id: number): Observable<Product> {

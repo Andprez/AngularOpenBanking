@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { GeneralService } from 'src/app/components/marketplace/services/general.service';
 import { TipoIdentificacion } from 'src/app/models/tipo-identificacion';
 import { ClientesService } from 'src/app/services/clientes.service';
 
@@ -17,7 +18,8 @@ export class LoginComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private clienteService: ClientesService,
-    private router: Router
+    private router: Router,
+    private generalService: GeneralService
   ) {}
 
   ngOnInit(): void {
@@ -42,6 +44,7 @@ export class LoginComponent implements OnInit {
         console.log(response);
         this.clienteExiste = true;
         if (response) {
+          this.generalService.setClienteBilletera(response);
           this.router.navigate(['/wallet']);
         }
       },

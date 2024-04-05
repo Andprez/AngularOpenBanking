@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ListProductsComponent } from './components/marketplace/utils/list-products/list-products.component';
-import { DetailProductComponent } from './components/marketplace/utils/detail-product/detail-product.component';
+import { DetailProductComponent } from './components/marketplace/pages/detail-product/detail-product.component';
 import { CartComponent } from './components/marketplace/pages/cart/cart.component';
 import { WalletComponent } from './components/marketplace/pages/wallet/wallet.component';
 import { LoginComponent } from './pages/login/login.component';
