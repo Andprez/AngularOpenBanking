@@ -1,0 +1,38 @@
+.titulo{
+  font-family: 'Open Sans', sans-serif;
+  font-size: 24px;
+  font-weight: regular;
+  text-align: center;
+  margin-top: 2rem;
+  color: white;
+}
+.icono-mensaje{
+  font-size: 7rem;
+  color: white;
+  text-align: center;
+}
+.texto1, .telefono{
+  color: white;
+  text-align: center;
+  font-size: 18px;
+}
+.campo-telefono{
+  display: flex;
+  justify-content: center;
+  gap: 0.2rem;
+  align-items: center;
+}
+.campo-telefono p{
+  font-family: 'Open Sans', sans-serif;
+  margin: 0;
+}
+.telefono{
+  font-size: 20px;
+  font-weight: 600;
+}
+.bi-pencil-fill{
+  color: white;
+  width: 29px;
+  height: 22px;
+  text-align: center;
+}

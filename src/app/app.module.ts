@@ -16,6 +16,7 @@ import { BackComponent } from './components/utils/back/back.component';
 import { LoginComponent } from './pages/login/login.component';
 import { HeaderLoginComponent } from './components/headers/header-login/header-login.component';
 import { HelpComponent } from './components/utils/help/help.component';
+import { FormPhoneConfirmComponent } from './pages/form-phone-confirm/form-phone-confirm.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { HelpComponent } from './components/utils/help/help.component';
     LoginComponent,
     HeaderLoginComponent,
     HelpComponent,
+    FormPhoneConfirmComponent,
   ],
   imports: [
     BrowserModule,
