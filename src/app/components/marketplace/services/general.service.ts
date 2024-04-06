@@ -76,7 +76,7 @@ export class GeneralService {
   setClienteBilletera(cliente: any) {
     this.cliente.tipoDocumento = cliente.idTipoIdentificacion;
     this.cliente.numeroIdentificacion = cliente.numeroIdentificacion;
-    this.cliente.nombre = cliente.primerNombre;
+    this.cliente.nombre = cliente.primerNombre + ' ' + cliente.segundoNombre + ' ' + cliente.primerApellido + ' ' + cliente.segundoApellido;
     this.cliente.email = cliente.email;
   }
 
@@ -212,7 +212,7 @@ export class GeneralService {
     return this.httpClient.post<any>(url, body);
   }
 
-  intencionCompra(
+  intencionCompraDav(
     total: number,
     tipoDocumento: string,
     numeroIdentificacion: string
@@ -299,4 +299,16 @@ export class GeneralService {
     }
     return this.httpClient.post<any>(url, body);
   }
+
+  intencionCompraBan(totalValue: number): Observable<any>{
+    let url = `${this.urlBancolombia}/intencionCompra`;
+    let body = {
+      valorCompra: this.totalValue,
+    }
+    let headers = {
+      'access_token': this.getTokenBancolombia()
+    }
+    return this.httpClient.post<any>(url, body, {headers: headers});
+  }
+
 }

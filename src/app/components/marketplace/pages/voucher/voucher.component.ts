@@ -11,6 +11,7 @@ export class VoucherComponent implements OnInit{
   transaccion!: Transaction;
   clientePruebas: any;
   comercioPruebas: any;
+  totalValue: number = 0;
 
   constructor(private generalService: GeneralService) { }
 
@@ -18,5 +19,6 @@ export class VoucherComponent implements OnInit{
     this.transaccion = this.generalService.getTransaccion();
     this.clientePruebas = this.generalService.getClientePruebas();
     this.comercioPruebas = this.generalService.getComercioPruebas();
+    this.totalValue = this.generalService.getTotalValue();
   }
 }

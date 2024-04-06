@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { GeneralService } from '../../services/general.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-tyc',
@@ -18,12 +19,13 @@ export class TycComponent implements OnInit {
   linkTyCCliente: string = '';
   linkTyCBilletera: string = '';
 
-  constructor(private generalService: GeneralService) {}
+  constructor(private generalService: GeneralService, private router: Router) {}
 
   ngOnInit(): void {
     this.selectedBank = this.generalService.getSelectedBank();
+    this.totalValue = this.generalService.getTotalValue();
     if (this.selectedBank.name == 'Bancolombia') {
-      this.bancolombiaProcess();
+      this.bancolombiaProcess1();
     }
     // this.fromTwilio = environment.twilio.FROM;
     // this.toTwilio = environment.twilio.TO;
@@ -36,9 +38,11 @@ export class TycComponent implements OnInit {
   verificationCode() {
     if (this.selectedBank.name == 'Daviplata') {
       this.daviplataProcess();
+    } else if (this.selectedBank.name == 'Bancolombia') {
+      this.bancolombiaProcess2();
     }
   }
-  bancolombiaProcess() {
+  bancolombiaProcess1() {
     this.generalService.generateTokenBancolombia().subscribe({
       next: (data: any) => {
         console.log('Data generateTokenBancolombia', data);
@@ -48,10 +52,17 @@ export class TycComponent implements OnInit {
             console.log('Data getTyCBancolombia', data);
             this.linkTyCCliente = data.data.termsCondition.clausesCustomer.url;
             this.linkTyCBilletera = data.data.termsCondition.walletTerms.url;
-          }
-        })
-      }
-    })
+          },
+        });
+      },
+    });
+  }
+  bancolombiaProcess2() {
+    this.generalService.intencionCompraBan(this.totalValue).subscribe({
+      next: (data: any) => {
+        console.log('Data intencionCompraBan', data);
+      },
+    });
   }
 
   daviplataProcess() {
@@ -60,7 +71,7 @@ export class TycComponent implements OnInit {
         console.log('Data setTokenDaviplata', data);
         this.generalService.setTokenDaviplata(data.access_token);
         this.generalService
-          .intencionCompra(
+          .intencionCompraDav(
             this.totalValue,
             this.tipoDocumento,
             this.numeroIdentificacion
@@ -73,6 +84,7 @@ export class TycComponent implements OnInit {
                 .generarOTP(this.tipoDocumento, this.numeroIdentificacion)
                 .subscribe({
                   next: (data: any) => {
+                    this.router.navigate(['/otp']);
                     console.log('Data generarOTP', data);
                     this.generalService.setOtp(data.otp);
                     let message = `Tu código de verificación es: ${data.otp}`;

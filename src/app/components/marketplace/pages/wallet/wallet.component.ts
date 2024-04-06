@@ -39,9 +39,10 @@ export class WalletComponent {
 
   ngOnInit(): void {
     this.total = this.generalService.getTotalValue();
+    this.generalService.setTotalValue(this.total);
     this.generalService.getClienteBilletera().subscribe({
       next: (data: any) => {
-        this.nombreCliente = data.nombre;
+        this.nombreCliente = data.nombre.split(' ')[0];
       }
     })
   }
