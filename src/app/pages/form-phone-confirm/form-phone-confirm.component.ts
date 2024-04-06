@@ -6,5 +6,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./form-phone-confirm.component.css', '../../templates/background2.css']
 })
 export class FormPhoneConfirmComponent {
+  editPhone: boolean = false;
 
+  changeEditPhone(){
+    this.editPhone = !this.editPhone;
+  }
 }
