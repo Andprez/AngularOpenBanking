@@ -6,12 +6,12 @@
     <div class="icono-mensaje">
       <i class="bi bi-chat-left"></i>
     </div>
-    <div class="texto1">
+    <div class="texto">
       <p>Escriba el código enviado a su celular</p>
     </div>
     <div class="gestion-tel">
       <div class="campo-telefono" *ngIf="!editPhone">
-        <p class="telefono">3154113212</p>
+        <p class="telefono">{{ phone }}</p>
         <i class="bi bi-pencil-fill" (click)="changeEditPhone()"></i>
       </div>
       <div class="input-telefono" *ngIf="editPhone">
@@ -24,5 +24,14 @@
       </div>
     </div>
     <app-otp></app-otp>
+    <div class="texto mt-4 txt-20-bold ">
+      <p>¿No recibió el código?</p>
+    </div>
+    <div class="texto txt-20-normal">
+      <a class="link">Volver a enviar código</a>
+    </div>
   </div>
+  <app-btn-cbit
+    [text]="'Continuar'"
+  ></app-btn-cbit>
 </body>

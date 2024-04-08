@@ -11,6 +11,8 @@ import { ClientesService } from 'src/app/services/clientes.service';
 export class LoginComponent implements OnInit{
   formLogin!: FormGroup;
   tiposIdentificacion!: TipoIdentificacion[];
+  clienteExiste: boolean = true;
+  loading: boolean = true;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -26,7 +28,26 @@ export class LoginComponent implements OnInit{
       docNumber: ['', Validators.required]
     });
   }
+
+  //accion del btn
   login(): void {
+    let cliente = {
+      tipoIdentificacion: this.formLogin.get('docType')?.value,
+      numeroIdentificacion: this.formLogin.get('docNumber')?.value,
+    };
+    this.clienteService.getBilletera(cliente).subscribe({
+      next: (response) => {
+        console.log(response);
+        this.clienteExiste = true;
+        // if (response) {
+        //   this.generalService.setClienteBilletera(response);
+        // }
+      },
+      error: (error) => {
+        console.log(error);
+        this.clienteExiste = false;
+      },
+    });
     console.log(this.formLogin.value);
   }
 }
