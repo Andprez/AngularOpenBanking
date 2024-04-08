@@ -9,6 +9,8 @@ import { Router } from '@angular/router';
 })
 export class TycComponent implements OnInit {
   isChecked: boolean = false;
+  error: boolean = false;
+  mensajeError: string = 'Servicio no disponible en este momento';
 
   selectedBank?: any = null;
   totalValue: number = 0;
@@ -27,6 +29,7 @@ export class TycComponent implements OnInit {
     if (this.selectedBank.name == 'Bancolombia') {
       this.bancolombiaProcess1();
     }
+
     // this.fromTwilio = environment.twilio.FROM;
     // this.toTwilio = environment.twilio.TO;
   }
@@ -43,24 +46,39 @@ export class TycComponent implements OnInit {
     }
   }
   bancolombiaProcess1() {
-    this.generalService.generateTokenBancolombia().subscribe({
-      next: (data: any) => {
-        console.log('Data generateTokenBancolombia', data);
-        this.generalService.setTokenBancolombia(data.access_token);
-        this.generalService.getTyCBancolombia(data.access_token).subscribe({
-          next: (data: any) => {
-            console.log('Data getTyCBancolombia', data);
-            this.linkTyCCliente = data.data.termsCondition.clausesCustomer.url;
-            this.linkTyCBilletera = data.data.termsCondition.walletTerms.url;
-          },
-        });
-      },
-    });
+    try {
+      this.generalService.generateTokenBancolombia().subscribe({
+        next: (data: any) => {
+          console.log('Data generateTokenBancolombia', data);
+          this.generalService.setTokenBancolombia(data.access_token);
+          this.generalService.getTyCBancolombia(data.access_token).subscribe({
+            next: (data: any) => {
+              console.log('Data getTyCBancolombia', data);
+              this.linkTyCCliente =
+                data.data.termsCondition.clausesCustomer.url;
+              this.linkTyCBilletera = data.data.termsCondition.walletTerms.url;
+            },
+            error: (error: any) => {
+              this.error = true;
+              this.mensajeError = 'Servicio no disponible en este momento';
+            },
+          });
+        },
+      });
+    } catch (error) {
+      this.error = true;
+      this.mensajeError = 'Servicio no disponible en este momento';
+    }
   }
   bancolombiaProcess2() {
     this.generalService.intencionCompraBan(this.totalValue).subscribe({
       next: (data: any) => {
+        if(data.status != 200){
+          this.error = true;
+          this.mensajeError = 'Servicio no disponible en este momento';
+        }
         console.log('Data intencionCompraBan', data);
+        console.log('Status', data.status);
       },
     });
   }

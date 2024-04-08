@@ -20,8 +20,11 @@
     />
 
     <!-- Notificación de código errado -->
-    <div class="alert alert-danger " *ngIf="error">
+    <div class="alert alert-danger "
+    *ngIf="error"
+    >
       <p><b>Error: </b>{{mensajeError}}</p>
+      <!-- <p><b>Error: </b>Servicio no disponible</p> -->
     </div>
 
       <button

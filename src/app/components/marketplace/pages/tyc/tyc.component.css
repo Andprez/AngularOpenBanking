@@ -31,3 +31,7 @@
 .accordion{
   height: 15rem;
 }
+.alert p{
+  margin-bottom: 0;
+  text-align: center;
+}

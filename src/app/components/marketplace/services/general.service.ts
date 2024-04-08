@@ -13,7 +13,13 @@ export class GeneralService {
   // Variables iniciales
   private productDetail?: Product;
   private shopingCart?: Product[];
-  private selectedBank?: any = null;
+  // private selectedBank?: any = null;
+  private selectedBank?: any = {
+    balance: 537692,
+    img: '../../assets/LogoBancolombia.png',
+    name: 'Bancolombia',
+    product: 'Ahorro a la mano',
+  };
 
   // Variables de configuración
   private urlProducts: string = 'https://fakestoreapi.com';

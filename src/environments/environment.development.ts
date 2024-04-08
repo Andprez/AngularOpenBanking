@@ -20,7 +20,7 @@ export const environment = {
   },
   url: {
     products: 'https://fakestoreapi.com',
-    daviplata: 'http://50.19.67.234:3000',
-    bancolombia: 'http://50.19.67.234:3001',
+    daviplata: 'http://54.221.169.106:3000',
+    bancolombia: 'http://54.221.169.106:3001',
   }
 };

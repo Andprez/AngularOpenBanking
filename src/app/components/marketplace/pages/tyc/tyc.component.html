@@ -106,29 +106,44 @@
     <div class="accordion" id="accordionPanelsStayOpenExample">
       <div class="accordion-item">
         <h2 class="accordion-header">
-          <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#TyC_Cliente" aria-expanded="true" aria-controls="TyC_Cliente">
+          <button
+            class="accordion-button"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#TyC_Cliente"
+            aria-expanded="true"
+            aria-controls="TyC_Cliente"
+          >
             Cliente
           </button>
         </h2>
         <div id="TyC_Cliente" class="accordion-collapse collapse show">
           <div class="accordion-body">
-            <strong>Términos y condiciones Cliente</strong> <a href="{{ linkTyCCliente }}">Link</a>
+            <strong>Términos y condiciones Cliente</strong>
+            <a href="{{ linkTyCCliente }}">Link</a>
           </div>
         </div>
       </div>
       <div class="accordion-item">
         <h2 class="accordion-header">
-          <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#TyC_Wallet" aria-expanded="true" aria-controls="TyC_Wallet">
+          <button
+            class="accordion-button"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#TyC_Wallet"
+            aria-expanded="true"
+            aria-controls="TyC_Wallet"
+          >
             Billetera
           </button>
         </h2>
         <div id="TyC_Wallet" class="accordion-collapse collapse show">
           <div class="accordion-body">
-            <strong>Términos y condiciones Billetera</strong> <a href="{{ linkTyCBilletera }}">Link</a>
+            <strong>Términos y condiciones Billetera</strong>
+            <a href="{{ linkTyCBilletera }}">Link</a>
           </div>
         </div>
       </div>
-
     </div>
   </div>
 
@@ -143,6 +158,11 @@
       >Aceptar términos</label
     >
   </div>
+
+  <div class="alert alert-danger" *ngIf="error">
+    <p><b>Error: </b>{{ mensajeError }}</p>
+  </div>
+
   <div class="fixed-bottom btn-next">
     <div>
       <p class="text-center"></p>
