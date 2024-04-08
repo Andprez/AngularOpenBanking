@@ -20,7 +20,8 @@ p{
   color: white;
   text-align: center;
 }
-.texto1, .telefono{
+.texto, .telefono{
+  font-family: 'Open Sans', sans-serif;
   color: white;
   text-align: center;
   font-size: 18px;
@@ -65,4 +66,18 @@ p{
   display: flex;
   justify-content: center;
   align-items: center;
+}
+.txt-20-bold{
+  font-weight: bold;
+  font-size: 20px;
+  text-align: center;
+  color: white;
+}
+.txt-20-normal{
+  font-size: 20px;
+}
+.link{
+  color: white;
+  text-decoration: underline;
+  cursor: pointer;
 }

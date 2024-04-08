@@ -1,0 +1,39 @@
+<p>cart works!</p>
+<app-header-marketplace></app-header-marketplace>
+<a routerLink="/products" class="atras">
+  <i class="bi bi-arrow-left"></i>
+</a>
+<div class="container">
+  <h2 class="text-center titulo">Carrito de compras</h2>
+  <div class="mb-3 card-mobile" *ngFor="let product of carrito">
+    <div class="producto">
+      <div class="imagen">
+        <img src="{{ product.image }}" alt="Imagen de {{ product.title }}">
+      </div>
+      <div class="detalles">
+        <b>{{ product.title }}</b>
+        <p>{{ product.price | currency }}</p>
+      </div>
+    </div>
+    <div class="cantidad-precio">
+      <div class="cantidad">
+        <button class="btn" (click)="restarCantidad(product)">
+          <i class="bi bi-dash operacion"></i>
+        </button>
+        <span>{{ product.quantity }}</span>
+        <button class="btn" (click)="sumarCantidad(product)">
+          <i class="bi bi-plus operacion"></i>
+        </button>
+      </div>
+      <div class="precio">
+        <p>{{ product.price * product.quantity | currency }}</p>
+      </div>
+    </div>
+  </div>
+  <div class="total-pagar fixed-bottom">
+    <div>
+      <p class="text-center ">Total: {{ total | currency }}</p>
+    </div>
+    <button class="btn btn-success" [disabled]="!total" routerLink="/login">Pagar</button>
+  </div>
+</div>

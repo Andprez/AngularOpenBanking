@@ -7,6 +7,7 @@ import { Component } from '@angular/core';
 })
 export class FormPhoneConfirmComponent {
   editPhone: boolean = false;
+  phone: string = '3001234567';
 
   changeEditPhone(){
     this.editPhone = !this.editPhone;
