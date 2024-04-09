@@ -1,3 +1,96 @@
+/* ESTILOS LOADING */
+.loading {
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(115deg, #00b0f9, #00bfcf, #0b2794);
+  background-size: 200% 100%;
+  background-position: 100% 100%;
+  animation: gradientAnimation1 3s ease-in-out 0s 1 normal forwards,
+    gradientAnimation2 0.5s ease-in-out 3s 1 normal forwards;
+}
+
+@keyframes gradientAnimation1 {
+  0% {
+    background-position: 100% 100%;
+  }
+  100% {
+    background-position: 0% 100%;
+  }
+}
+
+@keyframes gradientAnimation2 {
+  100% {
+    opacity: 0;
+    display: none;
+  }
+}
+
+.logo {
+  width: 35%;
+  height: fit-content;
+  transform: rotate(-30deg);
+  opacity: 0;
+  animation: logo-animation 2s ease 1 forwards;
+}
+.logo img {
+  width: 100%;
+  height: 100%;
+}
+@keyframes logo-animation {
+  0% {
+    opacity: 0;
+    transform: rotate(-30deg);
+  }
+  50% {
+    opacity: 1;
+    transform: rotate(-15deg);
+  }
+  100% {
+    opacity: 1;
+    transform: rotate(0deg);
+  }
+}
+
+.nombre-empresa {
+  font-weight: 300;
+  font-size: 60px;
+  color: white;
+  opacity: 0;
+  animation: nombre-empresa-animation 1s ease-in-out 1s 1 forwards;
+}
+.nombre-empresa span {
+  font-weight: 500;
+}
+
+@keyframes nombre-empresa-animation {
+  100% {
+    opacity: 1;
+  }
+}
+
+/* ESTILOS DEL LOGIN */
+
+.login {
+  /* display: none; */
+  opacity: 0;
+  animation: animationLogin 0.5s linear 3.5s 1 normal forwards;
+}
+@keyframes animationLogin {
+  0% {
+    opacity: 0;
+    display: none;
+  }
+  100% {
+    opacity: 1;
+    display: block;
+  }
+}
+
 .container {
   max-width: 90%;
 }

@@ -1,52 +1,9 @@
-<div class="loading">
-  <div class="logo">
-    <img src="../../../assets/LogoCbit.png" alt="Logo Cbit">
-  </div>
-  <div class="nombre-empresa"><span>CBIT</span>Bank</div>
-</div>
-<div class="login">
-  <app-header-login></app-header-login>
-  <div class="container">
-    <form
-      [formGroup]="formLogin"
-      class="form-login"
-      (ngSubmit)="formLogin.valid && login()"
-    >
-      <div class="campos-labels">
-        <label for="docType" class="form-label">Tipo de documento</label>
-        <div class="input-group">
-          <select class="form-select" formControlName="docType">
-            <option selected disabled>Selecciona una opción</option>
-            <option
-              *ngFor="let tipo of tiposIdentificacion"
-              [value]="tipo.idTipoIdentificacion"
-            >
-              {{ tipo.nombre }}
-            </option>
-          </select>
-          <span class="input-group-text"><i class="bi bi-person-vcard"></i></span>
-        </div>
-      </div>
-
-      <div class="campos-labels">
-        <label for="docNumber" class="form-label">Número de documento</label>
-        <div class="input-group">
-          <input class="form-control" formControlName="docNumber" />
-          <span class="input-group-text"><i class="bi bi-123"></i></span>
-        </div>
-      </div>
-
-      <app-btn-cbit
-        [text]="'Continuar'"
-        [type]="'submit'"
-        [disabled]="formLogin.invalid"
-        [routerLink]="'/'"
-      ></app-btn-cbit>
-    </form>
-
-    <div class="texto-final">
-      <p>¿No tiene una cuenta? <a>Regístrese</a></p>
+<body>
+  <!-- LOADING -->
+  <div class="loading">
+    <div class="logo">
+      <img src="../../../assets/LogoCbit.png" alt="Logo Cbit" />
     </div>
+    <div class="nombre-empresa"><span>CBIT</span>Bank</div>
   </div>
-</div>
-
+</body>
