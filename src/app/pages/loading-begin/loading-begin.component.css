@@ -1,31 +1,58 @@
-.contenedor {
+/* ESTILOS LOADING */
+
+.loading {
   width: 100%;
   height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background: linear-gradient(100deg, #00B0F9, #180B94, #00BFCF, #0B2794);
-  background-size: 400% 400%;
-  animation: gradientAnimation 12s linear infinite;
+  background: linear-gradient(115deg, #00b0f9, #00bfcf, #0b2794);
+  background-color: black;
+  background-size: 200% 100%;
+  background-position: 100% 100%;
+  animation: gradientAnimation1 3s ease-in-out 0s 1 normal forwards;
 }
-@keyframes gradientAnimation {
+
+@keyframes gradientAnimation1 {
   0% {
-    background-position: 0% 50%;
+    background-position: 100% 100%;
   }
   50% {
-    background-position: 100% 50%;
+    background-position: 0% 100%;
   }
   100% {
-    background-position: 0% 50%;
+    background-position: 0% 100%;
   }
 }
+.loading::after{
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(to right, #00B0F9, #1F2A95);
+  opacity: 0;
+  animation: gradientAnimation2 1s ease-in-out 1 forwards;
+  animation-delay: 3s;
+}
+
+@keyframes gradientAnimation2 {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
 .logo {
   width: 25%;
   height: fit-content;
   transform: rotate(-30deg);
   opacity: 0;
-  animation: logo-animation 2s ease-in-out 1 forwards;
+  animation: logo-animation 2s ease-in 1 forwards;
 }
 .logo img {
   width: 100%;
@@ -35,6 +62,10 @@
   0% {
     opacity: 0;
     transform: rotate(-30deg);
+  }
+  50% {
+    opacity: 1;
+    transform: rotate(-15deg);
   }
   100% {
     opacity: 1;
@@ -47,11 +78,12 @@
   font-size: 60px;
   color: white;
   opacity: 0;
-  animation: nombre-empresa-animation 1s ease-in-out 1.5s 1 forwards;
+  animation: nombre-empresa-animation 1s ease-in-out 1s 1 forwards;
 }
 .nombre-empresa span {
   font-weight: 500;
 }
+
 @keyframes nombre-empresa-animation {
   0% {
     opacity: 0;
@@ -59,4 +91,66 @@
   100% {
     opacity: 1;
   }
+}
+
+/* ESTILOS LOGIN */
+.login{
+  display: none;
+  animation: animationLogin 1s ease 5s 1 normal forwards;
+}
+@keyframes animationLogin {
+  0% {
+    display: none;
+  }
+  100% {
+    display: block;
+  }
+}
+.container {
+  max-width: 90%;
+}
+.form-login {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+label {
+  color: white;
+  font-weight: bold;
+  font-size: 16px;
+}
+.input-group {
+  font-weight: 400;
+  height: 3rem;
+  border-radius: 10px;
+}
+.campos-labels {
+  width: 100%;
+}
+.form-control .form-select {
+  color: black;
+}
+.input-group-text {
+  padding: 0 0.8rem;
+  background-color: #d9d9d9;
+  border-radius: 10px;
+}
+.input-group-text i {
+  /* background-color: red; */
+  color: #2f69c5;
+  width: 100%;
+  font-size: 1.5rem;
+}
+.texto-final {
+  color: white;
+  font-size: 16px;
+  text-align: center;
+  padding: 1rem;
+}
+.texto-final a {
+  font-weight: bold;
+  cursor: pointer;
+  text-decoration: underline;
 }
