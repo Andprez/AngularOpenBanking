@@ -1,16 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { Pantalla2Component } from './pantalla2.component';
+import { CategoryComponent } from './category.component';
 
-describe('Pantalla2Component', () => {
-  let component: Pantalla2Component;
-  let fixture: ComponentFixture<Pantalla2Component>;
+describe('CategoryComponent', () => {
+  let component: CategoryComponent;
+  let fixture: ComponentFixture<CategoryComponent>;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [Pantalla2Component]
+      declarations: [CategoryComponent]
     });
-    fixture = TestBed.createComponent(Pantalla2Component);
+    fixture = TestBed.createComponent(CategoryComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
