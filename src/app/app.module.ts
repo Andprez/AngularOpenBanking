@@ -17,6 +17,11 @@ import { LoginComponent } from './pages/login/login.component';
 import { HeaderLoginComponent } from './components/headers/header-login/header-login.component';
 import { TermsConditionsComponent } from './pages/terms-conditions/terms-conditions.component';
 import { TermsAcceptComponent } from './pages/terms-accept/terms-accept.component';
+import { MyProductsComponent } from './pages/my-products/my-products.component';
+import { ListProductsComponent } from './components/lists/list-products/list-products.component';
+import { ListRecommendationsComponent } from './components/lists/list-recommendations/list-recommendations.component';
+import { DashboardComponent } from './pages/dashboard/dashboard.component';
+
 
 @NgModule({
   declarations: [
@@ -33,6 +38,10 @@ import { TermsAcceptComponent } from './pages/terms-accept/terms-accept.componen
     HeaderLoginComponent,
     TermsConditionsComponent,
     TermsAcceptComponent,
+    MyProductsComponent,
+    ListProductsComponent,
+    ListRecommendationsComponent,
+    DashboardComponent,
   ],
   imports: [
     BrowserModule,

@@ -14,7 +14,12 @@
     <input type="checkbox" name="switch" id="switch">
     Declaro que he leido y autorizo los permisos y documentos decritos anteriormente.
   </label>
-  <div class="button-row"> 
-    <button mat-raised-button color="primary">Continuar</button>
+  <div class="button-row">  
+    <app-btn-cbit
+      [text]="'Continuar'"
+      [type]="'submit'"
+      [routerLink]="''"
+      >
+    </app-btn-cbit>
   </div>
 </div>
