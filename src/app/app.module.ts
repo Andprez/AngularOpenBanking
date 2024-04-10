@@ -4,8 +4,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
-import { dashboardComponent } from './pages/dashboard/dashboard.component';
-import { myproductsComponent } from './pages/my-products/my-products.component';
+import { dashboardComponent, DashboardComponent } from './pages/dashboard/dashboard.component';
+import { myproductsComponent, MyProductsComponent } from './pages/my-products/my-products.component';
 import { HeaderCbitComponent } from './components/headers/header-cbit/header-cbit.component';
 import { MenuRegistrationComponent } from './pages/menu-registration/menu-registration.component';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -47,6 +47,8 @@ import { CategoryComponent } from './components/utils/category/category.componen
     ListCategoryComponent,
     ListProductVerticalComponent,
     CategoryComponent,
+    DashboardComponent,
+    MyProductsComponent,
   ],
   imports: [
     BrowserModule,

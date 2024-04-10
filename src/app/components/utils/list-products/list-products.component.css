@@ -1,26 +1,8 @@
+.lista {
+    display: flex;
+    gap: 1rem;
+}
 
-nav a {
-    font-weight: 600;
-    padding-right: 10px;
-  }
-  
-  nav a:hover{
-    color: orangered;
-  }
-  
-  
-  @media (max-width:700px){
-    header{
-        flex-direction: column;
-    }
-    nav {
-    padding: 10px 0px;
-    }
-    }
-  
-  *{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  
+.container{
+    margin-top: 3rem;
+}

@@ -1,0 +1,8 @@
+.lista {
+    display: flex;
+    gap: 1rem;
+}
+
+.container{
+    margin-top: 3rem;
+}
