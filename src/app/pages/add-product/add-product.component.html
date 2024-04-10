@@ -1,5 +1,38 @@
 <body>
-    <div class="add-product">     
-        <app-header-entity class="back"></app-header-entity>
+  <app-header-entity></app-header-entity>
+  <div class="container">
+
+    <div *ngIf="!showAdditionalFields && !showSuccessMessage">
+      <form [formGroup]="formProducto" (ngSubmit)="formProducto.valid && onSubmitProduct()"
+        class="form-producto container">
+        <h1>Producto</h1>
+        <select formControlName="product" class="product">
+          <option value="">Selecciona tu producto</option>
+          <option *ngFor="let product of products" [value]="product">{{ product }}</option>
+        </select>
+        <app-btn-cbit [type]="'submit'" [text]="'Continuar'" [disabled]="formProducto.invalid"></app-btn-cbit>
+      </form>
     </div>
+
+    <div *ngIf="showAdditionalFields && !showSuccessMessage">
+      <form [formGroup]="formValidation" (ngSubmit)="formValidation.valid && onSubmitValidation()"
+        class="form-validation">
+        <input type="tel" formControlName="telefono">
+        <div>
+          <label for="formControlName">Ingresa tu clave</label>
+          <input type="password" formControlName="clave">
+        </div>
+        <app-btn-cbit [type]="'submit'" [text]="'Continuar'" [disabled]="formValidation.invalid"></app-btn-cbit>
+      </form>
+    </div>
+
+    <div *ngIf="showSuccessMessage">
+
+      <h2>{{ selectedProduct }}</h2>
+      <h1>Agregada
+        Exitosamente</h1>
+      <app-btn-cbit [type]="'button'" [text]="'Movimientos'" [disabled]="false"></app-btn-cbit>
+
+    </div>
+  </div>
 </body>
