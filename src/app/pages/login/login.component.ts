@@ -14,7 +14,6 @@ export class LoginComponent implements OnInit {
   formLogin!: FormGroup;
   tiposIdentificacion!: TipoIdentificacion[];
   clienteExiste: boolean = true;
-  loading: boolean = true;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -24,13 +23,9 @@ export class LoginComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    setTimeout(() => {
-      this.loading = false;
-    }, 3000);
     this.clienteService.getTiposIdentificacion().subscribe((data) => {
       this.tiposIdentificacion = data;
     });
-
     this.formLogin = this.formBuilder.group({
       docType: ['', Validators.required],
       docNumber: ['', Validators.required],
@@ -47,10 +42,11 @@ export class LoginComponent implements OnInit {
       next: (response) => {
         console.log(response);
         this.clienteExiste = true;
-        if (response) {
-          this.generalService.setClienteBilletera(response);
-          this.router.navigate(['/wallet']);
-        }
+        this.generalService.setClienteBilletera(response);
+        this.router.navigate(['/wallet']);
+        // if (response) {
+        //   this.generalService.setClienteBilletera(response);
+        // }
       },
       error: (error) => {
         console.log(error);

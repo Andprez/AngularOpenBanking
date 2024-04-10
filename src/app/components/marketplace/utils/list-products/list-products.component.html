@@ -1,26 +1,21 @@
 <app-header-marketplace></app-header-marketplace>
 <div class="container">
-  <h1 class="text-center titulo">Listado de productos</h1>
-
-  <div class="container">
-    <div class="row">
-      <div class="col-12 col-md-4" *ngFor="let product of products">
-        <app-product [product]="product" (agregar)="agregarAlCarrito(product)"></app-product>
-      </div>
-    </div>
-  </div>
-
-  <div class="items-carrito fixed-bottom " *ngIf="carrito.length">
-    <div class="items">
-      <p>Items: {{ carrito.length }} productos</p>
-    </div>
-    <button routerLink="/cart" type="button" class="btn btn-secondary position-relative carrito">
+  <div class="titulo-y-carrito">
+    <h1 class="titulo">Listado de productos</h1>
+    <button [routerLink]="['/cart']" routerLinkActive="router-link-active"  type="button" class="btn btn-warning position-relative carrito">
       <i class="bi bi-cart-fill"></i>
-      <span *ngIf="carrito.length > 0"
-        class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+      <span *ngIf="carrito.length > 0" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
         {{ carrito.length }}
       </span>
     </button>
   </div>
 
+  <div class="row">
+    <div class="col-12 col-md-4" *ngFor="let product of products">
+      <app-product
+        [product]="product"
+        (agregar)="agregarAlCarrito(product)"
+      ></app-product>
+    </div>
+  </div>
 </div>
