@@ -25,6 +25,7 @@ import { HeaderMarketplaceComponent } from './components/marketplace/utils/heade
 import { ProductComponent } from './components/marketplace/utils/product/product.component';
 import { TermsConditionsComponent } from './pages/terms-conditions/terms-conditions.component';
 import { TermsAcceptComponent } from './pages/terms-accept/terms-accept.component';
+import { EntityComponent } from './components/utils/entity/entity.component';
 
 @NgModule({
   declarations: [
@@ -49,6 +50,7 @@ import { TermsAcceptComponent } from './pages/terms-accept/terms-accept.componen
     ProductComponent,
     TermsConditionsComponent,
     TermsAcceptComponent,
+    EntityComponent,
   ],
   imports: [
     BrowserModule,
