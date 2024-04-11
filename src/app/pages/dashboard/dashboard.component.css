@@ -3,7 +3,7 @@
   border-radius: 12px;
   padding: 0.2rem;
 }
-.btn-adicionar, .link{
+.btn-adicionar, .link, .view{
   cursor: pointer;
 }
 .bi-plus-circle-fill{
@@ -21,7 +21,6 @@
   font-size: 20px;
   font-weight: regular;
 }
-
 .botones{
   display: flex;
   justify-content: space-between;
