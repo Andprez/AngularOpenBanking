@@ -1,30 +1,3 @@
-/* .lista{
-  display: flex;
-  padding: 3rem;
-  gap: 1rem;
-  overflow-x: auto;
-  scrollbar-width: none;
-}
-.card{
-  min-width: 18rem;
-  min-height: 18rem;
-  background-color: transparent;
-  border: none;
-}
-.card-body{
-  display: flex;
-  justify-content: space-between;
-  padding: 0.5rem;
-  background-color: #22369F;
-  border-radius: 5px;
-  margin: -1rem auto 0 auto;
-  width: 90%;
-}
-.card-text{
-  margin: 0;
-  color: white;
-} */
-
 .header {
   display: flex;
   flex-direction: column;

@@ -32,6 +32,8 @@ import { RecommendationComponent } from './components/utils/recommendation/recom
 import { FinanceComponent } from './components/utils/finance/finance.component';
 import { ListProductsComponent } from './components/lists/list-products/list-products.component';
 import { ListRecommendationsComponent } from './components/lists/list-recommendations/list-recommendations.component';
+import { AddProductComponent } from './pages/add-product/add-product.component';
+import { HeaderEntityComponent } from './components/headers/header-entity/header-entity.component';
 
 @NgModule({
   declarations: [
@@ -63,6 +65,8 @@ import { ListRecommendationsComponent } from './components/lists/list-recommenda
     FinanceComponent,
     ListProductsComponent,
     ListRecommendationsComponent,
+    AddProductComponent,
+    HeaderEntityComponent,
   ],
   imports: [
     BrowserModule,
