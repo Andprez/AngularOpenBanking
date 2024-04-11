@@ -10,7 +10,10 @@ import { ClientesService } from 'src/app/services/clientes.service';
 })
 export class LoginComponent implements OnInit{
   formLogin!: FormGroup;
+  formPassword!: FormGroup;
+
   tiposIdentificacion!: TipoIdentificacion[];
+  showPasswordForm: boolean = false;
   clienteExiste: boolean = true;
   loading: boolean = true;
 
@@ -27,9 +30,11 @@ export class LoginComponent implements OnInit{
       docType: ['', Validators.required],
       docNumber: ['', Validators.required]
     });
+    this.formPassword = this.formBuilder.group({
+      password: ['', [Validators.required, Validators.minLength(8)]]
+    });
   }
 
-  //accion del btn
   login(): void {
     let cliente = {
       tipoIdentificacion: this.formLogin.get('docType')?.value,
@@ -46,8 +51,13 @@ export class LoginComponent implements OnInit{
       error: (error) => {
         console.log(error);
         this.clienteExiste = false;
+        this.formLogin.reset();
+        this.formPassword.reset();
+        this.showPasswordForm = false;
       },
     });
-    console.log(this.formLogin.value);
+  }
+  showPassword(): void {
+    this.showPasswordForm = true;
   }
 }

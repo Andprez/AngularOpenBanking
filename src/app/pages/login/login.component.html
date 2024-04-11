@@ -7,15 +7,17 @@
     <div class="nombre-empresa"><span>CBIT</span>Bank</div>
   </div>
 
-  <!-- LOGIN -->
+  <!-- PANTALLA LOGIN -->
 
   <div class="login">
     <app-header-login></app-header-login>
-    <div class="container">
+
+    <!-- FORM LOGIN -->
+    <div class="container container-login" *ngIf="!showPasswordForm">
       <form
         [formGroup]="formLogin"
         class="form-login"
-        (ngSubmit)="formLogin.valid && login()"
+        (ngSubmit)="formLogin.valid && showPassword()"
       >
         <div class="campos-labels">
           <label for="docType" class="form-label">Tipo de documento</label>
@@ -43,6 +45,10 @@
           </div>
         </div>
 
+        <div class="alert alert-danger" role="alert" *ngIf="!clienteExiste">
+          Usuario o contraseña incorrectos
+        </div>
+
         <app-btn-cbit
           [text]="'Continuar'"
           [type]="'submit'"
@@ -51,9 +57,36 @@
         ></app-btn-cbit>
       </form>
 
-      <div class="texto-final">
+      <div class="texto-final login">
         <p>¿No tiene una cuenta? <a>Regístrese</a></p>
       </div>
+    </div>
+
+    <!-- FORM PASSWORD -->
+    <div class="container container-password" *ngIf="showPasswordForm">
+      <form
+        [formGroup]="formPassword"
+        class="form-password"
+        (ngSubmit)="formPassword.valid && login()"
+      >
+        <div class="campos-labels">
+          <label for="password" class="form-label">Ingrese su clave</label>
+          <div class="input-group">
+            <input class="form-control" formControlName="password" type="password"/>
+            <span class="input-group-text"><i class="bi bi-key-fill"></i></span>
+          </div>
+        </div>
+        <div class="texto-final password">
+          <a>¿Olvidó su contraseña?</a>
+        </div>
+
+        <app-btn-cbit
+          [text]="'Iniciar sesión'"
+          [type]="'submit'"
+          [disabled]="formPassword.invalid"
+          [routerLink]="'/'"
+        ></app-btn-cbit>
+      </form>
     </div>
   </div>
 </body>
