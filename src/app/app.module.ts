@@ -24,6 +24,8 @@ import { DetailProductComponent } from './components/marketplace/pages/detail-pr
 import { ListProductComponent } from './components/marketplace/pages/list-product/list-product.component';
 import { HeaderMarketplaceComponent } from './components/marketplace/utils/header-marketplace/header-marketplace.component';
 import { ProductComponent } from './components/marketplace/utils/product/product.component';
+import { TermsConditionsComponent } from './pages/terms-conditions/terms-conditions.component';
+import { TermsAcceptComponent } from './pages/terms-accept/terms-accept.component';
 
 @NgModule({
   declarations: [
@@ -47,6 +49,8 @@ import { ProductComponent } from './components/marketplace/utils/product/product
     ListProductComponent,
     HeaderMarketplaceComponent,
     ProductComponent,
+    TermsConditionsComponent,
+    TermsAcceptComponent,
   ],
   imports: [
     BrowserModule,

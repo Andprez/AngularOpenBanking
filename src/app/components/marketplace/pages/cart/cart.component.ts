@@ -16,7 +16,7 @@ export class CartComponent {
   ) { }
 
   ngOnInit(): void {
-    if (this.marketplaceService.getShopingCart().length > 0) {
+    if (this.marketplaceService.getShopingCart() != null) {
       this.marketplaceService.getShopingCart().forEach((p: any) => {
         p.quantity = 1;
         this.carrito.push(p);
