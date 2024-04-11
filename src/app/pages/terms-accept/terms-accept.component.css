@@ -1,0 +1,119 @@
+/* .lista{
+  display: flex;
+  padding: 3rem;
+  gap: 1rem;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.card{
+  min-width: 18rem;
+  min-height: 18rem;
+  background-color: transparent;
+  border: none;
+}
+.card-body{
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem;
+  background-color: #22369F;
+  border-radius: 5px;
+  margin: -1rem auto 0 auto;
+  width: 90%;
+}
+.card-text{
+  margin: 0;
+  color: white;
+} */
+
+.header {
+  display: flex;
+  flex-direction: column;
+}
+.logos {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  padding: calc(100vh * 0.05) 0 calc(100vh * 0.05) 0;
+}
+.back {
+  width: 100%;
+  position: absolute;
+  display: inline;
+  top: 0;
+  left: 0;
+}
+.nombre-empresa {
+  width: 40%;
+}
+.logo-cbit {
+  width: 20%;
+}
+.contenido {
+  width: 90%;
+  margin: 0 auto;
+  padding-top: 3rem;
+}
+.list {
+  /* list-style-type: disclosure-closed; */
+  list-style-type: none;
+  list-style-position: outside;
+  color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  padding: 0;
+}
+.list li {
+  font-size: 16px;
+  font-family: Open Sans;
+  color: #ffffff;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+.list li p{
+  margin: 0;
+}
+.vineta {
+  height: 60px;
+  width: 30px;
+  display: flex;
+  align-items: center;
+}
+.bi{
+  font-size: 35px;
+}
+.checkbox-group {
+  margin-top: 5rem;
+  display: grid;
+  grid-template-columns: 1fr 10fr;
+  color: white;
+  align-items: center;
+  gap: 0.3rem;
+}
+.checkbox-group label {
+  font-size: 14px;
+  font-family: Open Sans;
+  color: #ffffff;
+}
+.check {
+  appearance: none;
+  width: 25px;
+  height: 25px;
+  border: 4px solid #00bfcf;
+}
+
+input[type="checkbox"]::before {
+  content: "";
+}
+
+input[type="checkbox"]:checked::before {
+  content: "\2714";
+  filter: invert(1);
+}
+
+.boton {
+  padding: 3rem;
+}
