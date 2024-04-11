@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-indicator-signin-user',
+  selector: 'app-indicator',
   templateUrl: './indicator.component.html',
   styleUrls: ['./indicator.component.css']
 })
