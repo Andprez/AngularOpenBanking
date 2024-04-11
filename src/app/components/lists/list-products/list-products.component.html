@@ -1,0 +1,10 @@
+<div class="slider">
+  <div class="producto" *ngFor="let producto of products">
+    <app-product-f
+      [img]="producto.img"
+      [tipoProd]="producto.tipoProd"
+      [montoProd]="producto.montoProd"
+      [mostrarSaldo]="mostrarSaldo"
+    ></app-product-f>
+  </div>
+</div>

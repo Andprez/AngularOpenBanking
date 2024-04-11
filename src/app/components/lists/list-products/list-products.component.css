@@ -1,0 +1,7 @@
+.slider{
+  display: flex;
+  gap: 0.2rem;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: none;
+}

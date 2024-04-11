@@ -26,6 +26,12 @@ import { ProductComponent } from './components/marketplace/utils/product/product
 import { TermsConditionsComponent } from './pages/terms-conditions/terms-conditions.component';
 import { TermsAcceptComponent } from './pages/terms-accept/terms-accept.component';
 import { EntityComponent } from './components/utils/entity/entity.component';
+import { DashboardComponent } from './pages/dashboard/dashboard.component';
+import { ProductFComponent } from './components/utils/product-f/product-f.component';
+import { RecommendationComponent } from './components/utils/recommendation/recommendation.component';
+import { FinanceComponent } from './components/utils/finance/finance.component';
+import { ListProductsComponent } from './components/lists/list-products/list-products.component';
+import { ListRecommendationsComponent } from './components/lists/list-recommendations/list-recommendations.component';
 
 @NgModule({
   declarations: [
@@ -51,6 +57,12 @@ import { EntityComponent } from './components/utils/entity/entity.component';
     TermsConditionsComponent,
     TermsAcceptComponent,
     EntityComponent,
+    DashboardComponent,
+    ProductFComponent,
+    RecommendationComponent,
+    FinanceComponent,
+    ListProductsComponent,
+    ListRecommendationsComponent,
   ],
   imports: [
     BrowserModule,
