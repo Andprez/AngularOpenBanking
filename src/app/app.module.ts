@@ -36,6 +36,7 @@ import { AddProductComponent } from './pages/add-product/add-product.component';
 import { HeaderEntityComponent } from './components/headers/header-entity/header-entity.component';
 import { FormPasswordComponent } from './pages/form-password/form-password.component';
 import { FormSelfieComponent } from './pages/form-selfie/form-selfie.component';
+import { CameraComponent } from './components/utils/camera/camera.component';
 
 @NgModule({
   declarations: [
@@ -71,6 +72,7 @@ import { FormSelfieComponent } from './pages/form-selfie/form-selfie.component';
     HeaderEntityComponent,
     FormPasswordComponent,
     FormSelfieComponent,
+    CameraComponent,
   ],
   imports: [
     BrowserModule,

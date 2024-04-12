@@ -3,15 +3,9 @@
   <div class="container">
     <h1 class="titulo">Tome una foto de su rostro</h1>
     <app-indicator></app-indicator>
-    <div class="div-cam">
-      <i class="bi bi-person"></i>
-    </div>
+    <app-camera></app-camera>
     <div class="boton">
-      <app-btn-cbit
-        [text]="'Tomar foto'"
-        [type]="'button'"
-      >
-      </app-btn-cbit>
+      <app-btn-cbit [text]="'Continuar'" [type]="'button'"> </app-btn-cbit>
     </div>
   </div>
 </body>

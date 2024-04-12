@@ -11,25 +11,10 @@
   margin-top: 2rem;
   color: white;
 }
-.div-cam{
-  margin: 4rem auto;
-  background-color: #fff;
-  height: 40vh;
-  width: 80%;
-  color: white;
-  border: 3px solid #00EAFF;
-  border-radius: 50%;
-  background-color: #D9D9D9;
-  display: flex;
-  text-align: center;
-  justify-content: center;
-}
-.bi{
-  color: black;
-  font-size: 15rem;
-  display: flex;
-  align-items: center;
-}
+
 .boton{
   padding: 3rem;
+}
+app-camera{
+  margin: 2rem 0;
 }
