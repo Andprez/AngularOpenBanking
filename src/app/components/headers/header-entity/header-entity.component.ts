@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-header-entity',
@@ -6,5 +6,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./header-entity.component.css']
 })
 export class HeaderEntityComponent {
-
+  @Input() nameEntity!: string;
+  @Input() nameImage!: string;
 }
