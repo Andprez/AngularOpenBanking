@@ -35,6 +35,7 @@ import { ListRecommendationsComponent } from './components/lists/list-recommenda
 import { AddProductComponent } from './pages/add-product/add-product.component';
 import { HeaderEntityComponent } from './components/headers/header-entity/header-entity.component';
 import { FormPasswordComponent } from './pages/form-password/form-password.component';
+import { FormSelfieComponent } from './pages/form-selfie/form-selfie.component';
 
 @NgModule({
   declarations: [
@@ -69,6 +70,7 @@ import { FormPasswordComponent } from './pages/form-password/form-password.compo
     AddProductComponent,
     HeaderEntityComponent,
     FormPasswordComponent,
+    FormSelfieComponent,
   ],
   imports: [
     BrowserModule,
