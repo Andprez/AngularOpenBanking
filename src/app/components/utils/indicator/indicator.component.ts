@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class IndicatorComponent implements OnInit{
   avances: boolean[] = new Array(4);
-  completados: number = 3;
+  completados: number = 0;
 
   ngOnInit(): void {
     for (let i = 0; i < this.completados; i++) {
