@@ -1,0 +1,8 @@
+<app-header-cbit></app-header-cbit>
+<div class="container">
+  <h5 class="titulo">Elige tu banco</h5>
+  <app-search (texto)="textoBuscado($event)"></app-search>
+  <div class="lista">
+    <app-grid-entity [palabra]="palabra"></app-grid-entity>
+  </div>
+</div>

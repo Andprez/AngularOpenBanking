@@ -35,6 +35,10 @@ import { ListRecommendationsComponent } from './components/lists/list-recommenda
 import { AddProductComponent } from './pages/add-product/add-product.component';
 import { HeaderEntityComponent } from './components/headers/header-entity/header-entity.component';
 import { FormPasswordComponent } from './pages/form-password/form-password.component';
+import { GridEntityComponent } from './components/utils/grid-entity/grid-entity.component';
+import { SearchComponent } from './components/utils/search/search.component';
+import { SelectEntityComponent } from './pages/select-entity/select-entity.component';
+import { FilterPipe } from './pipes/filter.pipe';
 
 @NgModule({
   declarations: [
@@ -69,6 +73,10 @@ import { FormPasswordComponent } from './pages/form-password/form-password.compo
     AddProductComponent,
     HeaderEntityComponent,
     FormPasswordComponent,
+    GridEntityComponent,
+    SearchComponent,
+    SelectEntityComponent,
+    FilterPipe,
   ],
   imports: [
     BrowserModule,
