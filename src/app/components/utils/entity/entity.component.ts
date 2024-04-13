@@ -7,5 +7,5 @@ import { Component, Input } from '@angular/core';
 })
 export class EntityComponent {
   @Input() nameImage!: string;
-  @Input() nameEntity: string = "Logo banco";
+  @Input() nameEntity!: string;;
 }

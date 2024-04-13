@@ -1,15 +1,8 @@
-<body>
-  <app-header-cbit></app-header-cbit>
-  <div class="container">
-    <h4 class="titulo">Elige tu banco</h4>
-    <div class="search">
-      <app-search
-        (wordFilter)="imprimir($event)"
-        [placeholder]="'Elige tu banco'"
-      ></app-search>
-    </div>
-    <div class="grid-entity">
-      <app-grid-entity [wordFilter]="wordFilter"></app-grid-entity>
-    </div>
+<app-header-cbit></app-header-cbit>
+<div class="container">
+  <h5 class="titulo">Elige tu banco</h5>
+  <app-search (textFilter)="textoBuscado($event)"></app-search>
+  <div class="lista">
+    <app-grid-entity [textFilter]="textFilter"></app-grid-entity>
   </div>
-</body>
+</div>

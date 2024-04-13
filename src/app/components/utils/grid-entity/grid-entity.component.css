@@ -1,5 +1,5 @@
-.lista{
+.list{
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 0.5rem;
+  gap:0.5rem;
 }
