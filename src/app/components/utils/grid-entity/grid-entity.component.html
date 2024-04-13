@@ -1,0 +1,8 @@
+<div class="lista">
+  <div class="entidad" *ngFor="let entity of entities | filter : wordFilter">
+    <app-entity
+      [nameEntity]="entity.nombre"
+      [nameImage]="entity.imagen"
+    ></app-entity>
+  </div>
+</div>

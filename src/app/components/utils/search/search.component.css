@@ -1,0 +1,12 @@
+.input-group{
+  border-radius: 50px;
+}
+.form-control {
+  background-color: #DEDDFA;
+}
+.input-group-text{
+  background-color: #09369E;
+}
+.input-group-text i{
+  color: white;
+}
