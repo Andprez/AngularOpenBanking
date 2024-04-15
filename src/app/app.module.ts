@@ -42,6 +42,10 @@ import { GridEntityComponent } from './components/utils/grid-entity/grid-entity.
 import { SearchComponent } from './components/utils/search/search.component';
 import { FilterPipe } from './pipes/filter.pipe';
 import { FilterEntityFPipe } from './pipes/filter-entity-f.pipe';
+import { CategoryComponent } from './components/utils/category/category.component';
+import { ListCategoryComponent } from './components/lists/list-category/list-category.component';
+import { ListProductVerticalComponent } from './components/lists/list-product-vertical/list-product-vertical.component';
+import { MyProductsComponent } from './pages/my-products/my-products.component';
 
 @NgModule({
   declarations: [
@@ -83,6 +87,10 @@ import { FilterEntityFPipe } from './pipes/filter-entity-f.pipe';
     SearchComponent,
     FilterPipe,
     FilterEntityFPipe,
+    CategoryComponent,
+    ListCategoryComponent,
+    ListProductVerticalComponent,
+    MyProductsComponent,
   ],
   imports: [
     BrowserModule,

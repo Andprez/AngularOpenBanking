@@ -7,8 +7,8 @@ import { EntidadFinanciera } from 'src/app/models/entidad-financiera';
   styleUrls: ['./grid-entity.component.css'],
 })
 export class GridEntityComponent {
-  @Input() filterEntityGrid: string="";
-  entities: EntidadFinanciera[] = []
+  @Input() filterEntityGrid: string = '';
+  entities: EntidadFinanciera[] = [];
 
   // entities: EntidadFinanciera[] = [
   //   {
