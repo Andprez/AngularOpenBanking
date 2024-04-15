@@ -68,7 +68,7 @@
 .bi-person-vcard::before, .bi-postcard::before{
   background-color: #d9d9d9;
   line-height: 0.7;
-  border-radius: 23px;
+  border-radius: 40px;
   margin: 0 auto;
 }
 
