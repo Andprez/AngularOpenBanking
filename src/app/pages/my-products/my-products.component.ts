@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-my-products',
@@ -6,5 +6,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./my-products.component.css']
 })
 export class MyProductsComponent {
+  @Input() filterProduct: string = '';
 
+  setFilterProduct(filter: string) {
+    this.filterProduct = filter;
+  }
 }

@@ -6,11 +6,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./list-category.component.css'],
 })
 export class ListCategoryComponent {
+  // TODO: Definir el tipo de dato de la variable por TipoProducto
   categories: any[] = [
-    { name: 'Todas', image: 'expand-outline' },
-    { name: 'Cuentas', image: 'wallet-outline' },
-    { name: 'CDT', image: 'cash-outline' },
-    { name: 'Tarjetas', image: 'card-outline' },
     { name: 'Todas', image: 'expand-outline' },
     { name: 'Cuentas', image: 'wallet-outline' },
     { name: 'CDT', image: 'cash-outline' },

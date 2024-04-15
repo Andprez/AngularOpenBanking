@@ -38,9 +38,8 @@ import { FormPasswordComponent } from './pages/form-password/form-password.compo
 import { FormSelfieComponent } from './pages/form-selfie/form-selfie.component';
 import { CameraComponent } from './components/utils/camera/camera.component';
 import { SelectEntityComponent } from './pages/select-entity/select-entity.component';
-import { GridEntityComponent } from './components/utils/grid-entity/grid-entity.component';
+import { GridEntityComponent } from './components/lists/grid-entity/grid-entity.component';
 import { SearchComponent } from './components/utils/search/search.component';
-import { FilterPipe } from './pipes/filter.pipe';
 import { FilterEntityFPipe } from './pipes/filter-entity-f.pipe';
 import { CategoryComponent } from './components/utils/category/category.component';
 import { ListCategoryComponent } from './components/lists/list-category/list-category.component';
@@ -85,7 +84,6 @@ import { MyProductsComponent } from './pages/my-products/my-products.component';
     SelectEntityComponent,
     GridEntityComponent,
     SearchComponent,
-    FilterPipe,
     FilterEntityFPipe,
     CategoryComponent,
     ListCategoryComponent,
