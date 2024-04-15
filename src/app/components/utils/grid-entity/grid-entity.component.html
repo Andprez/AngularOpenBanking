@@ -1,11 +1,11 @@
-<div class="list">
-  <div class="entidad" *ngFor="let entity of entities | filter : textFilter">
+<div class="grid-entity">
+  <div class="select-entity" name="filterPost"  *ngFor="let entity of entities | filterEntityF : filterEntityGrid">
     <app-entity
       [nameEntity]="entity.nombre"
       [nameImage]="entity.imagen"
     ></app-entity>
   </div>
 </div>
-<p class="texto" *ngIf="(entities | filter : textFilter).length == 0">
+<p class="texto" *ngIf="(entities | filter : filterEntityGrid).length == 0">
   No hay resultados
 </p>

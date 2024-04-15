@@ -41,6 +41,7 @@ import { SelectEntityComponent } from './pages/select-entity/select-entity.compo
 import { GridEntityComponent } from './components/utils/grid-entity/grid-entity.component';
 import { SearchComponent } from './components/utils/search/search.component';
 import { FilterPipe } from './pipes/filter.pipe';
+import { FilterEntityFPipe } from './pipes/filter-entity-f.pipe';
 
 @NgModule({
   declarations: [
@@ -81,6 +82,7 @@ import { FilterPipe } from './pipes/filter.pipe';
     GridEntityComponent,
     SearchComponent,
     FilterPipe,
+    FilterEntityFPipe,
   ],
   imports: [
     BrowserModule,

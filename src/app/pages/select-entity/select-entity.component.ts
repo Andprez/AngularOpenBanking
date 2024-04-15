@@ -6,9 +6,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./select-entity.component.css']
 })
 export class SelectEntityComponent {
-  textFilter: string = '';
+  textoRecibido: string="";
 
-  textoBuscado(textFilter: string){
-    this.textFilter = textFilter;
+  recibirMensaje(texto:string){
+    this.textoRecibido = texto;
   }
 }
