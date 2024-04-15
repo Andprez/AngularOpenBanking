@@ -37,6 +37,10 @@ import { HeaderEntityComponent } from './components/headers/header-entity/header
 import { FormPasswordComponent } from './pages/form-password/form-password.component';
 import { FormSelfieComponent } from './pages/form-selfie/form-selfie.component';
 import { CameraComponent } from './components/utils/camera/camera.component';
+import { CategoryComponent } from './components/utils/category/category.component';
+import { ListCategoryComponent } from './components/lists/list-category/list-category.component';
+import { ListProductVerticalComponent } from './components/lists/list-product-vertical/list-product-vertical.component';
+import { MyProductsComponent } from './pages/my-products/my-products.component';
 
 @NgModule({
   declarations: [
@@ -73,6 +77,10 @@ import { CameraComponent } from './components/utils/camera/camera.component';
     FormPasswordComponent,
     FormSelfieComponent,
     CameraComponent,
+    CategoryComponent,
+    ListCategoryComponent,
+    ListProductVerticalComponent,
+    MyProductsComponent,
   ],
   imports: [
     BrowserModule,
