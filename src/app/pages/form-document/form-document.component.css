@@ -1,0 +1,88 @@
+/* Estilos para el contenedor principal */
+.container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+/* Estilo para pantallas de 442px o más 
+@media screen and (min-width: 442px) {
+  .container-titulo {
+    width: 50%;
+    font-size: 18px;
+  }
+}*/
+
+/* Estilos para el título */
+
+.titulo{
+  font-family: 'Open Sans', sans-serif;
+  font-size: 24px;
+  font-weight: regular;
+  text-align: center;
+  margin-top: 2rem;
+  color: white;
+}
+
+
+/* Estilos para el botón */
+/*
+.boton {
+  text-align: center;  Centrar el contenido del botón 
+  position: absolute;  Establece una posición absoluta para que el botón se pueda posicionar dentro del contenedor   bottom: 10%;  Lo posiciona en la parte inferior del contenedor 
+  left: 50%;  Lo posiciona en el centro horizontal del contenedor 
+  transform: translateX(-50%);  Centra horizontalmente el botón 
+}
+*/
+
+/* Estilos para el botón específico 
+.app-btn-cbit {
+  background-color: #007bff; Color de fondo del botón 
+  color: #fff;  Color del texto del botón 
+  padding: 10px 20px;  Espaciado interno del botón 
+  border: none;  Eliminar borde del botón 
+  border-radius: 5px;  Radio de borde del botón 
+  cursor: pointer;  Cambiar cursor al pasar sobre el botón 
+  transition: background-color 0.3s ease;  Transición suave del color de fondo 
+}*/
+
+/* Estilos para el botón en estado hover */
+
+.user-img{
+  text-align: center;
+  /* font-size: 20em; */
+  transform: rotate(-90deg); /* Puedes ajustar el ángulo de rotación según tus necesidades */
+  margin: 0 0;
+  display: flex;
+  justify-content: center;
+  }
+
+.bi-person-vcard, .bi-postcard{
+  color:#00Eaff;
+  font-size: 22rem;
+  text-align: center;
+  /* margin: 78px; */
+}
+
+.bi-person-vcard::before, .bi-postcard::before{
+  background-color: #d9d9d9;
+  line-height: 0.7;
+  border-radius: 23px;
+  margin: 0 auto;
+}
+
+
+/* Estilo para pantallas de 442px o más 
+@media screen and (min-width: 700px) {
+  .bi-person-vcard {
+    color:#00Eaff;
+    font-size: 15rem;
+    text-align: center;
+    margin: 78px;
+  }
+}*/
+
+app-btn-cbit {
+  padding: 3rem;
+}

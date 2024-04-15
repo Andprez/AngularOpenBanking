@@ -1,0 +1,15 @@
+<body>
+    <app-header-cbit></app-header-cbit>    
+    <div class="container">
+        <h1 class="titulo">Ubique el documento dentro del marco</h1>
+        <app-indicator></app-indicator>
+        <div class="user-img">
+            <i  *ngIf="!postCard"  class="bi bi-person-vcard"></i>
+            <i *ngIf="postCard"  class="bi bi-postcard"></i>
+        </div>
+        <app-btn-cbit (click)="saveData()" [text]='texto'></app-btn-cbit>
+    </div>
+</body>
+
+<!-- <app-terms-accept></app-terms-accept> -->
+
