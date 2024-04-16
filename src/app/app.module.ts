@@ -51,6 +51,7 @@ import { DetailTransactionComponent } from './components/utils/detail-transactio
 import { ListTransactionComponent } from './components/lists/list-transaction/list-transaction.component';
 import { TransactionComponent } from './pages/transaction/transaction.component';
 import { ValueHiddenPipe } from './pipes/value-hidden.pipe';
+import { VoucherComponent } from './pages/voucher/voucher.component';
 
 @NgModule({
   declarations: [
@@ -101,6 +102,7 @@ import { ValueHiddenPipe } from './pipes/value-hidden.pipe';
     ListTransactionComponent,
     TransactionComponent,
     ValueHiddenPipe,
+    VoucherComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,56 @@
+<body>
+  <app-header-cbit></app-header-cbit>
+  <div class="container">
+    <div class="header" *ngIf="aprobado">
+      <img class="check" src="../../../assets/icon/check.svg" />
+      <p class="titulo">Pago Exitoso</p>
+      <p class="titulo2">Detalle</p>
+    </div>
+    <div class="header" *ngIf="!aprobado">
+      <img class="check" src="../../../assets/icon/error.svg" />
+      <p class="titulo">Pago Rechazado</p>
+      <p class="titulo2">Detalle</p>
+    </div>
+    <div class="detalleVoucher">
+      <div class="campo">
+        <p class="nombre-item">Valor pagado</p>
+        <p class="total-pagado">
+          {{ transaction.montoTransaccion | currency }}
+        </p>
+      </div>
+      <div class="campo">
+        <p class="nombre-item">Producto de origen</p>
+        <p class="valores">
+          {{ typeProduct.nombreTipo }} {{ productF.numeroCuenta | valueHidden }}
+        </p>
+      </div>
+      <div class="campo">
+        <p class="nombre-item">Destino</p>
+        <p class="valores">{{ transaction.destinoPago }}</p>
+      </div>
+      <div class="campo">
+        <p class="nombre-item">Motivo</p>
+        <p class="valores">{{ transaction.motivo }}</p>
+      </div>
+      <div class="campo">
+        <p class="nombre-item">IP</p>
+        <p class="valores">{{ transaction.IP }}</p>
+      </div>
+      <div class="campo">
+        <p class="nombre-item">Estado</p>
+        <p class="valores">{{ status.nombreEstado }}</p>
+      </div>
+      <div class="campo">
+        <p class="nombre-item">Número de aprobación</p>
+        <p class="valores">{{ transaction.numeroAprobacion }}</p>
+      </div>
+      <div class="campo">
+        <p class="nombre-item">Fecha y hora</p>
+        <p class="valores">{{ transaction.createdAt }}</p>
+      </div>
+      <div class="iconShare">
+        <img class="share" src="../../../assets/icon/share.svg" />
+      </div>
+    </div>
+  </div>
+</body>

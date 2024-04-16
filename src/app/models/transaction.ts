@@ -10,4 +10,5 @@ export interface Transaction {
   idTipo_Transaccion: number;
   createdAt: string;
   updatedAt: string;
+  IP: string;
 }
