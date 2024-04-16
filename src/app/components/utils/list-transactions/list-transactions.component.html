@@ -1,0 +1,9 @@
+<div class="list" *ngFor="let mov of movs">
+  <div class="mov">
+    <app-detail-transaction
+      [nameEntity]="mov.comercio"
+      [date]="mov.fecha"
+      [amount]="mov.monto"
+    ></app-detail-transaction>
+  </div>
+</div>
