@@ -1,0 +1,29 @@
+<body>
+  <app-header-cbit></app-header-cbit>
+  <div class="container">
+    <h1 class="titulo">{{ titulo }}</h1>
+    <app-indicator></app-indicator>
+    <div class="camera">
+      <div *ngIf="!postCard">
+        <app-camera
+          [type]="'document'"
+          [icon]="'bi-person-vcard'"
+          (onPhoto)="savePhoto($event)"
+        ></app-camera>
+      </div>
+      <div *ngIf="postCard">
+        <app-camera
+          [type]="'document'"
+          [icon]="'bi-postcard'"
+          (onPhoto)="savePhoto($event)"
+        ></app-camera>
+      </div>
+    </div>
+    <app-btn-cbit
+      class="boton"
+      (click)="saveData()"
+      [text]="'Continuar'"
+      [disabled]="imageData == ''"
+    ></app-btn-cbit>
+  </div>
+</body>

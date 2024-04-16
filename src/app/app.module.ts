@@ -45,6 +45,7 @@ import { CategoryComponent } from './components/utils/category/category.componen
 import { ListCategoryComponent } from './components/lists/list-category/list-category.component';
 import { ListProductVerticalComponent } from './components/lists/list-product-vertical/list-product-vertical.component';
 import { MyProductsComponent } from './pages/my-products/my-products.component';
+import { FormDocumentComponent } from './pages/form-document/form-document.component';
 
 @NgModule({
   declarations: [
@@ -89,6 +90,7 @@ import { MyProductsComponent } from './pages/my-products/my-products.component';
     ListCategoryComponent,
     ListProductVerticalComponent,
     MyProductsComponent,
+    FormDocumentComponent,
   ],
   imports: [
     BrowserModule,
