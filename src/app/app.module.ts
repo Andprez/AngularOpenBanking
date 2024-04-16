@@ -52,6 +52,7 @@ import { ListTransactionComponent } from './components/lists/list-transaction/li
 import { TransactionComponent } from './pages/transaction/transaction.component';
 import { ValueHiddenPipe } from './pipes/value-hidden.pipe';
 import { VoucherComponent } from './pages/voucher/voucher.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -108,7 +109,7 @@ import { VoucherComponent } from './pages/voucher/voucher.component';
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
