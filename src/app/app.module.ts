@@ -46,6 +46,11 @@ import { ListCategoryComponent } from './components/lists/list-category/list-cat
 import { ListProductVerticalComponent } from './components/lists/list-product-vertical/list-product-vertical.component';
 import { MyProductsComponent } from './pages/my-products/my-products.component';
 import { FormDocumentComponent } from './pages/form-document/form-document.component';
+import { HeaderTransactionComponent } from './components/headers/header-transaction/header-transaction.component';
+import { DetailTransactionComponent } from './components/utils/detail-transaction/detail-transaction.component';
+import { ListTransactionComponent } from './components/lists/list-transaction/list-transaction.component';
+import { TransactionComponent } from './pages/transaction/transaction.component';
+import { ValueHiddenPipe } from './pipes/value-hidden.pipe';
 
 @NgModule({
   declarations: [
@@ -91,6 +96,11 @@ import { FormDocumentComponent } from './pages/form-document/form-document.compo
     ListProductVerticalComponent,
     MyProductsComponent,
     FormDocumentComponent,
+    HeaderTransactionComponent,
+    DetailTransactionComponent,
+    ListTransactionComponent,
+    TransactionComponent,
+    ValueHiddenPipe,
   ],
   imports: [
     BrowserModule,

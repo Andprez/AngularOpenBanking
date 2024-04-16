@@ -1,0 +1,7 @@
+body {
+  background-color: #F7F7F7;
+}
+.header{
+  position: sticky;
+  top: 0;
+}

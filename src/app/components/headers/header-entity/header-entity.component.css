@@ -13,10 +13,9 @@ body{
 }
 .iconos{
   display: flex;
-  width: 100%;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem 0.7rem 1rem 0.3rem;
+  padding: 1.5rem 0 0.5rem 0;
 }
 .logo-entidad{
   display: flex;
