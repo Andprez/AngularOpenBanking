@@ -3,7 +3,11 @@
   <div class="container">
     <h1 class="titulo">Tome una foto de su rostro</h1>
     <app-indicator></app-indicator>
-    <app-camera></app-camera>
+    <app-camera
+      [type]="'selfie'"
+      [icon]="'bi-person'"
+      (onPhoto)="savePhoto($event)"
+    ></app-camera>
     <div class="boton">
       <app-btn-cbit [text]="'Continuar'" [type]="'button'"> </app-btn-cbit>
     </div>

@@ -1,7 +1,19 @@
 <body>
-  <div class="div-cam">
-    <video #videoElement autoplay [ngClass]="{'display-none': !isCameraActive}"></video>
-    <i class="bi bi-person" *ngIf="!isCameraActive"></i>
+  <div class="div-cam" [ngClass]="{ isSelfie: type == 'selfie' }">
+    <video
+      #videoElement
+      autoplay
+      [ngClass]="{
+        'display-none': !isCameraActive,
+        isSelfie: type == 'selfie',
+        isDocument: type == 'document'
+      }"
+    ></video>
+    <i
+      class="bi {{ icon }}"
+      *ngIf="!isCameraActive"
+      [ngClass]="{ isDocument: type == 'document' }"
+    ></i>
   </div>
   <button class="boton" (click)="toggleCamera()">
     <i class="bi bi-circle-fill"></i>
