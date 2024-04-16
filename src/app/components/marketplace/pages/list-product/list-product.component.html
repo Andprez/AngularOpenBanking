@@ -2,7 +2,7 @@
 <div class="container">
   <div class="titulo-y-carrito">
     <h1 class="titulo">Listado de productos</h1>
-    <button type="button" class="btn btn-warning position-relative carrito">
+    <button type="button" class="btn btn-warning position-relative carrito" routerLink="/ecommerce/cart">
       <i class="bi bi-cart-fill"></i>
       <span *ngIf="carrito.length > 0" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
         {{ carrito.length }}

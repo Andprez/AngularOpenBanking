@@ -5,24 +5,19 @@ import { MarketplaceService } from '../../services/marketplace.service';
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.component.html',
-  styleUrls: ['./cart.component.css']
+  styleUrls: ['./cart.component.css'],
 })
 export class CartComponent {
-  carrito: any[] = []
+  carrito: any[] = [];
   total: number = 0;
 
-  constructor(
-    private marketplaceService: MarketplaceService
-  ) { }
+  constructor() {}
 
   ngOnInit(): void {
-    if (this.marketplaceService.getShopingCart() != null) {
-      this.marketplaceService.getShopingCart().forEach((p: any) => {
-        p.quantity = 1;
-        this.carrito.push(p);
-      });
-      this.calcularTotal();
-    }
+    localStorage.getItem('cart')
+      ? (this.carrito = JSON.parse(localStorage.getItem('cart')!))
+      : (this.carrito = []);
+    this.calcularTotal();
   }
   restarCantidad(producto: Product) {
     let productCard = this.carrito.find((p: Product) => p.id === producto.id);
@@ -34,11 +29,13 @@ export class CartComponent {
     productCard.quantity++;
     this.calcularTotal();
   }
-  calcularTotal(){
+  calcularTotal() {
     this.total = 0;
     this.carrito.forEach((p: any) => {
+      if (p.quantity === 0) this.carrito.splice(this.carrito.indexOf(p), 1);
       this.total += p.price * p.quantity;
-    })
-    this.marketplaceService.setTotalValue(this.total);
+    });
+    localStorage.setItem('cart', JSON.stringify(this.carrito));
+    localStorage.setItem('totalValue', this.total.toString());
   }
 }

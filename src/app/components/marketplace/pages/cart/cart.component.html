@@ -1,5 +1,5 @@
 <app-header-marketplace></app-header-marketplace>
-<a routerLink="/products" class="atras">
+<a routerLink="/" class="atras">
   <i class="bi bi-arrow-left"></i>
 </a>
 <div class="container">
@@ -8,7 +8,7 @@
     <div class="mb-3 card-mobile" *ngFor="let product of carrito">
       <div class="producto">
         <div class="imagen">
-          <img src="{{ product.image }}" alt="Imagen de {{ product.title }}">
+          <img src="{{ product.image }}" alt="Imagen de {{ product.title }}" />
         </div>
         <div class="detalles">
           <b>{{ product.title }}</b>
@@ -31,10 +31,13 @@
       </div>
     </div>
   </div>
+  <div *ngIf="carrito.length === 0" class="text-center">
+    <p>No hay productos en el carrito</p>
+  </div>
   <div class="total-pagar fixed-bottom">
     <div>
-      <p class="text-center ">Total: {{ total | currency }}</p>
+      <p class="text-center">Total: {{ total | currency }}</p>
     </div>
-    <button class="btn btn-success" [disabled]="!total" >Pagar</button>
+    <button class="btn btn-success" [disabled]="!total">Pagar</button>
   </div>
 </div>

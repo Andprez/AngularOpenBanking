@@ -15,10 +15,12 @@ import { MyProductsComponent } from './pages/my-products/my-products.component';
 import { SelectEntityComponent } from './pages/select-entity/select-entity.component';
 import { AddProductComponent } from './pages/add-product/add-product.component';
 import { TransactionComponent } from './pages/transaction/transaction.component';
+import { DetailProductComponent } from './components/marketplace/pages/detail-product/detail-product.component';
 
 const routes: Routes = [
   { path: '', component: ListProductComponent },
-  { path: 'cart', component: CartComponent },
+  { path: 'ecommerce/products/:id', component: DetailProductComponent },
+  { path: 'ecommerce/cart', component: CartComponent },
   { path: 'login', component: LoginComponent },
   { path: 'tyc', component: TermsConditionsComponent },
   { path: 'tyc/accept', component: TermsConditionsComponent },
@@ -33,7 +35,7 @@ const routes: Routes = [
   { path: 'products/add/select-entity', component: SelectEntityComponent },
   { path: 'products/add/data-product', component: AddProductComponent },
   { path: 'products/:id/transactions', component: TransactionComponent },
-  { path: '**', redirectTo: '/' },
+  { path: '**', redirectTo: '' },
 ];
 
 @NgModule({

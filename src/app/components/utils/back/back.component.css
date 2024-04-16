@@ -2,3 +2,6 @@
   color: white;
   font-size: 32px;
 }
+a {
+  cursor: pointer;
+}
