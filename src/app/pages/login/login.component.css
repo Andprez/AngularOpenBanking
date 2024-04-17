@@ -139,6 +139,7 @@ input[type="password"] {
   font-weight: bold;
   cursor: pointer;
   text-decoration: underline;
+  color: white;
 }
 .texto-final.password{
   padding: 1rem 0;

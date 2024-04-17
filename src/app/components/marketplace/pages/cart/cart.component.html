@@ -38,6 +38,6 @@
     <div>
       <p class="text-center">Total: {{ total | currency }}</p>
     </div>
-    <button class="btn btn-success" [disabled]="!total">Pagar</button>
+    <button class="btn btn-success" [disabled]="!total" routerLink="/login">Pagar</button>
   </div>
 </div>

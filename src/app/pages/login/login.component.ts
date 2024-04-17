@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { TipoIdentificacion } from 'src/app/models/tipo-identificacion';
 import { ClientesService } from 'src/app/services/clientes.service';
 
@@ -19,7 +20,8 @@ export class LoginComponent implements OnInit{
 
   constructor(
     private formBuilder: FormBuilder,
-    private clienteService: ClientesService
+    private clienteService: ClientesService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -35,18 +37,21 @@ export class LoginComponent implements OnInit{
     });
   }
 
+  showPassword(): void {
+    if (!this.showPasswordForm) this.showPasswordForm = true;
+  }
+
   login(): void {
     let cliente = {
       tipoIdentificacion: this.formLogin.get('docType')?.value,
       numeroIdentificacion: this.formLogin.get('docNumber')?.value,
     };
+    // TODO: Provisional, mientras se implementa la autenticación
     this.clienteService.getBilletera(cliente).subscribe({
       next: (response) => {
-        console.log(response);
         this.clienteExiste = true;
-        // if (response) {
-        //   this.generalService.setClienteBilletera(response);
-        // }
+        localStorage.setItem('user', JSON.stringify(response));
+        this.router.navigate(['/products']);
       },
       error: (error) => {
         console.log(error);
@@ -57,7 +62,5 @@ export class LoginComponent implements OnInit{
       },
     });
   }
-  showPassword(): void {
-    this.showPasswordForm = true;
-  }
+
 }

@@ -53,12 +53,12 @@
           [text]="'Continuar'"
           [type]="'submit'"
           [disabled]="formLogin.invalid"
-          [routerLink]="'/'"
+          (onClick) = " formLogin.valid && showPassword()"
         ></app-btn-cbit>
       </form>
 
       <div class="texto-final login">
-        <p>¿No tiene una cuenta? <a>Regístrese</a></p>
+        <p>¿No tiene una cuenta? <a routerLink="/register">Regístrese</a></p>
       </div>
     </div>
 
@@ -84,9 +84,10 @@
           [text]="'Iniciar sesión'"
           [type]="'submit'"
           [disabled]="formPassword.invalid"
-          [routerLink]="'/'"
+          (onClick)="formPassword.valid && login()"
         ></app-btn-cbit>
       </form>
     </div>
+    <!-- END FORM PASSWORD -->
   </div>
 </body>
