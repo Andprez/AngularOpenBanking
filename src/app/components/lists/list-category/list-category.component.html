@@ -1,0 +1,8 @@
+<div class="list">
+  <div class="category" *ngFor="let category of categories">
+    <app-category
+      [nameImage]="category.image"
+      [nameCategory]="category.name"
+    ></app-category>
+  </div>
+</div>

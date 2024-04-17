@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-indicator-signin-user',
+  selector: 'app-indicator',
   templateUrl: './indicator.component.html',
   styleUrls: ['./indicator.component.css']
 })
 export class IndicatorComponent implements OnInit{
   avances: boolean[] = new Array(4);
-  completados: number = 3;
+  completados: number = 0;
 
   ngOnInit(): void {
     for (let i = 0; i < this.completados; i++) {

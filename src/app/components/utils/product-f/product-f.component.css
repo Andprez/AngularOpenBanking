@@ -1,0 +1,18 @@
+.card-text {
+  margin: 0;
+  text-align: right;
+  font-size: 14px;
+  font-weight: 600;
+}
+.card-body {
+  margin: -4rem 0 0 0;
+}
+.card {
+  width: 12rem;
+  height: 12rem;
+  border-color: transparent;
+  border-radius: 13%;
+}
+.card-img-top {
+  border-radius: 13%;
+}

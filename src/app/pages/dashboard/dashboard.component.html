@@ -1,6 +1,30 @@
-<app-header-cbit></app-header-cbit>
 <body>
-    <h5>Mis Productos</h5>
-    <app-list-products></app-list-products>
-
+  <app-header-cbit></app-header-cbit>
+  <div class="contenedor">
+    <div class="botones">
+      <div class="btn-adicionar">
+        <i class="bi bi-plus-circle-fill"></i>
+        <p class="txt-agregar">Agregar productos</p>
+      </div>
+      <div class="link-productos">
+        <p class="link">Mis productos</p>
+        <i class="bi bi-chevron-right"></i>
+      </div>
+    </div>
+    <div class="products">
+      <app-list-products [mostrarSaldo]="mostrarSaldos"></app-list-products>
+      <div class="view" (click)="setMostrarSaldo()">
+        <i class="bi bi-eye" *ngIf="mostrarSaldos"></i>
+        <i class="bi bi-eye-slash" *ngIf="!mostrarSaldos"></i>
+      </div>
+    </div>
+    <div class="recommendations">
+      <h1 class="titulo">Te conviene saber</h1>
+      <app-list-recommendations></app-list-recommendations>
+    </div>
+    <div class="finance">
+      <h1 class="titulo">Tus finanzas</h1>
+      <app-finance></app-finance>
+    </div>
+  </div>
 </body>

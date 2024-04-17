@@ -1,0 +1,153 @@
+/* ESTILOS LOADING */
+.loading {
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(115deg, #00b0f9, #00bfcf, #0b2794);
+  background-size: 200% 100%;
+  background-position: 100% 100%;
+  animation: gradientAnimation1 3s ease-in-out 0s 1 normal forwards,
+    gradientAnimation2 0.5s ease-in-out 3s 1 normal forwards;
+}
+
+@keyframes gradientAnimation1 {
+  0% {
+    background-position: 100% 100%;
+  }
+  100% {
+    background-position: 0% 100%;
+  }
+}
+
+@keyframes gradientAnimation2 {
+  100% {
+    opacity: 0;
+    display: none;
+  }
+}
+
+.logo {
+  width: 35%;
+  height: fit-content;
+  transform: rotate(-30deg);
+  opacity: 0;
+  animation: logo-animation 2s ease 1 forwards;
+}
+.logo img {
+  width: 100%;
+  height: 100%;
+}
+@keyframes logo-animation {
+  0% {
+    opacity: 0;
+    transform: rotate(-30deg);
+  }
+  50% {
+    opacity: 1;
+    transform: rotate(-15deg);
+  }
+  100% {
+    opacity: 1;
+    transform: rotate(0deg);
+  }
+}
+
+.nombre-empresa {
+  font-weight: 300;
+  font-size: 60px;
+  color: white;
+  opacity: 0;
+  animation: nombre-empresa-animation 1s ease-in-out 1s 1 forwards;
+}
+.nombre-empresa span {
+  font-weight: 500;
+}
+
+@keyframes nombre-empresa-animation {
+  100% {
+    opacity: 1;
+  }
+}
+
+/* ESTILOS DEL LOGIN */
+
+.login {
+  opacity: 0;
+  animation: animationLogin 0.5s linear 3.5s 1 normal forwards;
+}
+@keyframes animationLogin {
+  0% {
+    opacity: 0;
+    display: none;
+  }
+  100% {
+    opacity: 1;
+    display: block;
+  }
+}
+
+.container {
+  max-width: 90%;
+}
+.form-login {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+label {
+  color: white;
+  font-weight: bold;
+  font-size: 16px;
+}
+.input-group {
+  font-weight: 400;
+  height: 3rem;
+  border-radius: 10px;
+}
+.campos-labels {
+  width: 100%;
+}
+.form-control .form-select {
+  color: black;
+}
+.input-group-text {
+  padding: 0 0.8rem;
+  background-color: #d9d9d9;
+  border-radius: 10px;
+}
+.input-group-text i {
+  color: #2f69c5;
+  width: 100%;
+  font-size: 1.5rem;
+}
+input[type="password"] {
+  font-size: 25px;
+}
+.texto-final {
+  color: white;
+  font-size: 16px;
+  text-align: center;
+  padding: 1rem;
+}
+.texto-final.login a{
+  font-weight: bold;
+  cursor: pointer;
+  text-decoration: underline;
+}
+.texto-final.password{
+  padding: 1rem 0;
+  text-align: right;
+  font-size: normal;
+  font-weight: normal;
+  cursor: pointer;
+  text-decoration: underline;
+}
+app-btn-cbit{
+  padding: 3rem;
+}

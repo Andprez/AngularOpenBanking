@@ -1,25 +1,71 @@
-<div class="app-terms-accept">
-
-    <div class="logo-cbit">
-        <h1 class="icon"><app-back [routerLink]="'/terminosinicial'"></app-back></h1>
-        <img src="../../../assets/logo-cbit-imup-txdwn.png"  alt="logoCBIT">
+<body>
+  <div class="container">
+    <div class="header">
+      <div class="back">
+        <app-back></app-back>
+        <div></div>
+      </div>
+      <div class="logos">
+        <img
+          class="logo-cbit"
+          src="../../../assets/LogoCbit.png"
+          alt="Logo Cbitbank"
+        />
+        <img
+          class="nombre-empresa"
+          src="../../../assets/NombreCbit.png"
+          alt="NombreCbit"
+        />
+      </div>
     </div>
 
-  <ul class="list">
-    <li><p class="text-7">Conozco y acepto el reglamento y las condiciones de uso de CBITBank</p></li>
-    <li><p class="text-8">Autorizo el uso de mis datos sensibles para las finalidades aqui descristas</p></li>
-    <li><p class="text-9">Conozco y acepto el reglamento y las condiciones de uso de CBITBannk</p></li>
-  </ul>
-  <label class="tx-aceptar-terms">
-    <input type="checkbox" name="switch" id="switch">
-    Declaro que he leido y autorizo los permisos y documentos decritos anteriormente.
-  </label>
-  <div class="button-row">  
-    <app-btn-cbit
-      [text]="'Continuar'"
-      [type]="'submit'"
-      [routerLink]="''"
-      >
-    </app-btn-cbit>
+    <form class="contenido" [formGroup]="formTerms">
+      <ul class="list">
+        <li>
+          <div class="vineta">
+            <i class="bi bi-caret-right-fill"></i>
+          </div>
+          <p>
+            Conozco y acepto el reglamento y las condiciones de uso de CBITBank
+          </p>
+        </li>
+        <li>
+          <div class="vineta">
+            <i class="bi bi-caret-right-fill"></i>
+          </div>
+          <p>
+            Autorizo el uso de mis datos sensibles para las finalidades aqui
+            descristas
+          </p>
+        </li>
+        <li>
+          <div class="vineta">
+            <i class="bi bi-caret-right-fill"></i>
+          </div>
+          <p>
+            Conozco y acepto el reglamento y las condiciones de uso de CBITBannk
+          </p>
+        </li>
+      </ul>
+
+      <div class="checkbox-group">
+        <input
+          (change)="acceptTerms()"
+          type="checkbox"
+          formControlName="accept"
+          class="check"
+        />
+        <!-- <label for="">Ok</label> -->
+        <label
+          >Declaro que he leido y autorizo los permisos y documentos decritos
+          anteriormente.</label
+        >
+      </div>
+
+      <div class="boton">
+        <app-btn-cbit [text]="'Continuar'" [type]="'submit'" [routerLink]="''">
+        </app-btn-cbit>
+      </div>
+    </form>
   </div>
-</div>
+</body>

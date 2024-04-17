@@ -1,0 +1,13 @@
+<app-header-cbit></app-header-cbit>
+<div class="container">
+  <div class="buscador">
+    <h5 class="text-input">Elige tu banco</h5>
+    <app-search
+      [placeholder]="'Escribe el nombre de la entidad...'"
+      (filterEntity)="recibirMensaje($event)"
+    />
+  </div>
+  <div class="lista">
+    <app-grid-entity [filterEntityGrid]="textoRecibido"></app-grid-entity>
+  </div>
+</div>

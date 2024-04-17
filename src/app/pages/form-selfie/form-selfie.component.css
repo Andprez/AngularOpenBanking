@@ -1,0 +1,20 @@
+.container{
+  display: flex;
+  flex-direction: column;
+  max-width: 95%;
+}
+.titulo{
+  font-family: 'Open Sans', sans-serif;
+  font-size: 24px;
+  font-weight: regular;
+  text-align: center;
+  margin-top: 2rem;
+  color: white;
+}
+
+.boton{
+  padding: 3rem;
+}
+app-camera{
+  margin: 2rem 0;
+}

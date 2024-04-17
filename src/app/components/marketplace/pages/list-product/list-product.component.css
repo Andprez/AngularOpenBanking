@@ -1,0 +1,19 @@
+.titulo-y-carrito{
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem 0;
+  align-items: center;
+  position: sticky;
+  top: 56px;
+  z-index: 1;
+  background-color: #fff;
+}
+.titulo {
+  margin: 0;
+}
+.carrito{
+  height: auto;
+  width: auto;
+}
+
+

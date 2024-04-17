@@ -1,0 +1,7 @@
+<div class="card">
+  <img src="{{ img }}" class="card-img-top" alt="{{ tipoProd }}" />
+  <div class="card-body" *ngIf="mostrarSaldo">
+    <p class="card-text">{{ tipoProd }}</p>
+    <p class="card-text">{{ montoProd | currency }}</p>
+  </div>
+</div>

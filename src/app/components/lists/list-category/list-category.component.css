@@ -1,0 +1,9 @@
+.list{
+  display: flex;
+  overflow-x: auto;
+  scrollbar-width: none;
+  gap: 1rem;
+}
+.category{
+  min-width: 5.5rem;
+}

@@ -1,105 +1,100 @@
-.app-terms-accept {
-    padding: 360px 37px;
-    gap: 10px;
-    background: linear-gradient(100deg, #07648b, #079caa);
-    background-size: 100% 100%;
-    border: 1px solid #000000
-  }
-  img{
-    width: 50%;
-    height: auto;
-  }
-  .logo-cbit{
-    text-align: center;
-    padding: 1.5rem 0 0.5rem 0;
-    display: flex;
-    justify-content: center;
-    position: sticky;
-    top: 0;
-  }
-  h1{
-    font-size: 2.5rem;
-  }
-  .bi{
-    position: absolute;
-    color: antiquewhite;
-    left: 1rem;
-  }
+.header {
+  display: flex;
+  flex-direction: column;
+}
+.logos {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  padding: calc(100vh * 0.05) 0 calc(100vh * 0.05) 0;
+  margin: -4rem 0 0 0;
+}
+.back {
+  margin: 0 auto;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 0 0.5rem 0;
+}
+.nombre-empresa {
+  width: 40%;
+}
+.logo-cbit {
+  width: 20%;
+}
+.contenido {
+  width: 90%;
+  margin: 0 auto;
+  padding-top: 3rem;
+}
+.list {
+  /* list-style-type: disclosure-closed; */
+  list-style-type: none;
+  list-style-position: outside;
+  color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+  padding: 0;
+}
+.list li {
+  font-size: 16px;
+  font-family: Open Sans;
+  color: #ffffff;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+.list li p{
+  margin: 0;
+}
+.vineta {
+  height: 60px;
+  width: 30px;
+  display: flex;
+  align-items: center;
+}
+.bi{
+  font-size: 35px;
+}
+.checkbox-group {
+  margin-top: 5rem;
+  display: grid;
+  grid-template-columns: 1fr 10fr;
+  color: white;
+  align-items: center;
+  gap: 0.3rem;
+}
+.checkbox-group label {
+  font-size: 14px;
+  font-family: Open Sans;
+  color: #ffffff;
+}
+.check {
+  appearance: none;
+  width: 25px;
+  height: 25px;
+  border: 4px solid #00bfcf;
+}
+input[type="checkbox"] {
+  cursor: pointer;
+}
+input[type="checkbox"]:hover {
+  border: 4px solid #1F2894;
+}
 
-  .list{
-    /*list-style-image: url("../../../assets/misc/flecha.png");*/
-    list-style-type: disclosure-closed;
-    list-style-position: outside;
-    color: #ffffff;
-  }
-  .tx-aceptar-terms{
-    color: #ffffff;
-  }
-  .tittle-cbit{
-    align-items: baseline;
-  }
-  .check-margin {
-    margin: 0 10px;
-  }
-  .text-7 {
-    text-align: left;
-    vertical-align: middle;
-    font-size: 16px;
-    font-family: Open Sans;
-    line-height: auto;
-    color: #ffffff;
-  }
-  .text-8 {
-    text-align: left;
-    vertical-align: top;
-    font-size: 16px;
-    font-family: Open Sans;
-    line-height: auto;
-    color: #ffffff;
-  }
-  .text-9 {
-    text-align: left;
-    vertical-align: top;
-    font-size: 16px;
-    font-family: Open Sans;
-    line-height: auto;
-    color: #ffffff;
-  }
-  .text-1-0 {
-    text-align: left;
-    vertical-align: top;
-    font-size: 14px;
-    font-family: Open Sans;
-    line-height: auto;
-    color: #ffffff;
-  }
+input[type="checkbox"]::before {
+  content: "";
+}
 
-  .rectangle-5 {
-    border-radius: 10px;
-    height: 58px;
-    width: 192px;
-    background-color: #ffffff;
-    border: 1px solid #738bb3;
-  }
-  .text-1-1 {
-    text-align: left;
-    vertical-align: top;
-    font-size: 20px;
-    font-family: Open Sans;
-    line-height: auto;
-    color: rgba(109, 100, 100, 0.4699999988079071);
-  }
-  .tx-aceptar-terms{
-    margin-right: 10px;
-    text-align: left;
-    vertical-align: top;
-    font-size: 16px;
-    font-family: Open Sans;
-    line-height: auto;
-    color: #ffffff;
-  }
-  .button-row{
-    justify-content: center;
-    align-items: center;
-    display:flex;
-  }
+input[type="checkbox"]:checked::before {
+  content: "\2714";
+  filter: invert(1);
+}
+
+.boton {
+  padding: 3rem;
+}

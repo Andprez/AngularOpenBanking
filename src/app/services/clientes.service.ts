@@ -11,7 +11,7 @@ import { environment } from 'src/environments/environment.development';
 })
 export class ClientesService {
 
-  baseUrl: string = environment.URL_BABKEND;
+  baseUrl: string = environment.URL_BACKEND;
 
   constructor(
     private httpClient: HttpClient
@@ -25,5 +25,10 @@ export class ClientesService {
   getTiposIdentificacion(): Observable<TipoIdentificacion[]> {
     let url = this.baseUrl + '/tipoIdentificacion';
     return this.httpClient.get<TipoIdentificacion[]>(url);
+  }
+
+  getBilletera(cliente: any): Observable<Cliente> {
+    let url = this.baseUrl + '/cliente/find';
+    return this.httpClient.post<Cliente>(url, cliente);
   }
 }

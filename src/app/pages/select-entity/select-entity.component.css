@@ -1,0 +1,14 @@
+.buscador{
+  padding: 1rem 0;
+  position: sticky;
+  top: 5rem;
+  background-color: #fff;
+}
+
+.titulo {
+  padding: 1rem 0 0.3rem 0;
+}
+.lista {
+  width: 90%;
+  margin: 1rem auto;
+}

@@ -1,1 +1,20 @@
-<p>my-products works!</p>
+<body>
+  <app-header-cbit></app-header-cbit>
+  <div class="container">
+    <div class="search">
+      <app-search
+        (filterEntity)="setFilterProduct($event)"
+      ></app-search>
+    </div>
+    <div class="contenido">
+      <div class="list-category">
+        <h5 class="titulo">Categorías</h5>
+        <app-list-category></app-list-category>
+      </div>
+      <div class="list-product-vertical">
+        <h5 class="titulo">Cuentas</h5> <!-- TODO: Provisional -->
+        <app-list-product-vertical></app-list-product-vertical>
+      </div>
+    </div>
+  </div>
+</body>

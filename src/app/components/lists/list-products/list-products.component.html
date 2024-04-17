@@ -1,26 +1,10 @@
-<div id="carouselExampleIndicators" class="carousel slide">
-  <div class="carousel-indicators">
-    <button type="button" data-bs-target="#colapseExample" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+<div class="slider">
+  <div class="producto" *ngFor="let producto of products">
+    <app-product-f
+      [img]="producto.img"
+      [tipoProd]="producto.tipoProd"
+      [montoProd]="producto.montoProd"
+      [mostrarSaldo]="mostrarSaldo"
+    ></app-product-f>
   </div>
-  <div class="carousel-inner">
-    <div class="carousel-item active">
-      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSu6_ww2e9nweNW-91exAIE0vbprDKchUEXCQBw4dvmAA&s" class="d-block w-100" alt="...">
-    </div>
-    <div class="carousel-item">
-      <img src="https://conectesunegocio.daviplata.com/sites/default/files/styles/original/public/2023-11/af2be4165905879.Y3JvcCwxNDAwLDEwOTUsMCwxNTI.png?itok=Fn_Y_HIf" class="d-block w-100" alt="...">
-    </div>
-    <div class="carousel-item">
-      <img src="https://www.bancolombia.com/wcm/connect/www.bancolombia.com-26918/196f0dde-fb72-49bf-ba1b-039f08c1a33e/logo-bancolombia+%281%29.png?MOD=AJPERES&CACHEID=ROOTWORKSPACE.Z18_K9HC1202P864E0Q30449MS3000-196f0dde-fb72-49bf-ba1b-039f08c1a33e-nVP-YUW" class="d-block w-100" alt="...">
-    </div>
-  </div>
-  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Previous</span>
-  </button>
-  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Next</span>
-  </button>
 </div>

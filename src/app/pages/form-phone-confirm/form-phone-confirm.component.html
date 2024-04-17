@@ -1,0 +1,37 @@
+<body>
+  <app-header-cbit></app-header-cbit>
+  <div class="container">
+    <h1 class="titulo">Código de verificación</h1>
+    <app-indicator></app-indicator>
+    <div class="icono-mensaje">
+      <i class="bi bi-chat-left"></i>
+    </div>
+    <div class="texto">
+      <p>Escriba el código enviado a su celular</p>
+    </div>
+    <div class="gestion-tel">
+      <div class="campo-telefono" *ngIf="!editPhone">
+        <p class="telefono">{{ phone }}</p>
+        <i class="bi bi-pencil-fill" (click)="changeEditPhone()"></i>
+      </div>
+      <div class="input-telefono" *ngIf="editPhone">
+        <div class="input-group">
+          <input class="form-control" type="tel" />
+          <span class="input-group-text"
+            ><i class="bi bi-floppy" (click)="changeEditPhone()"></i
+          ></span>
+        </div>
+      </div>
+    </div>
+    <app-otp></app-otp>
+    <div class="texto mt-4 txt-20-bold ">
+      <p>¿No recibió el código?</p>
+    </div>
+    <div class="texto txt-20-normal">
+      <a class="link">Volver a enviar código</a>
+    </div>
+    <app-btn-cbit
+      [text]="'Continuar'"
+    ></app-btn-cbit>
+  </div>
+</body>

@@ -6,5 +6,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent {
+  mostrarSaldos: boolean=false;
 
+  setMostrarSaldo(){
+    //Operador ternario
+    this.mostrarSaldos = this.mostrarSaldos? !this.mostrarSaldos:!this.mostrarSaldos;
+  }
 }

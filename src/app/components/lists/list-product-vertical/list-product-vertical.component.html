@@ -1,0 +1,20 @@
+<div class="list">
+  <div class="product" *ngFor="let product of products">
+    <div class="entity">
+      <app-entity
+        [nameEntity]="product.nameEntity"
+        [nameImage]="product.nameImage"
+      ></app-entity>
+    </div>
+    <div class="datos">
+      <p class="nombreProducto">{{ product.tipoProductoF }}</p>
+      <div class="valores">
+        <p class="textoSaldo">Saldo actual</p>
+        <p class="valorSaldo">{{ product.saldo | currency }}</p>
+      </div>
+    </div>
+    <div class="boton">
+      <p>Ver movimientos<i class="bi bi-chevron-right"></i></p>
+    </div>
+  </div>
+</div>
