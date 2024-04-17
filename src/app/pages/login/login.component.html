@@ -53,7 +53,6 @@
           [text]="'Continuar'"
           [type]="'submit'"
           [disabled]="formLogin.invalid"
-          (onClick) = " formLogin.valid && showPassword()"
         ></app-btn-cbit>
       </form>
 
@@ -84,7 +83,6 @@
           [text]="'Iniciar sesión'"
           [type]="'submit'"
           [disabled]="formPassword.invalid"
-          (onClick)="formPassword.valid && login()"
         ></app-btn-cbit>
       </form>
     </div>

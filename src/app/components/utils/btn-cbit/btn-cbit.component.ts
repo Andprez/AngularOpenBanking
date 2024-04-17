@@ -10,9 +10,9 @@ export class BtnCbitComponent {
   @Input() disabled: boolean = false;
   @Input() text!: string;
   // @Input() routerLink!: string;
-  @Output() onClick = new EventEmitter();
+  @Output() onClickEvent = new EventEmitter();
 
   click(): void {
-    this.onClick.emit();
+    this.onClickEvent.emit();
   }
 }

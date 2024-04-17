@@ -3,8 +3,10 @@
     type="{{ type }}"
     class="btn btn-primary"
     [disabled]="disabled"
+    (click)="click()"
     >
     <!-- [routerLink]="routerLink" -->
+
     {{ text }}
   </button>
 </div>
