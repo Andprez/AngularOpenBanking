@@ -1,5 +1,5 @@
 <body>
-  <app-header-cbit></app-header-cbit>
+  <app-header-cbit [routerLinkBack]="'/register'"></app-header-cbit>
   <div class="container text-center">
     <h1 class="titulo">Ingrese sus datos</h1>
     <app-indicator></app-indicator>
@@ -65,7 +65,10 @@
         <label for="docType" class="form-label">Tipo de documento</label>
         <select class="form-select" formControlName="docType">
           <option selected disabled>Selecciona una opción</option>
-          <option *ngFor="let tipo of tiposIdentificacion" [value]="tipo.idTipoIdentificacion">
+          <option
+            *ngFor="let tipo of tiposIdentificacion"
+            [value]="tipo.idTipoIdentificacion"
+          >
             {{ tipo.nombre }}
           </option>
         </select>
@@ -148,7 +151,11 @@
       </div>
       <div
         class="alert alert-danger"
-        *ngIf="formUser.get('email')!.value !== formUser.get('confirmEmail')!.value && formUser.get('confirmEmail')!.value.length > 0"
+        *ngIf="
+          formUser.get('email')!.value !==
+            formUser.get('confirmEmail')!.value &&
+          formUser.get('confirmEmail')!.value.length > 0
+        "
       >
         Los emails no coinciden
       </div>
@@ -157,7 +164,7 @@
         [text]="'Continuar'"
         [type]="'submit'"
         [disabled]="formUser.invalid"
-        >
+      >
       </app-btn-cbit>
     </form>
   </div>

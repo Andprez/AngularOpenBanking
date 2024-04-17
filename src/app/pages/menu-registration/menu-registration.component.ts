@@ -10,20 +10,21 @@ import { Router } from '@angular/router';
   ],
 })
 export class MenuRegistrationComponent {
-  infoPersonalComplete: boolean = false;
-  passwordComplete: boolean = false;
-  selfieComplete: boolean = false;
-  documentComplete: boolean = false;
+  infoPersonalComplete: boolean = true;
+  passwordComplete: boolean = true;
+  selfieComplete: boolean = true;
+  documentComplete: boolean = true;
 
   constructor(private router: Router) {}
   routes = {
-    info: 'info',
-    password: 'phone-confirm',
-    selfie: 'selfie',
-    document: 'document',
+    info: '/register/info',
+    password: '/register/phone-confirm',
+    selfie: '/register/selfie',
+    document: '/register/document',
+    products: '/products',
   };
 
-  goToNextPage(): void {
-    this.router.navigate(['/products']);
+  goToPage(page: string): void {
+    this.router.navigate([page]);
   }
 }

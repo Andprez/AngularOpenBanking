@@ -1,7 +1,5 @@
 <body>
-  <app-header-cbit
-    [routerLinkBack]="'/login'"
-  ></app-header-cbit>
+  <app-header-cbit [routerLinkBack]="'/login'"></app-header-cbit>
   <div class="container">
     <h1 class="titulo">Completa tu información</h1>
 
@@ -11,7 +9,7 @@
         [cardTitle]="'Información personal'"
         [cardText]="'Tus datos'"
         [complete]="infoPersonalComplete"
-        routerLink="{{ routes.info }}"
+        (onClickEvent)="goToPage(routes.info)"
       ></app-item-registro>
 
       <app-item-registro
@@ -19,7 +17,7 @@
         [cardTitle]="'Crea tu clave'"
         [cardText]="'No la compartas'"
         [complete]="passwordComplete"
-        routerLink="{{ routes.password }}"
+        (onClickEvent)="goToPage(routes.password)"
       ></app-item-registro>
 
       <app-item-registro
@@ -27,7 +25,7 @@
         [cardTitle]="'Reconocimiento facial'"
         [cardText]="'Una selfie'"
         [complete]="selfieComplete"
-        routerLink="{{ routes.selfie }}"
+        (onClickEvent)="goToPage(routes.selfie)"
       ></app-item-registro>
 
       <app-item-registro
@@ -35,7 +33,7 @@
         [cardTitle]="'Tu documento'"
         [cardText]="'Escanea tu documento'"
         [complete]="documentComplete"
-        routerLink="{{ routes.document }}"
+        (onClickEvent)="goToPage(routes.document)"
       ></app-item-registro>
     </div>
 
@@ -52,7 +50,7 @@
           passwordComplete &&
           selfieComplete &&
           documentComplete &&
-          goToNextPage()
+          goToPage(routes.products)
       "
     ></app-btn-cbit>
   </div>
