@@ -13,14 +13,6 @@
       ></app-item-registro>
 
       <app-item-registro
-        [icon]="'bi bi-lock'"
-        [cardTitle]="'Crea tu clave'"
-        [cardText]="'No la compartas'"
-        [complete]="passwordComplete"
-        (onClickEvent)="goToPage(routes.password)"
-      ></app-item-registro>
-
-      <app-item-registro
         [icon]="'bi bi-emoji-laughing'"
         [cardTitle]="'Reconocimiento facial'"
         [cardText]="'Una selfie'"
@@ -39,15 +31,9 @@
 
     <app-btn-cbit
       [text]="'Continuar'"
-      [disabled]="
-        !infoPersonalComplete ||
-        !passwordComplete ||
-        !selfieComplete ||
-        !documentComplete
-      "
+      [disabled]="!infoPersonalComplete || !selfieComplete || !documentComplete"
       (onClickEvent)="
         infoPersonalComplete &&
-          passwordComplete &&
           selfieComplete &&
           documentComplete &&
           goToPage(routes.products)

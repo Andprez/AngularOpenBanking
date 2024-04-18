@@ -89,7 +89,7 @@ export class FormRegistrationComponent {
       next: (response) => {
         console.log('Cliente registrado');
         localStorage.setItem('user', JSON.stringify(response));
-        this.router.navigate(['/register']);
+        this.router.navigate(['/register/phone-confirm']);
       },
       error: (error) => {
         console.error({ error });

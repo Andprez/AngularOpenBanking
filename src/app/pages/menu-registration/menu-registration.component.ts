@@ -11,14 +11,12 @@ import { Router } from '@angular/router';
 })
 export class MenuRegistrationComponent {
   infoPersonalComplete: boolean = true;
-  passwordComplete: boolean = true;
   selfieComplete: boolean = true;
   documentComplete: boolean = true;
 
   constructor(private router: Router) {}
   routes = {
     info: '/register/info',
-    password: '/register/phone-confirm',
     selfie: '/register/selfie',
     document: '/register/document',
     products: '/products',
