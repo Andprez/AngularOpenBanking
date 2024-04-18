@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { EntidadFinanciera } from 'src/app/models/entidad-financiera';
 
 @Component({
   selector: 'app-header-transaction',
@@ -6,8 +7,7 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./header-transaction.component.css']
 })
 export class HeaderTransactionComponent {
-  @Input() nameEntity!: string;
-  @Input() nameImage!: string;
+  @Input() entity!: EntidadFinanciera;
   @Input() typeProduct!: string;
   @Input() accountNumber!: string;
 }

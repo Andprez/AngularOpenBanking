@@ -1,11 +1,16 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { EntidadFinanciera } from 'src/app/models/entidad-financiera';
 
 @Component({
   selector: 'app-entity',
   templateUrl: './entity.component.html',
-  styleUrls: ['./entity.component.css']
+  styleUrls: ['./entity.component.css'],
 })
 export class EntityComponent {
-  @Input() nameImage!: string;
-  @Input() nameEntity!: string;;
+  @Input() entity!: EntidadFinanciera;
+  @Output() onClickEvent = new EventEmitter<EntidadFinanciera>();
+
+  onClick() {
+    this.onClickEvent.emit(this.entity);
+  }
 }

@@ -1,8 +1,8 @@
 <div class="grid-entity">
   <div class="select-entity" name="filterPost"  *ngFor="let entity of entities | filterEntityF : txtFilter">
     <app-entity
-      [nameEntity]="entity.nombre"
-      [nameImage]="entity.imagen"
+      [entity]="entity"
+      (onClickEvent)="setEntitySelected($event)"
     ></app-entity>
   </div>
 </div>

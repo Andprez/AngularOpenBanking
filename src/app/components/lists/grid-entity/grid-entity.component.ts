@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { EntidadFinanciera } from 'src/app/models/entidad-financiera';
 import { EntidadFinancieraService } from 'src/app/services/entidad-financiera.service';
 
@@ -9,6 +9,7 @@ import { EntidadFinancieraService } from 'src/app/services/entidad-financiera.se
 })
 export class GridEntityComponent implements OnInit {
   @Input() txtFilter: string = '';
+  @Output() selectedEntity = new EventEmitter<EntidadFinanciera>();
   entities: EntidadFinanciera[] = [];
 
   ngOnInit(): void {
@@ -26,5 +27,8 @@ export class GridEntityComponent implements OnInit {
         console.error(error);
       },
     });
+  }
+  setEntitySelected(entity: EntidadFinanciera): void {
+    this.selectedEntity.emit(entity);
   }
 }

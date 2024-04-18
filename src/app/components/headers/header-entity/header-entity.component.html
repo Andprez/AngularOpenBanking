@@ -1,14 +1,15 @@
 <body>
-  <div class="contenedor">
+  <div class="container">
     <div class="iconos">
-      <app-back></app-back>
-      <app-help></app-help>
+      <div class="back">
+        <app-back [routerLinkBack]="routerLinkBack"></app-back>
+      </div>
+      <div class="help">
+        <app-help [routerLinHelp]="routerLinkHelp"></app-help>
+      </div>
     </div>
     <div class="logo-entidad">
-      <app-entity
-        [nameEntity]="nameEntity"
-        [nameImage]="nameImage"
-      ></app-entity>
+      <app-entity [entity]="entity"></app-entity>
     </div>
   </div>
 </body>

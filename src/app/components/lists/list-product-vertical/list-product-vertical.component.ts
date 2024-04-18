@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { EntidadFinanciera } from 'src/app/models/entidad-financiera';
 
 @Component({
   selector: 'app-list-product-vertical',
@@ -8,6 +9,7 @@ import { Component, Input } from '@angular/core';
 export class ListProductVerticalComponent {
   // TODO: Definir el tipo de dato de la variable por Producto
   products: any[] = [];
+  entity!: EntidadFinanciera;
   // products: any[] = [
   //   {
   //     nameImage: 'bancolombia',

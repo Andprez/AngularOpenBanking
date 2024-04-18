@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { EntidadFinanciera } from 'src/app/models/entidad-financiera';
 
 @Component({
   selector: 'app-header-entity',
@@ -6,6 +7,8 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./header-entity.component.css']
 })
 export class HeaderEntityComponent {
-  @Input() nameEntity!: string;
-  @Input() nameImage!: string;
+  @Input() routerLinkBack!: string;
+  @Input() routerLinkHelp!: string;
+  @Input() entity!: EntidadFinanciera;
+
 }

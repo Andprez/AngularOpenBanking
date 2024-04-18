@@ -4,22 +4,24 @@ body{
   background-repeat: no-repeat;
   background-attachment: fixed;
 }
-.contenedor {
+.container {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
   padding-bottom: 5rem;
 }
 .iconos{
   display: flex;
   justify-content: space-between;
-  align-items: center;
   padding: 1.5rem 0 0.5rem 0;
 }
 .logo-entidad{
   display: flex;
   justify-content: center;
   max-width: 8rem;
+  margin: 0 auto;
+}
+.help{
+  display: flex;
+  align-items: center;
 }
 

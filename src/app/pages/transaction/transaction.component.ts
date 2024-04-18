@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { EntidadFinanciera } from 'src/app/models/entidad-financiera';
 
 @Component({
   selector: 'app-transaction',
@@ -8,6 +9,5 @@ import { Component } from '@angular/core';
 export class TransactionComponent {
   accountNumber: string = '123456789';
   typeProduct: string = 'Cuenta Corriente';
-  nameEntity: string = 'Bancolombia';
-  nameImage: string = 'bancolombia';
+  entity!: EntidadFinanciera;
 }
