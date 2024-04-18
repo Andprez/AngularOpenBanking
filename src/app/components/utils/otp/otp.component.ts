@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
@@ -7,6 +7,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
   styleUrls: ['./otp.component.css'],
 })
 export class OtpComponent implements OnInit {
+  @Output() onDigit = new EventEmitter<string>();
   otp: Array<string> = ['', '', '', '', '', ''];
   formDigits!: FormGroup;
   elementos!: any;
@@ -24,16 +25,23 @@ export class OtpComponent implements OnInit {
     });
   }
 
-  validarSoloNumeros(event: KeyboardEvent, key: number) {
-    const digito = event.key;
-    if (
-      isNaN(parseInt(digito)) ||
-      this.formDigits.get('digito' + key)?.value.length == 1
-    ) {
-      event.preventDefault();
+  validarSoloNumeros(event: any, key: number) {
+    const digito = event.data;
+    const valid = /^[0-9]$/.test(digito);
+    if (!valid && digito !== null) {
+      event.target.value = digito.replace(/[^0-9]/g, '');
     } else {
       this.otp[key - 1] = digito;
-      console.log(this.otp);
+      this.onDigit.emit(this.otp.join(''));
     }
+    // if (
+    //   isNaN(parseInt(digito)) ||
+    //   this.formDigits.get('digito' + key)?.value.length == 1
+    // ) {
+    //   event.preventDefault();
+    // } else {
+    //   this.otp[key - 1] = digito;
+    //   console.log(this.otp.join(''));
+    // }
   }
 }

@@ -6,7 +6,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { HeaderCbitComponent } from './components/headers/header-cbit/header-cbit.component';
 import { MenuRegistrationComponent } from './pages/menu-registration/menu-registration.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { IndicatorComponent } from './components/utils/indicator/indicator.component';
 import { LoadingBeginComponent } from './pages/loading-begin/loading-begin.component';
 import { ItemRegistroComponent } from './components/utils/item-registro/item-registro.component';
@@ -108,6 +108,7 @@ import { RouterModule } from '@angular/router';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
   ],
