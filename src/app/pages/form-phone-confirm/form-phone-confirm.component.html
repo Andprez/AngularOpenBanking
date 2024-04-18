@@ -24,10 +24,13 @@
       </div>
     </div>
     <app-otp (onDigit)="setOtpUser($event)"></app-otp>
-    <div class="texto mt-4 txt-16">
+    <div class="alert alert-danger" role="alert" *ngIf="otpError">
+      Código incorrecto
+    </div>
+    <div class="texto">
       <p>¿No recibió el código?</p>
     </div>
-    <div class="texto txt-18-normal">
+    <div class="texto">
       <button type="button" class="btn link" disabled>
         Volver a enviar código
       </button>
@@ -35,6 +38,7 @@
     <app-btn-cbit
       [text]="'Continuar'"
       [disabled]="otpUser.length < 6"
+      (onClickEvent)="verifyOtp()"
     ></app-btn-cbit>
   </div>
 </body>

@@ -74,20 +74,23 @@ p{
   justify-content: center;
   align-items: center;
 }
-.txt-20-bold{
-  font-weight: bold;
-  font-size: 20px;
-  text-align: center;
-  color: white;
-}
-.txt-20-normal{
-  font-size: 20px;
-}
 .link{
   color: white;
   text-decoration: underline;
   cursor: pointer;
   border: none;
+}
+.alert{
+  text-align: center;
+  margin: 0;
+  padding: 1rem;
+}
+.texto{
+  margin: 0;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 app-btn-cbit {
   padding: 3rem;

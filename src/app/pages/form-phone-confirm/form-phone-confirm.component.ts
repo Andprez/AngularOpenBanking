@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-form-phone-confirm',
@@ -13,6 +14,9 @@ export class FormPhoneConfirmComponent implements OnInit {
   phone: string = '';
   otpGenerated: string = '';
   otpUser: string = '';
+  otpError: boolean = false;
+
+  constructor(private router: Router) {}
 
   ngOnInit(): void {
     this.phone = localStorage.getItem('user')
@@ -41,5 +45,14 @@ export class FormPhoneConfirmComponent implements OnInit {
   }
   setOtpUser(otp: string) {
     this.otpUser = otp;
+  }
+  verifyOtp() {
+    if (this.otpUser === this.otpGenerated) {
+      console.log('OTP correcto');
+      this.router.navigate(['/register/wallet']);
+    } else {
+      console.log('OTP incorrecto');
+      this.otpError = true;
+    }
   }
 }
