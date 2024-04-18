@@ -14,7 +14,7 @@ export class ListProductsComponent {
       montoProd: 3209434
     },
     {
-      img: '../../../../assets/entidadesF/bancoBogota.png',
+      img: '../../../../assets/entidadesF/ban-bogota.png',
       tipoProd: 'Cuenta de Ahorros',
       montoProd: 3209434
     },

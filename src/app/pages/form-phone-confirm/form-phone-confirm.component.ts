@@ -16,6 +16,12 @@ export class FormPhoneConfirmComponent implements OnInit {
   otpUser: string = '';
   otpError: boolean = false;
 
+  routes = {
+    back: '/register/info',
+    help: '/help',
+    wallet: '/register/wallet',
+  }
+
   constructor(private router: Router) {}
 
   ngOnInit(): void {
@@ -49,10 +55,14 @@ export class FormPhoneConfirmComponent implements OnInit {
   verifyOtp() {
     if (this.otpUser === this.otpGenerated) {
       console.log('OTP correcto');
-      this.router.navigate(['/register/wallet']);
+      this.goToPage(this.routes.wallet);
     } else {
       console.log('OTP incorrecto');
       this.otpError = true;
     }
+  }
+
+  goToPage(page: string): void {
+    this.router.navigate([page]);
   }
 }

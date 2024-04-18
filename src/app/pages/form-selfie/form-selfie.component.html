@@ -1,6 +1,7 @@
 <body>
   <app-header-cbit
-    [routerLinkBack]="'/register'"
+    [routerLinkBack]="routes.back"
+    [routerLinkHelp]="routes.help"
   ></app-header-cbit>
   <div class="container">
     <h1 class="titulo">Tome una foto de su rostro</h1>
@@ -17,7 +18,7 @@
         [text]="'Continuar'"
         [type]="'button'"
         [disabled]="imageData == ''"
-        (onClickEvent)="goToPage('/register')"
+        (onClickEvent)="goToPage(routes.register)"
       >
       </app-btn-cbit>
     </div>

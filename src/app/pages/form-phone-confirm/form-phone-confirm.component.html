@@ -1,5 +1,8 @@
 <body>
-  <app-header-cbit [routerLinkBack]="'/register/info'"></app-header-cbit>
+  <app-header-cbit
+    [routerLinkBack]="routes.back"
+    [routerLinkHelp]="routes.help"
+  ></app-header-cbit>
   <div class="container">
     <h1 class="titulo">Código de verificación</h1>
     <app-indicator></app-indicator>

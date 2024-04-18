@@ -1,9 +1,11 @@
 <body>
-  <app-header-cbit></app-header-cbit>
+  <app-header-cbit
+    [routerLinkBack]="routes.back"
+  ></app-header-cbit>
   <div class="container">
     <div class="search">
       <app-search
-        (filterEntity)="setFilterProduct($event)"
+        (onTxtFilter)="setFilterProduct($event)"
       ></app-search>
     </div>
     <div class="contenido">

@@ -7,6 +7,9 @@ import { Component, Input } from '@angular/core';
 })
 export class MyProductsComponent {
   @Input() filterProduct: string = '';
+  routes = {
+    back: '/dashboard',
+  }
 
   setFilterProduct(filter: string) {
     this.filterProduct = filter;

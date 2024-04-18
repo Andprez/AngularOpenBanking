@@ -19,6 +19,11 @@ export class FormRegistrationComponent {
   formUser!: FormGroup;
   ciudades!: Ciudad[];
   tiposIdentificacion!: TipoIdentificacion[];
+  routes = {
+    back: '/register',
+    help: '/help',
+    phoneConfirm: '/register/phone-confirm',
+  };
 
   constructor(
     private formBuilder: FormBuilder,
@@ -89,11 +94,15 @@ export class FormRegistrationComponent {
       next: (response) => {
         console.log('Cliente registrado');
         localStorage.setItem('user', JSON.stringify(response));
-        this.router.navigate(['/register/phone-confirm']);
+        this.goToPage(this.routes.phoneConfirm);
       },
       error: (error) => {
         console.error({ error });
       },
     });
+  }
+
+  goToPage(page: string): void {
+    this.router.navigate([page]);
   }
 }

@@ -12,6 +12,11 @@ import { Router } from '@angular/router';
 })
 export class FormPasswordComponent implements OnInit {
   formPassword!: FormGroup;
+  routes = {
+    back: '/register/phone-confirm',
+    help: '/help',
+    register: '/register',
+  };
 
   constructor(private formBuilder: FormBuilder, private router: Router) {}
 
@@ -38,9 +43,13 @@ export class FormPasswordComponent implements OnInit {
   registrarPassword() {
     if (this.formPassword.valid) {
       console.log('Contraseñas válidas');
-      this.router.navigate(['/register']);
+      this.goToPage(this.routes.register);
     } else {
       console.log('Contraseñas inválidas');
     }
+  }
+
+  goToPage(page: string): void {
+    this.router.navigate([page]);
   }
 }

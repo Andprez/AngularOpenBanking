@@ -10,6 +10,11 @@ import { ClientesService } from 'src/app/services/clientes.service';
   styleUrls: ['./login.component.css', '../../templates/background2.css']
 })
 export class LoginComponent implements OnInit{
+  routes = {
+    register: '/register',
+    dashboard: '/dashboard',
+    help: '/help'
+  }
   formLogin!: FormGroup;
   formPassword!: FormGroup;
 
@@ -51,7 +56,7 @@ export class LoginComponent implements OnInit{
       next: (response) => {
         this.clienteExiste = true;
         localStorage.setItem('user', JSON.stringify(response));
-        this.router.navigate(['/products']);
+        this.goToPage(this.routes.dashboard);
       },
       error: (error) => {
         console.log(error);
@@ -61,6 +66,10 @@ export class LoginComponent implements OnInit{
         this.showPasswordForm = false;
       },
     });
+  }
+
+  goToPage(page: string): void {
+    this.router.navigate([page]);
   }
 
 }

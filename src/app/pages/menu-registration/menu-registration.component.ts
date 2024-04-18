@@ -13,14 +13,16 @@ export class MenuRegistrationComponent {
   infoPersonalComplete: boolean = true;
   selfieComplete: boolean = true;
   documentComplete: boolean = true;
-
-  constructor(private router: Router) {}
   routes = {
+    back: '/login',
+    help: '/help',
     info: '/register/info',
     selfie: '/register/selfie',
     document: '/register/document',
-    products: '/products',
+    products: '/dashboard',
   };
+
+  constructor(private router: Router) {}
 
   goToPage(page: string): void {
     this.router.navigate([page]);

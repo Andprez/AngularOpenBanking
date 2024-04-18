@@ -10,7 +10,9 @@
   <!-- PANTALLA LOGIN -->
 
   <div class="login">
-    <app-header-login></app-header-login>
+    <app-header-login
+      [routerLinkHelp]="routes.help"
+    ></app-header-login>
 
     <!-- FORM LOGIN -->
     <div class="container container-login" *ngIf="!showPasswordForm">
@@ -57,7 +59,7 @@
       </form>
 
       <div class="texto-final login">
-        <p>¿No tiene una cuenta? <a routerLink="/register">Regístrese</a></p>
+        <p>¿No tiene una cuenta? <a (click)="goToPage(routes.register)">Regístrese</a></p>
       </div>
     </div>
 

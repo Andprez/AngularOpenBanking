@@ -9,6 +9,11 @@ import { Router } from '@angular/router';
 export class FormSelfieComponent implements OnInit {
   imageData: string = '';
   user: any = {};
+  routes = {
+    back: '/register',
+    help: '/help',
+    register: '/register',
+  };
 
   constructor(private router: Router) {}
 
@@ -21,7 +26,7 @@ export class FormSelfieComponent implements OnInit {
   savePhoto(imageData: string): void {
     this.imageData = imageData;
     console.log('Imagen guardada:');
-    this.user = {...this.user, selfie: this.imageData}
+    this.user = { ...this.user, selfie: this.imageData };
     localStorage.setItem('user', JSON.stringify(this.user));
   }
 

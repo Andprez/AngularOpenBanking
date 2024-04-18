@@ -7,9 +7,9 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 })
 export class SearchComponent {
   @Input() placeholder: string = 'Escribe algo...';
-  @Output() filterEntity = new EventEmitter<string>();
+  @Output() onTxtFilter = new EventEmitter<string>();
 
-  textoFiltro(event: any) {
-    this.filterEntity.emit(event.target.value);
+  setTxtFilter(event: any) {
+    this.onTxtFilter.emit(event.target.value);
   }
 }
