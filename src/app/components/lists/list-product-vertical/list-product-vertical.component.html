@@ -1,28 +1,12 @@
-<!-- <div class="list">
-  <div class="product" *ngFor="let product of productsByClient" (click)="setProductSelected(product)">
-    <div class="entity">
-      <app-entity
-        [entity]="product.entidadF"
-      ></app-entity>
-    </div>
-    <div class="datos">
-      <p class="nombreProducto">{{ product.tipoProducto.nombreTipo }}</p>
-      <div class="valores">
-        <p class="textoSaldo">Saldo actual</p>
-        <p class="valorSaldo">{{ product.montoProd | currency }}</p>
-      </div>
-    </div>
-    <div class="boton">
-      <p>Ver movimientos<i class="bi bi-chevron-right"></i></p>
-    </div>
-  </div>
-</div> -->
 <div class="list">
-  <div class="type" *ngFor="let type of typesProducts">
-    <h5 class="nombreTipo">{{ type.nombreTipo }}s</h5>
+  <div class="type-and-list" *ngFor="let type of typesProducts">
+    <h5 class="nombreTipo" *ngIf="productsByType[type.nombreTipo]">
+      {{ type.nombreTipo }}s
+    </h5>
     <div
       class="product"
-      *ngFor="let product of productsByType[type.nombreTipo]"
+      *ngFor="let product of productsByType[type.nombreTipo] | filterEntityF: txtFilter"
+      (click)="setProductSelected(product)"
     >
       <div class="entity">
         <app-entity [entity]="product.entidadF"></app-entity>

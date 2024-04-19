@@ -41,7 +41,6 @@ export class ProductosFService {
 
   getTransactionsByProduct(productId: number): Observable<Transaction[]> {
     let url = `${this.baseUrl}/transaccion/product/${productId}`;
-    console.log('url', url);
     return this.httpClient.get<Transaction[]>(url);
   }
 }

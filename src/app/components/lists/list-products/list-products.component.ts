@@ -11,7 +11,7 @@ import { ProductosFService } from 'src/app/services/productos-f.service';
 })
 export class ListProductsComponent implements OnInit {
   @Input() mostrarSaldo!: boolean;
-  @Input() clientId: number = 3;
+  @Input() clientId!: number;
   @Output() onProductSelected = new EventEmitter<any>();
   productsByClient: any[] = [];
   entitiesF: EntidadFinanciera[] = [];

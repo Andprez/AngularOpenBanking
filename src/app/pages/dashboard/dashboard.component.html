@@ -15,7 +15,11 @@
       </div>
     </div>
     <div class="products">
-      <app-list-products [mostrarSaldo]="mostrarSaldos" (onProductSelected)="setProductSelected($event)"></app-list-products>
+      <app-list-products
+        [mostrarSaldo]="mostrarSaldos"
+        [clientId]="user.idCliente!"
+        (onProductSelected)="setProductSelected($event)"
+      ></app-list-products>
       <div class="view" (click)="setMostrarSaldo()">
         <i class="bi bi-eye" *ngIf="mostrarSaldos"></i>
         <i class="bi bi-eye-slash" *ngIf="!mostrarSaldos"></i>

@@ -6,9 +6,15 @@ p {
   flex-direction: column;
   gap: 1rem;
 }
+.type-and-list{
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
 .nombreTipo{
   font-size: 16px;
   font-weight: 600;
+  margin: 0;
 }
 .product {
   padding: 1rem;

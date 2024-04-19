@@ -1,13 +1,15 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Cliente } from 'src/app/models/cliente';
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css', '../../templates/background3.css'],
 })
-export class DashboardComponent {
+export class DashboardComponent implements OnInit{
   mostrarSaldos: boolean = false;
+  user: Cliente = {} as Cliente;
   routes = {
     back: '/login',
     help: '/help',
@@ -17,6 +19,10 @@ export class DashboardComponent {
   }
 
   constructor(private router: Router) {}
+
+  ngOnInit(): void {
+    this.user = JSON.parse(localStorage.getItem('user') || '{}');
+  }
 
   setMostrarSaldo() {
     this.mostrarSaldos = this.mostrarSaldos

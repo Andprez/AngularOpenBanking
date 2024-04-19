@@ -51,7 +51,6 @@ export class FinanceComponent {
           let type = this.typesTransactions.find(tt => tt.idTipo_Transaccion === transaction.idTipo_Transaccion);
           this.transactionsByType[type?.nombreTipo!] = (this.transactionsByType[type?.nombreTipo!] || 0) + transaction.montoTransaccion;
         })
-        console.log(this.transactionsByType);
         this.crearPie();
       },
     });

@@ -11,7 +11,8 @@ import { ProductosFService } from 'src/app/services/productos-f.service';
 })
 export class ListProductVerticalComponent {
 
-  @Input() clientId: number = 3;
+  @Input() clientId!: number;
+  @Input() txtFilter: string = '';
   @Output() onProductSelected = new EventEmitter<any>();
   productsByClient: any[] = [];
   productsByType: any = {};

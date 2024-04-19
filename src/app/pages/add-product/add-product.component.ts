@@ -26,8 +26,7 @@ export class AddProductComponent implements OnInit {
   routes = {
     back: '/products/add/select-entity',
     help: '/help',
-    transactions:
-      '/products/' + this.savedProduct?.idProducto + '/transactions', // TODO: Cambiar por el Id del producto guardado
+    transactions: '/products/transactions',
     dashboard: '/dashboard',
   };
 
