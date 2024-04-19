@@ -7,7 +7,8 @@ import { EntidadFinanciera } from 'src/app/models/entidad-financiera';
   styleUrls: ['./header-transaction.component.css']
 })
 export class HeaderTransactionComponent {
+  @Input() routerLinkBack!: string;
   @Input() entity!: EntidadFinanciera;
-  @Input() typeProduct!: string;
+  @Input() typeProduct: string = '';
   @Input() accountNumber!: string;
 }

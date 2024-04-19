@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { EntidadFinanciera } from 'src/app/models/entidad-financiera';
 import { TipoProductoF } from 'src/app/models/tipo-producto-f';
 import { EntidadFinancieraService } from 'src/app/services/entidad-financiera.service';
@@ -12,6 +12,7 @@ import { ProductosFService } from 'src/app/services/productos-f.service';
 export class ListProductsComponent implements OnInit {
   @Input() mostrarSaldo!: boolean;
   @Input() clientId: number = 3;
+  @Output() onProductSelected = new EventEmitter<any>();
   productsByClient: any[] = [];
   entitiesF: EntidadFinanciera[] = [];
   typesProducts: TipoProductoF[] = [];
@@ -22,12 +23,12 @@ export class ListProductsComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.entidadFinancieraService.getEntidadesFinancieras().subscribe({
+    this.entidadFinancieraService.getEntitiesF().subscribe({
       next: (entities) => {
         this.entitiesF = entities;
       },
     });
-    this.productosFService.getTipoProductos().subscribe({
+    this.productosFService.getTypesProduct().subscribe({
       next: (types) => {
         this.typesProducts = types;
       },
@@ -35,7 +36,7 @@ export class ListProductsComponent implements OnInit {
         console.error(error);
       }
     })
-    this.productosFService.getProductosByClient(this.clientId).subscribe({
+    this.productosFService.getProductsByClient(this.clientId).subscribe({
       next: (products) => {
         products.forEach((product) => {
           let entidadF = this.entitiesF.find(entity => entity.idEntidadFinanciera === product.idEntidadFinanciera)
@@ -49,6 +50,10 @@ export class ListProductsComponent implements OnInit {
         console.error(error);
       },
     });
+  }
+
+  setProductSelected(product: any) {
+    this.onProductSelected.emit(product);
   }
 
   products: any[] = [

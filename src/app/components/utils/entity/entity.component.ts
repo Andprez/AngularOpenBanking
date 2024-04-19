@@ -7,7 +7,7 @@ import { EntidadFinanciera } from 'src/app/models/entidad-financiera';
   styleUrls: ['./entity.component.css'],
 })
 export class EntityComponent {
-  @Input() entity!: EntidadFinanciera;
+  @Input() entity: EntidadFinanciera = {} as EntidadFinanciera;
   @Output() onClickEvent = new EventEmitter<EntidadFinanciera>();
 
   onClick() {

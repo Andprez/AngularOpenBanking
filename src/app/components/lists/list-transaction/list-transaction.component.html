@@ -1,9 +1,10 @@
 <div class="list">
-  <div class="mov" *ngFor="let mov of movs">
+  <div class="mov" *ngFor="let transaction of transactions">
     <app-detail-transaction
-      [nameEntity]="mov.comercio"
-      [date]="mov.fecha"
-      [amount]="mov.monto"
+      [nameEntity]="transaction.destinoPago"
+      [date]="transaction.createdAt"
+      [amount]="transaction.montoTransaccion"
     ></app-detail-transaction>
   </div>
 </div>
+<p *ngIf="transactions.length == 0">No hay transacciones para este producto</p>

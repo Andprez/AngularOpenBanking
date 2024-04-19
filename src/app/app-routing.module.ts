@@ -34,7 +34,7 @@ const routes: Routes = [
   { path: 'products', component: MyProductsComponent },
   { path: 'products/add/select-entity', component: SelectEntityComponent },
   { path: 'products/add/data-product', component: AddProductComponent },
-  { path: 'products/:id/transactions', component: TransactionComponent },
+  { path: 'products/transactions', component: TransactionComponent },
   { path: '**', redirectTo: '' },
 ];
 

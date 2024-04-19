@@ -1,10 +1,9 @@
 <div class="slider">
   <div class="producto" *ngFor="let producto of productsByClient">
     <app-product-f
-      [img]="producto.entidadF.imagen"
-      [tipoProd]="producto.tipoProducto.nombreTipo"
-      [montoProd]="producto.montoProd"
+      [product]="producto"
       [mostrarSaldo]="mostrarSaldo"
+      (onProductSelected)="setProductSelected($event)"
     ></app-product-f>
   </div>
 </div>

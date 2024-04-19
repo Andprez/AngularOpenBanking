@@ -40,7 +40,7 @@ export class AddProductComponent implements OnInit {
   ngOnInit(): void {
     this.user = JSON.parse(localStorage.getItem('user') || '{}');
     this.selectedEntity = JSON.parse(localStorage.getItem('entity') || '{}');
-    this.productosFService.getTipoProductos().subscribe({
+    this.productosFService.getTypesProduct().subscribe({
       next: (result) => {
         this.tiposProducto = result;
       },
@@ -77,9 +77,10 @@ export class AddProductComponent implements OnInit {
       idEstado: 1,
       usuario: this.user.numeroIdentificacion,
     };
-    this.productosFService.createProductoF(productF).subscribe({
+    this.productosFService.createProductF(productF).subscribe({
       next: (result) => {
         this.savedProduct = result;
+        localStorage.setItem('product', JSON.stringify(this.savedProduct));
         this.showSuccessMessage = true;
       },
       error: (error) => {

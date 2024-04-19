@@ -19,7 +19,7 @@ export class GridEntityComponent implements OnInit {
   constructor(private entidadFinancieraService: EntidadFinancieraService) {}
 
   getEntities(): void {
-    this.entidadFinancieraService.getEntidadesFinancieras().subscribe({
+    this.entidadFinancieraService.getEntitiesF().subscribe({
       next: (result) => {
         this.entities = result;
       },

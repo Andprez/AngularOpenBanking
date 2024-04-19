@@ -8,13 +8,16 @@ import { EntidadFinanciera } from '../models/entidad-financiera';
   providedIn: 'root',
 })
 export class EntidadFinancieraService {
-
   baseUrl: string = environment.URL_BACKEND;
 
   constructor(private httpClient: HttpClient) {}
 
-  getEntidadesFinancieras(): Observable<EntidadFinanciera[]> {
+  getEntitiesF(): Observable<EntidadFinanciera[]> {
     let url = `${this.baseUrl}/entidadFinanciera`;
     return this.httpClient.get<EntidadFinanciera[]>(url);
+  }
+  getEntityFById(entityId: number): Observable<EntidadFinanciera> {
+    let url = `${this.baseUrl}/entidadFinanciera/${entityId}`;
+    return this.httpClient.get<EntidadFinanciera>(url);
   }
 }
