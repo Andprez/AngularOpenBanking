@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-header-login',
@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./header-login.component.css']
 })
 export class HeaderLoginComponent {
-
+  @Input() routerLinkHelp!: string;
 }

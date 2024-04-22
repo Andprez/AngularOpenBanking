@@ -1,0 +1,14 @@
+<body>
+  <div class="header">
+    <app-header-transaction
+      [routerLinkBack]="routes.back"
+      [entity]="entity"
+      [typeProduct]="typeProduct.nombreTipo"
+      [accountNumber]="product.numeroProducto"
+    ></app-header-transaction>
+  </div>
+  <app-list-transaction
+    [productId]="product.idProducto!"
+    (onTransactionSelected)="setTransactionSelected($event)"
+  ></app-list-transaction>
+</body>

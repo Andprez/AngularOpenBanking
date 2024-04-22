@@ -1,13 +1,13 @@
 export interface Transaction {
   idTransaccion: number;
-  idCuenta: number;
+  idTipo_Transaccion: number;
+  idEstado: number;
+  idProducto: number;
+  IP: string;
   montoTransaccion: number;
   destinoPago: string;
   motivo: string;
-  idEstado: number;
-  idTransaccionAutorizador: number;
-  numeroAprobacion: number;
-  idTipo_Transaccion: number;
+  idTransaccionAutorizador: string;
+  numeroAprobacion: string;
   createdAt: string;
-  updatedAt: string;
 }

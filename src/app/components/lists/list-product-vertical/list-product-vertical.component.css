@@ -6,6 +6,16 @@ p {
   flex-direction: column;
   gap: 1rem;
 }
+.type-and-list{
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.nombreTipo{
+  font-size: 16px;
+  font-weight: 600;
+  margin: 0;
+}
 .product {
   padding: 1rem;
   background-color: #D9D9D9;
@@ -13,6 +23,10 @@ p {
   display: grid;
   grid-template-columns: 2fr 5fr 3fr;
   gap: 0.5rem;
+  cursor: pointer;
+}
+.product:hover {
+  background-color: #C4C4C4;
 }
 .entity {
   width: 5.5rem;
@@ -37,38 +51,3 @@ p {
   justify-content: center;
   align-items: center;
 }
-/* .card{
-  width: 100%;
-  border-radius: 20px;
-  border: none;
-  background-color: #d9d9d9;
-  padding: 23px;
-}
-.card-body-1,.card-body-2{
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  padding: 20px;
-}
-.card-text{
-  margin: 0px 0px 0px 0px;
-}
-.card-title{
-  margin: 0px 0px 12px;
-}
-.col-md-4{
-  padding: 16px;
-}
-.img-entidad{
-  width: 12rem;
-  height: 12rem;
-}
-h5{
-  font-size: 25px;
-  font-weight: bold;
-  font-family: 'Open Sans', sans-serif;
-}
-.row{
-  display: grid;
-  grid-template-columns: 30% 50% 20%;
-} */

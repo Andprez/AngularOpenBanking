@@ -1,18 +1,25 @@
 <body>
-  <app-header-cbit></app-header-cbit>
+  <app-header-cbit
+    [routerLinkBack]="routes.back"
+    [routerLinkHelp]="routes.help"
+  ></app-header-cbit>
   <div class="contenedor">
     <div class="botones">
-      <div class="btn-adicionar">
+      <div class="btn-adicionar" (click)="goToPage(routes.addProduct)">
         <i class="bi bi-plus-circle-fill"></i>
         <p class="txt-agregar">Agregar productos</p>
       </div>
-      <div class="link-productos">
+      <div class="link-productos" (click)="goToPage(routes.myProducts)">
         <p class="link">Mis productos</p>
         <i class="bi bi-chevron-right"></i>
       </div>
     </div>
     <div class="products">
-      <app-list-products [mostrarSaldo]="mostrarSaldos"></app-list-products>
+      <app-list-products
+        [mostrarSaldo]="mostrarSaldos"
+        [clientId]="user.idCliente!"
+        (onProductSelected)="setProductSelected($event)"
+      ></app-list-products>
       <div class="view" (click)="setMostrarSaldo()">
         <i class="bi bi-eye" *ngIf="mostrarSaldos"></i>
         <i class="bi bi-eye-slash" *ngIf="!mostrarSaldos"></i>

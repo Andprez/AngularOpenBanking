@@ -6,5 +6,5 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./help.component.css']
 })
 export class HelpComponent {
-  @Input() routerLink?: string;
+  @Input() routerLinHelp!: string;
 }

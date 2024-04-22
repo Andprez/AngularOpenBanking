@@ -1,12 +1,54 @@
 <body>
   <form class="campos-labels" [formGroup]="formDigits">
     <div class="input-otp">
-      <input class="form-control digito" formControlName="digito1" id="digito1" type="tel" (keypress)="validarSoloNumeros($event, 1)"/>
-      <input class="form-control digito" formControlName="digito2" id="digito2" type="tel" (keypress)="validarSoloNumeros($event, 2)"/>
-      <input class="form-control digito" formControlName="digito3" id="digito3" type="tel" (keypress)="validarSoloNumeros($event, 3)"/>
-      <input class="form-control digito" formControlName="digito4" id="digito4" type="tel" (keypress)="validarSoloNumeros($event, 4)"/>
-      <input class="form-control digito" formControlName="digito5" id="digito5" type="tel" (keypress)="validarSoloNumeros($event, 5)"/>
-      <input class="form-control digito" formControlName="digito6" id="digito6" type="tel" (keypress)="validarSoloNumeros($event, 6)"/>
+      <input
+        class="form-control digito"
+        formControlName="digito1"
+        id="digito1"
+        type="tel"
+        maxlength="1"
+        (input)="validarSoloNumeros($event, 1)"
+      />
+      <input
+        class="form-control digito"
+        formControlName="digito2"
+        id="digito2"
+        type="tel"
+        maxlength="1"
+        (input)="validarSoloNumeros($event, 2)"
+      />
+      <input
+        class="form-control digito"
+        formControlName="digito3"
+        id="digito3"
+        type="tel"
+        maxlength="1"
+        (input)="validarSoloNumeros($event, 3)"
+      />
+      <input
+        class="form-control digito"
+        formControlName="digito4"
+        id="digito4"
+        type="tel"
+        maxlength="1"
+        (input)="validarSoloNumeros($event, 4)"
+      />
+      <input
+        class="form-control digito"
+        formControlName="digito5"
+        id="digito5"
+        type="tel"
+        maxlength="1"
+        (input)="validarSoloNumeros($event, 5)"
+      />
+      <input
+        class="form-control digito"
+        formControlName="digito6"
+        id="digito6"
+        type="tel"
+        maxlength="1"
+        (input)="validarSoloNumeros($event, 6)"
+      />
     </div>
   </form>
 </body>

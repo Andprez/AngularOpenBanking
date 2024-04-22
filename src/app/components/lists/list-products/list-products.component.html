@@ -1,10 +1,10 @@
 <div class="slider">
-  <div class="producto" *ngFor="let producto of products">
+  <div class="producto" *ngFor="let producto of productsByClient">
     <app-product-f
-      [img]="producto.img"
-      [tipoProd]="producto.tipoProd"
-      [montoProd]="producto.montoProd"
+      [product]="producto"
       [mostrarSaldo]="mostrarSaldo"
+      (onProductSelected)="setProductSelected($event)"
     ></app-product-f>
   </div>
 </div>
+<p *ngIf="productsByClient.length == 0">No tienes productos registrados</p>

@@ -6,7 +6,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { HeaderCbitComponent } from './components/headers/header-cbit/header-cbit.component';
 import { MenuRegistrationComponent } from './pages/menu-registration/menu-registration.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { IndicatorComponent } from './components/utils/indicator/indicator.component';
 import { LoadingBeginComponent } from './pages/loading-begin/loading-begin.component';
 import { ItemRegistroComponent } from './components/utils/item-registro/item-registro.component';
@@ -45,6 +45,14 @@ import { CategoryComponent } from './components/utils/category/category.componen
 import { ListCategoryComponent } from './components/lists/list-category/list-category.component';
 import { ListProductVerticalComponent } from './components/lists/list-product-vertical/list-product-vertical.component';
 import { MyProductsComponent } from './pages/my-products/my-products.component';
+import { FormDocumentComponent } from './pages/form-document/form-document.component';
+import { HeaderTransactionComponent } from './components/headers/header-transaction/header-transaction.component';
+import { DetailTransactionComponent } from './components/utils/detail-transaction/detail-transaction.component';
+import { ListTransactionComponent } from './components/lists/list-transaction/list-transaction.component';
+import { TransactionComponent } from './pages/transaction/transaction.component';
+import { ValueHiddenPipe } from './pipes/value-hidden.pipe';
+import { VoucherComponent } from './pages/voucher/voucher.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -89,12 +97,20 @@ import { MyProductsComponent } from './pages/my-products/my-products.component';
     ListCategoryComponent,
     ListProductVerticalComponent,
     MyProductsComponent,
+    FormDocumentComponent,
+    HeaderTransactionComponent,
+    DetailTransactionComponent,
+    ListTransactionComponent,
+    TransactionComponent,
+    ValueHiddenPipe,
+    VoucherComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,0 +1,20 @@
+<body>
+  <div class="contenedor">
+    <div class="iconos">
+      <app-back [routerLinkBack]="routerLinkBack"></app-back>
+      <div></div>
+    </div>
+    <div class="detalles">
+      <h1>Movimientos</h1>
+      <div class="logo-entidad">
+        <app-entity
+          [entity]="entity"
+        ></app-entity>
+      </div>
+      <div class="account-detail">
+        <p>{{ typeProduct }}</p>
+        <p>{{ accountNumber | valueHidden }}</p>
+      </div>
+    </div>
+  </div>
+</body>

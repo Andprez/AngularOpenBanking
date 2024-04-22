@@ -1,10 +1,8 @@
 <body>
-  <app-header-cbit></app-header-cbit>
+  <app-header-cbit [routerLinkBack]="routes.back"></app-header-cbit>
   <div class="container">
     <div class="search">
-      <app-search
-        (filterEntity)="setFilterProduct($event)"
-      ></app-search>
+      <app-search (onTxtFilter)="setFilterProduct($event)"></app-search>
     </div>
     <div class="contenido">
       <div class="list-category">
@@ -12,8 +10,11 @@
         <app-list-category></app-list-category>
       </div>
       <div class="list-product-vertical">
-        <h5 class="titulo">Cuentas</h5> <!-- TODO: Provisional -->
-        <app-list-product-vertical></app-list-product-vertical>
+        <app-list-product-vertical
+          [clientId]="user.idCliente!"
+          [txtFilter]="filterProduct"
+          (onProductSelected)="setProductSelected($event)"
+        ></app-list-product-vertical>
       </div>
     </div>
   </div>

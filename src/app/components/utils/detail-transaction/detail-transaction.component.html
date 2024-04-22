@@ -1,0 +1,14 @@
+<div class="mov" (click)="setTransactionSelected()">
+  <div class="icono">
+    <i class="bi bi-cart-check"></i>
+  </div>
+  <div class="texto">
+    <p class="name_entity">{{ transaction.destinoPago }}</p>
+    <p class="date">{{ transaction.createdAt }}</p>
+  </div>
+  <div class="monto">
+    <p class="amount_transaction">
+      {{ transaction.montoTransaccion | currency }}
+    </p>
+  </div>
+</div>

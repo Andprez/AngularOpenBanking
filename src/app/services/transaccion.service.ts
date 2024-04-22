@@ -3,22 +3,37 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment.development';
 import { Transaction } from '../models/transaction';
+import { TipoTransaccion } from '../models/tipo-transaccion';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class TransaccionService {
-
-  transferenciasArray: number[]=[1,2.3,4.5,5];
   baseUrl: string = environment.URL_BACKEND;
-  constructor( private http: HttpClient) {
+  constructor(private http: HttpClient) {}
 
-  }
-  getTransaccion(): Observable<Transaction[]>{
-    return this.http.get<Transaction[]>(this.baseUrl+'/transaccion');
+  getTransactions(): Observable<Transaction[]> {
+    let url = this.baseUrl + '/transaccion';
+    return this.http.get<Transaction[]>(url);
   }
 
-  createTransaccion(body: Transaction){
-    return this.http.post(this.baseUrl+'/transaccion',body);
+  getTransactionsByProduct(idProduct: number): Observable<Transaction[]> {
+    let url = this.baseUrl + '/transaccion/product/' + idProduct;
+    return this.http.get<Transaction[]>(url);
+  }
+
+  getTransactionsByClientId(idClient: number): Observable<Transaction[]> {
+    let url = this.baseUrl + '/transaccion/client/' + idClient;
+    return this.http.get<Transaction[]>(url);
+  }
+
+  getTypesTransactions(): Observable<TipoTransaccion[]>{
+    let url = this.baseUrl + '/tipoTransaccion';
+    return this.http.get<TipoTransaccion[]>(url);
+  }
+
+  createTransaccion(body: Transaction) {
+    let url = this.baseUrl + '/transaccion';
+    return this.http.post(url, body);
   }
 }

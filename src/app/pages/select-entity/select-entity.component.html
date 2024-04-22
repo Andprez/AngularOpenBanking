@@ -1,13 +1,19 @@
-<app-header-cbit></app-header-cbit>
+<app-header-cbit
+  [routerLinkBack]="routes.back"
+  [routerLinkHelp]="routes.help"
+></app-header-cbit>
 <div class="container">
   <div class="buscador">
-    <h5 class="text-input">Elige tu banco</h5>
+    <h5 class="text-input">Elige tu entidad</h5>
     <app-search
       [placeholder]="'Escribe el nombre de la entidad...'"
-      (filterEntity)="recibirMensaje($event)"
+      (onTxtFilter)="setFilter($event)"
     />
   </div>
   <div class="lista">
-    <app-grid-entity [filterEntityGrid]="textoRecibido"></app-grid-entity>
+    <app-grid-entity
+      [txtFilter]="txtFilter"
+      (selectedEntity)="selectedEntity($event)"
+    ></app-grid-entity>
   </div>
 </div>

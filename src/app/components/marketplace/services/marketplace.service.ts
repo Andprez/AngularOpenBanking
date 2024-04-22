@@ -12,10 +12,6 @@ export class MarketplaceService {
   // Variables de entorno
   private urlProducts: string = environment.URL_FAKEAPI;
 
-  // Variables
-  private shopingCart?: Product[];
-  private totalValue: number = 0;
-
   constructor(
     private httpClient: HttpClient
   ) { }
@@ -28,21 +24,5 @@ export class MarketplaceService {
   getProduct(id: number): Observable<Product> {
     let url = `${this.urlProducts}/products/${id}`;
     return this.httpClient.get<Product>(url);
-  }
-
-  setShopingCart(products: Product[]) {
-    this.shopingCart = products;
-  }
-
-  getShopingCart(): Product[] {
-    return this.shopingCart!;
-  }
-
-  setTotalValue(value: number) {
-    this.totalValue = value;
-  }
-
-  getTotalValue(): number {
-    return this.totalValue;
   }
 }

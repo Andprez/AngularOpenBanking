@@ -1,4 +1,4 @@
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Input, Output, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-camera',
@@ -13,8 +13,9 @@ export class CameraComponent {
   private canvas!: HTMLCanvasElement;
   private stream!: MediaStream;
   isCameraActive: boolean = false;
-
-  constructor() { }
+  @Output() onPhoto = new EventEmitter<string>();
+  @Input() type: string = '';
+  @Input() icon: string = '';
 
   ngAfterViewInit(): void {
     this.video = this.videoElement!.nativeElement;
@@ -42,7 +43,7 @@ export class CameraComponent {
     this.canvas.height = 300;
     context!.drawImage(this.video, 0, 0, this.canvas.width, this.canvas.height);
     const imageData = this.canvas.toDataURL('image/png');
-    console.log('Imagen capturada:', imageData);
+    this.onPhoto.emit(imageData);
   }
 
   ngOnDestroy(): void {

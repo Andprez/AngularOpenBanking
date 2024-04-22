@@ -1,6 +1,6 @@
-<div class="logo-entity">
+<div class="logo-entity" (click)="onClick()" *ngIf="entity.imagen">
   <img
-    src="../../../../assets/entidadesF/{{ nameImage }}.png"
-    alt="Logo de la entidad {{ nameEntity }}"
+    src="../../../../assets/entidadesF/{{ entity.imagen }}.png"
+    alt="Logo de la entidad {{ entity.nombre }}"
   />
 </div>

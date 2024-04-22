@@ -1,0 +1,17 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  max-width: 95%;
+  gap: 1rem;
+}
+.titulo {
+  font-family: "Open Sans", sans-serif;
+  font-size: 24px;
+  font-weight: regular;
+  text-align: center;
+  margin-top: 2rem;
+  color: white;
+}
+.boton {
+  padding: 2rem auto 1rem auto;
+}

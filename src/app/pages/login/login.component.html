@@ -10,7 +10,9 @@
   <!-- PANTALLA LOGIN -->
 
   <div class="login">
-    <app-header-login></app-header-login>
+    <app-header-login
+      [routerLinkHelp]="routes.help"
+    ></app-header-login>
 
     <!-- FORM LOGIN -->
     <div class="container container-login" *ngIf="!showPasswordForm">
@@ -53,12 +55,11 @@
           [text]="'Continuar'"
           [type]="'submit'"
           [disabled]="formLogin.invalid"
-          [routerLink]="'/'"
         ></app-btn-cbit>
       </form>
 
       <div class="texto-final login">
-        <p>¿No tiene una cuenta? <a>Regístrese</a></p>
+        <p>¿No tiene una cuenta? <a (click)="goToPage(routes.register)">Regístrese</a></p>
       </div>
     </div>
 
@@ -84,9 +85,9 @@
           [text]="'Iniciar sesión'"
           [type]="'submit'"
           [disabled]="formPassword.invalid"
-          [routerLink]="'/'"
         ></app-btn-cbit>
       </form>
     </div>
+    <!-- END FORM PASSWORD -->
   </div>
 </body>

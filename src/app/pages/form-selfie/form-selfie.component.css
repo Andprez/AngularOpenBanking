@@ -2,6 +2,7 @@
   display: flex;
   flex-direction: column;
   max-width: 95%;
+  gap: 1rem;
 }
 .titulo{
   font-family: 'Open Sans', sans-serif;
@@ -11,10 +12,6 @@
   margin-top: 2rem;
   color: white;
 }
-
 .boton{
-  padding: 3rem;
-}
-app-camera{
-  margin: 2rem 0;
+  padding: 2rem;
 }

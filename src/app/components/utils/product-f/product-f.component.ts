@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-product-f',
@@ -6,8 +6,11 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./product-f.component.css'],
 })
 export class ProductFComponent {
-  @Input() img!: string;
-  @Input() tipoProd!: string;
-  @Input() montoProd!: number;
+  @Input() product!: any;
   @Input() mostrarSaldo!: boolean;
+  @Output() onProductSelected = new EventEmitter<any>();
+
+  setProductSelected(){
+    this.onProductSelected.emit(this.product);
+  }
 }

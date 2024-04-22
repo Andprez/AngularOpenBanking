@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-item-registro',
@@ -10,5 +10,9 @@ export class ItemRegistroComponent {
   @Input() cardText!: string;
   @Input() icon!: string;
   @Input() complete!: boolean;
-  @Input() routerLink!: string;
+  @Output() onClickEvent = new EventEmitter();
+
+  click(): void {
+    this.onClickEvent.emit();
+  }
 }

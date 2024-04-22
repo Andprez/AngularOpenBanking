@@ -6,5 +6,5 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./back.component.css'],
 })
 export class BackComponent {
-  @Input() routerLink?: string;
+  @Input() routerLinkBack?: string;
 }

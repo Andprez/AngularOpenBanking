@@ -1,7 +1,8 @@
 <body>
   <app-header-entity
-    [nameImage]="'nubank'"
-    [nameEntity]="'Nubank'"
+    [routerLinkBack]="routes.back"
+    [routerLinkHelp]="routes.help"
+    [entity]="selectedEntity"
   ></app-header-entity>
   <div class="container">
     <div *ngIf="!showAdditionalFields && !showSuccessMessage">
@@ -13,8 +14,11 @@
         <h1>Producto</h1>
         <select formControlName="product" class="product">
           <option value="">Selecciona tu producto</option>
-          <option *ngFor="let product of products" [value]="product">
-            {{ product }}
+          <option
+            *ngFor="let tipo of tiposProducto"
+            [value]="tipo.idTipo_Producto"
+          >
+            {{ tipo.nombreTipo }}
           </option>
         </select>
         <app-btn-cbit
@@ -33,11 +37,11 @@
       >
         <div>
           <label for="formControlName">Número de cuenta</label>
-          <input type="tel" formControlName="numCuenta" />
+          <input type="tel" formControlName="numeroProducto" />
         </div>
         <div>
           <label for="formControlName">Ingresa tu clave</label>
-          <input type="password" formControlName="clave" />
+          <input type="password" formControlName="password" />
         </div>
         <app-btn-cbit
           [type]="'submit'"
@@ -48,12 +52,16 @@
     </div>
 
     <div *ngIf="showSuccessMessage" class="result">
-      <h3>{{ selectedProduct }}</h3>
-      <h1>Agregada Exitosamente</h1>
+      <div class="dataProduct">
+        <h4>Producto:</h4>
+        <h4>{{ selectedProduct?.nombreTipo }} No. {{ formValidation.value.numeroProducto | valueHidden }}</h4>
+      </div>
+      <h1>Agregado exitosamente</h1>
       <app-btn-cbit
         [type]="'button'"
         [text]="'Movimientos'"
         [disabled]="false"
+        (onClickEvent)="goToPage(routes.transactions)"
       ></app-btn-cbit>
     </div>
   </div>

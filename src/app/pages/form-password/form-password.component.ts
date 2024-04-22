@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-form-password',
@@ -11,14 +12,22 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class FormPasswordComponent implements OnInit {
   formPassword!: FormGroup;
+  routes = {
+    back: '/register/phone-confirm',
+    help: '/help',
+    register: '/register',
+  };
 
-  constructor(private formBuilder: FormBuilder) {}
+  constructor(private formBuilder: FormBuilder, private router: Router) {}
+
   ngOnInit(): void {
-    this.formPassword = this.formBuilder.group({
+    this.formPassword = this.formBuilder.group(
+      {
         password: ['', [Validators.required, Validators.minLength(8)]],
         confirmPassword: ['', [Validators.required, Validators.minLength(8)]],
       },
-      { validators: this.comparePasswords });
+      { validators: this.comparePasswords }
+    );
   }
 
   comparePasswords(formPassword: FormGroup) {
@@ -32,6 +41,15 @@ export class FormPasswordComponent implements OnInit {
   }
 
   registrarPassword() {
-    console.log(this.formPassword.value);
+    if (this.formPassword.valid) {
+      console.log('Contraseñas válidas');
+      this.goToPage(this.routes.register);
+    } else {
+      console.log('Contraseñas inválidas');
+    }
+  }
+
+  goToPage(page: string): void {
+    this.router.navigate([page]);
   }
 }
