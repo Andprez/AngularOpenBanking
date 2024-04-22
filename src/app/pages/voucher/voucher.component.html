@@ -1,5 +1,8 @@
 <body>
-  <app-header-cbit></app-header-cbit>
+  <app-header-cbit
+    [routerLinkBack]="routes.back"
+    [routerLinkHelp]="routes.help"
+  ></app-header-cbit>
   <div class="container">
     <div class="header" *ngIf="aprobado">
       <img class="check" src="../../../assets/icon/check.svg" />
@@ -21,7 +24,7 @@
       <div class="campo">
         <p class="nombre-item">Producto de origen</p>
         <p class="valores">
-          {{ typeProduct.nombreTipo }} {{ productF.numeroCuenta | valueHidden }}
+          {{ typeProduct.nombreTipo }} {{ productF.numeroProducto | valueHidden }}
         </p>
       </div>
       <div class="campo">

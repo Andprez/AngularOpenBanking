@@ -9,5 +9,6 @@
   </div>
   <app-list-transaction
     [productId]="product.idProducto!"
+    (onTransactionSelected)="setTransactionSelected($event)"
   ></app-list-transaction>
 </body>

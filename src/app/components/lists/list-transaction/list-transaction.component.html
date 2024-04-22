@@ -1,9 +1,8 @@
 <div class="list">
   <div class="mov" *ngFor="let transaction of transactions">
     <app-detail-transaction
-      [nameEntity]="transaction.destinoPago"
-      [date]="transaction.createdAt"
-      [amount]="transaction.montoTransaccion"
+      [transaction]="transaction"
+      (onTransactionSelected)="setTransactionSelected($event)"
     ></app-detail-transaction>
   </div>
 </div>

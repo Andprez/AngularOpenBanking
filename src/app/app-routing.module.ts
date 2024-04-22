@@ -16,6 +16,7 @@ import { SelectEntityComponent } from './pages/select-entity/select-entity.compo
 import { AddProductComponent } from './pages/add-product/add-product.component';
 import { TransactionComponent } from './pages/transaction/transaction.component';
 import { DetailProductComponent } from './components/marketplace/pages/detail-product/detail-product.component';
+import { VoucherComponent } from './pages/voucher/voucher.component';
 
 const routes: Routes = [
   { path: '', component: ListProductComponent },
@@ -35,6 +36,7 @@ const routes: Routes = [
   { path: 'products/add/select-entity', component: SelectEntityComponent },
   { path: 'products/add/data-product', component: AddProductComponent },
   { path: 'products/transactions', component: TransactionComponent },
+  { path: 'transaction/voucher', component: VoucherComponent },
   { path: '**', redirectTo: '' },
 ];
 

@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { forkJoin } from 'rxjs';
 import { EntidadFinanciera } from 'src/app/models/entidad-financiera';
 import { ProductoF } from 'src/app/models/producto-f';
 import { TipoProductoF } from 'src/app/models/tipo-producto-f';
+import { Transaction } from 'src/app/models/transaction';
 import { EntidadFinancieraService } from 'src/app/services/entidad-financiera.service';
 import { ProductosFService } from 'src/app/services/productos-f.service';
 
@@ -13,7 +14,6 @@ import { ProductosFService } from 'src/app/services/productos-f.service';
   styleUrls: ['./transaction.component.css'],
 })
 export class TransactionComponent implements OnInit {
-
   product: ProductoF = {} as ProductoF;
   typeProduct: TipoProductoF = {} as TipoProductoF;
   entity: EntidadFinanciera = {} as EntidadFinanciera;
@@ -21,11 +21,13 @@ export class TransactionComponent implements OnInit {
   routes = {
     back: '/products',
     products: '/products',
+    voucher: '/transaction/voucher',
   };
 
   constructor(
     private entityFService: EntidadFinancieraService,
-    private productFService: ProductosFService
+    private productFService: ProductosFService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -48,5 +50,14 @@ export class TransactionComponent implements OnInit {
         });
       },
     });
+  }
+
+  setTransactionSelected(transaction: Transaction) {
+    localStorage.setItem('transaction', JSON.stringify(transaction));
+    this.goToPage(this.routes.voucher);
+  }
+
+  goToPage(page: string) {
+    this.router.navigate([page]);
   }
 }
