@@ -3,7 +3,7 @@
     [routerLinkBack]="routes.back"
     [routerLinkHelp]="routes.help"
   ></app-header-cbit>
-  <div class="container">
+  <div class="container" #voucherContent>
     <div class="header" *ngIf="aprobado">
       <img class="check" src="../../../assets/icon/check.svg" />
       <p class="titulo">Pago Exitoso</p>
@@ -51,9 +51,10 @@
         <p class="nombre-item">Fecha y hora</p>
         <p class="valores">{{ transaction.createdAt }}</p>
       </div>
-      <div class="iconShare">
+      <div class="iconShare" (click)="compartirVoucher()">
         <img class="share" src="../../../assets/icon/share.svg" />
       </div>
+
     </div>
   </div>
 </body>
