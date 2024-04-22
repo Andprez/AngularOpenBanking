@@ -59,14 +59,21 @@ export class VoucherComponent implements OnInit {
     });
   }
 
+  descargarVoucher(): void {
+    let imageData = '';
+    html2canvas(this.voucherContent?.nativeElement).then((canvas) => {
+      imageData = canvas.toDataURL('image/png');
+      const a = document.createElement('a');
+      a.href = imageData;
+      a.download = 'voucher.png';
+      a.click();
+    });
+  }
+
   compartirVoucher(): void {
     let imageData = '';
     html2canvas(this.voucherContent?.nativeElement).then((canvas) => {
       imageData = canvas.toDataURL('image/png');
-      // const a = document.createElement('a');
-      // a.href = imageData;
-      // a.download = 'voucher.png';
-      // a.click();
       const arch = fetch(imageData)
         .then((res) => res.blob())
         .then((blob) => {

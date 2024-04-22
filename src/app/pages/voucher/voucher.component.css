@@ -59,6 +59,16 @@ p {
 .resultado{
   margin: 1rem 0 0 0;
 }
-.iconShare{
+.icons{
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+}
+.icon{
+  display: flex;
+  align-items: center;
   cursor: pointer;
+}
+.icon img{
+  height: 2.5rem;
 }
