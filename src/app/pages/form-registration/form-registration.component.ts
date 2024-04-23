@@ -87,16 +87,8 @@ export class FormRegistrationComponent {
       fechaExpedicion: this.formUser.get('docDate')?.value,
       ciudadExpedicion: this.formUser.get('docCity')?.value,
     };
-    this.clientesService.registrarCliente(newCliente).subscribe({
-      next: (response) => {
-        console.log('Cliente registrado');
-        localStorage.setItem('user', JSON.stringify(response));
-        this.goToPage(this.routes.phoneConfirm);
-      },
-      error: (error) => {
-        console.error({ error });
-      },
-    });
+    localStorage.setItem('user', JSON.stringify(newCliente));
+    this.goToPage(this.routes.phoneConfirm);
   }
 
   goToPage(page: string): void {

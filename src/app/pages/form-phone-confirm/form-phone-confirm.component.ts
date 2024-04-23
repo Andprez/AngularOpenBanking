@@ -10,8 +10,9 @@ import { Router } from '@angular/router';
   ],
 })
 export class FormPhoneConfirmComponent implements OnInit {
-  editPhone: boolean = false;
+  user: any = {};
   phone: string = '';
+  editPhone: boolean = false;
   otpGenerated: string = '';
   otpUser: string = '';
   otpError: boolean = false;
@@ -20,26 +21,26 @@ export class FormPhoneConfirmComponent implements OnInit {
     back: '/register/info',
     help: '/help',
     wallet: '/register/wallet',
-  }
+  };
 
   constructor(private router: Router) {}
 
   ngOnInit(): void {
-    this.phone = localStorage.getItem('user')
-      ? JSON.parse(localStorage.getItem('user')!).telefono
-      : '';
+    this.user = localStorage.getItem('user')
+      ? JSON.parse(localStorage.getItem('user')!)
+      : {};
+    this.phone = this.user.telefono;
     this.otpGenerated = this.generateOtp();
     console.log('OTP generado:', this.otpGenerated);
   }
 
   changeEditPhone() {
-    if (!this.editPhone) this.editPhone = true;
-    else {
-      let user = localStorage.getItem('user')
-        ? JSON.parse(localStorage.getItem('user')!)
-        : {};
-      user.telefono = this.phone;
-      localStorage.setItem('user', JSON.stringify(user));
+    if (!this.editPhone) {
+      this.editPhone = true;
+      this.phone = this.user.telefono;
+    } else {
+      this.user.telefono = this.phone;
+      localStorage.setItem('user', JSON.stringify(this.user));
       this.editPhone = false;
     }
   }
