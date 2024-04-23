@@ -12,6 +12,7 @@ export class CameraComponent {
   private video!: HTMLVideoElement;
   private canvas!: HTMLCanvasElement;
   private stream!: MediaStream;
+  imageData: string = '';
   isCameraActive: boolean = false;
   @Output() onPhoto = new EventEmitter<string>();
   @Input() type: string = '';
@@ -42,8 +43,8 @@ export class CameraComponent {
     this.canvas.width = 400;
     this.canvas.height = 300;
     context!.drawImage(this.video, 0, 0, this.canvas.width, this.canvas.height);
-    const imageData = this.canvas.toDataURL('image/png');
-    this.onPhoto.emit(imageData);
+    this.imageData = this.canvas.toDataURL('image/png');
+    this.onPhoto.emit(this.imageData);
   }
 
   ngOnDestroy(): void {

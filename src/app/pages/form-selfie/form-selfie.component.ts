@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ClientesService } from 'src/app/services/clientes.service';
 
 @Component({
   selector: 'app-form-selfie',
@@ -15,7 +16,7 @@ export class FormSelfieComponent implements OnInit {
     register: '/register',
   };
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private clientesService: ClientesService) {}
 
   ngOnInit(): void {
     this.user = localStorage.getItem('user')
@@ -25,9 +26,16 @@ export class FormSelfieComponent implements OnInit {
 
   savePhoto(imageData: string): void {
     this.imageData = imageData;
-    console.log('Imagen guardada:');
-    this.user = { ...this.user, selfie: this.imageData };
-    localStorage.setItem('user', JSON.stringify(this.user));
+    if (this.user.idAnexos) {
+      this.clientesService.updateAnexo(this.user.idAnexos, this.imageData, 'fotoCliente').subscribe({
+        next: (res) => {
+          console.log('Imagen guardada')
+          this.user = { ...this.user, anexos: res };
+          localStorage.setItem('user', JSON.stringify(this.user));
+        },
+        error: (err) => console.log('Error al guardar la imagen:', err),
+      });
+    }
   }
 
   goToPage(page: string): void {

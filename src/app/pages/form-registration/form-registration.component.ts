@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { forkJoin } from 'rxjs';
 import { Ciudad } from 'src/app/models/ciudad';
 import { Cliente } from 'src/app/models/cliente';
 import { TipoIdentificacion } from 'src/app/models/tipo-identificacion';
@@ -33,17 +34,13 @@ export class FormRegistrationComponent {
   ) {}
 
   ngOnInit(): void {
-    this.clientesService.getTiposIdentificacion().subscribe({
-      next: (response) => {
-        this.tiposIdentificacion = response;
+    const reqDocumentTypes = this.clientesService.getTiposIdentificacion();
+    const reqLocalizations = this.localizacionService.getCiudades();
+    forkJoin([reqDocumentTypes, reqLocalizations]).subscribe({
+      next: ([documentTypes, localizations]) => {
+        this.tiposIdentificacion = documentTypes;
+        this.ciudades = localizations;
       },
-      error: (error) => console.error({ error }),
-    });
-    this.localizacionService.getCiudades().subscribe({
-      next: (response) => {
-        this.ciudades = response;
-      },
-      error: (error) => console.error({ error }),
     });
     this.formUser = this.formBuilder.group(
       {

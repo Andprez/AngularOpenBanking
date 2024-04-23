@@ -6,14 +6,14 @@
     <h1 class="titulo">{{ titulo }}</h1>
     <app-indicator></app-indicator>
     <div class="camera">
-      <div *ngIf="!postCard">
+      <div *ngIf="frontDocument">
         <app-camera
           [type]="'document'"
           [icon]="'bi-person-vcard'"
           (onPhoto)="savePhoto($event)"
         ></app-camera>
       </div>
-      <div *ngIf="postCard">
+      <div *ngIf="!frontDocument">
         <app-camera
           [type]="'document'"
           [icon]="'bi-postcard'"
@@ -21,9 +21,12 @@
           ></app-camera>
       </div>
     </div>
+    <div class="alert alert-success text-center" role="alert" *ngIf="showAlert">
+      Imagen guardada correctamente
+    </div>
     <app-btn-cbit
       class="boton"
-      (onClickEvent)="saveData()"
+      (onClickEvent)="continue()"
       [text]="'Continuar'"
       [disabled]="!activeBtn"
     ></app-btn-cbit>
