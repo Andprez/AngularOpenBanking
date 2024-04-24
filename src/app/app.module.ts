@@ -54,6 +54,7 @@ import { ValueHiddenPipe } from './pipes/value-hidden.pipe';
 import { VoucherComponent } from './pages/voucher/voucher.component';
 import { RouterModule } from '@angular/router';
 import { WalletComponent } from './pages/wallet/wallet.component';
+import { IndexComponent } from './pages/index/index.component';
 
 @NgModule({
   declarations: [
@@ -106,6 +107,7 @@ import { WalletComponent } from './pages/wallet/wallet.component';
     ValueHiddenPipe,
     VoucherComponent,
     WalletComponent,
+    IndexComponent,
   ],
   imports: [
     BrowserModule,

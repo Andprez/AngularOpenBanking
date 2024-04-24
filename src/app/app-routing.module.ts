@@ -19,9 +19,11 @@ import { DetailProductComponent } from './components/marketplace/pages/detail-pr
 import { VoucherComponent } from './pages/voucher/voucher.component';
 import { WalletComponent } from './pages/wallet/wallet.component';
 import { TermsAcceptComponent } from './pages/terms-accept/terms-accept.component';
+import { IndexComponent } from './pages/index/index.component';
 
 const routes: Routes = [
-  { path: '', component: ListProductComponent },
+  { path: '', component: IndexComponent },
+  { path: 'ecommerce', component: ListProductComponent },
   { path: 'ecommerce/products/:id', component: DetailProductComponent },
   { path: 'ecommerce/cart', component: CartComponent },
   { path: 'login', component: LoginComponent },
