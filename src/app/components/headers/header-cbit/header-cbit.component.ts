@@ -8,4 +8,6 @@ import { Component, Input } from '@angular/core';
 export class HeaderCbitComponent {
   @Input() routerLinkBack!: string;
   @Input() routerLinkHelp!: string;
+  @Input() showBackButton: boolean = true;
+  @Input() showHelpButton: boolean = true;
 }

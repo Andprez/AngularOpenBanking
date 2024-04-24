@@ -20,6 +20,7 @@ import { VoucherComponent } from './pages/voucher/voucher.component';
 import { WalletComponent } from './pages/wallet/wallet.component';
 import { TermsAcceptComponent } from './pages/terms-accept/terms-accept.component';
 import { IndexComponent } from './pages/index/index.component';
+import { HelpPageComponent } from './pages/help-page/help-page.component';
 
 const routes: Routes = [
   { path: '', component: IndexComponent },
@@ -42,6 +43,7 @@ const routes: Routes = [
   { path: 'products/transactions', component: TransactionComponent },
   { path: 'transaction/voucher', component: VoucherComponent },
   { path: 'wallet', component: WalletComponent },
+  { path: 'help', component: HelpPageComponent },
   { path: '**', redirectTo: '' },
 ];
 

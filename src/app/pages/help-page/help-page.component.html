@@ -1,0 +1,55 @@
+<body>
+  <app-header-cbit
+    [showBackButton]="false"
+    [showHelpButton]="false"
+  ></app-header-cbit>
+  <h3 class="titulo">Ayuda CbitBank</h3>
+  <main class="container">
+    <section>
+      <h2 class="subtitulo">¿Qué es Open Banking?</h2>
+      <p>
+        Open Banking es un sistema que permite a terceros acceder a datos
+        financieros de los usuarios y realizar transacciones a través de APIs
+        abiertas proporcionadas por instituciones bancarias.
+      </p>
+    </section>
+    <section>
+      <h2 class="subtitulo">
+        ¿Cómo utilizar Open Banking para realizar pagos?
+      </h2>
+      <p>Para realizar pagos utilizando Open Banking, sigue estos pasos:</p>
+      <ol>
+        <li>Inicia sesión en la aplicación Open Banking.</li>
+        <li>
+          Conecta tu cuenta bancaria utilizando la función de integración con
+          API bancaria abierta.
+        </li>
+        <li>
+          Selecciona la opción de realizar un pago e ingresa los detalles del
+          beneficiario y el monto.
+        </li>
+        <li>
+          Confirma la transacción y verifica el estado del pago en tu cuenta
+          bancaria.
+        </li>
+      </ol>
+    </section>
+    <section>
+      <h2 class="subtitulo">¿Necesitas ayuda adicional?</h2>
+      <p>
+        Si tienes preguntas o problemas con el uso de Open Banking, no dudes en
+        contactar con nuestro equipo de soporte técnico.
+      </p>
+      <p>
+        Puedes enviar un correo electrónico a
+        <a href="mailto:soporte@openbankingapp.com"
+          >soporte@openbankingapp.com</a
+        >
+        o llamarnos al +123456789.
+      </p>
+    </section>
+  </main>
+  <footer class="footer" (click)="goToPage('')">
+    <p>&copy; 2024 Open Banking App</p>
+  </footer>
+</body>

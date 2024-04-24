@@ -52,9 +52,9 @@ import { ListTransactionComponent } from './components/lists/list-transaction/li
 import { TransactionComponent } from './pages/transaction/transaction.component';
 import { ValueHiddenPipe } from './pipes/value-hidden.pipe';
 import { VoucherComponent } from './pages/voucher/voucher.component';
-import { RouterModule } from '@angular/router';
 import { WalletComponent } from './pages/wallet/wallet.component';
 import { IndexComponent } from './pages/index/index.component';
+import { HelpPageComponent } from './pages/help-page/help-page.component';
 
 @NgModule({
   declarations: [
@@ -108,6 +108,7 @@ import { IndexComponent } from './pages/index/index.component';
     VoucherComponent,
     WalletComponent,
     IndexComponent,
+    HelpPageComponent,
   ],
   imports: [
     BrowserModule,
