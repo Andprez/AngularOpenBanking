@@ -10,9 +10,7 @@
   <!-- PANTALLA LOGIN -->
 
   <div class="login">
-    <app-header-login
-      [routerLinkHelp]="routes.help"
-    ></app-header-login>
+    <app-header-login (onClickEventHelp)="(routes.help)"></app-header-login>
 
     <!-- FORM LOGIN -->
     <div class="container container-login" *ngIf="!showPasswordForm">
@@ -73,7 +71,11 @@
         <div class="campos-labels">
           <label for="password" class="form-label">Ingrese su clave</label>
           <div class="input-group">
-            <input class="form-control" formControlName="password" type="password"/>
+            <input
+              class="form-control"
+              formControlName="password"
+              type="password"
+            />
             <span class="input-group-text"><i class="bi bi-key-fill"></i></span>
           </div>
         </div>

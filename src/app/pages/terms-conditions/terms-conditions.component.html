@@ -1,7 +1,7 @@
 <body>
   <app-header-cbit
-    [routerLinkBack]="routes.back"
-    [routerLinkHelp]="routes.help"
+    (onClickEventBack)="goToPage(routes.back)"
+    (onClickEventHelp)="goToPage(routes.help)"
   ></app-header-cbit>
   <div class="container">
     <p class="tittle-text-1">
@@ -104,5 +104,10 @@
       https://periferiaitgroup.com/
     </p>
   </div>
-  <app-btn-cbit [text]="'Continuar'" [type]="'button'" (onClickEvent)="goToPage(routes.accept)"> </app-btn-cbit>
+  <app-btn-cbit
+    [text]="'Continuar'"
+    [type]="'button'"
+    (onClickEvent)="goToPage(routes.accept)"
+  >
+  </app-btn-cbit>
 </body>

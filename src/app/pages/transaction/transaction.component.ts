@@ -20,7 +20,6 @@ export class TransactionComponent implements OnInit {
 
   routes = {
     back: '/products',
-    products: '/products',
     voucher: '/transaction/voucher',
   };
 

@@ -8,6 +8,7 @@ import { Transaction } from 'src/app/models/transaction';
 import { EstadosService } from 'src/app/services/estados.service';
 import { ProductosFService } from 'src/app/services/productos-f.service';
 import html2canvas from 'html2canvas';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-voucher',
@@ -31,7 +32,8 @@ export class VoucherComponent implements OnInit {
 
   constructor(
     private productFService: ProductosFService,
-    private estadosService: EstadosService
+    private estadosService: EstadosService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -88,5 +90,9 @@ export class VoucherComponent implements OnInit {
           }
         });
     });
+  }
+
+  goToPage(page: string): void {
+    this.router.navigate([page]);
   }
 }

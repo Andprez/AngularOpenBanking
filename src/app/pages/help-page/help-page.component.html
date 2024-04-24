@@ -1,6 +1,6 @@
 <body>
   <app-header-cbit
-    [showBackButton]="false"
+    (onClickEventBack)="goBack()"
     [showHelpButton]="false"
   ></app-header-cbit>
   <h3 class="titulo">Ayuda CbitBank</h3>
@@ -49,7 +49,7 @@
       </p>
     </section>
   </main>
-  <footer class="footer" (click)="goToPage('')">
+  <footer class="footer">
     <p>&copy; 2024 Open Banking App</p>
   </footer>
 </body>

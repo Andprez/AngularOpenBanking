@@ -1,7 +1,7 @@
 <body>
   <app-header-cbit
-    [routerLinkBack]="routes.back"
-    [routerLinkHelp]="routes.help"
+    (onClickEventBack)="goToPage(routes.back)"
+    (onClickEventHelp)="goToPage(routes.help)"
   ></app-header-cbit>
   <div class="contenedor">
     <div class="botones">

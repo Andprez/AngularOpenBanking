@@ -1,7 +1,7 @@
 <body>
   <app-header-cbit
-    [routerLinkBack]="routes.back"
-    [routerLinkHelp]="routes.help"
+    (onClickEventBack)="goToPage(routes.back)"
+    (onClickEventHelp)="goToPage(routes.help)"
   ></app-header-cbit>
   <div class="container" #voucherContent>
     <div class="header" *ngIf="aprobado">
@@ -24,7 +24,8 @@
       <div class="campo">
         <p class="nombre-item">Producto de origen</p>
         <p class="valores">
-          {{ typeProduct.nombreTipo }} {{ productF.numeroProducto | valueHidden }}
+          {{ typeProduct.nombreTipo }}
+          {{ productF.numeroProducto | valueHidden }}
         </p>
       </div>
       <div class="campo">
@@ -59,7 +60,6 @@
           <img class="share" src="../../../assets/icon/share.svg" />
         </div>
       </div>
-
     </div>
   </div>
 </body>

@@ -11,6 +11,10 @@ import { ClientesService } from 'src/app/services/clientes.service';
   ],
 })
 export class FormDocumentComponent implements OnInit {
+  routes = {
+    back: '/register',
+    help: '/help',
+  };
   frontDocument: boolean = true;
   activeBtn: boolean = false;
   showAlert: boolean = false;

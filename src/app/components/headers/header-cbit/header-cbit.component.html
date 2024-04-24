@@ -1,14 +1,14 @@
 <body>
   <div class="container">
     <div class="back">
-      <app-back [routerLink]="routerLinkBack" *ngIf="showBackButton"></app-back>
+      <app-back (onClickEvent)="setClickBack()" *ngIf="showBackButton"></app-back>
     </div>
     <div class="logo">
       <img src="../../../assets/logo.png" alt="Logo Cbitbank" />
     </div>
     <div class="help">
       <app-help
-        [routerLinHelp]="routerLinkHelp"
+        (onClickEvent)="setClickHelp()"
         *ngIf="showHelpButton"
       ></app-help>
     </div>

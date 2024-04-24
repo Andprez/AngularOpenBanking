@@ -1,7 +1,7 @@
 <body>
   <app-header-entity
-    [routerLinkBack]="routes.back"
-    [routerLinkHelp]="routes.help"
+    (onClickEventBack)="goToPage(routes.back)"
+    (onClickEventHelp)="goToPage(routes.help)"
     [entity]="selectedEntity"
   ></app-header-entity>
   <div class="container">
@@ -54,7 +54,10 @@
     <div *ngIf="showSuccessMessage" class="result">
       <div class="dataProduct">
         <h4>Producto:</h4>
-        <h4>{{ selectedProduct?.nombreTipo }} No. {{ formValidation.value.numeroProducto | valueHidden }}</h4>
+        <h4>
+          {{ selectedProduct?.nombreTipo }} No.
+          {{ formValidation.value.numeroProducto | valueHidden }}
+        </h4>
       </div>
       <h1>Agregado exitosamente</h1>
       <app-btn-cbit

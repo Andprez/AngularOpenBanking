@@ -1,5 +1,5 @@
 <body>
-  <app-header-cbit [routerLinkBack]="routes.back"></app-header-cbit>
+  <app-header-cbit (onClickEventBack)="goToPage(routes.back)"></app-header-cbit>
   <div class="container">
     <div class="search">
       <app-search (onTxtFilter)="setFilterProduct($event)"></app-search>

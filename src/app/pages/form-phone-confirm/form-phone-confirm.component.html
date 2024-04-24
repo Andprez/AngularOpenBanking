@@ -1,7 +1,7 @@
 <body>
   <app-header-cbit
-    [routerLinkBack]="routes.back"
-    [routerLinkHelp]="routes.help"
+    (onClickEventBack)="goToPage(routes.back)"
+    (onClickEventHelp)="goToPage(routes.help)"
   ></app-header-cbit>
   <div class="container">
     <h1 class="titulo">Código de verificación</h1>
@@ -34,7 +34,12 @@
       <p>¿No recibió el código?</p>
     </div>
     <div class="texto">
-      <button type="button" class="btn link" (click)="sendSms()" [disabled]="!enabledReenviar">
+      <button
+        type="button"
+        class="btn link"
+        (click)="sendSms()"
+        [disabled]="!enabledReenviar"
+      >
         Volver a enviar código
       </button>
       <p>en {{ tiempoRestante }}s</p>

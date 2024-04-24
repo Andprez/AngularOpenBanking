@@ -3,7 +3,7 @@
     <div class="header">
       <div class="back">
         <div class="back-btn">
-          <app-back [routerLinkBack]="routes.back"></app-back>
+          <app-back (onClickEvent)="goToPage(routes.back)"></app-back>
         </div>
         <div></div>
       </div>

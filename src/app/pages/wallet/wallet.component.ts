@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-wallet',
@@ -19,10 +20,14 @@ export class WalletComponent implements OnInit {
     this.user = JSON.parse(localStorage.getItem('user') || '{}');
   }
 
-  constructor() {}
+  constructor(private router: Router) {}
 
   setProductSelected(product: any) {
     this.productSelected = product;
     console.log(this.productSelected);
+  }
+
+  goToPage(page: string) {
+    this.router.navigate([page]);
   }
 }

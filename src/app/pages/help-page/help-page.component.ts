@@ -1,15 +1,16 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-help-page',
   templateUrl: './help-page.component.html',
-  styleUrls: ['./help-page.component.css']
+  styleUrls: ['./help-page.component.css'],
 })
 export class HelpPageComponent {
-  constructor(private router: Router) {}
+  constructor(private router: Router, private location: Location) {}
 
-  goToPage(page: string){
-    this.router.initialNavigation();
+  goBack() {
+    this.location.back();
   }
 }
