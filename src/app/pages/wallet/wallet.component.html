@@ -1,0 +1,19 @@
+<app-header-cbit
+  [routerLinkBack]="routes.back"
+  [routerLinkHelp]="routes.help"
+></app-header-cbit>
+<body>
+  <div class="container">
+    <div class="encabezado">
+      <h3 class="titulo">Tus productos registrados</h3>
+      <h5>Hola {{ user.primerNombre }}!</h5>
+      <p>Selecciona el producto con el que deseas pagar</p>
+    </div>
+    <div class="list">
+      <app-list-product-vertical
+        [clientId]="user.idCliente"
+        (onProductSelected)="setProductSelected($event)"
+      ></app-list-product-vertical>
+    </div>
+  </div>
+</body>

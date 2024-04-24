@@ -12,7 +12,7 @@ import { ClientesService } from 'src/app/services/clientes.service';
 export class LoginComponent implements OnInit {
   routes = {
     register: '/register',
-    dashboard: '/dashboard',
+    tyc: '/tyc',
     help: '/help',
   };
   formLogin!: FormGroup;
@@ -56,7 +56,7 @@ export class LoginComponent implements OnInit {
       next: (response) => {
         localStorage.setItem('user', JSON.stringify(response.cliente));
         localStorage.setItem('token', response.token);
-        this.goToPage(this.routes.dashboard);
+        this.goToPage(this.routes.tyc);
       },
       error: (error) => {
         console.log(error);

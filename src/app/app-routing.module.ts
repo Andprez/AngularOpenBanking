@@ -17,6 +17,8 @@ import { AddProductComponent } from './pages/add-product/add-product.component';
 import { TransactionComponent } from './pages/transaction/transaction.component';
 import { DetailProductComponent } from './components/marketplace/pages/detail-product/detail-product.component';
 import { VoucherComponent } from './pages/voucher/voucher.component';
+import { WalletComponent } from './pages/wallet/wallet.component';
+import { TermsAcceptComponent } from './pages/terms-accept/terms-accept.component';
 
 const routes: Routes = [
   { path: '', component: ListProductComponent },
@@ -24,7 +26,7 @@ const routes: Routes = [
   { path: 'ecommerce/cart', component: CartComponent },
   { path: 'login', component: LoginComponent },
   { path: 'tyc', component: TermsConditionsComponent },
-  { path: 'tyc/accept', component: TermsConditionsComponent },
+  { path: 'tyc/accept', component: TermsAcceptComponent },
   { path: 'register', component: MenuRegistrationComponent },
   { path: 'register/info', component: FormRegistrationComponent },
   { path: 'register/phone-confirm', component: FormPhoneConfirmComponent },
@@ -37,6 +39,7 @@ const routes: Routes = [
   { path: 'products/add/data-product', component: AddProductComponent },
   { path: 'products/transactions', component: TransactionComponent },
   { path: 'transaction/voucher', component: VoucherComponent },
+  { path: 'wallet', component: WalletComponent },
   { path: '**', redirectTo: '' },
 ];
 

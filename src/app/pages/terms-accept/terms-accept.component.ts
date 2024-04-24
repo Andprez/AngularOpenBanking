@@ -1,29 +1,34 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-terms-accept',
   templateUrl: './terms-accept.component.html',
-  styleUrls: ['./terms-accept.component.css', '../../templates/background2.css']
+  styleUrls: [
+    './terms-accept.component.css',
+    '../../templates/background2.css',
+  ],
 })
-export class TermsAcceptComponent implements OnInit{
+export class TermsAcceptComponent implements OnInit {
   formTerms!: FormGroup;
+  termsAccepted: boolean = false;
+  routes = {
+    back: '/tyc',
+    dashboard: '/dashboard',
+  };
 
-  // @Input() img: string = '../../../assets/daviplata.png';
-  @Input() img: string = '../../../assets/Nequi.jpg';
-  @Input() tipoProd: string = 'Cuenta de ahorros';
-  @Input() montoProd: string = '123456';
-
-  constructor(
-    private formBuilder: FormBuilder
-  ) {}
+  constructor(private formBuilder: FormBuilder, private router: Router) {}
 
   ngOnInit() {
     this.formTerms = this.formBuilder.group({
-      accept: [false, Validators.requiredTrue]
+      accept: [false, Validators.requiredTrue],
     });
   }
   acceptTerms() {
-    console.log('aceptar terminos: ' + this.formTerms.value.accept);
+    this.termsAccepted = this.formTerms.value.accept;
+  }
+  goToPage(page: string) {
+    this.router.navigate([page]);
   }
 }
