@@ -80,7 +80,7 @@ export class FormRegistrationComponent {
       segundoApellido: this.formUser.get('segundoApellido')?.value,
       numeroIdentificacion: this.formUser.get('docNumber')?.value,
       idTipoIdentificacion: this.formUser.get('docType')?.value,
-      telefono: this.formUser.get('phone')?.value,
+      telefono: '+57' + this.formUser.get('phone')?.value,
       email: this.formUser.get('email')?.value,
       direccion: this.formUser.get('address')?.value,
       fechaNacimiento: this.formUser.get('birthDate')?.value,
