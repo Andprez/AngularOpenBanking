@@ -10,6 +10,10 @@ import { environment } from 'src/environments/environment.development';
 export class LocalizacionService {
 
   baseUrl: string = environment.URL_BACKEND;
+  headers: any = {
+    'Content-Type': 'application/json',
+    Authorization: `Bearer ${localStorage.getItem('token')}`,
+  };
 
   constructor(
     private httpClient: HttpClient
@@ -17,6 +21,6 @@ export class LocalizacionService {
 
   getCiudades(): Observable<Ciudad[]> {
     let url = this.baseUrl + '/ciudad';
-    return this.httpClient.get<Ciudad[]>(url);
+    return this.httpClient.get<Ciudad[]>(url, { headers: this.headers });
   }
 }

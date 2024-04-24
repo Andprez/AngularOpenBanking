@@ -27,7 +27,19 @@ export class FormDocumentComponent implements OnInit {
     this.user = localStorage.getItem('user')
       ? JSON.parse(localStorage.getItem('user')!)
       : {};
+    if (this.user) {
+      this.clientesService.getCliente(this.user.idCliente).subscribe({
+        next: (res) => {
+          this.user = res;
+          localStorage.setItem('user', JSON.stringify(this.user));
+        },
+      });
+    }
   }
+
+  // TODO: Ver por qué se guardan los anexos en registros diferentes y no en el mismo registro
+  // TODO: Verificar el indicador
+  // TODO: Verificar los checks del menu-registration
 
   savePhoto(imageData: string): void {
     const idCliente = this.user.idCliente;

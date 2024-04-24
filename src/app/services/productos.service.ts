@@ -11,16 +11,20 @@ import { ProductoF } from '../models/producto-f';
 export class ProductosService {
 
   baseUrl: string = environment.URL_BACKEND;
+  headers: any = {
+    'Content-Type': 'application/json',
+    Authorization: `Bearer ${localStorage.getItem('token')}`,
+  };
 
   constructor(private httpClient: HttpClient) { }
 
   getTypesProduct(): Observable<TipoProductoF[]> {
     let url = `${this.baseUrl}/tipoProducto`;
-    return this.httpClient.get<TipoProductoF[]>(url);
+    return this.httpClient.get<TipoProductoF[]>(url, { headers: this.headers });
   }
 
   getProductById(id: number): Observable<ProductoF> {
     let url = `${this.baseUrl}/producto/${id}`;
-    return this.httpClient.get<ProductoF>(url);
+    return this.httpClient.get<ProductoF>(url, { headers: this.headers });
   }
 }

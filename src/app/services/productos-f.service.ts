@@ -11,36 +11,40 @@ import { Transaction } from '../models/transaction';
 })
 export class ProductosFService {
   baseUrl: string = environment.URL_BACKEND;
+  headers: any = {
+    'Content-Type': 'application/json',
+    Authorization: `Bearer ${localStorage.getItem('token')}`,
+  };
 
   constructor(private httpClient: HttpClient) {}
 
   getTypesProduct(): Observable<TipoProductoF[]> {
     let url = `${this.baseUrl}/tipoProducto`;
-    return this.httpClient.get<TipoProductoF[]>(url);
+    return this.httpClient.get<TipoProductoF[]>(url, { headers: this.headers });
   }
 
   getTypeProductById(typeProductId: number): Observable<TipoProductoF> {
     let url = `${this.baseUrl}/tipoProducto/${typeProductId}`;
-    return this.httpClient.get<TipoProductoF>(url);
+    return this.httpClient.get<TipoProductoF>(url, { headers: this.headers });
   }
 
   createProductF(product: ProductoF): Observable<ProductoF> {
     let url = `${this.baseUrl}/producto`;
-    return this.httpClient.post<ProductoF>(url, product);
+    return this.httpClient.post<ProductoF>(url, product, { headers: this.headers });
   }
 
   getProductById(productId: number): Observable<ProductoF> {
     let url = `${this.baseUrl}/producto/${productId}`;
-    return this.httpClient.get<ProductoF>(url);
+    return this.httpClient.get<ProductoF>(url, { headers: this.headers });
   }
 
   getProductsByClient(clientId: number): Observable<ProductoF[]> {
     let url = `${this.baseUrl}/producto/user/${clientId}`;
-    return this.httpClient.get<ProductoF[]>(url);
+    return this.httpClient.get<ProductoF[]>(url, { headers: this.headers });
   }
 
   getTransactionsByProduct(productId: number): Observable<Transaction[]> {
     let url = `${this.baseUrl}/transaccion/product/${productId}`;
-    return this.httpClient.get<Transaction[]>(url);
+    return this.httpClient.get<Transaction[]>(url, { headers: this.headers });
   }
 }
