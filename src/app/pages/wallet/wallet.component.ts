@@ -13,7 +13,6 @@ export class WalletComponent implements OnInit {
   routes = {
     back: '/',
     help: '/help',
-    addProduct: '/products/add/data-product',
   };
 
   ngOnInit(): void {
@@ -24,7 +23,16 @@ export class WalletComponent implements OnInit {
 
   setProductSelected(product: any) {
     this.productSelected = product;
-    console.log(this.productSelected);
+    if (
+      this.productSelected.entidadF.nombre == 'Bancolombia' ||
+      this.productSelected.entidadF.nombre == 'Daviplata'
+    ) {
+      localStorage.setItem(
+        'productSelected',
+        JSON.stringify(this.productSelected)
+      );
+      this.router.navigate(['/tyc/banks']);
+    }
   }
 
   goToPage(page: string) {

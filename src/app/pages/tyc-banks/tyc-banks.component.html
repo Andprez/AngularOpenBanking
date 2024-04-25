@@ -1,0 +1,161 @@
+<body>
+  <!-- <app-header-cbit
+    (onClickEventBack)="goToPage(routes.back)"
+    (onClickEventHelp)="goToPage(routes.help)"
+  ></app-header-cbit> -->
+  <div class="header">
+    <app-header-entity
+      [entity]="selectedBank"
+      (onClickEventBack)="goToPage(routes.back)"
+      (onClickEventHelp)="goToPage(routes.help)"
+    ></app-header-entity>
+  </div>
+
+  <div class="container">
+    <h2 class="titulo">Términos y condiciones</h2>
+
+    <div class="daviplata" *ngIf="selectedBank.nombre == 'Daviplata'">
+      <p>
+        Bienvenido a nuestra aplicación de prueba. Al utilizar esta aplicación,
+        aceptas cumplir con los siguientes términos y condiciones. Si no estás
+        de acuerdo con alguna parte de estos términos, por favor, no utilices la
+        aplicación.
+      </p>
+
+      <h4>1. Uso del Servicio</h4>
+      <p>
+        1.1 La aplicación de prueba es proporcionada "tal cual" y "según
+        disponibilidad". No nos hacemos responsables de cualquier daño o pérdida
+        derivada del uso de la aplicación.
+      </p>
+      <p>
+        1.2 Al acceder y utilizar la aplicación, aceptas cumplir con todas las
+        leyes y regulaciones aplicables.
+      </p>
+      <p>
+        1.3 Nos reservamos el derecho de modificar, suspender o discontinuar
+        temporal o permanentemente el servicio en cualquier momento sin previo
+        aviso.
+      </p>
+
+      <h4>2. Datos del Usuario</h4>
+      <p>
+        2.1 Al utilizar la aplicación, aceptas proporcionar información precisa
+        y completa.
+      </p>
+      <p>
+        2.2 Nos comprometemos a proteger tu privacidad y a no compartir tus
+        datos personales con terceros sin tu consentimiento explícito.
+      </p>
+      <p>
+        2.3 Podemos recopilar y procesar información personal de acuerdo con
+        nuestra Política de Privacidad. Al utilizar la aplicación, aceptas los
+        términos de nuestra Política de Privacidad.
+      </p>
+
+      <h4>3. Contenido de Terceros</h4>
+      <p>
+        3.1 La aplicación puede incluir enlaces o contenido de terceros para
+        mejorar la experiencia del usuario.
+      </p>
+      <p>
+        3.2 No nos hacemos responsables de la exactitud o disponibilidad de este
+        contenido y no respaldamos ninguna opinión expresada por terceros.
+      </p>
+      <p>
+        3.3 Cualquier transacción o interacción con terceros es únicamente entre
+        tú y el tercero, y no nos hacemos responsables de dichas transacciones o
+        interacciones.
+      </p>
+
+      <h4>4. Modificaciones de Términos</h4>
+      <p>
+        4.1 Nos reservamos el derecho de actualizar o cambiar estos términos en
+        cualquier momento.
+      </p>
+      <p>
+        4.2 Te notificaremos sobre cualquier cambio mediante la publicación de
+        los nuevos términos en la aplicación.
+      </p>
+      <p>
+        4.3 El uso continuado de la aplicación después de dichos cambios
+        constituye tu aceptación de los nuevos términos y condiciones.
+      </p>
+
+      <h4>5. Terminación del Servicio</h4>
+      <p>
+        5.1 Nos reservamos el derecho de suspender o dar por terminado tu acceso
+        a la aplicación en cualquier momento y por cualquier motivo sin previo
+        aviso.
+      </p>
+      <p>
+        5.2 En caso de terminación, seguirás siendo responsable de cualquier
+        obligación pendiente hasta la fecha de terminación.
+      </p>
+      <p>
+        5.3 Al dar por terminado tu acceso, podríamos eliminar o archivar tu
+        información y contenido, y no nos hacemos responsables por dicha
+        eliminación o archivado.
+      </p>
+
+      <h4>6. Responsabilidad</h4>
+      <p>
+        6.1 No nos hacemos responsables de cualquier daño directo, indirecto,
+        incidental, especial o consecuente que resulte del uso o la
+        imposibilidad de uso de la aplicación.
+      </p>
+      <p>
+        6.2 Estos términos y condiciones están sujetos a cambios sin previo
+        aviso.
+      </p>
+
+      <p>Fecha de entrada en vigencia: 01-ene-2025</p>
+    </div>
+
+    <div class="bancolombia" *ngIf="selectedBank.nombre == 'Bancolombia'">
+      <div class="text">
+        <p>
+          Al utilizar esta aplicación, acepta cumplir con los siguientes
+          términos y condiciones. Si no está de acuerdo con alguna parte de
+          estos términos, por favor, no utilice la aplicación.
+        </p>
+      </div>
+      <ul>
+        <li>
+          <p class="form-check-label" for="flexCheckDefault">
+            Los datos de usuario procesados por Bancolombia se rigen por la
+            Política de Privacidad de Bancolombia. <br />
+            <a href="">Más información</a>
+          </p>
+        </li>
+        <li>
+          <p class="form-check-label" for="flexCheckChecked">
+            Los datos de la billetera digital de Bancolombia se rigen por la
+            Política de Privacidad de Bancolombia. <br />
+            <a href="">Más información</a>
+          </p>
+        </li>
+      </ul>
+
+    </div>
+    <div class="form-check">
+      <input
+        class="form-check-input"
+        type="checkbox"
+        id="flexCheckDefault"
+        (change)="validateAccept($event)"
+      />
+      <label class="form-check-label" for="flexCheckDefault">
+        Aceptar términos y condiciones
+      </label>
+    </div>
+
+    <div class="boton">
+      <app-btn-cbit
+        [text]="'Aceptar'"
+        (onClickEvent)="goToPage(routes.otp)"
+        [disabled]="!tycAccept"
+      ></app-btn-cbit>
+    </div>
+  </div>
+</body>

@@ -21,12 +21,14 @@ import { WalletComponent } from './pages/wallet/wallet.component';
 import { TermsAcceptComponent } from './pages/terms-accept/terms-accept.component';
 import { IndexComponent } from './pages/index/index.component';
 import { HelpPageComponent } from './pages/help-page/help-page.component';
+import { TycBanksComponent } from './pages/tyc-banks/tyc-banks.component';
 
 const routes: Routes = [
   { path: '', component: IndexComponent },
   { path: 'ecommerce', component: ListProductComponent },
   { path: 'ecommerce/products/:id', component: DetailProductComponent },
   { path: 'ecommerce/cart', component: CartComponent },
+  { path: 'help', component: HelpPageComponent },
   { path: 'login', component: LoginComponent },
   { path: 'tyc', component: TermsConditionsComponent },
   { path: 'tyc/accept', component: TermsAcceptComponent },
@@ -43,7 +45,7 @@ const routes: Routes = [
   { path: 'products/transactions', component: TransactionComponent },
   { path: 'transaction/voucher', component: VoucherComponent },
   { path: 'wallet', component: WalletComponent },
-  { path: 'help', component: HelpPageComponent },
+  { path: 'tyc/banks', component: TycBanksComponent },
   { path: '**', redirectTo: '' },
 ];
 
