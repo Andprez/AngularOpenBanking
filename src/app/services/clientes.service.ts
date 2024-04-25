@@ -80,6 +80,15 @@ export class ClientesService {
     });
   }
 
+  getTipoIdentificacion(
+    tipoIdentificacionId: number
+  ): Observable<TipoIdentificacion> {
+    let url = this.baseUrl + '/tipoIdentificacion/' + tipoIdentificacionId;
+    return this.httpClient.get<TipoIdentificacion>(url, {
+      headers: this.headers,
+    });
+  }
+
   // #region BILLETERA
 
   getBilletera(cliente: any): Observable<Cliente> {

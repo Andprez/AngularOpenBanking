@@ -56,6 +56,7 @@ import { WalletComponent } from './pages/wallet/wallet.component';
 import { IndexComponent } from './pages/index/index.component';
 import { HelpPageComponent } from './pages/help-page/help-page.component';
 import { TycBanksComponent } from './pages/tyc-banks/tyc-banks.component';
+import { PaymentSummaryComponent } from './pages/payment-summary/payment-summary.component';
 
 @NgModule({
   declarations: [
@@ -111,6 +112,7 @@ import { TycBanksComponent } from './pages/tyc-banks/tyc-banks.component';
     IndexComponent,
     HelpPageComponent,
     TycBanksComponent,
+    PaymentSummaryComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,39 @@
+<body>
+  <app-header-cbit
+    (onClickEventBack)="goToPage(routes.back)"
+    (onClickEventHelp)="goToPage(routes.help)"
+  ></app-header-cbit>
+  <div class="container" #voucherContent>
+    <h2 class="titulo">Resumen de pago</h2>
+    <div class="detalleVoucher">
+      <div class="campo">
+        <p class="nombre-item">IP:</p>
+        <p class="valores">{{ summaryPayment.ip }}</p>
+      </div>
+      <div class="campo">
+        <p class="nombre-item">Tipo de documento:</p>
+        <p class="valores">{{ summaryPayment.tipoDocumento }}</p>
+      </div>
+      <div class="campo">
+        <p class="nombre-item">Número de documento:</p>
+        <p class="valores">{{ summaryPayment.numeroDocumento }}</p>
+      </div>
+      <div class="campo">
+        <p class="nombre-item">Observaciones:</p>
+        <p class="valores">Compra Productos</p>
+      </div>
+      <div class="campo">
+        <p class="nombre-item">Comercio</p>
+        <p class="valores">{{ summaryPayment.comercio }}</p>
+      </div>
+      <div class="campo">
+        <p class="nombre-item">Total a pagar:</p>
+        <p class="total-pagado">{{ summaryPayment.totalPagar | currency }}</p>
+      </div>
+    </div>
+    <p>Confirma los datos antes de continuar</p>
+    <div class="boton">
+      <app-btn-cbit [text]="'Continuar'"></app-btn-cbit>
+    </div>
+  </div>
+</body>
