@@ -57,6 +57,7 @@ import { IndexComponent } from './pages/index/index.component';
 import { HelpPageComponent } from './pages/help-page/help-page.component';
 import { TycBanksComponent } from './pages/tyc-banks/tyc-banks.component';
 import { PaymentSummaryComponent } from './pages/payment-summary/payment-summary.component';
+import { OtpBanksComponent } from './pages/otp-banks/otp-banks.component';
 
 @NgModule({
   declarations: [
@@ -113,6 +114,7 @@ import { PaymentSummaryComponent } from './pages/payment-summary/payment-summary
     HelpPageComponent,
     TycBanksComponent,
     PaymentSummaryComponent,
+    OtpBanksComponent,
   ],
   imports: [
     BrowserModule,

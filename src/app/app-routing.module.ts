@@ -23,6 +23,7 @@ import { IndexComponent } from './pages/index/index.component';
 import { HelpPageComponent } from './pages/help-page/help-page.component';
 import { TycBanksComponent } from './pages/tyc-banks/tyc-banks.component';
 import { PaymentSummaryComponent } from './pages/payment-summary/payment-summary.component';
+import { OtpBanksComponent } from './pages/otp-banks/otp-banks.component';
 
 const routes: Routes = [
   { path: '', component: IndexComponent },
@@ -47,6 +48,7 @@ const routes: Routes = [
   { path: 'transaction/voucher', component: VoucherComponent },
   { path: 'wallet', component: WalletComponent },
   { path: 'summary', component: PaymentSummaryComponent },
+  { path: 'otp/banks', component: OtpBanksComponent },
   { path: 'tyc/banks', component: TycBanksComponent },
   { path: '**', redirectTo: '' },
 ];
