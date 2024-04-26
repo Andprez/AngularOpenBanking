@@ -9,7 +9,6 @@ export class BtnCbitComponent {
   @Input() type: string = 'button';
   @Input() disabled: boolean = false;
   @Input() text!: string;
-  // @Input() routerLink!: string;
   @Output() onClickEvent = new EventEmitter();
 
   click(): void {

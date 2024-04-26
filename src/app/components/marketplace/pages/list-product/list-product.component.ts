@@ -8,18 +8,20 @@ import { MarketplaceService } from '../../services/marketplace.service';
   styleUrls: ['./list-product.component.css'],
 })
 export class ListProductComponent {
+  marketplace: any = {};
   products: Product[] = [];
   carrito: Product[] = [];
   routes = {
     cart: '/ecommerce/cart',
-  }
+  };
 
   constructor(private marketplaceService: MarketplaceService) {}
 
   ngOnInit(): void {
-    localStorage.getItem('cart')
-      ? (this.carrito = JSON.parse(localStorage.getItem('cart')!))
-      : (this.carrito = []);
+    this.marketplace = localStorage.getItem('marketplace')
+      ? JSON.parse(localStorage.getItem('marketplace')!)
+      : {};
+    this.carrito = this.marketplace.cart || [];
 
     this.marketplaceService.getProducts().subscribe({
       next: (data) => {
@@ -37,6 +39,7 @@ export class ListProductComponent {
     if (producto.quantity) return;
     this.carrito.push(producto);
     producto.quantity = 1;
-    localStorage.setItem('cart', JSON.stringify(this.carrito));
+    this.marketplace.cart = this.carrito;
+    localStorage.setItem('marketplace', JSON.stringify(this.marketplace));
   }
 }

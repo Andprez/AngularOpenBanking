@@ -13,6 +13,7 @@ import { ProductosFService } from 'src/app/services/productos-f.service';
   styleUrls: ['./add-product.component.css', '../../templates/background3.css'],
 })
 export class AddProductComponent implements OnInit {
+  shopping: boolean = false;
   user!: Cliente;
   tiposProducto!: TipoProductoF[];
   selectedProduct?: TipoProductoF;
@@ -28,6 +29,7 @@ export class AddProductComponent implements OnInit {
     help: '/help',
     transactions: '/products/transactions',
     dashboard: '/dashboard',
+    wallet: '/wallet',
   };
 
   constructor(
@@ -39,6 +41,9 @@ export class AddProductComponent implements OnInit {
   ngOnInit(): void {
     this.user = JSON.parse(localStorage.getItem('user') || '{}');
     this.selectedEntity = JSON.parse(localStorage.getItem('entity') || '{}');
+    localStorage.getItem('marketplace')
+      ? (this.shopping = true)
+      : (this.shopping = false);
     this.productosFService.getTypesProduct().subscribe({
       next: (result) => {
         this.tiposProducto = result;
@@ -86,6 +91,13 @@ export class AddProductComponent implements OnInit {
         console.error(error);
       },
     });
+  }
+  continue(): void {
+    localStorage.removeItem('entity');
+    localStorage.removeItem('product');
+    this.shopping
+      ? this.goToPage(this.routes.wallet)
+      : this.goToPage(this.routes.transactions);
   }
   goToPage(page: string): void {
     this.router.navigate([page]);

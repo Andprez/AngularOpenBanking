@@ -12,7 +12,7 @@ export class TycBanksComponent implements OnInit {
   routes = {
     back: '/wallet',
     help: '/help',
-    otp: '/register/phone-confirm',
+    summary: '/summary',
   };
 
   constructor(private router: Router) {}

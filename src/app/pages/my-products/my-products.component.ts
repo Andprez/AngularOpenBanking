@@ -7,7 +7,7 @@ import { Cliente } from 'src/app/models/cliente';
   templateUrl: './my-products.component.html',
   styleUrls: ['./my-products.component.css'],
 })
-export class MyProductsComponent implements OnInit{
+export class MyProductsComponent implements OnInit {
   filterProduct: string = '';
   user: Cliente = {} as Cliente;
   routes = {
@@ -20,6 +20,7 @@ export class MyProductsComponent implements OnInit{
 
   ngOnInit(): void {
     this.user = JSON.parse(localStorage.getItem('user') || '{}');
+    localStorage.removeItem('product');
   }
 
   setFilterProduct(filter: string) {

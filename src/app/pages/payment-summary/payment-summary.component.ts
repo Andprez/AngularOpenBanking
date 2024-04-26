@@ -23,8 +23,10 @@ export class PaymentSummaryComponent {
   };
 
   routes = {
-    back: '/products/transactions',
+    back: '/tyc/banks',
     help: '/help',
+    otp: '/otp/banks',
+    voucher: '/transaction/voucher',
   };
 
   constructor(
@@ -36,7 +38,9 @@ export class PaymentSummaryComponent {
 
   ngOnInit(): void {
     this.user = JSON.parse(localStorage.getItem('user') || '{}');
-    const totalValue = localStorage.getItem('totalValue');
+    let marketplace = localStorage.getItem('marketplace')
+      ? JSON.parse(localStorage.getItem('marketplace') || '{}')
+      : null;
     const reqTypeDocument = this.clientesService.getTipoIdentificacion(
       this.user.idTipoIdentificacion
     );
@@ -51,9 +55,7 @@ export class PaymentSummaryComponent {
         this.summaryPayment.numeroDocumento = this.user.numeroIdentificacion;
         this.summaryPayment.observaciones = 'Pago de productos';
         this.summaryPayment.comercio = ecommerces[ecommerceId].nombre!;
-        this.summaryPayment.totalPagar = totalValue
-          ? Number.parseInt(totalValue)
-          : 0;
+        this.summaryPayment.totalPagar = marketplace ? marketplace.total : 0;
       },
     });
   }

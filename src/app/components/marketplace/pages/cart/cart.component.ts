@@ -8,19 +8,21 @@ import { MarketplaceService } from '../../services/marketplace.service';
   styleUrls: ['./cart.component.css'],
 })
 export class CartComponent {
+  marketplace: any = {};
   carrito: any[] = [];
   total: number = 0;
   routes = {
     back: '/ecommerce',
     login: '/login',
-  }
+  };
 
   constructor() {}
 
   ngOnInit(): void {
-    localStorage.getItem('cart')
-      ? (this.carrito = JSON.parse(localStorage.getItem('cart')!))
-      : (this.carrito = []);
+    this.marketplace = localStorage.getItem('marketplace')
+      ? JSON.parse(localStorage.getItem('marketplace')!)
+      : {};
+    this.carrito = this.marketplace.cart || [];
     this.calcularTotal();
   }
   restarCantidad(producto: Product) {
@@ -39,7 +41,8 @@ export class CartComponent {
       if (p.quantity === 0) this.carrito.splice(this.carrito.indexOf(p), 1);
       this.total += p.price * p.quantity;
     });
-    localStorage.setItem('cart', JSON.stringify(this.carrito));
-    localStorage.setItem('totalValue', this.total.toString());
+    this.marketplace.cart = this.carrito;
+    this.marketplace.total = this.total.toString();
+    localStorage.setItem('marketplace', JSON.stringify(this.marketplace));
   }
 }

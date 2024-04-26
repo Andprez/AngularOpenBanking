@@ -1,7 +1,7 @@
 <body>
   <div class="header">
     <app-header-transaction
-      (onClickEventBack)="goBack()"
+      (onClickEventBack)="goToPage(routes.back)"
       [entity]="entity"
       [typeProduct]="typeProduct.nombreTipo"
       [accountNumber]="product.numeroProducto"

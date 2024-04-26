@@ -11,8 +11,9 @@ export class WalletComponent implements OnInit {
   user: any = {};
 
   routes = {
-    back: '/',
+    back: '/ecommerce/cart',
     help: '/help',
+    addProduct: '/products/add/select-entity',
   };
 
   ngOnInit(): void {

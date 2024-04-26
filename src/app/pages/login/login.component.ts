@@ -11,9 +11,10 @@ import { ClientesService } from 'src/app/services/clientes.service';
 })
 export class LoginComponent implements OnInit {
   routes = {
-    register: '/register',
-    tyc: '/tyc',
     help: '/help',
+    tyc: '/tyc',
+    register: '/register',
+    wallet: '/wallet',
   };
   formLogin!: FormGroup;
   formPassword!: FormGroup;
@@ -64,7 +65,9 @@ export class LoginComponent implements OnInit {
                 anexo.frenteDocIdentidad &&
                 anexo.respaldoDocIdentidad
               ) {
-                this.goToPage(this.routes.tyc);
+                localStorage.getItem('marketplace')
+                  ? this.goToPage(this.routes.wallet)
+                  : this.goToPage(this.routes.tyc);
               } else {
                 this.goToPage(this.routes.register);
               }

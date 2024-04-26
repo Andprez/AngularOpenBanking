@@ -5,7 +5,10 @@
 <body>
   <div class="container">
     <div class="encabezado">
-      <h3 class="titulo">Tus productos registrados</h3>
+      <div class="titulo-boton">
+        <h3 class="titulo">Tus productos registrados</h3>
+        <i class="bi bi-plus-circle" (click)="goToPage(routes.addProduct)"></i>
+      </div>
       <h5>Hola {{ user.primerNombre }}!</h5>
       <p>Selecciona el producto con el que deseas pagar</p>
     </div>

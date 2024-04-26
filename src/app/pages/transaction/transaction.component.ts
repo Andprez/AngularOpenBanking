@@ -7,7 +7,6 @@ import { TipoProductoF } from 'src/app/models/tipo-producto-f';
 import { Transaction } from 'src/app/models/transaction';
 import { EntidadFinancieraService } from 'src/app/services/entidad-financiera.service';
 import { ProductosFService } from 'src/app/services/productos-f.service';
-import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-transaction',
@@ -27,12 +26,12 @@ export class TransactionComponent implements OnInit {
   constructor(
     private entityFService: EntidadFinancieraService,
     private productFService: ProductosFService,
-    private location: Location,
     private router: Router
   ) {}
 
   ngOnInit(): void {
     this.product = JSON.parse(localStorage.getItem('product') || '{}');
+    localStorage.removeItem('transaction');
     this.productFService.getProductById(this.product.idProducto!).subscribe({
       next: (product) => {
         this.product = product;
@@ -60,8 +59,5 @@ export class TransactionComponent implements OnInit {
 
   goToPage(page: string) {
     this.router.navigate([page]);
-  }
-  goBack() {
-    this.location.back();
   }
 }

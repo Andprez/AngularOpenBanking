@@ -61,10 +61,8 @@
       </div>
       <h1>Agregado exitosamente</h1>
       <app-btn-cbit
-        [type]="'button'"
-        [text]="'Movimientos'"
-        [disabled]="false"
-        (onClickEvent)="goToPage(routes.transactions)"
+        [text]="shopping ? 'Seguir comprando' : 'Movimientos'"
+        (onClickEvent)="continue()"
       ></app-btn-cbit>
     </div>
   </div>

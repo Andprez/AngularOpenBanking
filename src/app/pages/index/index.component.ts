@@ -14,13 +14,12 @@ export class IndexComponent {
   };
   constructor(private router: Router) {
     let items = [
-      'cart',
-      'totalValue',
+      'marketplace',
       'user',
       'token',
       'product',
       'productSelected',
-      'transaction'
+      'transaction',
     ];
     items.forEach((item) => {
       localStorage.removeItem(item);

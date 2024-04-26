@@ -14,10 +14,10 @@ export class ClientesService {
   constructor(private httpClient: HttpClient) {}
 
   getHeaders(): HttpHeaders {
-    let headers = new HttpHeaders(({
+    let headers = new HttpHeaders({
       'Content-Type': 'application/json',
       Authorization: `Bearer ${localStorage.getItem('token')}`,
-    }));
+    });
     return headers;
   }
 
@@ -30,7 +30,6 @@ export class ClientesService {
 
   registrarCliente(cliente: any): Observable<any> {
     let url = this.baseUrl + '/cliente';
-    console.log(cliente);
     return this.httpClient.post<any>(url, cliente);
   }
 
@@ -48,7 +47,6 @@ export class ClientesService {
 
   getAnexo(anexoId: number): Observable<any> {
     let headers = this.getHeaders();
-    console.log(headers);
     let url = this.baseUrl + '/anexos/' + anexoId;
     return this.httpClient.get<any>(url, { headers: headers });
   }
