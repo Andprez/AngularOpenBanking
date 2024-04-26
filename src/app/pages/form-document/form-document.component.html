@@ -25,11 +25,12 @@
     <div class="alert alert-success text-center" role="alert" *ngIf="showAlert">
       Imagen guardada correctamente
     </div>
-    <app-btn-cbit
-      class="boton"
-      (onClickEvent)="continue()"
-      [text]="'Continuar'"
-      [disabled]="!activeBtn"
-    ></app-btn-cbit>
+    <div class="boton">
+      <app-btn-cbit
+        (onClickEvent)="continue()"
+        [text]="'Continuar'"
+        [disabled]="!activeBtn"
+      ></app-btn-cbit>
+    </div>
   </div>
 </body>

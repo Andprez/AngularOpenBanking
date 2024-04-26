@@ -25,12 +25,12 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private clienteService: ClientesService,
+    private clientesService: ClientesService,
     private router: Router
   ) {}
 
   ngOnInit(): void {
-    this.clienteService.getTiposIdentificacion().subscribe((data) => {
+    this.clientesService.getTiposIdentificacion().subscribe((data) => {
       this.tiposIdentificacion = data;
     });
     this.formLogin = this.formBuilder.group({
@@ -52,11 +52,27 @@ export class LoginComponent implements OnInit {
       numeroIdentificacion: this.formLogin.get('docNumber')?.value,
       password: this.formPassword.get('password')?.value,
     };
-    this.clienteService.loginCliente(body).subscribe({
-      next: (response) => {
-        localStorage.setItem('user', JSON.stringify(response.cliente));
-        localStorage.setItem('token', response.token);
-        this.goToPage(this.routes.tyc);
+    this.clientesService.loginCliente(body).subscribe({
+      next: (data) => {
+        localStorage.setItem('user', JSON.stringify(data.cliente));
+        localStorage.setItem('token', data.token);
+        if (data.cliente.idAnexos) {
+          this.clientesService.getAnexo(data.cliente.idAnexos).subscribe({
+            next: (anexo) => {
+              if (
+                anexo.fotoCliente &&
+                anexo.frenteDocIdentidad &&
+                anexo.respaldoDocIdentidad
+              ) {
+                this.goToPage(this.routes.tyc);
+              } else {
+                this.goToPage(this.routes.register);
+              }
+            },
+          });
+        } else {
+          this.goToPage(this.routes.register);
+        }
       },
       error: (error) => {
         console.log(error);

@@ -10,6 +10,10 @@ import { MarketplaceService } from '../../services/marketplace.service';
 export class CartComponent {
   carrito: any[] = [];
   total: number = 0;
+  routes = {
+    back: '/ecommerce',
+    login: '/login',
+  }
 
   constructor() {}
 

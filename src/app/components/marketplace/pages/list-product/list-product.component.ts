@@ -10,6 +10,9 @@ import { MarketplaceService } from '../../services/marketplace.service';
 export class ListProductComponent {
   products: Product[] = [];
   carrito: Product[] = [];
+  routes = {
+    cart: '/ecommerce/cart',
+  }
 
   constructor(private marketplaceService: MarketplaceService) {}
 

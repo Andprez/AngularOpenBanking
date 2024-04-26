@@ -12,7 +12,20 @@ export class IndexComponent {
     marketplace: '/ecommerce',
     help: '/help',
   };
-  constructor(private router: Router) {}
+  constructor(private router: Router) {
+    let items = [
+      'cart',
+      'totalValue',
+      'user',
+      'token',
+      'product',
+      'productSelected',
+      'transaction'
+    ];
+    items.forEach((item) => {
+      localStorage.removeItem(item);
+    });
+  }
 
   goToPage(page: string): void {
     this.router.navigate([page]);

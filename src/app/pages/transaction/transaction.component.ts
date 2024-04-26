@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { forkJoin } from 'rxjs';
 import { EntidadFinanciera } from 'src/app/models/entidad-financiera';
 import { ProductoF } from 'src/app/models/producto-f';
@@ -7,6 +7,7 @@ import { TipoProductoF } from 'src/app/models/tipo-producto-f';
 import { Transaction } from 'src/app/models/transaction';
 import { EntidadFinancieraService } from 'src/app/services/entidad-financiera.service';
 import { ProductosFService } from 'src/app/services/productos-f.service';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-transaction',
@@ -26,6 +27,7 @@ export class TransactionComponent implements OnInit {
   constructor(
     private entityFService: EntidadFinancieraService,
     private productFService: ProductosFService,
+    private location: Location,
     private router: Router
   ) {}
 
@@ -58,5 +60,8 @@ export class TransactionComponent implements OnInit {
 
   goToPage(page: string) {
     this.router.navigate([page]);
+  }
+  goBack() {
+    this.location.back();
   }
 }
