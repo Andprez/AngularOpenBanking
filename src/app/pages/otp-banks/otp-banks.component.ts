@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subscription, interval } from 'rxjs';
 import { EntidadFinanciera } from 'src/app/models/entidad-financiera';
+import { RequestBanksService } from 'src/app/services/request-banks.service';
 import { TwilioService } from 'src/app/services/twilio.service';
 import { environment } from 'src/environments/environment.development';
 
@@ -11,7 +12,7 @@ import { environment } from 'src/environments/environment.development';
   styleUrls: ['./otp-banks.component.css'],
 })
 export class OtpBanksComponent implements OnInit {
-  entity: EntidadFinanciera = {} as EntidadFinanciera;
+  selectedBank: EntidadFinanciera = {} as EntidadFinanciera;
   user: any = {};
   phone: string = '';
   otpUser: string = '';
@@ -27,7 +28,11 @@ export class OtpBanksComponent implements OnInit {
     voucher: '/transaction/voucher',
   };
 
-  constructor(private router: Router, private twilioService: TwilioService) {}
+  constructor(
+    private router: Router,
+    private banksService: RequestBanksService,
+    private twilioService: TwilioService
+  ) {}
 
   ngOnInit(): void {
     this.twilioActive = environment.TWILIO_ACTIVE;
@@ -35,9 +40,6 @@ export class OtpBanksComponent implements OnInit {
       ? JSON.parse(localStorage.getItem('user')!)
       : {};
     this.phone = this.user.telefono;
-    this.entity = localStorage.getItem('entity')
-      ? JSON.parse(localStorage.getItem('entity')!)
-      : {};
     this.sendSms();
   }
 
@@ -78,6 +80,24 @@ export class OtpBanksComponent implements OnInit {
     } else {
       console.log('OTP incorrecto');
       this.otpError = true;
+    }
+  }
+
+  processPayment() {
+    let product = JSON.parse(localStorage.getItem('productSelected') || '{}');
+    this.selectedBank = product.entidadF;
+
+    switch (this.selectedBank.nombre) {
+      case 'Bancolombia':
+        console.log('Bancolombia');
+        break;
+      case 'Daviplata':
+        this.banksService.dav_getToken().subscribe({
+          next: (response) => {
+            console.log(response);
+          },
+        });
+        break;
     }
   }
 

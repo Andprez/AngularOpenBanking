@@ -20,6 +20,7 @@ export class IndexComponent {
       'product',
       'productSelected',
       'transaction',
+      'processPayment',
     ];
     items.forEach((item) => {
       localStorage.removeItem(item);

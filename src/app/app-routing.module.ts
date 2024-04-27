@@ -50,7 +50,7 @@ const routes: Routes = [
   { path: 'summary', component: PaymentSummaryComponent },
   { path: 'otp/banks', component: OtpBanksComponent },
   { path: 'tyc/banks', component: TycBanksComponent },
-  { path: '**', redirectTo: '' },
+  { path: '**', redirectTo: 'ecommerce' },
 ];
 
 @NgModule({
