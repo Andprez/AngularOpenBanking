@@ -120,7 +120,13 @@ export class PaymentSummaryComponent {
                 next: (res) => {
                   let idSessionToken = res.idSessionToken;
                   processPayment = { ...processPayment, idSessionToken };
-                  // TODO: Servicio no disponible, pendiente validar respuesta
+                  localStorage.setItem(
+                    'processPayment',
+                    JSON.stringify(processPayment)
+                  );
+                  if (idSessionToken) {
+                    this.goToPage(this.routes.otp);
+                  }
                 },
               });
           },

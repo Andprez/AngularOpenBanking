@@ -46,7 +46,8 @@ export class RequestBanksService {
     let body = {
       transferAmount,
       commerceUrl: this.BAN.COMMERCE_URL,
-      transferDescription
+      confirmationURL: this.BAN.CONFIRMATION_URL,
+      transferDescription,
     };
     return this.httpClient.post<any>(url, body, { headers });
   }
@@ -80,6 +81,42 @@ export class RequestBanksService {
       numeroIdentificacion: this.DAV.USER_TEST.numeroDocumento,
       tipoDocumento: this.DAV.USER_TEST.tipoDocumento,
     };
+    return this.httpClient.post<any>(url, body, { headers });
+  }
+
+  dav_generateOtp(
+    typeDocument: string,
+    numberDocument: string
+  ): Observable<any> {
+    let url = `${this.DAV.BASEURL}/generate-otp`;
+    let headers: HttpHeaders = new HttpHeaders({
+      customer_key: this.DAV.CLIENT_ID,
+    });
+    let body = {
+      notificationType: this.DAV.NOTIFICATION_TYPE,
+      typeDocument: this.DAV.USER_TEST.tipoDocumento,
+      numberDocument: this.DAV.USER_TEST.numeroDocumento,
+    };
+    return this.httpClient.post<any>(url, body, { headers });
+  }
+
+  dav_transferConfirm(
+    access_token: string,
+    otp: string,
+    idSessionToken: string
+  ): Observable<any> {
+    let url = `${this.DAV.BASEURL}/transfer-confirm`;
+    let headers: HttpHeaders = new HttpHeaders({
+      Authorization: access_token,
+      customer_key: this.DAV.CLIENT_ID,
+    });
+    let body = {
+      otp,
+      idSessionToken,
+      idComercio: this.DAV.COMERCIO_ID,
+      idTerminal: this.DAV.TERMINAL_ID,
+    };
+    console.log({ service: 'dav_transferConfirm', headers, body });
     return this.httpClient.post<any>(url, body, { headers });
   }
 }

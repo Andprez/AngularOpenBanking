@@ -18,6 +18,8 @@ export class WalletComponent implements OnInit {
 
   ngOnInit(): void {
     this.user = JSON.parse(localStorage.getItem('user') || '{}');
+    localStorage.removeItem('processPayment');
+    localStorage.removeItem('productSelected');
   }
 
   constructor(private router: Router) {}

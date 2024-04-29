@@ -45,6 +45,7 @@ export class TransaccionService {
   }
 
   createTransaccion(body: Transaction): Observable<any> {
+    console.log({ body });
     let headers = this.getHeaders();
     let url = this.baseUrl + '/transaccion';
     return this.http.post<any>(url, body, { headers: headers });
