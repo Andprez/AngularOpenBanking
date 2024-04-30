@@ -1,6 +1,6 @@
 .indicadores-avance {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   column-gap: 0.5rem;
   max-width: 80%;
   margin: 0 auto;

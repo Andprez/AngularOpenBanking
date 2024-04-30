@@ -1,9 +1,9 @@
 <app-header-marketplace></app-header-marketplace>
-<a routerLink="/" class="atras">
+<a routerLink="{{ routes.back }}" class="atras">
   <i class="bi bi-arrow-left"></i>
 </a>
 <h2 class="titulo my-3">Detalle del producto</h2>
-<div class="card container mb-3 ">
+<div class="card container mb-3">
   <div class="row">
     <div class="col-12 col-md-6 col-lg-4 imagen">
       <img
@@ -32,9 +32,13 @@
               aria-valuemin="0"
               aria-valuemax="100"
             >
-              <div class="progress-bar" [ngStyle]="{ 'width': rating + '%' }">{{ rating }}%</div>
+              <div class="progress-bar" [ngStyle]="{ width: rating + '%' }">
+                {{ rating }}%
+              </div>
             </div>
-            <p class="votaciones">({{ productDetail?.rating?.count }} votaciones)</p>
+            <p class="votaciones">
+              ({{ productDetail?.rating?.count }} votaciones)
+            </p>
           </li>
         </ul>
       </div>

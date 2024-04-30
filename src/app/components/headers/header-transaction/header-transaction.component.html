@@ -1,7 +1,7 @@
 <body>
   <div class="contenedor">
     <div class="iconos">
-      <app-back [routerLinkBack]="routerLinkBack"></app-back>
+      <app-back (onClickEvent)="setClickBack()"></app-back>
       <div></div>
     </div>
     <div class="detalles">

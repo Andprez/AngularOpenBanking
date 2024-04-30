@@ -52,7 +52,14 @@ import { ListTransactionComponent } from './components/lists/list-transaction/li
 import { TransactionComponent } from './pages/transaction/transaction.component';
 import { ValueHiddenPipe } from './pipes/value-hidden.pipe';
 import { VoucherComponent } from './pages/voucher/voucher.component';
-import { RouterModule } from '@angular/router';
+import { WalletComponent } from './pages/wallet/wallet.component';
+import { IndexComponent } from './pages/index/index.component';
+import { HelpPageComponent } from './pages/help-page/help-page.component';
+import { TycBanksComponent } from './pages/tyc-banks/tyc-banks.component';
+import { PaymentSummaryComponent } from './pages/payment-summary/payment-summary.component';
+import { OtpBanksComponent } from './pages/otp-banks/otp-banks.component';
+import { FilterCategoryPipe } from './pipes/filter-category.pipe';
+import { FilterProductByEntityFPipe } from './pipes/filter-product-by-entity-f.pipe';
 
 @NgModule({
   declarations: [
@@ -104,6 +111,14 @@ import { RouterModule } from '@angular/router';
     TransactionComponent,
     ValueHiddenPipe,
     VoucherComponent,
+    WalletComponent,
+    IndexComponent,
+    HelpPageComponent,
+    TycBanksComponent,
+    PaymentSummaryComponent,
+    OtpBanksComponent,
+    FilterCategoryPipe,
+    FilterProductByEntityFPipe,
   ],
   imports: [
     BrowserModule,

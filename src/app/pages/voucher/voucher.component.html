@@ -1,9 +1,9 @@
 <body>
   <app-header-cbit
-    [routerLinkBack]="routes.back"
-    [routerLinkHelp]="routes.help"
+    (onClickEventBack)="goToPage(routes.back)"
+    (onClickEventHelp)="goToPage(routes.help)"
   ></app-header-cbit>
-  <div class="container">
+  <div class="container" #voucherContent>
     <div class="header" *ngIf="aprobado">
       <img class="check" src="../../../assets/icon/check.svg" />
       <p class="titulo">Pago Exitoso</p>
@@ -24,7 +24,8 @@
       <div class="campo">
         <p class="nombre-item">Producto de origen</p>
         <p class="valores">
-          {{ typeProduct.nombreTipo }} {{ productF.numeroProducto | valueHidden }}
+          {{ typeProduct.nombreTipo }}
+          {{ productF.numeroProducto | valueHidden }}
         </p>
       </div>
       <div class="campo">
@@ -51,8 +52,13 @@
         <p class="nombre-item">Fecha y hora</p>
         <p class="valores">{{ transaction.createdAt }}</p>
       </div>
-      <div class="iconShare">
-        <img class="share" src="../../../assets/icon/share.svg" />
+      <div class="icons">
+        <div class="icon" (click)="descargarVoucher()">
+          <img class="download" src="../../../assets/icon/downarrow.svg" />
+        </div>
+        <div class="icon" (click)="compartirVoucher()">
+          <img class="share" src="../../../assets/icon/share.svg" />
+        </div>
       </div>
     </div>
   </div>

@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-header-cbit',
@@ -6,6 +6,15 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./header-cbit.component.css']
 })
 export class HeaderCbitComponent {
-  @Input() routerLinkBack!: string;
-  @Input() routerLinkHelp!: string;
+  @Input() showBackButton: boolean = true;
+  @Input() showHelpButton: boolean = true;
+  @Output() onClickEventBack = new EventEmitter();
+  @Output() onClickEventHelp = new EventEmitter();
+
+  setClickBack(): void {
+    this.onClickEventBack.emit();
+  }
+  setClickHelp(): void {
+    this.onClickEventHelp.emit();
+  }
 }

@@ -12,6 +12,10 @@ export class DetailProductComponent implements OnInit{
   productId!: number;
   productDetail?: Product;
   rating?: number;
+  routes = {
+    back: '/ecommerce',
+    login: '/login',
+  }
 
   constructor(
     private route: ActivatedRoute,

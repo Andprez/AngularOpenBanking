@@ -1,18 +1,21 @@
 <body>
-  <app-header-cbit [routerLinkBack]="routes.back"></app-header-cbit>
+  <app-header-cbit (onClickEventBack)="goToPage(routes.back)"></app-header-cbit>
   <div class="container">
     <div class="search">
-      <app-search (onTxtFilter)="setFilterProduct($event)"></app-search>
+      <app-search (onTxtFilter)="setTxTFilterProduct($event)"></app-search>
     </div>
     <div class="contenido">
       <div class="list-category">
         <h5 class="titulo">Categorías</h5>
-        <app-list-category></app-list-category>
+        <app-list-category
+          (onCategorySelected)="setCategorySelected($event)"
+        ></app-list-category>
       </div>
       <div class="list-product-vertical">
         <app-list-product-vertical
           [clientId]="user.idCliente!"
-          [txtFilter]="filterProduct"
+          [txtFilterProduct]="txtFilterProduct"
+          [categorySelected]="categorySelected"
           (onProductSelected)="setProductSelected($event)"
         ></app-list-product-vertical>
       </div>

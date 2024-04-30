@@ -1,7 +1,7 @@
 <body>
   <app-header-cbit
-    [routerLinkBack]="routes.back"
-    [routerLinkHelp]="routes.help"
+    (onClickEventBack)="goToPage(routes.back)"
+    (onClickEventHelp)="goToPage(routes.help)"
   ></app-header-cbit>
   <div class="container">
     <h1 class="titulo">Tome una foto de su rostro</h1>
@@ -13,12 +13,15 @@
         (onPhoto)="savePhoto($event)"
       ></app-camera>
     </div>
+    <div class="alert alert-success text-center" role="alert" *ngIf="showAlert">
+      Imagen guardada correctamente
+    </div>
     <div class="boton">
       <app-btn-cbit
         [text]="'Continuar'"
         [type]="'button'"
         [disabled]="imageData == ''"
-        (onClickEvent)="goToPage(routes.register)"
+        (onClickEvent)="continue()"
       >
       </app-btn-cbit>
     </div>

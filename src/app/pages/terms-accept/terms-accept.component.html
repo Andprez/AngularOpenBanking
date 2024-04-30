@@ -2,7 +2,9 @@
   <div class="container">
     <div class="header">
       <div class="back">
-        <app-back></app-back>
+        <div class="back-btn">
+          <app-back (onClickEvent)="goToPage(routes.back)"></app-back>
+        </div>
         <div></div>
       </div>
       <div class="logos">
@@ -35,7 +37,7 @@
           </div>
           <p>
             Autorizo el uso de mis datos sensibles para las finalidades aqui
-            descristas
+            descritas
           </p>
         </li>
         <li>
@@ -43,7 +45,7 @@
             <i class="bi bi-caret-right-fill"></i>
           </div>
           <p>
-            Conozco y acepto el reglamento y las condiciones de uso de CBITBannk
+            Conozco y acepto el reglamento y las condiciones de uso de CBITBank
           </p>
         </li>
       </ul>
@@ -54,16 +56,20 @@
           type="checkbox"
           formControlName="accept"
           class="check"
+          id="check"
         />
-        <!-- <label for="">Ok</label> -->
-        <label
-          >Declaro que he leido y autorizo los permisos y documentos decritos
+        <label for="check"
+          >Declaro que he leido y autorizo los permisos y documentos descritos
           anteriormente.</label
         >
       </div>
 
       <div class="boton">
-        <app-btn-cbit [text]="'Continuar'" [type]="'submit'" [routerLink]="''">
+        <app-btn-cbit
+          [text]="'Continuar'"
+          [disabled]="!termsAccepted"
+          (onClickEvent)="goToPage(routes.dashboard)"
+        >
         </app-btn-cbit>
       </div>
     </form>

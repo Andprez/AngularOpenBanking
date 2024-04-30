@@ -7,14 +7,15 @@ import { ClientesService } from 'src/app/services/clientes.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css', '../../templates/background2.css']
+  styleUrls: ['./login.component.css', '../../templates/background2.css'],
 })
-export class LoginComponent implements OnInit{
+export class LoginComponent implements OnInit {
   routes = {
+    help: '/help',
+    tyc: '/tyc',
     register: '/register',
-    dashboard: '/dashboard',
-    help: '/help'
-  }
+    wallet: '/wallet',
+  };
   formLogin!: FormGroup;
   formPassword!: FormGroup;
 
@@ -25,20 +26,20 @@ export class LoginComponent implements OnInit{
 
   constructor(
     private formBuilder: FormBuilder,
-    private clienteService: ClientesService,
+    private clientesService: ClientesService,
     private router: Router
   ) {}
 
   ngOnInit(): void {
-    this.clienteService.getTiposIdentificacion().subscribe((data) => {
+    this.clientesService.getTiposIdentificacion().subscribe((data) => {
       this.tiposIdentificacion = data;
     });
     this.formLogin = this.formBuilder.group({
       docType: ['', Validators.required],
-      docNumber: ['', Validators.required]
+      docNumber: ['', Validators.required],
     });
     this.formPassword = this.formBuilder.group({
-      password: ['', [Validators.required, Validators.minLength(8)]]
+      password: ['', [Validators.required, Validators.minLength(8)]],
     });
   }
 
@@ -47,16 +48,34 @@ export class LoginComponent implements OnInit{
   }
 
   login(): void {
-    let cliente = {
-      tipoIdentificacion: this.formLogin.get('docType')?.value,
+    let body = {
+      idTipoIdentificacion: this.formLogin.get('docType')?.value,
       numeroIdentificacion: this.formLogin.get('docNumber')?.value,
+      password: this.formPassword.get('password')?.value,
     };
-    // TODO: Provisional, mientras se implementa la autenticación
-    this.clienteService.getBilletera(cliente).subscribe({
-      next: (response) => {
-        this.clienteExiste = true;
-        localStorage.setItem('user', JSON.stringify(response));
-        this.goToPage(this.routes.dashboard);
+    this.clientesService.loginCliente(body).subscribe({
+      next: (data) => {
+        localStorage.setItem('user', JSON.stringify(data.cliente));
+        localStorage.setItem('token', data.token);
+        if (data.cliente.idAnexos) {
+          this.clientesService.getAnexo(data.cliente.idAnexos).subscribe({
+            next: (anexo) => {
+              if (
+                anexo.fotoCliente &&
+                anexo.frenteDocIdentidad &&
+                anexo.respaldoDocIdentidad
+              ) {
+                localStorage.getItem('marketplace')
+                  ? this.goToPage(this.routes.wallet)
+                  : this.goToPage(this.routes.tyc);
+              } else {
+                this.goToPage(this.routes.register);
+              }
+            },
+          });
+        } else {
+          this.goToPage(this.routes.register);
+        }
       },
       error: (error) => {
         console.log(error);
@@ -67,9 +86,12 @@ export class LoginComponent implements OnInit{
       },
     });
   }
+  registrarse(): void {
+    localStorage.removeItem('user');
+    this.goToPage(this.routes.register);
+  }
 
   goToPage(page: string): void {
     this.router.navigate([page]);
   }
-
 }

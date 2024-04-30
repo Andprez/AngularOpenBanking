@@ -11,7 +11,7 @@
 
   <div class="login">
     <app-header-login
-      [routerLinkHelp]="routes.help"
+      (onClickEventHelp)="goToPage(routes.help)"
     ></app-header-login>
 
     <!-- FORM LOGIN -->
@@ -59,7 +59,7 @@
       </form>
 
       <div class="texto-final login">
-        <p>¿No tiene una cuenta? <a (click)="goToPage(routes.register)">Regístrese</a></p>
+        <p>¿No tiene una cuenta? <a (click)="registrarse()">Regístrese</a></p>
       </div>
     </div>
 
@@ -73,7 +73,11 @@
         <div class="campos-labels">
           <label for="password" class="form-label">Ingrese su clave</label>
           <div class="input-group">
-            <input class="form-control" formControlName="password" type="password"/>
+            <input
+              class="form-control"
+              formControlName="password"
+              type="password"
+            />
             <span class="input-group-text"><i class="bi bi-key-fill"></i></span>
           </div>
         </div>

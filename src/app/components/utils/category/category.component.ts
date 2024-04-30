@@ -1,4 +1,5 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { TipoProductoF } from 'src/app/models/tipo-producto-f';
 
 @Component({
   selector: 'app-category',
@@ -6,6 +7,10 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./category.component.css'],
 })
 export class CategoryComponent {
-  @Input() nameImage!: string;
-  @Input() nameCategory!: string;
+  @Input() category: TipoProductoF = {} as TipoProductoF;
+  @Output() onCategorySelected = new EventEmitter<TipoProductoF>();
+
+  setCategorySelected() {
+    this.onCategorySelected.emit(this.category);
+  }
 }

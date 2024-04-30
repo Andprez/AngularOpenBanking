@@ -1,5 +1,8 @@
 <body>
-  <app-header-cbit [routerLinkBack]="routes.back" [routerLinkHelp]="routes.help"></app-header-cbit>
+  <app-header-cbit
+    (onClickEventBack)="goToPage(routes.back)"
+    (onClickEventHelp)="goToPage(routes.help)"
+  ></app-header-cbit>
   <div class="container text-center">
     <h1 class="titulo">Ingrese sus datos</h1>
     <app-indicator></app-indicator>
@@ -110,12 +113,15 @@
 
       <div class="campos-labels">
         <label for="phone" class="form-label">Número de celular</label>
-        <input
-          type="tel"
-          class="form-control"
-          id="phone"
-          formControlName="phone"
-        />
+        <div class="input-group">
+          <span class="input-group-text" id="basic-addon1">+57</span>
+          <input
+            type="tel"
+            class="form-control"
+            id="phone"
+            formControlName="phone"
+          />
+        </div>
       </div>
 
       <div class="campos-labels">

@@ -5,10 +5,7 @@ import { EntidadFinanciera } from '../models/entidad-financiera';
   name: 'filterEntityF',
 })
 export class FilterEntityFPipe implements PipeTransform {
-  transform(value: EntidadFinanciera[], arg: string): any {
-    // if (!Array.isArray(value)) {
-    //   return value;
-    // }
+  transform(value: EntidadFinanciera[], arg: string = ''): any {
     if (arg === '' || arg.length < 2) return value;
     const resultEntities = [];
     for (const entity of value) {

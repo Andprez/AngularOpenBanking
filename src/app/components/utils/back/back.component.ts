@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'app-back',
@@ -6,5 +6,9 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./back.component.css'],
 })
 export class BackComponent {
-  @Input() routerLinkBack?: string;
+  @Output() onClickEvent = new EventEmitter();
+
+  click(): void {
+    this.onClickEvent.emit();
+  }
 }

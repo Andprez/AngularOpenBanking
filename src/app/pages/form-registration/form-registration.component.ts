@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { forkJoin } from 'rxjs';
 import { Ciudad } from 'src/app/models/ciudad';
 import { Cliente } from 'src/app/models/cliente';
 import { TipoIdentificacion } from 'src/app/models/tipo-identificacion';
@@ -33,17 +34,13 @@ export class FormRegistrationComponent {
   ) {}
 
   ngOnInit(): void {
-    this.clientesService.getTiposIdentificacion().subscribe({
-      next: (response) => {
-        this.tiposIdentificacion = response;
+    const reqDocumentTypes = this.clientesService.getTiposIdentificacion();
+    const reqLocalizations = this.localizacionService.getCiudades();
+    forkJoin([reqDocumentTypes, reqLocalizations]).subscribe({
+      next: ([documentTypes, localizations]) => {
+        this.tiposIdentificacion = documentTypes;
+        this.ciudades = localizations;
       },
-      error: (error) => console.error({ error }),
-    });
-    this.localizacionService.getCiudades().subscribe({
-      next: (response) => {
-        this.ciudades = response;
-      },
-      error: (error) => console.error({ error }),
     });
     this.formUser = this.formBuilder.group(
       {
@@ -83,23 +80,15 @@ export class FormRegistrationComponent {
       segundoApellido: this.formUser.get('segundoApellido')?.value,
       numeroIdentificacion: this.formUser.get('docNumber')?.value,
       idTipoIdentificacion: this.formUser.get('docType')?.value,
-      telefono: this.formUser.get('phone')?.value,
+      telefono: '+57' + this.formUser.get('phone')?.value,
       email: this.formUser.get('email')?.value,
       direccion: this.formUser.get('address')?.value,
       fechaNacimiento: this.formUser.get('birthDate')?.value,
       fechaExpedicion: this.formUser.get('docDate')?.value,
       ciudadExpedicion: this.formUser.get('docCity')?.value,
     };
-    this.clientesService.registrarCliente(newCliente).subscribe({
-      next: (response) => {
-        console.log('Cliente registrado');
-        localStorage.setItem('user', JSON.stringify(response));
-        this.goToPage(this.routes.phoneConfirm);
-      },
-      error: (error) => {
-        console.error({ error });
-      },
-    });
+    localStorage.setItem('user', JSON.stringify(newCliente));
+    this.goToPage(this.routes.phoneConfirm);
   }
 
   goToPage(page: string): void {

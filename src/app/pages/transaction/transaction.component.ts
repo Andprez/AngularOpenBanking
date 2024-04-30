@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { forkJoin } from 'rxjs';
 import { EntidadFinanciera } from 'src/app/models/entidad-financiera';
 import { ProductoF } from 'src/app/models/producto-f';
@@ -20,7 +20,6 @@ export class TransactionComponent implements OnInit {
 
   routes = {
     back: '/products',
-    products: '/products',
     voucher: '/transaction/voucher',
   };
 
@@ -32,6 +31,7 @@ export class TransactionComponent implements OnInit {
 
   ngOnInit(): void {
     this.product = JSON.parse(localStorage.getItem('product') || '{}');
+    localStorage.removeItem('transaction');
     this.productFService.getProductById(this.product.idProducto!).subscribe({
       next: (product) => {
         this.product = product;

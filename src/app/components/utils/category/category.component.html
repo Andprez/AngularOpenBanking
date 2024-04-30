@@ -1,10 +1,10 @@
-<div class="card">
+<div class="card" (click)="setCategorySelected()">
   <img
-    src="../../../../assets/categorias/{{ nameImage }}.svg"
+    src="../../../../assets/categorias/{{ category.nombreTipo }}.svg"
     class="card-img-top"
-    alt="Imagen de la categoría {{ nameImage }}"
+    alt="Imagen de la categoría {{ category.nombreTipo }}"
   />
   <div class="card-body">
-    <p class="card-text">{{ nameCategory }}</p>
+    <p class="card-text">{{ category.nombreTipo }}</p>
   </div>
 </div>

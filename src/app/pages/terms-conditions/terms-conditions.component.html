@@ -1,7 +1,12 @@
 <body>
-  <app-header-cbit></app-header-cbit>
+  <app-header-cbit
+    (onClickEventBack)="goToPage(routes.back)"
+    (onClickEventHelp)="goToPage(routes.help)"
+  ></app-header-cbit>
   <div class="container">
-    <p class="tittle-text-1">ACEPTACIÓN TÉRMINOS Y CONDICIONES TRANSFERENCIAS<br /></p>
+    <p class="tittle-text-1">
+      ACEPTACIÓN TÉRMINOS Y CONDICIONES TRANSFERENCIAS<br />
+    </p>
     <p>CONDICIONES ESPECÍFICAS PARA ENVIAR DINERO</p>
     <ol class="text-1">
       <li>
@@ -102,6 +107,7 @@
   <app-btn-cbit
     [text]="'Continuar'"
     [type]="'button'"
+    (onClickEvent)="goToPage(routes.accept)"
   >
   </app-btn-cbit>
 </body>

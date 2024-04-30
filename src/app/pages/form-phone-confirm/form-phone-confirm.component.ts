@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Subscription, interval } from 'rxjs';
+import { TwilioService } from 'src/app/services/twilio.service';
+import { environment } from 'src/environments/environment.development';
 
 @Component({
   selector: 'app-form-phone-confirm',
@@ -10,8 +13,13 @@ import { Router } from '@angular/router';
   ],
 })
 export class FormPhoneConfirmComponent implements OnInit {
-  editPhone: boolean = false;
+  twilioActive!: boolean;
+  tiempoRestante!: number;
+  suscripcionContador!: Subscription;
+  user: any = {};
   phone: string = '';
+  editPhone: boolean = false;
+  enabledReenviar = true;
   otpGenerated: string = '';
   otpUser: string = '';
   otpError: boolean = false;
@@ -20,26 +28,28 @@ export class FormPhoneConfirmComponent implements OnInit {
     back: '/register/info',
     help: '/help',
     wallet: '/register/wallet',
-  }
+  };
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private twilioService: TwilioService) {}
 
   ngOnInit(): void {
-    this.phone = localStorage.getItem('user')
-      ? JSON.parse(localStorage.getItem('user')!).telefono
-      : '';
+    this.twilioActive = environment.TWILIO_ACTIVE;
+    this.user = localStorage.getItem('user')
+      ? JSON.parse(localStorage.getItem('user')!)
+      : {};
+    this.phone = this.user.telefono;
     this.otpGenerated = this.generateOtp();
-    console.log('OTP generado:', this.otpGenerated);
+    console.log(this.otpGenerated);
+    this.sendSms();
   }
 
   changeEditPhone() {
-    if (!this.editPhone) this.editPhone = true;
-    else {
-      let user = localStorage.getItem('user')
-        ? JSON.parse(localStorage.getItem('user')!)
-        : {};
-      user.telefono = this.phone;
-      localStorage.setItem('user', JSON.stringify(user));
+    if (!this.editPhone) {
+      this.editPhone = true;
+      this.phone = this.user.telefono;
+    } else {
+      this.user.telefono = this.phone;
+      localStorage.setItem('user', JSON.stringify(this.user));
       this.editPhone = false;
     }
   }
@@ -59,6 +69,28 @@ export class FormPhoneConfirmComponent implements OnInit {
     } else {
       console.log('OTP incorrecto');
       this.otpError = true;
+    }
+  }
+
+  sendSms() {
+    this.tiempoRestante = 30;
+    const contador = interval(1000);
+    this.enabledReenviar = false;
+    this.suscripcionContador = contador.subscribe(() => {
+      this.tiempoRestante--;
+      if (this.tiempoRestante <= 0) {
+        this.enabledReenviar = true;
+        this.tiempoRestante = 0;
+        this.suscripcionContador.unsubscribe();
+      }
+    });
+
+    if (this.twilioActive) {
+      console.log('Enviando Mensaje');
+      this.twilioService.sendSMS(
+        this.phone,
+        `Tu código de verificación es: ${this.otpGenerated}`
+      );
     }
   }
 

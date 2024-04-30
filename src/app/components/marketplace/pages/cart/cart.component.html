@@ -1,5 +1,5 @@
 <app-header-marketplace></app-header-marketplace>
-<a routerLink="/" class="atras">
+<a routerLink="{{ routes.back }}" class="atras">
   <i class="bi bi-arrow-left"></i>
 </a>
 <div class="container">
@@ -38,6 +38,12 @@
     <div>
       <p class="text-center">Total: {{ total | currency }}</p>
     </div>
-    <button class="btn btn-success" [disabled]="!total" routerLink="/login">Pagar</button>
+    <button
+      class="btn btn-success"
+      [disabled]="!total"
+      routerLink="{{ routes.login }}"
+    >
+      Pagar
+    </button>
   </div>
 </div>

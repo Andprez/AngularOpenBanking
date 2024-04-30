@@ -6,5 +6,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./header-marketplace.component.css']
 })
 export class HeaderMarketplaceComponent {
-
+  routes = {
+    ecommerce: '/ecommerce',
+    login: '/login',
+  }
 }

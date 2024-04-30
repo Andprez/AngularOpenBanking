@@ -18,6 +18,10 @@
   justify-content: space-between;
   align-items: center;
   padding: 1.5rem 0 0.5rem 0;
+  z-index: 1;
+}
+.back-btn{
+  cursor: pointer;
 }
 .nombre-empresa {
   width: 40%;
@@ -37,7 +41,7 @@
   color: #ffffff;
   display: flex;
   flex-direction: column;
-  gap: 4rem;
+  gap: 2rem;
   padding: 0;
 }
 .list li {
@@ -61,7 +65,7 @@
   font-size: 35px;
 }
 .checkbox-group {
-  margin-top: 5rem;
+  margin-top: 2rem;
   display: grid;
   grid-template-columns: 1fr 10fr;
   color: white;
@@ -72,6 +76,7 @@
   font-size: 14px;
   font-family: Open Sans;
   color: #ffffff;
+  cursor: pointer;
 }
 .check {
   appearance: none;

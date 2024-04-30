@@ -23,7 +23,6 @@ export class FinanceComponent {
 
   constructor(
     private transactionsService: TransaccionService,
-    private productsFService: ProductosFService
   ) {}
 
   public chart: any;

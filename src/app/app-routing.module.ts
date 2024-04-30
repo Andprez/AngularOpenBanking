@@ -17,14 +17,23 @@ import { AddProductComponent } from './pages/add-product/add-product.component';
 import { TransactionComponent } from './pages/transaction/transaction.component';
 import { DetailProductComponent } from './components/marketplace/pages/detail-product/detail-product.component';
 import { VoucherComponent } from './pages/voucher/voucher.component';
+import { WalletComponent } from './pages/wallet/wallet.component';
+import { TermsAcceptComponent } from './pages/terms-accept/terms-accept.component';
+import { IndexComponent } from './pages/index/index.component';
+import { HelpPageComponent } from './pages/help-page/help-page.component';
+import { TycBanksComponent } from './pages/tyc-banks/tyc-banks.component';
+import { PaymentSummaryComponent } from './pages/payment-summary/payment-summary.component';
+import { OtpBanksComponent } from './pages/otp-banks/otp-banks.component';
 
 const routes: Routes = [
-  { path: '', component: ListProductComponent },
+  { path: '', component: IndexComponent },
+  { path: 'ecommerce', component: ListProductComponent },
   { path: 'ecommerce/products/:id', component: DetailProductComponent },
   { path: 'ecommerce/cart', component: CartComponent },
+  { path: 'help', component: HelpPageComponent },
   { path: 'login', component: LoginComponent },
   { path: 'tyc', component: TermsConditionsComponent },
-  { path: 'tyc/accept', component: TermsConditionsComponent },
+  { path: 'tyc/accept', component: TermsAcceptComponent },
   { path: 'register', component: MenuRegistrationComponent },
   { path: 'register/info', component: FormRegistrationComponent },
   { path: 'register/phone-confirm', component: FormPhoneConfirmComponent },
@@ -37,7 +46,11 @@ const routes: Routes = [
   { path: 'products/add/data-product', component: AddProductComponent },
   { path: 'products/transactions', component: TransactionComponent },
   { path: 'transaction/voucher', component: VoucherComponent },
-  { path: '**', redirectTo: '' },
+  { path: 'wallet', component: WalletComponent },
+  { path: 'summary', component: PaymentSummaryComponent },
+  { path: 'otp/banks', component: OtpBanksComponent },
+  { path: 'tyc/banks', component: TycBanksComponent },
+  { path: '**', redirectTo: 'ecommerce' },
 ];
 import { TermsAcceptComponent } from './pages/terms-accept/terms-accept.component';
 import { TermsConditionsComponent } from './pages/terms-conditions/terms-conditions.component';

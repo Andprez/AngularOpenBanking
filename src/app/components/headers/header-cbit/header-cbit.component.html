@@ -1,7 +1,16 @@
 <body>
   <div class="container">
-    <app-back [routerLink]="routerLinkBack"></app-back>
-    <img src="../../../assets/logo.png" alt="Logo Cbitbank" />
-    <app-help [routerLinHelp]="routerLinkHelp"></app-help>
+    <div class="back">
+      <app-back (onClickEvent)="setClickBack()" *ngIf="showBackButton"></app-back>
+    </div>
+    <div class="logo">
+      <img src="../../../assets/logo.png" alt="Logo Cbitbank" />
+    </div>
+    <div class="help">
+      <app-help
+        (onClickEvent)="setClickHelp()"
+        *ngIf="showHelpButton"
+      ></app-help>
+    </div>
   </div>
 </body>
