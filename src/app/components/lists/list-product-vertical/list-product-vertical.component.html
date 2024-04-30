@@ -1,11 +1,19 @@
 <div class="list">
-  <div class="type-and-list" *ngFor="let type of typesProducts">
+  <div
+    class="type-and-list"
+    *ngFor="
+      let type of typesProducts | filterCategory : categorySelected.nombreTipo
+    "
+  >
     <h5 class="nombreTipo" *ngIf="productsByType[type.nombreTipo]">
       {{ type.nombreTipo }}s
     </h5>
     <div
       class="product"
-      *ngFor="let product of productsByType[type.nombreTipo] | filterEntityF: txtFilter"
+      *ngFor="
+        let product of productsByType[type.nombreTipo]
+          | filterProductByEntityF : txtFilterProduct : entitiesF
+      "
       (click)="setProductSelected(product)"
     >
       <div class="entity">

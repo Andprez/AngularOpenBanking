@@ -58,6 +58,8 @@ import { HelpPageComponent } from './pages/help-page/help-page.component';
 import { TycBanksComponent } from './pages/tyc-banks/tyc-banks.component';
 import { PaymentSummaryComponent } from './pages/payment-summary/payment-summary.component';
 import { OtpBanksComponent } from './pages/otp-banks/otp-banks.component';
+import { FilterCategoryPipe } from './pipes/filter-category.pipe';
+import { FilterProductByEntityFPipe } from './pipes/filter-product-by-entity-f.pipe';
 
 @NgModule({
   declarations: [
@@ -115,6 +117,8 @@ import { OtpBanksComponent } from './pages/otp-banks/otp-banks.component';
     TycBanksComponent,
     PaymentSummaryComponent,
     OtpBanksComponent,
+    FilterCategoryPipe,
+    FilterProductByEntityFPipe,
   ],
   imports: [
     BrowserModule,
