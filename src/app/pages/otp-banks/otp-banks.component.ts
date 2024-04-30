@@ -41,7 +41,7 @@ export class OtpBanksComponent implements OnInit {
     private twilioService: TwilioService,
     private clientesService: ClientesService,
     private transaccionService: TransaccionService
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.twilioActive = environment.TWILIO_ACTIVE;
@@ -143,22 +143,24 @@ export class OtpBanksComponent implements OnInit {
         )
         .subscribe({
           next: (res) => {
-            console.log(res);
             const transaction: Transaction = {
               idTipo_Transaccion: 3, // 1. Transferencia, 2. Pago, 3. Compra, 4. Crédito
               idEstado: res.codigoError ? 2 : 1, // 1: Correcto, 2: Error
               idProducto: this.product.idProducto,
               montoTransaccion: this.marketplace.total,
-              destinoPago: this.marketplace.destinoPago,
+              destinoPago: this.marketplace.destinoPago.nombre,
               motivo: this.marketplace.motivo,
               idTransaccionAutorizador: res.idTransaccionAutorizador || 'NA',
               numeroAprobacion: res.numeroAprobacion || 'NA',
             };
             this.transaccionService.createTransaccion(transaction).subscribe({
               next: (transaction) => {
-                localStorage.setItem('transaction', transaction);
+                let trans = { ...transaction };
+                localStorage.setItem('transaction', trans);
                 this.goToPage(this.routes.voucher);
-              },
+              }, error: e => {
+                console.log(e);
+              }
             });
           },
         });
