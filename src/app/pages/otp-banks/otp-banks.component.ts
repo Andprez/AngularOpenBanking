@@ -48,10 +48,10 @@ export class OtpBanksComponent implements OnInit {
     this.user = localStorage.getItem('user')
       ? JSON.parse(localStorage.getItem('user')!)
       : {};
-      this.processPayment();
-    }
+    this.redirect();
+  }
 
-    processPayment() {
+  redirect() {
     this.marketplace = JSON.parse(localStorage.getItem('marketplace') || '{}');
     this.product = JSON.parse(localStorage.getItem('productSelected') || '{}');
     this.selectedBank = this.product.entidadF;
@@ -62,29 +62,37 @@ export class OtpBanksComponent implements OnInit {
 
     switch (this.selectedBank.nombre) {
       case 'Bancolombia':
-        console.log('Bancolombia');
+        this.processBancolombia();
         break;
       case 'Daviplata':
-        this.clientesService
-          .getTipoIdentificacion(this.user.idTipoIdentificacion)
-          .subscribe({
-            next: (typeDocument) => {
-              this.typeDocument = typeDocument;
-              this.banksService
-                .dav_generateOtp(
-                  this.typeDocument.codigo,
-                  this.user.numeroIdentificacion
-                )
-                .subscribe({
-                  next: (res) => {
-                    this.otpGenerated = res.otp;
-                    this.sendSms();
-                  },
-                });
-            },
-          });
+        this.processDaviplata();
         break;
     }
+  }
+
+  processBancolombia() {
+    console.log('Bancolombia');
+  }
+
+  processDaviplata() {
+    this.clientesService
+      .getTipoIdentificacion(this.user.idTipoIdentificacion)
+      .subscribe({
+        next: (typeDocument) => {
+          this.typeDocument = typeDocument;
+          this.banksService
+            .dav_generateOtp(
+              this.typeDocument.codigo,
+              this.user.numeroIdentificacion
+            )
+            .subscribe({
+              next: (res) => {
+                this.otpGenerated = res.otp;
+                this.sendSms();
+              },
+            });
+        },
+      });
   }
 
   sendSms() {
@@ -119,6 +127,9 @@ export class OtpBanksComponent implements OnInit {
   }
 
   verifyOtp() {
+    this.processPaymentData = JSON.parse(
+      localStorage.getItem('processPayment') || '{}'
+    );
     if (this.otpUser === this.otpGenerated) {
       console.log({
         service: 'verifyOtp',
@@ -145,8 +156,8 @@ export class OtpBanksComponent implements OnInit {
             };
             this.transaccionService.createTransaccion(transaction).subscribe({
               next: (transaction) => {
-                console.log('Transacción creada');
                 localStorage.setItem('transaction', transaction);
+                this.goToPage(this.routes.voucher);
               },
             });
           },

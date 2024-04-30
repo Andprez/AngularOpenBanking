@@ -16,6 +16,8 @@ import { RequestBanksService } from 'src/app/services/request-banks.service';
 export class PaymentSummaryComponent {
   user: Cliente = {} as Cliente;
   selectedBank: EntidadFinanciera = {} as EntidadFinanciera;
+  processPayment: any = {};
+  product: any = {};
   summaryPayment = {
     ip: '',
     tipoDocumento: '',
@@ -34,105 +36,104 @@ export class PaymentSummaryComponent {
 
   constructor(
     private clientesService: ClientesService,
-    private ecommerceService: EcommercesService,
-    private localizacionService: LocalizacionService,
     private banksService: RequestBanksService,
     private router: Router
   ) {}
 
   ngOnInit(): void {
     this.user = JSON.parse(localStorage.getItem('user') || '{}');
-    let marketplace = localStorage.getItem('marketplace')
-      ? JSON.parse(localStorage.getItem('marketplace') || '{}')
-      : null;
-    const reqTypeDocument = this.clientesService.getTipoIdentificacion(
-      this.user.idTipoIdentificacion
-    );
-    const reqComercios = this.ecommerceService.getEcommerces();
-    const reqIp = this.localizacionService.getIPAddress();
-    forkJoin([reqTypeDocument, reqComercios, reqIp]).subscribe({
-      next: ([typeDocument, ecommerces, ip]) => {
-        const ecommerceId = Math.round(Math.random() * ecommerces.length);
-
-        this.summaryPayment.ip = ip;
-        this.summaryPayment.tipoDocumento = typeDocument.nombre;
-        this.summaryPayment.numeroDocumento = this.user.numeroIdentificacion;
-        this.summaryPayment.observaciones = 'Pago de productos';
-        this.summaryPayment.comercio = ecommerces[ecommerceId].nombre!;
-        this.summaryPayment.totalPagar = marketplace ? marketplace.total : 0;
-      },
-    });
+    let marketplace = JSON.parse(localStorage.getItem('marketplace') || '{}');
+    this.clientesService
+      .getTipoIdentificacion(this.user.idTipoIdentificacion)
+      .subscribe({
+        next: (typeDocument) => {
+          this.summaryPayment.ip = marketplace.ipUser;
+          this.summaryPayment.tipoDocumento = typeDocument.nombre;
+          this.summaryPayment.numeroDocumento = this.user.numeroIdentificacion;
+          this.summaryPayment.observaciones = marketplace.motivo;
+          this.summaryPayment.comercio = marketplace.destinoPago.nombre;
+          this.summaryPayment.totalPagar = marketplace ? marketplace.total : 0;
+        },
+      });
   }
 
-  processPayment() {
-    let product = JSON.parse(localStorage.getItem('productSelected') || '{}');
-    let processPayment = JSON.parse(
+  redirect() {
+    this.product = JSON.parse(localStorage.getItem('productSelected') || '{}');
+    this.processPayment = JSON.parse(
       localStorage.getItem('processPayment') || '{}'
     );
-    this.selectedBank = product.entidadF;
+    this.selectedBank = this.product.entidadF;
     switch (this.selectedBank.nombre) {
       case 'Bancolombia':
-        if (processPayment.redirectURL) {
-          window.open(processPayment.redirectURL, '_blank');
-        } else {
-          this.banksService
-            .ban_transferIntention(
-              processPayment.access_token,
-              this.summaryPayment.totalPagar,
-              this.summaryPayment.observaciones
-            )
-            .subscribe({
-              next: (res) => {
-                let transferCode = res.data[0].transferCode;
-                let redirectURL = res.data[0].redirectURL;
-                processPayment = {
-                  ...processPayment,
-                  transferCode,
-                  redirectURL,
-                };
-                localStorage.setItem(
-                  'processPayment',
-                  JSON.stringify(processPayment)
-                );
-                window.open(redirectURL, '_blank');
-                // TODO: Servicio no disponible, pendiente validar respuesta y callback
-              },
-            });
-        }
+        this.processBancolombia();
         break;
       case 'Daviplata':
-        this.banksService.dav_getToken().subscribe({
-          next: (res) => {
-            let access_token = res.access_token;
-            processPayment = { ...processPayment, access_token };
-            localStorage.setItem(
-              'processPayment',
-              JSON.stringify(processPayment)
-            );
-            this.banksService
-              .dav_transferIntention(
-                access_token,
-                this.summaryPayment.totalPagar,
-                this.summaryPayment.tipoDocumento,
-                this.summaryPayment.numeroDocumento
-              )
-              .subscribe({
-                next: (res) => {
-                  let idSessionToken = res.idSessionToken;
-                  processPayment = { ...processPayment, idSessionToken };
-                  localStorage.setItem(
-                    'processPayment',
-                    JSON.stringify(processPayment)
-                  );
-                  if (idSessionToken) {
-                    this.goToPage(this.routes.otp);
-                  }
-                },
-              });
-          },
-        });
+        this.processDaviplata();
         break;
     }
+  }
+
+  processBancolombia() {
+    if (this.processPayment.redirectURL) {
+      window.open(this.processPayment.redirectURL, '_blank');
+    } else {
+      this.banksService
+        .ban_transferIntention(
+          this.processPayment.access_token,
+          this.summaryPayment.totalPagar,
+          this.summaryPayment.observaciones
+        )
+        .subscribe({
+          next: (res) => {
+            let transferCode = res.data[0].transferCode;
+            let redirectURL = res.data[0].redirectURL;
+            this.processPayment = {
+              ...this.processPayment,
+              transferCode,
+              redirectURL,
+            };
+            localStorage.setItem(
+              'processPayment',
+              JSON.stringify(this.processPayment)
+            );
+            window.open(redirectURL, '_blank');
+            // TODO: Servicio no disponible, pendiente validar respuesta y callback
+          },
+        });
+    }
+  }
+
+  processDaviplata() {
+    this.banksService.dav_getToken().subscribe({
+      next: (res) => {
+        let access_token = res.access_token;
+        this.processPayment = { ...this.processPayment, access_token };
+        localStorage.setItem(
+          'processPayment',
+          JSON.stringify(this.processPayment)
+        );
+        this.banksService
+          .dav_transferIntention(
+            access_token,
+            this.summaryPayment.totalPagar,
+            this.summaryPayment.tipoDocumento,
+            this.summaryPayment.numeroDocumento
+          )
+          .subscribe({
+            next: (res) => {
+              let idSessionToken = res.idSessionToken;
+              this.processPayment = { ...this.processPayment, idSessionToken };
+              localStorage.setItem(
+                'processPayment',
+                JSON.stringify(this.processPayment)
+              );
+              if (idSessionToken) {
+                this.goToPage(this.routes.otp);
+              }
+            },
+          });
+      },
+    });
   }
 
   goToPage(page: string): void {

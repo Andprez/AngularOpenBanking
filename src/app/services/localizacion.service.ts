@@ -9,6 +9,7 @@ import { environment } from 'src/environments/environment.development';
 })
 export class LocalizacionService {
   baseUrl: string = environment.URL_BACKEND;
+  baseUrl_getIP: string = environment.URL_IP;
 
   constructor(private httpClient: HttpClient) {}
 
@@ -21,7 +22,7 @@ export class LocalizacionService {
   }
 
   getIPAddress() {
-    return this.httpClient.get('https://api.ipify.org?format=json').pipe(
+    return this.httpClient.get(this.baseUrl_getIP).pipe(
       map((response: any) => response.ip),
       catchError((error) => {
         console.error('Error al obtener la dirección IP:', error);

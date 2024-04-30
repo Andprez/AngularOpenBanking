@@ -1,6 +1,7 @@
 export const environment = {
   URL_BACKEND: 'http://localhost:4000/api',
   URL_FAKEAPI: 'https://fakestoreapi.com',
+  URL_IP: 'https://api.ipify.org?format=json',
   TWILIO_ACTIVE: false,
   DAV: {
     // BASEURL: 'http://52.200.216.195:3000',

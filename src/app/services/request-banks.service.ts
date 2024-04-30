@@ -103,7 +103,7 @@ export class RequestBanksService {
   dav_transferConfirm(
     access_token: string,
     otp: string,
-    idSessionToken: string
+    idSession_Token: string
   ): Observable<any> {
     let url = `${this.DAV.BASEURL}/transfer-confirm`;
     let headers: HttpHeaders = new HttpHeaders({
@@ -112,11 +112,10 @@ export class RequestBanksService {
     });
     let body = {
       otp,
-      idSessionToken,
+      idSession_Token,
       idComercio: this.DAV.COMERCIO_ID,
       idTerminal: this.DAV.TERMINAL_ID,
     };
-    console.log({ service: 'dav_transferConfirm', headers, body });
     return this.httpClient.post<any>(url, body, { headers });
   }
 }
