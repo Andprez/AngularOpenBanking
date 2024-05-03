@@ -21,6 +21,7 @@ export class LoginComponent implements OnInit {
 
   tiposIdentificacion!: TipoIdentificacion[];
   showPasswordForm: boolean = false;
+  showPassword: boolean = false;
   clienteExiste: boolean = true;
   loading: boolean = true;
 
@@ -43,7 +44,7 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  showPassword(): void {
+  setShowPasswordForm(): void {
     if (!this.showPasswordForm) this.showPasswordForm = true;
   }
 
@@ -89,6 +90,12 @@ export class LoginComponent implements OnInit {
   registrarse(): void {
     localStorage.removeItem('user');
     this.goToPage(this.routes.register);
+  }
+
+  setShowPassword(): void {
+    this.showPassword
+      ? (this.showPassword = false)
+      : (this.showPassword = true);
   }
 
   goToPage(page: string): void {

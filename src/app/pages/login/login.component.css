@@ -116,6 +116,12 @@ label {
 .form-control .form-select {
   color: black;
 }
+.form-control{
+  height: 3rem;
+}
+.show-password-btn{
+  cursor: pointer;
+}
 .input-group-text {
   padding: 0 0.8rem;
   background-color: #d9d9d9;

@@ -19,7 +19,7 @@
       <form
         [formGroup]="formLogin"
         class="form-login"
-        (ngSubmit)="formLogin.valid && showPassword()"
+        (ngSubmit)="formLogin.valid && setShowPasswordForm()"
       >
         <div class="campos-labels">
           <label for="docType" class="form-label">Tipo de documento</label>
@@ -76,9 +76,15 @@
             <input
               class="form-control"
               formControlName="password"
-              type="password"
+              [type]="showPassword ? 'text' : 'password'"
             />
-            <span class="input-group-text"><i class="bi bi-key-fill"></i></span>
+            <span
+              class="input-group-text show-password-btn"
+              (click)="setShowPassword()"
+            >
+              <i *ngIf="!showPassword" class="bi bi-eye"></i>
+              <i *ngIf="showPassword" class="bi bi-eye-slash"></i>
+            </span>
           </div>
         </div>
         <div class="texto-final password">
