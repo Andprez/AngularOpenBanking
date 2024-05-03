@@ -11,6 +11,8 @@ export class EntityComponent {
   @Output() onClickEvent = new EventEmitter<EntidadFinanciera>();
 
   onClick() {
-    this.onClickEvent.emit(this.entity);
+    if (this.entity.apiActiva) {
+      this.onClickEvent.emit(this.entity);
+    }
   }
 }
