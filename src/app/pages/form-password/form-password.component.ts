@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ClientesService } from 'src/app/services/clientes.service';
+import { NotificationsService } from 'src/app/services/notifications.service';
 
 @Component({
   selector: 'app-form-password',
@@ -12,6 +13,7 @@ import { ClientesService } from 'src/app/services/clientes.service';
   ],
 })
 export class FormPasswordComponent implements OnInit {
+  isLoading: boolean = false;
   cliente: any = {};
   formPassword!: FormGroup;
   routes = {
@@ -23,10 +25,14 @@ export class FormPasswordComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
-    private clientesService: ClientesService
+    private clientesService: ClientesService,
+    private notifService: NotificationsService
   ) {}
 
   ngOnInit(): void {
+    this.notifService.loadingEvent.subscribe((event) => {
+      this.isLoading = event;
+    })
     this.cliente = localStorage.getItem('user')
       ? JSON.parse(localStorage.getItem('user')!)
       : {};

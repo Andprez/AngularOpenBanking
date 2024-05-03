@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ClientesService } from 'src/app/services/clientes.service';
+import { NotificationsService } from 'src/app/services/notifications.service';
 
 @Component({
   selector: 'app-form-selfie',
@@ -8,6 +9,7 @@ import { ClientesService } from 'src/app/services/clientes.service';
   styleUrls: ['./form-selfie.component.css', '../../templates/background2.css'],
 })
 export class FormSelfieComponent implements OnInit {
+  isLoading: boolean = false;
   imageData: string = '';
   showAlert: boolean = false;
   user: any = {};
@@ -19,10 +21,14 @@ export class FormSelfieComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private clientesService: ClientesService
+    private clientesService: ClientesService,
+    private notifService: NotificationsService
   ) {}
 
   ngOnInit(): void {
+    this.notifService.loadingEvent.subscribe((event) => {
+      this.isLoading = event;
+    });
     this.user = localStorage.getItem('user')
       ? JSON.parse(localStorage.getItem('user')!)
       : {};
@@ -41,7 +47,6 @@ export class FormSelfieComponent implements OnInit {
     const idAnexos = this.user.idAnexos;
     const tipoFoto = 'fotoCliente';
     this.imageData = imageData;
-    console.log('Imagen guardada:', this.imageData);
 
     if (this.user.idAnexos) {
       this.clientesService

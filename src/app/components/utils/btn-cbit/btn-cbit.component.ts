@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-btn-cbit',
@@ -7,7 +7,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 })
 export class BtnCbitComponent {
   @Input() type: string = 'button';
-  @Input() disabled: boolean = true;
+  @Input() disabled: boolean = false;
   @Input() text!: string;
   @Input() loading: boolean = false;
   @Output() onClickEvent = new EventEmitter();

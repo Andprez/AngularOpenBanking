@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { HeaderCbitComponent } from './components/headers/header-cbit/header-cbit.component';
 import { MenuRegistrationComponent } from './pages/menu-registration/menu-registration.component';
@@ -60,6 +60,7 @@ import { PaymentSummaryComponent } from './pages/payment-summary/payment-summary
 import { OtpBanksComponent } from './pages/otp-banks/otp-banks.component';
 import { FilterCategoryPipe } from './pipes/filter-category.pipe';
 import { FilterProductByEntityFPipe } from './pipes/filter-product-by-entity-f.pipe';
+import { LoadingInterceptor } from './interceptors/loading.interceptor';
 
 @NgModule({
   declarations: [
@@ -127,7 +128,9 @@ import { FilterProductByEntityFPipe } from './pipes/filter-product-by-entity-f.p
     ReactiveFormsModule,
     HttpClientModule,
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: LoadingInterceptor, multi: true },
+  ],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

@@ -48,6 +48,7 @@
       [text]="'Continuar'"
       [disabled]="otpUser.length < 6"
       (onClickEvent)="verifyOtp()"
+      [loading]="isLoading"
     ></app-btn-cbit>
   </div>
 </body>

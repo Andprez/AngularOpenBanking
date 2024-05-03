@@ -8,6 +8,7 @@ import { Departamento } from 'src/app/models/departamento';
 import { TipoIdentificacion } from 'src/app/models/tipo-identificacion';
 import { ClientesService } from 'src/app/services/clientes.service';
 import { LocalizacionService } from 'src/app/services/localizacion.service';
+import { NotificationsService } from 'src/app/services/notifications.service';
 
 @Component({
   selector: 'app-form-registration',
@@ -18,6 +19,7 @@ import { LocalizacionService } from 'src/app/services/localizacion.service';
   ],
 })
 export class FormRegistrationComponent {
+  isLoading: boolean = false;
   formUser!: FormGroup;
   ciudades!: Ciudad[];
   ciudadesPorDep!: Ciudad[];
@@ -33,10 +35,14 @@ export class FormRegistrationComponent {
     private formBuilder: FormBuilder,
     private clientesService: ClientesService,
     private localizacionService: LocalizacionService,
-    private router: Router
+    private router: Router,
+    private notifService: NotificationsService
   ) {}
 
   ngOnInit(): void {
+    this.notifService.loadingEvent.subscribe((event) => {
+      this.isLoading = event;
+    });
     const reqDocumentTypes = this.clientesService.getTiposIdentificacion();
     const reqCities = this.localizacionService.getCiudades();
     const reqDeps = this.localizacionService.getDepartamentos();

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ClientesService } from 'src/app/services/clientes.service';
+import { NotificationsService } from 'src/app/services/notifications.service';
 
 @Component({
   selector: 'app-form-document',
@@ -11,23 +12,28 @@ import { ClientesService } from 'src/app/services/clientes.service';
   ],
 })
 export class FormDocumentComponent implements OnInit {
-  routes = {
-    back: '/register',
-    help: '/help',
-  };
+  isLoading: boolean = false;
   frontDocument: boolean = true;
   activeBtn: boolean = false;
   showAlert: boolean = false;
   user: any = {};
   isComplete: boolean = false;
   titulo: string = 'Ubique el documento dentro del marco';
+  routes = {
+    back: '/register',
+    help: '/help',
+  };
 
   constructor(
     private router: Router,
-    private clientesService: ClientesService
+    private clientesService: ClientesService,
+    private notifService: NotificationsService
   ) {}
 
   ngOnInit(): void {
+    this.notifService.loadingEvent.subscribe((event) => {
+      this.isLoading = event;
+    })
     this.user = localStorage.getItem('user')
       ? JSON.parse(localStorage.getItem('user')!)
       : {};
@@ -40,10 +46,6 @@ export class FormDocumentComponent implements OnInit {
       });
     }
   }
-
-  // TODO: Ver por qué se guardan los anexos en registros diferentes y no en el mismo registro
-  // TODO: Verificar el indicador
-  // TODO: Verificar los checks del menu-registration
 
   savePhoto(imageData: string): void {
     const idCliente = this.user.idCliente;
