@@ -8,6 +8,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 })
 export class OtpComponent implements OnInit {
   @Output() onDigit = new EventEmitter<string>();
+  inputs: any;
   otp: Array<string> = ['', '', '', '', '', ''];
   formDigits!: FormGroup;
   elementos!: any;
@@ -23,25 +24,40 @@ export class OtpComponent implements OnInit {
       digito5: [''],
       digito6: [''],
     });
+    this.inputs = document.querySelectorAll('input');
   }
 
-  validarSoloNumeros(event: any, key: number) {
-    const digito = event.data;
+  onInputDigit(event: any, key: number) {
+    const keyName = event.key;
+    const digito = event.target.value;
     const valid = /^[0-9]$/.test(digito);
-    if (!valid && digito !== null) {
+
+    if (keyName === 'Backspace' && key > 0) {
+      this.inputs[key - 1].focus();
+    } else if (!valid) {
       event.target.value = digito.replace(/[^0-9]/g, '');
-    } else {
-      this.otp[key - 1] = digito;
+    } else if (keyName >= 0 && keyName <= 9) {
+      this.otp[key] = digito;
       this.onDigit.emit(this.otp.join(''));
+      if (key < 5) {
+        this.inputs[key + 1].focus();
+      }
     }
-    // if (
-    //   isNaN(parseInt(digito)) ||
-    //   this.formDigits.get('digito' + key)?.value.length == 1
-    // ) {
-    //   event.preventDefault();
-    // } else {
-    //   this.otp[key - 1] = digito;
-    //   console.log(this.otp.join(''));
+
+    // if (keyName === 'Backspace' && key > 0) {
+    //   this.inputs[key - 1].focus();
+    // } else if (keyName >= 0 && keyName <= 9) {
+    //   if (!valid && digito !== null) {
+    //     event.target.value = digito.replace(/[^0-9]/g, '');
+    //   } else {
+    //     this.otp[key] = digito;
+    //     this.onDigit.emit(this.otp.join(''));
+    //     if (key < 5) {
+    //       this.inputs[key + 1].focus();
+    //     }
+    //   }
+    // } else if (!valid) {
+    //   console.log('Holis');
     // }
   }
 }
