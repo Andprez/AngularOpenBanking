@@ -39,7 +39,7 @@ export class TycBanksComponent implements OnInit {
   }
 
   processPayment() {
-    let product = JSON.parse(localStorage.getItem('productSelected') || '{}');
+    let product = JSON.parse(localStorage.getItem('productSelected') ?? '{}');
     this.selectedBank = product.entidadF;
     switch (this.selectedBank.nombre) {
       case 'Bancolombia':
