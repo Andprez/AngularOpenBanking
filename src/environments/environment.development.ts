@@ -1,10 +1,11 @@
 export const environment = {
-  URL_BACKEND: 'http://localhost:3000/api',
+  URL_BACKEND: 'http://localhost:3002/api',
   URL_FAKEAPI: 'https://fakestoreapi.com',
+  //api que retorna IP de una url
   URL_IP: 'https://api.ipify.org?format=json',
   TWILIO_ACTIVE: false,
   DAV: {
-    BASEURL: 'http://54.91.70.251:4000',
+    BASEURL: 'http://3.143.204.139:3002',
     //BASEURL: 'http://localhost:3000',
     GRANT_TYPE: 'client_credentials',
     CLIENT_ID: 'B9lAAOSf5oyOXYNdrAoMB2YxpI0cAKXDgp5ol9NIQsGpxEGo',
@@ -19,7 +20,7 @@ export const environment = {
     // USER_TEST: { tipoDocumento: '04', numeroDocumento: '1389123506' },
   },
   BAN: {
-    BASEURL: 'http://54.91.70.251:4001',
+    BASEURL: 'http://3.143.204.139:3001',
     // BASEURL: 'http://localhost:3001',
     GRANT_TYPE: 'client_credentials',
     CLIENT_ID: '51daaeab18363acf525e749130d9a7a5',
