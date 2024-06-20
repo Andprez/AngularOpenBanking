@@ -1,5 +1,5 @@
 export const environment = {
-  URL_BACKEND: 'http://localhost:3002/api',
+  URL_BACKEND: 'http://localhost:3000/api',
   URL_FAKEAPI: 'https://fakestoreapi.com',
   //api que retorna IP de una url
   URL_IP: 'https://api.ipify.org?format=json',
