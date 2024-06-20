@@ -66,6 +66,7 @@ export class FormPhoneConfirmComponent implements OnInit {
   generateOtp() {
     let otp = Math.floor(10000 + Math.random() * 100000).toString();
     otp = otp.length < 6 ? '0' + otp : otp;
+    console.log("Codigo OTP "+otp);
     return otp;
   }
   setOtpUser(otp: string) {
