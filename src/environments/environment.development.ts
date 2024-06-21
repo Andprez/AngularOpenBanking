@@ -5,8 +5,8 @@ export const environment = {
   URL_IP: 'https://api.ipify.org?format=json',
   TWILIO_ACTIVE: false,
   DAV: {
-    BASEURL: 'http://3.143.204.139:3002',
-    //BASEURL: 'http://localhost:3000',
+    //BASEURL: 'http://3.143.204.139:3002',
+    BASEURL: 'http://localhost:3002',
     GRANT_TYPE: 'client_credentials',
     CLIENT_ID: 'B9lAAOSf5oyOXYNdrAoMB2YxpI0cAKXDgp5ol9NIQsGpxEGo',
     CLIENT_SECRET:
@@ -20,8 +20,8 @@ export const environment = {
     // USER_TEST: { tipoDocumento: '04', numeroDocumento: '1389123506' },
   },
   BAN: {
-    BASEURL: 'http://3.143.204.139:3001',
-    // BASEURL: 'http://localhost:3001',
+    //BASEURL: 'http://3.143.204.139:3001',
+    BASEURL: 'http://localhost:3001',
     GRANT_TYPE: 'client_credentials',
     CLIENT_ID: '51daaeab18363acf525e749130d9a7a5',
     CLIENT_SECRET: 'cbb2a37ea5e783de41835a83362d5897',
