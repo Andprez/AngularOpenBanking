@@ -5,6 +5,7 @@ export const environment = {
   URL_IP: 'https://api.ipify.org?format=json',
   TWILIO_ACTIVE: false,
   DAV: {
+    //BASEURL:'http://18.119.28.121:3002',
     //BASEURL: 'http://3.143.204.139:3002',
     BASEURL: 'http://localhost:3002',
     GRANT_TYPE: 'client_credentials',
@@ -20,6 +21,7 @@ export const environment = {
     // USER_TEST: { tipoDocumento: '04', numeroDocumento: '1389123506' },
   },
   BAN: {
+    //BASEURL:'http://18.119.28.121:3002',
     //BASEURL: 'http://3.143.204.139:3001',
     BASEURL: 'http://localhost:3001',
     GRANT_TYPE: 'client_credentials',
