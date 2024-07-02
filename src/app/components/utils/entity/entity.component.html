@@ -1,4 +1,9 @@
-<div class="logo-entity" (click)="onClick()" *ngIf="entity.imagen">
+<div
+  class="logo-entity"
+  (click)="onClick()"
+  [ngClass]="{ disable: !entity.apiActiva }"
+  *ngIf="entity.imagen"
+>
   <img
     src="../../../../assets/entidadesF/{{ entity.imagen }}.png"
     alt="Logo de la entidad {{ entity.nombre }}"

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ClientesService } from 'src/app/services/clientes.service';
+import { NotificationsService } from 'src/app/services/notifications.service';
 
 @Component({
   selector: 'app-menu-registration',
@@ -11,6 +12,7 @@ import { ClientesService } from 'src/app/services/clientes.service';
   ],
 })
 export class MenuRegistrationComponent implements OnInit {
+  isLoading: boolean = false;
   infoPersonalComplete: boolean = false;
   selfieComplete: boolean = false;
   documentComplete: boolean = false;
@@ -25,10 +27,14 @@ export class MenuRegistrationComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private clientesService: ClientesService
+    private clientesService: ClientesService,
+    private notifService: NotificationsService
   ) {}
 
   ngOnInit(): void {
+    this.notifService.loadingEvent.subscribe((event) => {
+      this.isLoading = event;
+    });
     let user = localStorage.getItem('user')
       ? JSON.parse(localStorage.getItem('user')!)
       : {};

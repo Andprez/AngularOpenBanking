@@ -100,12 +100,33 @@
       </div>
 
       <div class="campos-labels">
-        <label for="docCity" class="form-label"
-          >Ciudad del expedición del documento</label
+        <label for="docDepart" class="form-label"
+          >Departamento de expedición</label
         >
+        <select
+          class="form-select"
+          aria-label=""
+          formControlName="docDepart"
+          (change)="loadCities($event)"
+        >
+          <option selected disabled>Selecciona una opción</option>
+          <option
+            *ngFor="let dep of departamentos"
+            [value]="dep.idDepartamento"
+          >
+            {{ dep.nombre }}
+          </option>
+        </select>
+      </div>
+
+      <div class="campos-labels">
+        <label for="docCity" class="form-label">Ciudad del expedición</label>
         <select class="form-select" aria-label="" formControlName="docCity">
           <option selected disabled>Selecciona una opción</option>
-          <option *ngFor="let ciudad of ciudades" [value]="ciudad.idCiudad">
+          <option
+            *ngFor="let ciudad of ciudadesPorDep"
+            [value]="ciudad.idCiudad"
+          >
             {{ ciudad.nombre }}
           </option>
         </select>
@@ -170,6 +191,7 @@
         [text]="'Continuar'"
         [type]="'submit'"
         [disabled]="formUser.invalid"
+        [loading]="isLoading"
       >
       </app-btn-cbit>
     </form>

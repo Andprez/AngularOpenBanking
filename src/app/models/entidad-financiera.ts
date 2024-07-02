@@ -4,4 +4,5 @@ export interface EntidadFinanciera {
   imagen: string;
   nit: string;
   idTipoEntidadFinanciera: number;
+  apiActiva: boolean;
 }

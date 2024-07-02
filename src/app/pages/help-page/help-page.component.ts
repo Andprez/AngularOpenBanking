@@ -8,7 +8,7 @@ import { Location } from '@angular/common';
   styleUrls: ['./help-page.component.css'],
 })
 export class HelpPageComponent {
-  constructor(private router: Router, private location: Location) {}
+  constructor(private location: Location) {}
 
   goBack() {
     this.location.back();

@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { TipoIdentificacion } from 'src/app/models/tipo-identificacion';
 import { ClientesService } from 'src/app/services/clientes.service';
+import { NotificationsService } from 'src/app/services/notifications.service';
 
 @Component({
   selector: 'app-login',
@@ -10,6 +11,7 @@ import { ClientesService } from 'src/app/services/clientes.service';
   styleUrls: ['./login.component.css', '../../templates/background2.css'],
 })
 export class LoginComponent implements OnInit {
+  isLoading: boolean = false;
   routes = {
     help: '/help',
     tyc: '/tyc',
@@ -21,16 +23,21 @@ export class LoginComponent implements OnInit {
 
   tiposIdentificacion!: TipoIdentificacion[];
   showPasswordForm: boolean = false;
+  showPassword: boolean = false;
   clienteExiste: boolean = true;
   loading: boolean = true;
 
   constructor(
     private formBuilder: FormBuilder,
     private clientesService: ClientesService,
-    private router: Router
+    private router: Router,
+    private notifService: NotificationsService
   ) {}
 
   ngOnInit(): void {
+    this.notifService.loadingEvent.subscribe((event) => {
+      this.isLoading = event;
+    });
     this.clientesService.getTiposIdentificacion().subscribe((data) => {
       this.tiposIdentificacion = data;
     });
@@ -43,7 +50,7 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  showPassword(): void {
+  setShowPasswordForm(): void {
     if (!this.showPasswordForm) this.showPasswordForm = true;
   }
 
@@ -89,6 +96,12 @@ export class LoginComponent implements OnInit {
   registrarse(): void {
     localStorage.removeItem('user');
     this.goToPage(this.routes.register);
+  }
+
+  setShowPassword(): void {
+    this.showPassword
+      ? (this.showPassword = false)
+      : (this.showPassword = true);
   }
 
   goToPage(page: string): void {

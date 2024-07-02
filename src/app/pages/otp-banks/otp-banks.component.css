@@ -6,19 +6,25 @@ p {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  gap: 1rem;
+  /* gap: 1rem; */
 }
 
-.titulo {
-  padding: 1rem 0;
+h1.titulo {
+  padding: 2rem 0.5rem;
+  padding-bottom: 0;
   text-align: center;
+  margin: 0;
 }
 
 .icono-mensaje {
-  font-size: 6rem;
   color: #1f2a95;
   text-align: center;
 }
+
+.bi {
+  font-size: 6rem;
+}
+
 .contenido {
   display: flex;
   flex-direction: column;

@@ -26,10 +26,8 @@ export class WalletComponent implements OnInit {
 
   setProductSelected(product: any) {
     this.productSelected = product;
-    if (
-      this.productSelected.entidadF.nombre == 'Bancolombia' ||
-      this.productSelected.entidadF.nombre == 'Daviplata'
-    ) {
+    let entidadF = this.productSelected.entidadF;
+    if (entidadF.apiActiva) {
       localStorage.setItem(
         'productSelected',
         JSON.stringify(this.productSelected)

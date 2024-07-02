@@ -5,6 +5,7 @@ import { EntidadFinanciera } from 'src/app/models/entidad-financiera';
 import { TipoIdentificacion } from 'src/app/models/tipo-identificacion';
 import { Transaction } from 'src/app/models/transaction';
 import { ClientesService } from 'src/app/services/clientes.service';
+import { NotificationsService } from 'src/app/services/notifications.service';
 import { RequestBanksService } from 'src/app/services/request-banks.service';
 import { TransaccionService } from 'src/app/services/transaccion.service';
 import { TwilioService } from 'src/app/services/twilio.service';
@@ -16,6 +17,7 @@ import { environment } from 'src/environments/environment.development';
   styleUrls: ['./otp-banks.component.css'],
 })
 export class OtpBanksComponent implements OnInit {
+  isLoading: boolean = false;
   selectedBank: EntidadFinanciera = {} as EntidadFinanciera;
   processPaymentData: any = {};
   typeDocument: TipoIdentificacion = {} as TipoIdentificacion;
@@ -40,10 +42,14 @@ export class OtpBanksComponent implements OnInit {
     private banksService: RequestBanksService,
     private twilioService: TwilioService,
     private clientesService: ClientesService,
-    private transaccionService: TransaccionService
-  ) {}
+    private transaccionService: TransaccionService,
+    private notifService: NotificationsService
+  ) { }
 
   ngOnInit(): void {
+    this.notifService.loadingEvent.subscribe((event) => {
+      this.isLoading = event;
+    })
     this.twilioActive = environment.TWILIO_ACTIVE;
     this.user = localStorage.getItem('user')
       ? JSON.parse(localStorage.getItem('user')!)
@@ -143,22 +149,24 @@ export class OtpBanksComponent implements OnInit {
         )
         .subscribe({
           next: (res) => {
-            console.log(res);
             const transaction: Transaction = {
               idTipo_Transaccion: 3, // 1. Transferencia, 2. Pago, 3. Compra, 4. Crédito
               idEstado: res.codigoError ? 2 : 1, // 1: Correcto, 2: Error
               idProducto: this.product.idProducto,
               montoTransaccion: this.marketplace.total,
-              destinoPago: this.marketplace.destinoPago,
+              destinoPago: this.marketplace.destinoPago.nombre,
               motivo: this.marketplace.motivo,
               idTransaccionAutorizador: res.idTransaccionAutorizador || 'NA',
               numeroAprobacion: res.numeroAprobacion || 'NA',
             };
             this.transaccionService.createTransaccion(transaction).subscribe({
               next: (transaction) => {
-                localStorage.setItem('transaction', transaction);
+                let trans = { ...transaction };
+                localStorage.setItem('transaction', trans);
                 this.goToPage(this.routes.voucher);
-              },
+              }, error: e => {
+                console.log(e);
+              }
             });
           },
         });

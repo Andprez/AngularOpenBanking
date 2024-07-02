@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { EntidadFinanciera } from 'src/app/models/entidad-financiera';
+import { NotificationsService } from 'src/app/services/notifications.service';
 import { RequestBanksService } from 'src/app/services/request-banks.service';
 
 @Component({
@@ -9,6 +10,7 @@ import { RequestBanksService } from 'src/app/services/request-banks.service';
   styleUrls: ['./tyc-banks.component.css'],
 })
 export class TycBanksComponent implements OnInit {
+  isLoading: boolean = false;
   selectedBank: EntidadFinanciera = {} as EntidadFinanciera;
   customerTerms!: string;
   walletTerms!: string;
@@ -21,10 +23,14 @@ export class TycBanksComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private banksService: RequestBanksService
+    private banksService: RequestBanksService,
+    private notifService: NotificationsService
   ) {}
 
   ngOnInit(): void {
+    this.notifService.loadingEvent.subscribe((event) => {
+      this.isLoading = event;
+    })
     this.processPayment();
   }
 
@@ -33,7 +39,7 @@ export class TycBanksComponent implements OnInit {
   }
 
   processPayment() {
-    let product = JSON.parse(localStorage.getItem('productSelected') || '{}');
+    let product = JSON.parse(localStorage.getItem('productSelected') ?? '{}');
     this.selectedBank = product.entidadF;
     switch (this.selectedBank.nombre) {
       case 'Bancolombia':

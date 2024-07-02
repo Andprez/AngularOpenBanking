@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subscription, interval } from 'rxjs';
+import { NotificationsService } from 'src/app/services/notifications.service';
 import { TwilioService } from 'src/app/services/twilio.service';
 import { environment } from 'src/environments/environment.development';
 
@@ -13,6 +14,7 @@ import { environment } from 'src/environments/environment.development';
   ],
 })
 export class FormPhoneConfirmComponent implements OnInit {
+  isLoading: boolean = false;
   twilioActive!: boolean;
   tiempoRestante!: number;
   suscripcionContador!: Subscription;
@@ -30,9 +32,16 @@ export class FormPhoneConfirmComponent implements OnInit {
     wallet: '/register/wallet',
   };
 
-  constructor(private router: Router, private twilioService: TwilioService) {}
+  constructor(
+    private router: Router,
+    private twilioService: TwilioService,
+    private notifService: NotificationsService
+  ) {}
 
   ngOnInit(): void {
+    this.notifService.loadingEvent.subscribe((event) => {
+      this.isLoading = event;
+    });
     this.twilioActive = environment.TWILIO_ACTIVE;
     this.user = localStorage.getItem('user')
       ? JSON.parse(localStorage.getItem('user')!)

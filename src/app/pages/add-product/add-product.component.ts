@@ -5,6 +5,7 @@ import { Cliente } from 'src/app/models/cliente';
 import { EntidadFinanciera } from 'src/app/models/entidad-financiera';
 import { ProductoF } from 'src/app/models/producto-f';
 import { TipoProductoF } from 'src/app/models/tipo-producto-f';
+import { NotificationsService } from 'src/app/services/notifications.service';
 import { ProductosFService } from 'src/app/services/productos-f.service';
 
 @Component({
@@ -23,6 +24,7 @@ export class AddProductComponent implements OnInit {
   formValidation!: FormGroup;
   showAdditionalFields = false;
   showSuccessMessage = false;
+  isLoading = false;
 
   routes = {
     back: '/products/add/select-entity',
@@ -35,10 +37,14 @@ export class AddProductComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private productosFService: ProductosFService,
-    private router: Router
+    private router: Router,
+    private notifService: NotificationsService
   ) {}
 
   ngOnInit(): void {
+    this.notifService.loadingEvent.subscribe((event) => {
+      this.isLoading = event;
+    })
     this.user = JSON.parse(localStorage.getItem('user') || '{}');
     this.selectedEntity = JSON.parse(localStorage.getItem('entity') || '{}');
     localStorage.getItem('marketplace')
@@ -94,7 +100,6 @@ export class AddProductComponent implements OnInit {
   }
   continue(): void {
     localStorage.removeItem('entity');
-    localStorage.removeItem('product');
     this.shopping
       ? this.goToPage(this.routes.wallet)
       : this.goToPage(this.routes.transactions);

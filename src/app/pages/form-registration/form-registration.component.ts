@@ -4,9 +4,11 @@ import { Router } from '@angular/router';
 import { forkJoin } from 'rxjs';
 import { Ciudad } from 'src/app/models/ciudad';
 import { Cliente } from 'src/app/models/cliente';
+import { Departamento } from 'src/app/models/departamento';
 import { TipoIdentificacion } from 'src/app/models/tipo-identificacion';
 import { ClientesService } from 'src/app/services/clientes.service';
 import { LocalizacionService } from 'src/app/services/localizacion.service';
+import { NotificationsService } from 'src/app/services/notifications.service';
 
 @Component({
   selector: 'app-form-registration',
@@ -17,8 +19,11 @@ import { LocalizacionService } from 'src/app/services/localizacion.service';
   ],
 })
 export class FormRegistrationComponent {
+  isLoading: boolean = false;
   formUser!: FormGroup;
   ciudades!: Ciudad[];
+  ciudadesPorDep!: Ciudad[];
+  departamentos!: Departamento[];
   tiposIdentificacion!: TipoIdentificacion[];
   routes = {
     back: '/register',
@@ -30,16 +35,22 @@ export class FormRegistrationComponent {
     private formBuilder: FormBuilder,
     private clientesService: ClientesService,
     private localizacionService: LocalizacionService,
-    private router: Router
+    private router: Router,
+    private notifService: NotificationsService
   ) {}
 
   ngOnInit(): void {
+    this.notifService.loadingEvent.subscribe((event) => {
+      this.isLoading = event;
+    });
     const reqDocumentTypes = this.clientesService.getTiposIdentificacion();
-    const reqLocalizations = this.localizacionService.getCiudades();
-    forkJoin([reqDocumentTypes, reqLocalizations]).subscribe({
-      next: ([documentTypes, localizations]) => {
+    const reqCities = this.localizacionService.getCiudades();
+    const reqDeps = this.localizacionService.getDepartamentos();
+    forkJoin([reqDocumentTypes, reqCities, reqDeps]).subscribe({
+      next: ([documentTypes, cities, deps]) => {
         this.tiposIdentificacion = documentTypes;
-        this.ciudades = localizations;
+        this.ciudades = cities;
+        this.departamentos = deps;
       },
     });
     this.formUser = this.formBuilder.group(
@@ -53,6 +64,7 @@ export class FormRegistrationComponent {
         docNumber: ['', Validators.required],
         docDate: ['', Validators.required],
         docCity: ['', Validators.required],
+        docDepart: ['', Validators.required],
         phone: ['', Validators.required],
         address: ['', Validators.required],
         email: ['', [Validators.email, Validators.required]],
@@ -60,6 +72,14 @@ export class FormRegistrationComponent {
       },
       { validators: this.compareEmails }
     );
+  }
+
+  loadCities($event: any): void {
+    let idDep = $event.target.value;
+    this.ciudadesPorDep = this.ciudades.filter(
+      (city) => city.idDepartamento == idDep
+    );
+    console.log(this.ciudadesPorDep);
   }
 
   compareEmails(formUser: FormGroup) {

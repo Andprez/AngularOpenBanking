@@ -6,6 +6,7 @@ import { EntidadFinanciera } from 'src/app/models/entidad-financiera';
 import { ClientesService } from 'src/app/services/clientes.service';
 import { EcommercesService } from 'src/app/services/ecommerces.service';
 import { LocalizacionService } from 'src/app/services/localizacion.service';
+import { NotificationsService } from 'src/app/services/notifications.service';
 import { RequestBanksService } from 'src/app/services/request-banks.service';
 
 @Component({
@@ -14,6 +15,7 @@ import { RequestBanksService } from 'src/app/services/request-banks.service';
   styleUrls: ['./payment-summary.component.css'],
 })
 export class PaymentSummaryComponent {
+  isLoading: boolean = false;
   user: Cliente = {} as Cliente;
   selectedBank: EntidadFinanciera = {} as EntidadFinanciera;
   processPayment: any = {};
@@ -37,10 +39,14 @@ export class PaymentSummaryComponent {
   constructor(
     private clientesService: ClientesService,
     private banksService: RequestBanksService,
-    private router: Router
+    private router: Router,
+    private notifService: NotificationsService
   ) {}
 
   ngOnInit(): void {
+    this.notifService.loadingEvent.subscribe((event) => {
+      this.isLoading = event;
+    })
     this.user = JSON.parse(localStorage.getItem('user') || '{}');
     let marketplace = JSON.parse(localStorage.getItem('marketplace') || '{}');
     this.clientesService

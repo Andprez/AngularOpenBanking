@@ -33,6 +33,7 @@
     </div>
 
     <app-btn-cbit
+      [loading]="isLoading"
       [text]="'Continuar'"
       [disabled]="!infoPersonalComplete || !selfieComplete || !documentComplete"
       (onClickEvent)="
