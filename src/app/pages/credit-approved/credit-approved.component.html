@@ -1,0 +1,64 @@
+<body>
+    <app-header-cbit
+      (onClickEventBack)="goToPage(routes.back)"
+      (onClickEventHelp)="goToPage(routes.help)"
+    ></app-header-cbit>
+    <div class="container" #voucherContent>
+        <h1 class="titulo"> Crédito Aprobado </h1>
+        <app-indicator></app-indicator>
+        <div class="detalleVoucher">
+            <div class="campo">
+                <p class="total-pagado">
+                  $2.700.000
+                </p>
+                <p class="nombre-item">Monto de crédito</p>
+            </div>
+            <div class="campo">
+                <p class="nombre-item">
+                  12 meses
+                </p>
+                <p class="valores">Duración en meses</p>
+            </div>
+            <div class="campo">
+                <p class="nombre-item">
+                  19% <a>E.A.</a>
+                </p>
+                <p class="valores">Tasa efectivo anual</p>
+            </div>
+            <div class="campo">
+                <p class="nombre-item">
+                  1.46% <a>M.V.</a>
+                </p>
+                <p class="valores">Tasa mensual vencida</p>
+            </div>
+            <div class="campo">
+                <p class="nombre-item">
+                  17.04% <a>M.V.</a>
+                </p>
+                <p class="valores">VTUA% total en pesos</p>
+            </div>
+            <div class="campo">
+                <p class="nombre-item">
+                  $2.977.318
+                </p>
+                <p class="valores">VTUA% en E.A.</p>
+            </div>
+            <div class="campo">
+                <p class="titulo2">
+                  $246.920
+                </p>
+                <p class="valores">Tú cuota mensual aproximada</p>
+                <p class="valores">mas seguro de vida <a class="seguro1">$2.140</a></p>
+            </div>
+        </div>
+        
+    </div>
+    <app-btn-cbit
+        [text]="'Continuar'"
+        [type]="'button'"
+        (onClickEvent)="goToPage(routes.accept)"
+    >
+    </app-btn-cbit>
+  </body>
+  
+

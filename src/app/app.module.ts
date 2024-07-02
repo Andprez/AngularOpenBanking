@@ -61,6 +61,9 @@ import { OtpBanksComponent } from './pages/otp-banks/otp-banks.component';
 import { FilterCategoryPipe } from './pipes/filter-category.pipe';
 import { FilterProductByEntityFPipe } from './pipes/filter-product-by-entity-f.pipe';
 import { LoadingInterceptor } from './interceptors/loading.interceptor';
+import { CreditVerifyComponent } from './pages/credit-verify/credit-verify.component';
+import { CreditApprovedComponent } from './pages/credit-approved/credit-approved.component';
+import { CreditPreapprovedComponent } from './pages/credit-preapproved/credit-preapproved.component';
 
 @NgModule({
   declarations: [
@@ -120,6 +123,9 @@ import { LoadingInterceptor } from './interceptors/loading.interceptor';
     OtpBanksComponent,
     FilterCategoryPipe,
     FilterProductByEntityFPipe,
+    CreditVerifyComponent,
+    CreditApprovedComponent,
+    CreditPreapprovedComponent,
   ],
   imports: [
     BrowserModule,
