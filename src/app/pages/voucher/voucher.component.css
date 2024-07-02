@@ -1,0 +1,74 @@
+p {
+  margin: 0;
+}
+.container, .header{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.header{
+  gap: 1rem;
+  padding: 4rem 0 1rem 0;
+}
+.header img{
+  width: 5.625rem;
+}
+.items{
+  font-family: 'Open Sans', sans-serif;
+  font-weight: regular;
+  text-align: center;
+  color: black;
+}
+.titulo{
+  font-size: 32px;
+}
+.total-pagado{
+  margin:  0px 0px 0px 0px;
+  font-size: 36px;
+  font-weight: 500;
+}
+.titulo2{
+  font-size: 20px;
+  color: #0389dc;
+  margin: 0%;
+}
+.detalleVoucher{
+  width: 90%;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding:  1rem 1rem;
+  background: linear-gradient(145.62deg, rgba(0, 180, 255, 0.28) 0%, rgba(0, 108, 153, 0.28) 102.41%);
+  gap: 1rem;margin-bottom: 1rem;
+}
+.nombre-item{
+  font-size: 18px;
+  color: black;
+  font-weight: bold;
+  text-align: center;
+}
+.valores{
+  text-align: center;
+}
+.resumen{
+  padding: 0.5rem;
+  text-align:center;
+}
+.resultado{
+  margin: 1rem 0 0 0;
+}
+.icons{
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+}
+.icon{
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+.icon img{
+  height: 2.5rem;
+}

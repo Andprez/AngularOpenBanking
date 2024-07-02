@@ -1,0 +1,77 @@
+<body>
+  <div class="container">
+    <div class="header">
+      <div class="back">
+        <div class="back-btn">
+          <app-back (onClickEvent)="goToPage(routes.back)"></app-back>
+        </div>
+        <div></div>
+      </div>
+      <div class="logos">
+        <img
+          class="logo-cbit"
+          src="../../../assets/LogoCbit.png"
+          alt="Logo Cbitbank"
+        />
+        <img
+          class="nombre-empresa"
+          src="../../../assets/NombreCbit.png"
+          alt="NombreCbit"
+        />
+      </div>
+    </div>
+
+    <form class="contenido" [formGroup]="formTerms">
+      <ul class="list">
+        <li>
+          <div class="vineta">
+            <i class="bi bi-caret-right-fill"></i>
+          </div>
+          <p>
+            Conozco y acepto el reglamento y las condiciones de uso de CBITBank
+          </p>
+        </li>
+        <li>
+          <div class="vineta">
+            <i class="bi bi-caret-right-fill"></i>
+          </div>
+          <p>
+            Autorizo el uso de mis datos sensibles para las finalidades aqui
+            descritas
+          </p>
+        </li>
+        <li>
+          <div class="vineta">
+            <i class="bi bi-caret-right-fill"></i>
+          </div>
+          <p>
+            Conozco y acepto el reglamento y las condiciones de uso de CBITBank
+          </p>
+        </li>
+      </ul>
+
+      <div class="checkbox-group">
+        <input
+          (change)="acceptTerms()"
+          type="checkbox"
+          formControlName="accept"
+          class="check"
+          id="check"
+        />
+        <label for="check"
+          >Declaro que he leido y autorizo los permisos y documentos descritos
+          anteriormente.</label
+        >
+      </div>
+
+      <div class="boton">
+        <app-btn-cbit
+          [text]="'Continuar'"
+          [disabled]="!termsAccepted"
+          (onClickEvent)="goToPage(routes.dashboard)"
+        >
+        </app-btn-cbit>
+      </div>
+    </form>
+  </div>
+</body>

@@ -1,31 +1,41 @@
-.contenedor {
+/* ESTILOS LOADING */
+.loading {
+  position: fixed;
   width: 100%;
   height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background: linear-gradient(100deg, #00B0F9, #180B94, #00BFCF, #0B2794);
-  background-size: 400% 400%;
-  animation: gradientAnimation 12s linear infinite;
+  background: linear-gradient(115deg, #00b0f9, #00bfcf, #0b2794);
+  background-size: 200% 100%;
+  background-position: 100% 100%;
+  animation: gradientAnimation1 3s ease-in-out 0s 1 normal forwards,
+    gradientAnimation2 0.5s ease-in-out 3s 1 normal forwards;
 }
-@keyframes gradientAnimation {
+
+@keyframes gradientAnimation1 {
   0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
+    background-position: 100% 100%;
   }
   100% {
-    background-position: 0% 50%;
+    background-position: 0% 100%;
   }
 }
+
+@keyframes gradientAnimation2 {
+  100% {
+    opacity: 0;
+    display: none;
+  }
+}
+
 .logo {
-  width: 25%;
+  width: 35%;
   height: fit-content;
   transform: rotate(-30deg);
   opacity: 0;
-  animation: logo-animation 2s ease-in-out 1 forwards;
+  animation: logo-animation 2s ease 1 forwards;
 }
 .logo img {
   width: 100%;
@@ -35,6 +45,10 @@
   0% {
     opacity: 0;
     transform: rotate(-30deg);
+  }
+  50% {
+    opacity: 1;
+    transform: rotate(-15deg);
   }
   100% {
     opacity: 1;
@@ -47,15 +61,13 @@
   font-size: 60px;
   color: white;
   opacity: 0;
-  animation: nombre-empresa-animation 1s ease-in-out 1.5s 1 forwards;
+  animation: nombre-empresa-animation 1s ease-in-out 1s 1 forwards;
 }
 .nombre-empresa span {
   font-weight: 500;
 }
+
 @keyframes nombre-empresa-animation {
-  0% {
-    opacity: 0;
-  }
   100% {
     opacity: 1;
   }

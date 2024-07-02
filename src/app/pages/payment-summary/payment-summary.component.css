@@ -1,0 +1,51 @@
+p {
+  margin: 0;
+}
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.items {
+  font-family: "Open Sans", sans-serif;
+  font-weight: regular;
+  text-align: center;
+  color: black;
+}
+.titulo {
+  padding: 1rem 0;
+  text-align: center;
+}
+.total-pagado {
+  margin: 0px 0px 0px 0px;
+  font-size: 36px;
+  font-weight: 500;
+}
+.detalleVoucher {
+  width: 90%;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem 1rem;
+  background: linear-gradient(
+    145.62deg,
+    rgba(0, 180, 255, 0.28) 0%,
+    rgba(0, 108, 153, 0.28) 102.41%
+  );
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+.nombre-item {
+  font-size: 18px;
+  color: black;
+  font-weight: bold;
+  text-align: center;
+}
+.valores {
+  text-align: center;
+}
+.boton {
+  margin: 2rem 0 1rem 0;
+}

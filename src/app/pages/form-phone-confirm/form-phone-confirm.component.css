@@ -1,0 +1,97 @@
+p{
+  margin: 0;
+}
+.container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.5rem;
+}
+.titulo{
+  font-family: 'Open Sans', sans-serif;
+  font-size: 24px;
+  font-weight: regular;
+  text-align: center;
+  margin-top: 2rem;
+  color: white;
+}
+.icono-mensaje{
+  font-size: 5rem;
+  color: white;
+  text-align: center;
+}
+.texto, .telefono{
+  font-family: 'Open Sans', sans-serif;
+  color: white;
+  text-align: center;
+  font-size: 18px;
+}
+.campo-telefono{
+  display: flex;
+  justify-content: center;
+  gap: 0.2rem;
+  align-items: center;
+}
+.campo-telefono p{
+  font-family: 'Open Sans', sans-serif;
+  margin: 0;
+}
+.telefono{
+  font-size: 20px;
+  font-weight: 600;
+}
+.bi-pencil-fill{
+  color: white;
+  width: 29px;
+  height: 22px;
+  text-align: center;
+  cursor: pointer;
+}
+.bi-pencil-fill:hover{
+  color: #1F2A95;
+}
+.input-group-text{
+  cursor: pointer;
+}
+
+.input-group {
+  font-weight: 400;
+  height: 3rem;
+  border-radius: 10px;
+}
+.input-group-text i {
+  color: #2f69c5;
+  width: 100%;
+  font-size: 1.5rem;
+}
+.input-telefono{
+  width: 80%;
+  margin: 0 auto;
+}
+.gestion-tel{
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.link{
+  color: white;
+  text-decoration: underline;
+  cursor: pointer;
+  border: none;
+}
+.alert{
+  text-align: center;
+  margin: 0;
+  padding: 1rem;
+}
+.texto{
+  margin: 0;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+app-btn-cbit {
+  padding: 3rem;
+}

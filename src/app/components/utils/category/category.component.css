@@ -1,0 +1,16 @@
+.card{
+  border: 0;
+}
+.card:hover{
+  cursor: pointer;
+  border: 1px solid #f8f9fa;
+}
+.card-text{
+  font-family: 'Open Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  text-align: center;
+}
+.card-body{
+  padding: 0;
+}

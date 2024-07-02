@@ -1,0 +1,54 @@
+<body>
+  <app-header-cbit
+    (onClickEventBack)="goToPage(routes.back)"
+    (onClickEventHelp)="goToPage(routes.help)"
+  ></app-header-cbit>
+  <div class="container">
+    <h1 class="titulo">Código de verificación</h1>
+    <app-indicator></app-indicator>
+    <div class="icono-mensaje">
+      <i class="bi bi-chat-left"></i>
+    </div>
+    <div class="texto">
+      <p>Escriba el código que se enviará a su celular</p>
+    </div>
+    <div class="gestion-tel">
+      <div class="campo-telefono" *ngIf="!editPhone">
+        <p class="telefono">{{ phone }}</p>
+        <i class="bi bi-pencil-fill" (click)="changeEditPhone()"></i>
+      </div>
+      <div class="input-telefono" *ngIf="editPhone">
+        <div class="input-group">
+          <input class="form-control" type="tel" [(ngModel)]="phone" />
+          <span class="input-group-text"
+            ><i class="bi bi-floppy" (click)="changeEditPhone()"></i
+          ></span>
+        </div>
+      </div>
+    </div>
+    <app-otp (onDigit)="setOtpUser($event)"></app-otp>
+    <div class="alert alert-danger" role="alert" *ngIf="otpError">
+      Código incorrecto
+    </div>
+    <div class="texto">
+      <p>¿No recibió el código?</p>
+    </div>
+    <div class="texto">
+      <button
+        type="button"
+        class="btn link"
+        (click)="sendSms()"
+        [disabled]="!enabledReenviar"
+      >
+        Volver a enviar código
+      </button>
+      <p>en {{ tiempoRestante }}s</p>
+    </div>
+    <app-btn-cbit
+      [text]="'Continuar'"
+      [disabled]="otpUser.length < 6"
+      (onClickEvent)="verifyOtp()"
+      [loading]="isLoading"
+    ></app-btn-cbit>
+  </div>
+</body>

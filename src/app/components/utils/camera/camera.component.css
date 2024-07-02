@@ -1,0 +1,61 @@
+body {
+  background-color: transparent;
+}
+.isSelfie {
+  border-radius: 50%;
+}
+.isDocument {
+  rotate: -90deg;
+}
+.div-cam {
+  margin: 0 auto;
+  background-color: #fff;
+  width: 14rem;
+  height: 21rem;
+  color: white;
+  border: 3px solid #00eaff;
+  background-color: #d9d9d9;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: center;
+}
+.div-cam img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.bi {
+  color: black;
+  font-size: 12rem;
+  display: flex;
+  align-items: center;
+  margin: 0 auto;
+}
+video {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+.boton {
+  cursor: pointer;
+  box-shadow: 0 4px 4px rgba(255, 255, 255, 0.5);
+  margin: 1rem auto;
+  height: 32px;
+  width: 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  border: 3px solid black;
+}
+.bi-circle-fill {
+  font-size: 20px;
+  color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.display-none {
+  display: none;
+}

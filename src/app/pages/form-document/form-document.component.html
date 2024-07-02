@@ -1,0 +1,37 @@
+<body>
+  <app-header-cbit
+    (onClickEventBack)="goToPage(routes.back)"
+    (onClickEventHelp)="goToPage(routes.help)"
+  ></app-header-cbit>
+  <div class="container">
+    <h1 class="titulo">{{ titulo }}</h1>
+    <app-indicator></app-indicator>
+    <div class="camera">
+      <div *ngIf="frontDocument">
+        <app-camera
+          [type]="'document'"
+          [icon]="'bi-person-vcard'"
+          (onPhoto)="savePhoto($event)"
+        ></app-camera>
+      </div>
+      <div *ngIf="!frontDocument">
+        <app-camera
+          [type]="'document'"
+          [icon]="'bi-postcard'"
+          (onPhoto)="savePhoto($event)"
+        ></app-camera>
+      </div>
+    </div>
+    <div class="alert alert-success text-center" role="alert" *ngIf="showAlert">
+      Imagen guardada correctamente
+    </div>
+    <div class="boton">
+      <app-btn-cbit
+        (onClickEvent)="continue()"
+        [text]="'Continuar'"
+        [disabled]="!activeBtn"
+        [loading]="isLoading"
+      ></app-btn-cbit>
+    </div>
+  </div>
+</body>

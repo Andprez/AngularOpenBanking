@@ -1,5 +1,14 @@
 <body>
-    <app-header-transaction></app-header-transaction>
-    <app-list-transactions class="list-trans"></app-list-transactions>
+  <div class="header">
+    <app-header-transaction
+      (onClickEventBack)="goToPage(routes.back)"
+      [entity]="entity"
+      [typeProduct]="typeProduct.nombreTipo"
+      [accountNumber]="product.numeroProducto"
+    ></app-header-transaction>
+  </div>
+  <app-list-transaction
+    [productId]="product.idProducto!"
+    (onTransactionSelected)="setTransactionSelected($event)"
+  ></app-list-transaction>
 </body>
-

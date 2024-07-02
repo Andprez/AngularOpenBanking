@@ -1,4 +1,5 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Transaction } from 'src/app/models/transaction';
 
 @Component({
   selector: 'app-detail-transaction',
@@ -6,8 +7,10 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./detail-transaction.component.css']
 })
 export class DetailTransactionComponent {
-  @Input() nameEntity!: string;
-  @Input() date!: string;
-  @Input() amount!: number;
-}
+  @Input() transaction: Transaction = {} as Transaction;
+  @Output() onTransactionSelected = new EventEmitter<Transaction>();
 
+  setTransactionSelected() {
+    this.onTransactionSelected.emit(this.transaction);
+  }
+}

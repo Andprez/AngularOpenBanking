@@ -1,15 +1,15 @@
 <body>
-    <div class="contenedor">
-        <div class="iconos">
-            <app-back class="back"
-                [routerLink]="'/'"
-            ></app-back>
-            <app-help class="help"></app-help>
-        </div>
-
-        <div class="logo-entidad">
-            <app-entity></app-entity>
-        </div>
-
+  <div class="container">
+    <div class="iconos">
+      <div class="back">
+        <app-back (onClickEvent)="setClickBack()"></app-back>
+      </div>
+      <div class="help">
+        <app-help (onClickEvent)="setClickHelp()"></app-help>
+      </div>
     </div>
+    <div class="logo-entidad">
+      <app-entity [entity]="entity"></app-entity>
+    </div>
+  </div>
 </body>

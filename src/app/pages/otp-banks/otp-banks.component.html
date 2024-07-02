@@ -1,0 +1,35 @@
+<body>
+  <app-header-cbit
+    (onClickEventBack)="goToPage(routes.back)"
+    (onClickEventHelp)="goToPage(routes.help)"
+  ></app-header-cbit>
+  <div class="container">
+    <h1 class="titulo">Código de verificación {{ selectedBank.nombre }}</h1>
+    <div class="icono-mensaje">
+      <i class="bi bi-chat-dots"></i>
+    </div>
+    <div class="contenido">
+      <div class="texto">
+        <p>Escriba el código enviado a su celular</p>
+      </div>
+      <app-otp (onDigit)="setOnDigit($event)"></app-otp>
+      <div class="alert alert-danger" role="alert" *ngIf="otpError">
+        Código incorrecto
+      </div>
+      <div class="texto">
+        <p>
+          Tu código vence en <br />
+          {{ minRestantes | number : "2.0-0" }}:{{
+            segRestantes | number : "2.0-0"
+          }}
+          seg
+        </p>
+      </div>
+      <app-btn-cbit
+        [text]="'Continuar'"
+        (onClickEvent)="verifyOtp()"
+        [loading]="isLoading"
+      ></app-btn-cbit>
+    </div>
+  </div>
+</body>

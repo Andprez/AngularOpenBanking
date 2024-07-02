@@ -1,0 +1,11 @@
+.grid-entity{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap:0.5rem;
+}
+.select-entity {
+  cursor: pointer;
+}
+.texto{
+  text-align: center;
+}

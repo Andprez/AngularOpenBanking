@@ -1,7 +1,7 @@
-.bi-chevron-left {
-  color: #ffffff;
+.bi-chevron-left{
+  color: white;
   font-size: 32px;
 }
-i{
-  text-align: left;
+a {
+  cursor: pointer;
 }

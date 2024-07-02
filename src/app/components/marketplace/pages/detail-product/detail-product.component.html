@@ -1,0 +1,47 @@
+<app-header-marketplace></app-header-marketplace>
+<a routerLink="{{ routes.back }}" class="atras">
+  <i class="bi bi-arrow-left"></i>
+</a>
+<h2 class="titulo my-3">Detalle del producto</h2>
+<div class="card container mb-3">
+  <div class="row">
+    <div class="col-12 col-md-6 col-lg-4 imagen">
+      <img
+        src="{{ productDetail?.image }}"
+        class="img-fluid rounded-start"
+        alt="Imagen de {{ productDetail?.title }}"
+      />
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h5 class="card-title">{{ productDetail?.title }}</h5>
+        <br />
+        <ul class="list-group list-group-flush">
+          <p class="card-subtitle">Descripción:</p>
+          <li class="list-group-item">{{ productDetail?.description }}</li>
+          <p class="card-subtitle">Categoría:</p>
+          <li class="list-group-item">{{ productDetail?.category }}</li>
+          <p class="card-subtitle">Precio:</p>
+          <li class="list-group-item">{{ productDetail?.price | currency }}</li>
+          <p class="card-subtitle">Calificación:</p>
+          <li class="list-group-item">
+            <div
+              class="progress"
+              role="progressbar"
+              aria-label="Warning example"
+              aria-valuemin="0"
+              aria-valuemax="100"
+            >
+              <div class="progress-bar" [ngStyle]="{ width: rating + '%' }">
+                {{ rating }}%
+              </div>
+            </div>
+            <p class="votaciones">
+              ({{ productDetail?.rating?.count }} votaciones)
+            </p>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-help',
@@ -6,5 +6,9 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./help.component.css']
 })
 export class HelpComponent {
-  @Input() routerLink!: string;
+  @Output() onClickEvent = new EventEmitter();
+
+  click(): void {
+    this.onClickEvent.emit();
+  }
 }

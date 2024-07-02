@@ -1,18 +1,20 @@
 <body>
-    <div class="contenedor">
-        <div class="iconos">
-                <app-back class="back"
-                [routerLink]="'/'"
-                ></app-back>
-                <h1>Movimientos</h1>      
-        </div>
-        
-        <div class="logo-entidad">
-            <app-entity [nameEntity]="'Nequi'" [nameImage]="'bancolombia'"></app-entity>
-        </div>
-        <div class="account-detail">
-            <p>Cuenta Ahorros</p>
-            <p>*****87757</p>
-        </div>
+  <div class="contenedor">
+    <div class="iconos">
+      <app-back (onClickEvent)="setClickBack()"></app-back>
+      <div></div>
     </div>
+    <div class="detalles">
+      <h1>Movimientos</h1>
+      <div class="logo-entidad">
+        <app-entity
+          [entity]="entity"
+        ></app-entity>
+      </div>
+      <div class="account-detail">
+        <p>{{ typeProduct }}</p>
+        <p>{{ accountNumber | valueHidden }}</p>
+      </div>
+    </div>
+  </div>
 </body>

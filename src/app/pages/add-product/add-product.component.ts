@@ -1,55 +1,110 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators, FormBuilder } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { Cliente } from 'src/app/models/cliente';
+import { EntidadFinanciera } from 'src/app/models/entidad-financiera';
+import { ProductoF } from 'src/app/models/producto-f';
+import { TipoProductoF } from 'src/app/models/tipo-producto-f';
+import { NotificationsService } from 'src/app/services/notifications.service';
+import { ProductosFService } from 'src/app/services/productos-f.service';
 
 @Component({
   selector: 'app-add-product',
   templateUrl: './add-product.component.html',
-  styleUrls: ['./add-product.component.css']
+  styleUrls: ['./add-product.component.css', '../../templates/background3.css'],
 })
 export class AddProductComponent implements OnInit {
-
-  products: string[] = ['Cuenta Ahorros Móvil', 'Crédito Móvil', 'Tarjeta de Crédito'];
-  selectedProduct: string = '';
-
+  shopping: boolean = false;
+  user!: Cliente;
+  tiposProducto!: TipoProductoF[];
+  selectedProduct?: TipoProductoF;
+  savedProduct?: ProductoF;
+  selectedEntity!: EntidadFinanciera;
   formProducto!: FormGroup;
   formValidation!: FormGroup;
   showAdditionalFields = false;
   showSuccessMessage = false;
+  isLoading = false;
 
-  constructor(private fb: FormBuilder) {
+  routes = {
+    back: '/products/add/select-entity',
+    help: '/help',
+    transactions: '/products/transactions',
+    dashboard: '/dashboard',
+    wallet: '/wallet',
+  };
+
+  constructor(
+    private fb: FormBuilder,
+    private productosFService: ProductosFService,
+    private router: Router,
+    private notifService: NotificationsService
+  ) {}
+
+  ngOnInit(): void {
+    this.notifService.loadingEvent.subscribe((event) => {
+      this.isLoading = event;
+    })
+    this.user = JSON.parse(localStorage.getItem('user') || '{}');
+    this.selectedEntity = JSON.parse(localStorage.getItem('entity') || '{}');
+    localStorage.getItem('marketplace')
+      ? (this.shopping = true)
+      : (this.shopping = false);
+    this.productosFService.getTypesProduct().subscribe({
+      next: (result) => {
+        this.tiposProducto = result;
+      },
+      error: (error) => {
+        console.error(error);
+      },
+    });
     this.formProducto = this.fb.group({
-      product: ['', Validators.required]
+      product: ['', Validators.required],
     });
     this.formValidation = this.fb.group({
-      telefono: ['', [Validators.pattern('[0-9]{10}'), Validators.required]],
-      clave: ['', [Validators.minLength(8), Validators.required]],
+      numeroProducto: [
+        '',
+        [Validators.pattern('^[0-9]+$'), Validators.required],
+      ],
+      password: ['', [Validators.minLength(8), Validators.required]],
     });
   }
 
-  ngOnInit(): void { }
-
   onSubmitProduct(): void {
-
-    // Enviar datos al servidor (reemplazar con tu implementación real)
-    console.log('Formulario producto:', this.formProducto.value);
-
-    // Actualizar la propiedad selectedProduct
-    this.selectedProduct = this.formProducto.get('product')?.value;
-    this.showAdditionalFields = true; 
-    // Limpiar el formulario (opcional)
-    // this.form.reset();
-
+    let idProductSelected = this.formProducto.value.product;
+    this.selectedProduct = this.tiposProducto.find(
+      (tp) => tp.idTipo_Producto == idProductSelected
+    );
+    this.showAdditionalFields = true;
   }
   onSubmitValidation(): void {
-    console.log('Formulario producto:', this.formProducto.value);
-
-    // Actualizar la propiedad selectedProduct
-    this.selectedProduct = this.formProducto.get('product')?.value;
-    this.showSuccessMessage = true;
-
-
-    
-    // Ocultar campos adicionales después del envío
+    let productF: ProductoF = {
+      idTipo_Producto: this.selectedProduct?.idTipo_Producto!,
+      idEntidadFinanciera: this.selectedEntity.idEntidadFinanciera!,
+      numeroProducto: this.formValidation.value.numeroProducto,
+      password: this.formValidation.value.password,
+      idBilletera_CBITBank: this.user.idBilleteraCBITBank!,
+      idEstado: 1,
+      usuario: this.user.numeroIdentificacion,
+    };
+    this.productosFService.createProductF(productF).subscribe({
+      next: (result) => {
+        this.savedProduct = result;
+        localStorage.setItem('product', JSON.stringify(this.savedProduct));
+        this.showSuccessMessage = true;
+      },
+      error: (error) => {
+        console.error(error);
+      },
+    });
+  }
+  continue(): void {
+    localStorage.removeItem('entity');
+    this.shopping
+      ? this.goToPage(this.routes.wallet)
+      : this.goToPage(this.routes.transactions);
+  }
+  goToPage(page: string): void {
+    this.router.navigate([page]);
   }
 }
-

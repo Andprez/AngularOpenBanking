@@ -1,0 +1,56 @@
+p {
+  margin: 0;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  /* gap: 1rem; */
+}
+
+h1.titulo {
+  padding: 2rem 0.5rem;
+  padding-bottom: 0;
+  text-align: center;
+  margin: 0;
+}
+
+.icono-mensaje {
+  color: #1f2a95;
+  text-align: center;
+}
+
+.bi {
+  font-size: 6rem;
+}
+
+.contenido {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.texto {
+  font-family: "Open Sans", sans-serif;
+  text-align: center;
+  font-size: 18px;
+}
+
+.alert {
+  text-align: center;
+  margin: 0;
+  padding: 1rem;
+}
+
+.texto {
+  margin: 0;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+app-btn-cbit {
+  padding: 3rem;
+}

@@ -1,0 +1,17 @@
+<body>
+  <div>
+    <div class="header">
+      <app-header-login (onClickEventHelp)="(routes.help)"></app-header-login>
+    </div>
+    <div class="container">
+      <app-btn-cbit
+        [text]="'Ingresar Billetera'"
+        (onClickEvent)="goToPage(routes.login)"
+      ></app-btn-cbit>
+      <app-btn-cbit
+        [text]="'Marketplace'"
+        (onClickEvent)="goToPage(routes.marketplace)"
+      ></app-btn-cbit>
+    </div>
+  </div>
+</body>

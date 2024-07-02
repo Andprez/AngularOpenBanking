@@ -1,0 +1,14 @@
+.navbar img {
+  max-height: 50px;
+  border-radius: 50%;
+  box-shadow: 0 0 5px #fff;
+  transition: all 0.5s ease-in-out;
+}
+.navbar-collapse {
+  justify-content: space-between;
+}
+@media screen and (max-width: 768px) {
+  .navbar-brand {
+    display: none;
+  }
+}

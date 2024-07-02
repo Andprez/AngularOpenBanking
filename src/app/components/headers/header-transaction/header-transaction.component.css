@@ -1,44 +1,45 @@
 body {
-  background: linear-gradient(135deg, #00B0F9, #1F2A95);
+  background: linear-gradient(135deg, #00b0f9, #1f2a95);
   background-size: 100% 100%;
   background-repeat: no-repeat;
   background-attachment: fixed;
 }
-
 .contenedor {
+  padding-bottom: 1rem;
+}
+.iconos {
+  margin: 0 auto;
   width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 0 0.5rem 0;
+}
+.detalles {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center; /* Center content vertically within the container */
-  padding-bottom: 1.5rem;
+  justify-content: center;
+  gap: 1rem;
+  margin: -2.5rem 0 0 0;
 }
-
-.iconos{
-  width: 95%;
-  display: flex;
-  align-items: center;
-  padding: 1.5rem 0 0.5rem 0;
-  }
-
 h1 {
-  margin: 0 auto; /* Center the heading horizontally within its parent container */
+  margin: 0; /* Center the heading horizontally within its parent container */
   font-size: 20px;
   font-family: "Open Sans", sans-serif;
   color: #ffffff;
   font-weight: 600;
 }
-
-.logo-entidad,
-.account-detail {
-  text-align: center; 
-  margin: 3%;
+.logo-entidad {
+  width: 8rem;
 }
-
+.account-detail {
+  text-align: center;
+}
 p {
   font-size: 16px;
   font-family: "Open Sans", sans-serif;
   color: #ffffff;
-  font-weight: 600;
+  font-weight: 400;
   margin: 0%;
 }

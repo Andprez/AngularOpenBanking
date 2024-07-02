@@ -1,0 +1,29 @@
+<body>
+  <div class="card">
+    <img
+      src="{{ product.image }}"
+      class="card-img-top my-2"
+      alt="Imagen {{ product.title }}"
+    />
+    <div class="card-body">
+      <h5 class="card-title">{{ product.title }}</h5>
+      <p class="card-text">{{ product.description.toString() }}</p>
+      <p class="card-text">Price: {{ product.price | currency }}</p>
+      <div class="actions">
+        <a
+          class="btn btn-secondary"
+          routerLink="/ecommerce/products/{{ product.id }}"
+        >
+          Ver
+        </a>
+        <button
+          class="btn btn-primary"
+          (click)="agregarAlCarrito()"
+          [disabled]="agregado"
+        >
+          {{ agregado ? "Agregado" : "Agregar" }}
+        </button>
+      </div>
+    </div>
+  </div>
+</body>

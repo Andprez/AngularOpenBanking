@@ -1,1 +1,104 @@
+<body>
+  <!-- LOADING -->
+  <div class="loading">
+    <div class="logo">
+      <img src="../../../assets/LogoCbit.png" alt="Logo Cbit" />
+    </div>
+    <div class="nombre-empresa"><span>CBIT</span>Bank</div>
+  </div>
 
+  <!-- PANTALLA LOGIN -->
+
+  <div class="login">
+    <app-header-login
+      (onClickEventHelp)="goToPage(routes.help)"
+    ></app-header-login>
+
+    <!-- FORM LOGIN -->
+    <div class="container container-login" *ngIf="!showPasswordForm">
+      <form
+        [formGroup]="formLogin"
+        class="form-login"
+        (ngSubmit)="formLogin.valid && setShowPasswordForm()"
+      >
+        <div class="campos-labels">
+          <label for="docType" class="form-label">Tipo de documento</label>
+          <div class="input-group">
+            <select class="form-select" formControlName="docType">
+              <option selected disabled>Selecciona una opción</option>
+              <option
+                *ngFor="let tipo of tiposIdentificacion"
+                [value]="tipo.idTipoIdentificacion"
+              >
+                {{ tipo.nombre }}
+              </option>
+            </select>
+            <span class="input-group-text"
+              ><i class="bi bi-person-vcard"></i
+            ></span>
+          </div>
+        </div>
+
+        <div class="campos-labels">
+          <label for="docNumber" class="form-label">Número de documento</label>
+          <div class="input-group">
+            <input class="form-control" formControlName="docNumber" />
+            <span class="input-group-text"><i class="bi bi-123"></i></span>
+          </div>
+        </div>
+
+        <div class="alert alert-danger" role="alert" *ngIf="!clienteExiste">
+          Usuario o contraseña incorrectos
+        </div>
+
+        <app-btn-cbit
+          [text]="'Continuar'"
+          [type]="'submit'"
+          [disabled]="formLogin.invalid"
+        ></app-btn-cbit>
+      </form>
+
+      <div class="texto-final login">
+        <p>¿No tiene una cuenta? <a (click)="registrarse()">Regístrese</a></p>
+      </div>
+    </div>
+
+    <!-- FORM PASSWORD -->
+    <div class="container container-password" *ngIf="showPasswordForm">
+      <form
+        [formGroup]="formPassword"
+        class="form-password"
+        (ngSubmit)="formPassword.valid && login()"
+      >
+        <div class="campos-labels">
+          <label for="password" class="form-label">Ingrese su clave</label>
+          <div class="input-group">
+            <input
+              class="form-control"
+              formControlName="password"
+              [type]="showPassword ? 'text' : 'password'"
+            />
+            <span
+              class="input-group-text show-password-btn"
+              (click)="setShowPassword()"
+            >
+              <i *ngIf="!showPassword" class="bi bi-eye"></i>
+              <i *ngIf="showPassword" class="bi bi-eye-slash"></i>
+            </span>
+          </div>
+        </div>
+        <div class="texto-final password">
+          <a>¿Olvidó su contraseña?</a>
+        </div>
+
+        <app-btn-cbit
+          [text]="'Iniciar sesión'"
+          [type]="'submit'"
+          [disabled]="formPassword.invalid"
+          [loading]="isLoading"
+        ></app-btn-cbit>
+      </form>
+    </div>
+    <!-- END FORM PASSWORD -->
+  </div>
+</body>

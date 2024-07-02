@@ -1,0 +1,9 @@
+<div class="list">
+  <div class="mov" *ngFor="let transaction of transactions">
+    <app-detail-transaction
+      [transaction]="transaction"
+      (onTransactionSelected)="setTransactionSelected($event)"
+    ></app-detail-transaction>
+  </div>
+</div>
+<p *ngIf="transactions.length == 0">No hay transacciones para este producto</p>

@@ -2,9 +2,10 @@
   <button
     type="{{ type }}"
     class="btn btn-primary"
-    [routerLink]="['{{routerLink}}']"
-    [disabled]="disabled"
+    [disabled]="disabled || loading"
+    (click)="click()"
   >
-    {{ text }}
+    <span [ngClass]="{ 'spinner-border spinner-border-sm': loading }"></span>
+    <span role="status">{{ text }}</span>
   </button>
 </div>

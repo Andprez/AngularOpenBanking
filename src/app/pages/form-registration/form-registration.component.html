@@ -1,8 +1,11 @@
 <body>
-  <app-header-cbit></app-header-cbit>
+  <app-header-cbit
+    (onClickEventBack)="goToPage(routes.back)"
+    (onClickEventHelp)="goToPage(routes.help)"
+  ></app-header-cbit>
   <div class="container text-center">
     <h1 class="titulo">Ingrese sus datos</h1>
-    <app-indicator-signin-user></app-indicator-signin-user>
+    <app-indicator></app-indicator>
     <form
       [formGroup]="formUser"
       class="form-user"
@@ -65,7 +68,10 @@
         <label for="docType" class="form-label">Tipo de documento</label>
         <select class="form-select" formControlName="docType">
           <option selected disabled>Selecciona una opción</option>
-          <option *ngFor="let tipo of tiposIdentificacion" [value]="tipo.idTipoIdentificacion">
+          <option
+            *ngFor="let tipo of tiposIdentificacion"
+            [value]="tipo.idTipoIdentificacion"
+          >
             {{ tipo.nombre }}
           </option>
         </select>
@@ -94,12 +100,33 @@
       </div>
 
       <div class="campos-labels">
-        <label for="docCity" class="form-label"
-          >Ciudad del expedición del documento</label
+        <label for="docDepart" class="form-label"
+          >Departamento de expedición</label
         >
+        <select
+          class="form-select"
+          aria-label=""
+          formControlName="docDepart"
+          (change)="loadCities($event)"
+        >
+          <option selected disabled>Selecciona una opción</option>
+          <option
+            *ngFor="let dep of departamentos"
+            [value]="dep.idDepartamento"
+          >
+            {{ dep.nombre }}
+          </option>
+        </select>
+      </div>
+
+      <div class="campos-labels">
+        <label for="docCity" class="form-label">Ciudad del expedición</label>
         <select class="form-select" aria-label="" formControlName="docCity">
           <option selected disabled>Selecciona una opción</option>
-          <option *ngFor="let ciudad of ciudades" [value]="ciudad.idCiudad">
+          <option
+            *ngFor="let ciudad of ciudadesPorDep"
+            [value]="ciudad.idCiudad"
+          >
             {{ ciudad.nombre }}
           </option>
         </select>
@@ -107,12 +134,15 @@
 
       <div class="campos-labels">
         <label for="phone" class="form-label">Número de celular</label>
-        <input
-          type="tel"
-          class="form-control"
-          id="phone"
-          formControlName="phone"
-        />
+        <div class="input-group">
+          <span class="input-group-text" id="basic-addon1">+57</span>
+          <input
+            type="tel"
+            class="form-control"
+            id="phone"
+            formControlName="phone"
+          />
+        </div>
       </div>
 
       <div class="campos-labels">
@@ -148,7 +178,11 @@
       </div>
       <div
         class="alert alert-danger"
-        *ngIf="formUser.get('email')!.value !== formUser.get('confirmEmail')!.value && formUser.get('confirmEmail')!.value.length > 0"
+        *ngIf="
+          formUser.get('email')!.value !==
+            formUser.get('confirmEmail')!.value &&
+          formUser.get('confirmEmail')!.value.length > 0
+        "
       >
         Los emails no coinciden
       </div>
@@ -157,7 +191,8 @@
         [text]="'Continuar'"
         [type]="'submit'"
         [disabled]="formUser.invalid"
-        >
+        [loading]="isLoading"
+      >
       </app-btn-cbit>
     </form>
   </div>

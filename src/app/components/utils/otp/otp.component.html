@@ -1,0 +1,48 @@
+<body>
+  <form class="campos-labels" [formGroup]="formDigits">
+    <div class="input-otp">
+      <input
+        class="form-control digito"
+        formControlName="digito1"
+        type="tel"
+        maxlength="1"
+        (keyup)="onInputDigit($event, 0)"
+      />
+      <input
+        class="form-control digito"
+        formControlName="digito2"
+        type="tel"
+        maxlength="1"
+        (keyup)="onInputDigit($event, 1)"
+      />
+      <input
+        class="form-control digito"
+        formControlName="digito3"
+        type="tel"
+        maxlength="1"
+        (keyup)="onInputDigit($event, 2)"
+      />
+      <input
+        class="form-control digito"
+        formControlName="digito4"
+        type="tel"
+        maxlength="1"
+        (keyup)="onInputDigit($event, 3)"
+      />
+      <input
+        class="form-control digito"
+        formControlName="digito5"
+        type="tel"
+        maxlength="1"
+        (keyup)="onInputDigit($event, 4)"
+      />
+      <input
+        class="form-control digito"
+        formControlName="digito6"
+        type="tel"
+        maxlength="1"
+        (keyup)="onInputDigit($event, 5)"
+      />
+    </div>
+  </form>
+</body>
