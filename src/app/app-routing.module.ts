@@ -52,19 +52,6 @@ const routes: Routes = [
   { path: 'tyc/banks', component: TycBanksComponent },
   { path: '**', redirectTo: 'ecommerce' },
 ];
-import { TermsAcceptComponent } from './pages/terms-accept/terms-accept.component';
-import { TermsConditionsComponent } from './pages/terms-conditions/terms-conditions.component';
-
-const routes: Routes = [
-  {
-    path: 'terminosinicial',
-    component: TermsConditionsComponent
-  },
-  {
-    path: 'acepterminos',
-    component: TermsAcceptComponent
-  }
-];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
