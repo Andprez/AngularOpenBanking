@@ -1,0 +1,21 @@
+body {
+  background: transparent;
+  position: sticky;
+  top: 0;
+  z-index: 5;
+}
+img {
+  min-width: 200px;
+  width: 50%;
+  height: auto;
+}
+.container {
+  max-width: 95%;
+  text-align: center;
+  padding: 1.5rem 0 0.5rem 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+}

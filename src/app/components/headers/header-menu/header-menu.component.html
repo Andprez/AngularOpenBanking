@@ -1,0 +1,16 @@
+<body>
+  <div class="container">
+    <div class="back">
+      <app-back (onClickEvent)="setClickBack()" *ngIf="showBackButton"></app-back>
+    </div>
+    <div class="logo">
+      <img src="../../../assets/logo.png" alt="Logo Cbitbank" />
+    </div>
+    <div class="help">
+      <app-help
+        (onClickEvent)="setClickHelp()"
+        *ngIf="showHelpButton"
+      ></app-help>
+    </div>
+  </div>
+</body>
