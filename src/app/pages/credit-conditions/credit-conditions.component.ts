@@ -8,6 +8,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./credit-conditions.component.css']
 })
 export class CreditConditionsComponent implements OnInit{
+
   routes = {
     back: '/login',
     help: '/help',
@@ -19,9 +20,6 @@ export class CreditConditionsComponent implements OnInit{
     throw new Error('Method not implemented.');
   }
 
-  // goToPage(page: string) {
-  //   this.router.navigate([page]);
-  // }
   goToPage(page: string): void {
     this.router.navigate([page]);
   }
