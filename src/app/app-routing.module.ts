@@ -24,9 +24,12 @@ import { HelpPageComponent } from './pages/help-page/help-page.component';
 import { TycBanksComponent } from './pages/tyc-banks/tyc-banks.component';
 import { PaymentSummaryComponent } from './pages/payment-summary/payment-summary.component';
 import { OtpBanksComponent } from './pages/otp-banks/otp-banks.component';
+import { CreditConditionsComponent } from './pages/credit-conditions/credit-conditions.component';
+import { CreditDisburseComponent } from './pages/credit-disburse/credit-disburse.component';
 
 const routes: Routes = [
-  { path: '', component: IndexComponent },
+  { path: '', component: MyProductsComponent },
+  // { path: '', component: IndexComponent },
   { path: 'ecommerce', component: ListProductComponent },
   { path: 'ecommerce/products/:id', component: DetailProductComponent },
   { path: 'ecommerce/cart', component: CartComponent },

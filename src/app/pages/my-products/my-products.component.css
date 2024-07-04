@@ -22,3 +22,27 @@ h5 {
 .list-product-vertical{
   margin-bottom: 1rem;
 }
+
+.txt-solicitar{
+  background-color: #d9d9d9;
+  border-radius: 12px;
+  padding: 0.2rem;
+}
+.btn-adicionar, .link, .view{
+  cursor: pointer;
+}
+.bi-plus-circle-fill{
+  font-size: 30px;
+  color:#0F399f;
+}
+.bi-eye, .bi-eye-slash{
+  font-size: 30px;
+  color:#0F399f;
+}
+.p{
+  text-align: center;
+  font-weight: bold;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 20px;
+  font-weight: regular;
+}
