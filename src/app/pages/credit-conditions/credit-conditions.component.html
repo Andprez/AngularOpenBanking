@@ -13,7 +13,11 @@
         </div>
         <div class="info-value-cuota">
             <div class="tx-monto-cuota">$</div>
-            <div class="tx-cuota">Tu cuota mensual aproximada más seguro de vida $</div>
+            <div class="tx-cuota">Tu cuota mensual aproximada más seguro de vida
+                <span class="tx-vl-seguro">
+                    [$2.140]
+                </span>
+            </div>
         </div>
         <div class="inf-tasa-ea">
             <div class="vl-tasa-ea">c</div>
@@ -35,7 +39,9 @@
             <div class="vl-deuda-t">g</div>
             <div class="tx-deuda-t">Duración en meses</div>
         </div>
-        <div class="tx-sg-vida">Todos los creditos tiene seguro de vida</div>
+        <div class="tx-sg-vida">Todos los creditos tiene seguro de vida
+            <i class="bi bi-info-circle"  (onClickEvent)="goToPage(routes.help)"></i>
+        </div>
         <div class="inf-ayuda">
             <div class="tx-inf-ayuda">¿Recibiste ayuda de tu asesor?</div>
             <div class="tx-box-asesor">

@@ -3,7 +3,6 @@
     padding: 1rem;
     background: linear-gradient(145.62deg, rgba(0, 180, 255, 0.28) 0%, rgba(0, 108, 153, 0.28) 102.41%);
     display: grid;
-    grid-template-columns: 1fr 1fr;
     grid-template-rows: auto auto auto auto auto auto auto;
     gap: 0px 0px;
     grid-auto-flow: row;
@@ -17,12 +16,16 @@
         font-size: 16px;
         line-height: 22px;
         color: #000000;
+        margin-bottom: 0.5rem;
     }
     .tittle {
         font-weight: 300;
         font-size: 16px;
         line-height: 22px;
         color: #000000;
+    }
+    .info-seguro {
+        text-align: center;
     }
     .tx-monto-cuota {
         font-family: 'Open Sans';
@@ -33,12 +36,20 @@
         text-align: center;
         color: #1860BF;
     }
+    .tx-cuota { 
+        font-family: 'Open Sans';
+        font-style: normal;
+        font-weight: 300;
+        font-size: 16px;
+        line-height: 22px;
+        text-align: center;
+        justify-self: center;
+        grid-area: tx-cuota; 
+    }
         .tx-vl-seguro {
             color: #1860BF;
         }
-        .tx-monto-cuota, .tx-vl-seguro {
-            display: inline-block;
-        }
+
 
 .titulo {
     padding: 10px;
