@@ -1,6 +1,9 @@
 <body>
     <div>
-        <app-header-cbit></app-header-cbit>
+        <app-header-cbit
+            (onClickEventBack)="goToPage(routes.back)"
+            (onClickEventHelp)="goToPage(routes.help)"
+        ></app-header-cbit>
     </div>
     <div class="container-indicator">
         <h1 class="titulo">Su crédito [Tipocredito] fue desembolsado</h1>

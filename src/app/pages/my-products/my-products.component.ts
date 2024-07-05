@@ -16,6 +16,7 @@ export class MyProductsComponent implements OnInit {
     back: '/dashboard',
     help: '/help',
     transactions: '/products/transactions',
+    addProduct: '',
   };
 
   constructor(private router: Router) {}

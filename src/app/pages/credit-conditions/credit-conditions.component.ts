@@ -10,12 +10,17 @@ import { Router } from '@angular/router';
 export class CreditConditionsComponent implements OnInit{
 
   routes = {
-    back: '/login',
+    back: '',
     help: '/help',
-    accept: '/tyc/accept',
+    accept: '',
+    dashboard: '',
+    info: '/help',
+    simulation: '/help',
   };
 
-  constructor(private router: Router) {}
+  constructor(private router: Router) {
+    
+  }
   ngOnInit(): void {
     throw new Error('Method not implemented.');
   }

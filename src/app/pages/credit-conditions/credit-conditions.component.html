@@ -1,6 +1,9 @@
 <body>
     <div>
-        <app-header-cbit></app-header-cbit>
+        <app-header-cbit
+            (onClickEventBack)="goToPage(routes.back)"
+            (onClickEventHelp)="goToPage(routes.help)"
+            ></app-header-cbit>
     </div>
     <div class="tx-titulo">
         <p class="credit-type">Crédito Libre Inversión</p>
@@ -40,7 +43,7 @@
             <div class="tx-deuda-t">Duración en meses</div>
         </div>
         <div class="tx-sg-vida">Todos los creditos tiene seguro de vida
-            <i class="bi bi-info-circle"  (onClickEvent)="goToPage(routes.help)"></i>
+            <i class="bi bi-info-circle" (click)="goToPage(routes.info)"></i>
         </div>
         <div class="inf-ayuda">
             <div class="tx-inf-ayuda">¿Recibiste ayuda de tu asesor?</div>
@@ -53,8 +56,12 @@
         <app-btn-cbit
         [text]="'Continuar'"
         [type]="'button'"
+        (onClickEvent)="goToPage(routes.dashboard)"
         >
         </app-btn-cbit>
     </div>
-    <p class="text-volver-sim">Volver a simulacion</p>
+    <div class="link-simulation" (click)="goToPage(routes.simulation)">
+        <p class="text-volver-sim">Volver a simulacion</p>
+      </div>
+    <p class="text-volver-sim"></p>
 </body>
