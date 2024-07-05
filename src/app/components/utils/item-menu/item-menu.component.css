@@ -1,0 +1,72 @@
+.sidenav {
+  background-color: #00B0F9;
+  width: 100%;
+  height: 89vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.menu {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  background-color: transparent;
+}
+
+.menu li.nav-item {
+
+  background-color: #00B0F9;
+}
+
+.menu a.nav-link {
+  display: flex;
+  align-items: center;
+  padding: 10px 15px; /* Adjust padding if needed */
+  text-decoration: none;
+  color: #ffffff; /* Dark gray */
+}
+
+.menu a.nav-link:hover { /* Add hover effect */
+  background-color: #0f33ac; /* Light gray background on hover */
+}
+
+.menu a.nav-link i {
+  font-size: 1.5em;
+  margin-right: 10px;
+}
+
+.profile {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.profile button,
+.profile a {
+  display: block;
+  width: 100%; /* Make buttons and links fill the width */
+  padding: 10px 20px;
+  text-align: left; /* Align text to the left */
+  text-decoration: none;
+  color: white;
+  background-color: transparent; /* Remove default background color */
+  border: none; /* Remove default border */
+  cursor: pointer; /* Indicate clickable elements */
+}
+
+.profile button:hover,
+.profile a:hover {
+  background-color: rgba(136, 23, 66, 0.1); /* Slight gray background on hover */
+}
+
+.profile .btn-danger {
+  background-color: #2295c2; /* Red */
+}
+
+.profile .btn-primary {
+  background-color: #2295c2;
+}
+
+.profile {
+  margin-top: auto;
+}
