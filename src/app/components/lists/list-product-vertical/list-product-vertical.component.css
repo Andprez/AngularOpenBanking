@@ -1,6 +1,24 @@
 p {
   margin: 0;
 }
+.cabecera{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto auto auto auto auto auto auto;
+  gap: 0px 0px;
+  grid-auto-flow: row;
+  grid-template-areas:
+  "tituloProduct btn-adicionar";
+}
+.bi-plus-circle-fill{
+  font-size: 30px;
+  color:#01A7F4;
+}
+.txt-solicitar{
+  background-color: #FFFFFF;
+  border-radius: 12px;
+  padding: 0.2rem;
+}
 .list {
   display: flex;
   flex-direction: column;

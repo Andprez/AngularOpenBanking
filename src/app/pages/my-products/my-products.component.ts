@@ -38,7 +38,6 @@ export class MyProductsComponent implements OnInit {
   setCategorySelected(category: TipoProductoF) {
     this.categorySelected = category;
   }
-
   goToPage(page: string) {
     this.router.navigate([page]);
   }

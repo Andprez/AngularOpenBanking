@@ -5,9 +5,17 @@
       let type of typesProducts | filterCategory : categorySelected.nombreTipo
     "
   >
-    <h5 class="nombreTipo" *ngIf="productsByType[type.nombreTipo]">
-      {{ type.nombreTipo }}s
-    </h5>
+    <div class="cabecera">
+      <div class="tituloProduct">
+        <h5 class="nombreTipo" *ngIf="productsByType[type.nombreTipo]">
+          {{ type.nombreTipo }}s
+        </h5>
+      </div>
+      <div class="btn-adicionar" (click)="goToPage(routes.addProduct)">
+        <i class="bi bi-plus-circle-fill"></i>
+        <p class="txt-solicitar">Solicitar productos</p>
+      </div>
+    </div>
     <div
       class="product"
       *ngFor="
