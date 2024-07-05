@@ -7,4 +7,7 @@ export interface ProductoF {
   usuario?: string;
   password: string;
   numeroProducto: string;
+  //tasaInteres: number;
+  //cuotas: number;
+  //montoCredito: number;
 }

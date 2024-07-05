@@ -31,8 +31,8 @@ import { CreditPreapprovedComponent } from './pages/credit-preapproved/credit-pr
 const routes: Routes = [
   //{ path: '', component: CreditApprovedComponent },
   //{ path: '', component: CreditVerifyComponent },
-  //{ path: '', component: IndexComponent },
-  { path: '', component: CreditPreapprovedComponent },
+  { path: '', component: IndexComponent },
+  //{ path: '', component: CreditPreapprovedComponent },
   { path: 'ecommerce', component: ListProductComponent },
   { path: 'ecommerce/products/:id', component: DetailProductComponent },
   { path: 'ecommerce/cart', component: CartComponent },
