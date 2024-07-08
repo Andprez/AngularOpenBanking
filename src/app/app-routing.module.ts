@@ -28,7 +28,6 @@ import { CreditConditionsComponent } from './pages/credit-conditions/credit-cond
 import { CreditDisburseComponent } from './pages/credit-disburse/credit-disburse.component';
 
 const routes: Routes = [
-  //{ path: '', component: CreditConditionsComponent },
   { path: '', component: IndexComponent },
   { path: 'ecommerce', component: ListProductComponent },
   { path: 'ecommerce/products/:id', component: DetailProductComponent },

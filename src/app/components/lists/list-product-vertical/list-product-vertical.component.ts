@@ -47,6 +47,9 @@ export class ListProductVerticalComponent {
         console.error(error);
       }
     })
+
+
+    
     this.productosFService.getProductsByClient(this.clientId).subscribe({
       next: (products) => {
         products.forEach((product) => {

@@ -1,26 +1,24 @@
 <div class="list">
   <div
     class="type-and-list"
-    *ngFor="
-      let type of typesProducts | filterCategory : categorySelected.nombreTipo
-    "
+    *ngFor="let type of typesProducts"
   >
     <div class="cabecera">
-      <div class="tituloProduct">
-        <h5 class="nombreTipo" *ngIf="productsByType[type.nombreTipo]">
-          {{ type.nombreTipo }}s
-        </h5>
+      <div class="botones">
+        <div class="products">
+          <h5 class="nombreTipo">
+            {{ type.nombreTipo }}s
+          </h5>
+        </div>
+        <div class="btn-adicionar" (click)="goToPage(routes.addProduct)">
+          <i class="bi bi-plus-circle-fill"></i>
+          <p class="txt-solicitar">Solicitar productos</p>
+        </div>
       </div>
-      <div class="btn-adicionar" (click)="goToPage(routes.addProduct)">
-        <i class="bi bi-plus-circle-fill"></i>
-        <p class="txt-solicitar">Solicitar productos</p>
-      </div>
-    </div>
     <div
       class="product"
       *ngFor="
         let product of productsByType[type.nombreTipo]
-          | filterProductByEntityF : txtFilterProduct : entitiesF
       "
       (click)="setProductSelected(product)"
     >
@@ -35,7 +33,8 @@
         </div>
       </div>
       <div class="boton">
-        <p>Ver movimientos<i class="bi bi-chevron-right"></i></p>
+        <p>Ver movimientos</p>
+        <i class="bi bi-chevron-right"></i>
       </div>
     </div>
   </div>
