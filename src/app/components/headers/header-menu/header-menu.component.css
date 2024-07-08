@@ -1,0 +1,25 @@
+body {
+  background: #00B0F9;
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  border-bottom: 2.5px solid #E9DADA;
+ /* Margen inferior de 30px */
+}
+img {
+  min-width: 200px;
+  width: 50%;
+  height: auto;
+}
+.container {
+  max-width: 95%;
+  text-align: center;
+  padding: 1.5rem 0 0.5rem 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+
+  margin-bottom: .5rem;
+}

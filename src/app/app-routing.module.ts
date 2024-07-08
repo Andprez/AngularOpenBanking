@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { Component, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ListProductComponent } from './components/marketplace/pages/list-product/list-product.component';
 import { CartComponent } from './components/marketplace/pages/cart/cart.component';
@@ -27,12 +27,13 @@ import { OtpBanksComponent } from './pages/otp-banks/otp-banks.component';
 import { CreditVerifyComponent } from './pages/credit-verify/credit-verify.component';
 import { CreditApprovedComponent } from './pages/credit-approved/credit-approved.component';
 import { CreditPreapprovedComponent } from './pages/credit-preapproved/credit-preapproved.component';
+import { MenuComponent } from './pages/menu/menu.component';
+import { CreditRejectComponent } from './pages/credit-reject/credit-reject.component';
 
 const routes: Routes = [
-  //{ path: '', component: CreditApprovedComponent },
-  //{ path: '', component: CreditVerifyComponent },
   { path: '', component: IndexComponent },
-  //{ path: '', component: CreditPreapprovedComponent },
+  { path: 'menu', component:MenuComponent},
+  { path: 'creditreject', component: CreditRejectComponent},
   { path: 'ecommerce', component: ListProductComponent },
   { path: 'ecommerce/products/:id', component: DetailProductComponent },
   { path: 'ecommerce/cart', component: CartComponent },
@@ -57,6 +58,9 @@ const routes: Routes = [
   { path: 'otp/banks', component: OtpBanksComponent },
   { path: 'tyc/banks', component: TycBanksComponent },
   { path: '**', redirectTo: 'ecommerce' },
+  //{ path: '', component: CreditPreapprovedComponent },
+  //{ path: '', component: CreditApprovedComponent },
+  //{ path: '', component: CreditVerifyComponent },
 ];
 
 @NgModule({

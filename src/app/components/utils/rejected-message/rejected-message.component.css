@@ -1,0 +1,46 @@
+body {
+  background-color: transparent;
+}
+.title {
+  color: black;
+  display: flex;
+  /* flex-direction: column; */
+  text-align: center;
+  justify-content: center;
+  font-size: 1.4rem;
+}
+
+.parrafo {
+  color: black;
+  font-size: .8rem;
+  text-align: center;
+  justify-content: center;
+}
+
+.div-reject-message {
+  margin: 0 auto;
+  /* background-color: #fff; */
+  width: 14rem;
+  height: 14rem;
+  /* color: white; */
+  border: 3px solid #ffffff;
+  border-radius: 4%;
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: center;
+}
+
+.bi {
+  color: rgb(255, 23, 23);
+  font-size: 3rem;
+  display: flex;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.display-none {
+  display: none;
+}

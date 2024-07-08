@@ -1,0 +1,72 @@
+.sidenav {
+  background-color: #00B0F9; /* Gradient for background */
+  background-image: linear-gradient(to bottom, #00B0F9 0%, #00BFCF 100%);
+  /* Stretch image to fill container */
+    width: 100%;
+    height: 89vh;
+    display: flex;
+    flex-direction: column;
+
+  }
+
+  .menu {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    background-color: transparent;
+    margin-left: 15px;
+    margin-right: 15px;
+  }
+
+  .menu li.nav-item {
+    background-color: transparent; /* Remove unnecessary background color */
+  }
+
+  .menu a.nav-link {
+    display: flex;
+    align-items: center;
+    padding: 10px 15px; /* Adjust padding if needed */
+    text-decoration: none;
+    color: #ffffff; /* Dark gray */
+  }
+
+  .menu a.nav-link:hover { /* Add hover effect */
+    background-color:rgba(119, 18, 57, 0.1); /* Light gray background on hover */
+  }
+
+  .menu a.nav-link i {
+    font-size: 1.5em;
+    margin-right: 10px;
+  }
+
+  .profile {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    background-color: transparent;
+    margin: 15px;
+  }
+
+  .profile button,
+  .profile a {
+    display: block;
+    width: 100%; /* Make buttons and links fill the width */
+    padding: 10px 20px;
+    text-align: left; /* Align text to the left */
+    text-decoration: none;
+    color: white;
+    background-color: transparent; /* Remove default background color */
+    border: none; /* Remove default border */
+    cursor: pointer; /* Indicate clickable elements */
+  }
+
+  .profile button:hover,
+  .profile a:hover {
+    background-color: rgba(56, 8, 27, 0.2); /* Slight gray background on hover */
+  }
+
+
+  .profile {
+    margin-top: auto; /* Move buttons to bottom */
+    margin-bottom: 3.5rem; /* Add bottom margin for spacing */
+  }
