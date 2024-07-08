@@ -69,6 +69,8 @@ import { CreditRejectComponent } from './pages/credit-reject/credit-reject.compo
 import { RejectedMessageComponent } from './components/utils/rejected-message/rejected-message.component';
 import { ItemMenuComponent } from './components/utils/item-menu/item-menu.component';
 import { HeaderMenuComponent } from './components/headers/header-menu/header-menu.component';
+import { CreditConditionsComponent } from './pages/credit-conditions/credit-conditions.component';
+import { CreditDisburseComponent } from './pages/credit-disburse/credit-disburse.component';
 
 @NgModule({
   declarations: [
@@ -142,6 +144,8 @@ import { HeaderMenuComponent } from './components/headers/header-menu/header-men
     RejectedMessageComponent,
     ItemMenuComponent,
     HeaderMenuComponent,
+    CreditConditionsComponent,
+    CreditDisburseComponent,
   ],
   imports: [
     BrowserModule,

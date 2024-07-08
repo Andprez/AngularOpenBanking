@@ -1,0 +1,64 @@
+.container {  
+    width: 90%;
+    padding: 1rem;
+    background: linear-gradient(145.62deg, rgba(0, 180, 255, 0.28) 0%, rgba(0, 108, 153, 0.28) 102.41%);
+    display: grid;
+    grid-template-rows: auto auto auto auto auto auto auto;
+    gap: 0px 0px;
+    grid-auto-flow: row;
+    grid-template-areas:
+    "tittle tittle"
+}
+    .tx-value {
+        font-family: 'Open Sans';
+        font-style: normal;
+        font-weight: 600;
+        font-size: 16px;
+        line-height: 22px;
+        color: #000000;
+        margin-bottom: 0.5rem;
+    }
+    .tittle {
+        font-weight: 300;
+        font-size: 16px;
+        line-height: 22px;
+        color: #000000;
+    }
+    .info-seguro {
+        text-align: center;
+    }
+    .tx-monto-cuota {
+        font-family: 'Open Sans';
+        font-style: normal;
+        font-weight: 700;
+        font-size: 36px;
+        line-height: 49px;
+        text-align: center;
+        color: #1860BF;
+    }
+    .tx-cuota { 
+        font-family: 'Open Sans';
+        font-style: normal;
+        font-weight: 300;
+        font-size: 16px;
+        line-height: 22px;
+        text-align: center;
+        justify-self: center;
+        grid-area: tx-cuota; 
+    }
+        .tx-vl-seguro {
+            color: #1860BF;
+        }
+
+
+.titulo {
+    padding: 10px;
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 30px;
+    text-align: center;
+    color: #00A7F2;
+}
+.boton{
+    padding: 1rem 0 1rem 0;
+}

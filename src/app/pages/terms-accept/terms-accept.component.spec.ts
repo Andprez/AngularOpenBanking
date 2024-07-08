@@ -1,5 +1,4 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { TermsAcceptComponent } from './terms-accept.component';
 
 describe('TermsAcceptComponent', () => {
