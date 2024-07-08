@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { Component, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ListProductComponent } from './components/marketplace/pages/list-product/list-product.component';
 import { CartComponent } from './components/marketplace/pages/cart/cart.component';
@@ -24,9 +24,13 @@ import { HelpPageComponent } from './pages/help-page/help-page.component';
 import { TycBanksComponent } from './pages/tyc-banks/tyc-banks.component';
 import { PaymentSummaryComponent } from './pages/payment-summary/payment-summary.component';
 import { OtpBanksComponent } from './pages/otp-banks/otp-banks.component';
+import { MenuComponent } from './pages/menu/menu.component';
+import { CreditRejectComponent } from './pages/credit-reject/credit-reject.component';
 
 const routes: Routes = [
   { path: '', component: IndexComponent },
+  { path: 'menu', component:MenuComponent},
+  { path: 'creditrejecct', component: CreditRejectComponent},
   { path: 'ecommerce', component: ListProductComponent },
   { path: 'ecommerce/products/:id', component: DetailProductComponent },
   { path: 'ecommerce/cart', component: CartComponent },
