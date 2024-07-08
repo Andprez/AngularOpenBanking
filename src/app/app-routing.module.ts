@@ -31,6 +31,9 @@ import { MenuComponent } from './pages/menu/menu.component';
 import { CreditRejectComponent } from './pages/credit-reject/credit-reject.component';
 import { CreditConditionsComponent } from './pages/credit-conditions/credit-conditions.component';
 import { CreditDisburseComponent } from './pages/credit-disburse/credit-disburse.component';
+import { SelectCreditComponent } from './pages/select-credit/select-credit.component';
+import { CreditSimulationComponent } from './pages/credit-simulation/credit-simulation.component';
+import { CreditRequestComponent } from './pages/credit-request/credit-request.component';
 
 const routes: Routes = [
   { path: '', component: IndexComponent },
@@ -63,8 +66,11 @@ const routes: Routes = [
   //{ path: '', component: CreditPreapprovedComponent },
   //{ path: '', component: CreditApprovedComponent },
   //{ path: '', component: CreditVerifyComponent },
-  // { path:'', component: CreditConditionsComponent }
-  // { path:'', component: CreditDisburseComponent }
+  //{ path: '', component: CreditConditionsComponent },
+  //{ path: '', component: CreditDisburseComponent },
+  //{ path: '', component: SelectCreditComponent },
+  //{ path: '', component: CreditSimulationComponent },
+  //{ path: '', component: CreditRequestComponent },
 ];
 
 @NgModule({

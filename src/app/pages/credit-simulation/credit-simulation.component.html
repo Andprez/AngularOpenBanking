@@ -1,0 +1,29 @@
+<body>
+    <app-header-entity
+    (onClickEventBack)="goToPage(routes.back)"
+    (onClickEventHelp)="goToPage(routes.help)"
+    [entity]="selectedEntity"
+    ></app-header-entity>
+
+    <div class="container">
+        <form
+        [formGroup]="formValidation"
+        class="form-validation"
+        >
+          <div>
+            <h1>Crédito</h1>
+            <h2>Monto crédito</h2>
+            <input type="text">
+            <p>Monto mínimo $2.000.000 Pesos COP</p>
+            <h2>Plazo (meses)</h2>
+            <input type="text">
+            <p>Plazo mínimo establecido de 6 meses máximo 60 meses</p>
+          </div>
+          
+          <app-btn-cbit
+            [type]="'submit'"
+            [text]="'Simular'"
+          ></app-btn-cbit>
+        </form>
+    </div>
+</body>

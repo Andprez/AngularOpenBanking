@@ -71,6 +71,9 @@ import { ItemMenuComponent } from './components/utils/item-menu/item-menu.compon
 import { HeaderMenuComponent } from './components/headers/header-menu/header-menu.component';
 import { CreditConditionsComponent } from './pages/credit-conditions/credit-conditions.component';
 import { CreditDisburseComponent } from './pages/credit-disburse/credit-disburse.component';
+import { SelectCreditComponent } from './pages/select-credit/select-credit.component';
+import { CreditSimulationComponent } from './pages/credit-simulation/credit-simulation.component';
+import { CreditRequestComponent } from './pages/credit-request/credit-request.component';
 
 @NgModule({
   declarations: [
@@ -146,6 +149,9 @@ import { CreditDisburseComponent } from './pages/credit-disburse/credit-disburse
     HeaderMenuComponent,
     CreditConditionsComponent,
     CreditDisburseComponent,
+    SelectCreditComponent,
+    CreditSimulationComponent,
+    CreditRequestComponent,
   ],
   imports: [
     BrowserModule,

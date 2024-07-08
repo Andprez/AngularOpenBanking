@@ -1,0 +1,31 @@
+<body>
+    <app-header-entity
+    (onClickEventBack)="goToPage(routes.back)"
+    (onClickEventHelp)="goToPage(routes.help)"
+    [entity]="selectedEntity"
+    ></app-header-entity>
+
+    <div class="container">
+        <form>
+          
+          <div>
+            <h1>Crédito</h1>
+            <select formControlName="select-credit" class="select-credit">
+              <option value="">Selecciona tu producto</option>
+              <option value="">Crédito Comercial</option>
+              <option value="">Crédito de Consumo</option>             
+              <option value="">Crédito Garantizado</option>
+              <option value="">Crédito Personal</option>
+              <option value="">Crédito Hipotecario</option>
+              <option value="">Crédito Rotativo</option>
+            </select>
+          </div>
+          <app-btn-cbit
+            [type]="'submit'"
+            [text]="'Continuar'"
+            [disabled]="formValidation.invalid"
+            [loading]="isLoading"
+          ></app-btn-cbit>
+        </form>
+    </div>
+</body>
