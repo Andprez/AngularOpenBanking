@@ -1,5 +1,9 @@
 <body>
-  <app-header-cbit class="transparent-background"></app-header-cbit>
+  <app-header-cbit class="transparent-background"
+  (onClickEventBack)="goToPage(routes.back)"
+  (onClickEventHelp)="goToPage(routes.help)"
+
+  ></app-header-cbit>
 
   <div class="contenedor">
 

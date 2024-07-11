@@ -1,15 +1,29 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+// import { ClientesService } from 'src/app/services/clientes.service';
+// import { NotificationsService } from 'src/app/services/notifications.service';
 
 @Component({
   selector: 'app-credit-reject',
   templateUrl: './credit-reject.component.html',
   styleUrls: ['./credit-reject.component.css']
 })
-export class CreditRejectComponent {
-  routes = {
+export class CreditRejectComponent implements OnInit{
+    routes = {
     back: '/login',
     help: '/help',
-    
+  };
+
+  constructor(
+    private router: Router,
+  ) {}
+
+  ngOnInit(): void { }
+
+  goToPage(page: string): void {
+    this.router.navigate([page]);
   }
 
+
 }
+
