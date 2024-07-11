@@ -35,6 +35,7 @@ import { SelectCreditComponent } from './pages/select-credit/select-credit.compo
 import { CreditSimulationComponent } from './pages/credit-simulation/credit-simulation.component';
 import { CreditRequestComponent } from './pages/credit-request/credit-request.component';
 
+
 const routes: Routes = [
   { path: '', component: IndexComponent },
   { path: 'menu', component:MenuComponent},
@@ -62,15 +63,15 @@ const routes: Routes = [
   { path: 'summary', component: PaymentSummaryComponent },
   { path: 'otp/banks', component: OtpBanksComponent },
   { path: 'tyc/banks', component: TycBanksComponent },
+  { path: 'credit/preapproved', component: CreditPreapprovedComponent },
+  { path: 'credit/approved', component: CreditApprovedComponent },
+  { path: 'credit/verify', component: CreditVerifyComponent },
+  { path: 'credit/conditions', component: CreditConditionsComponent },
+  { path: 'credit/disburse', component: CreditDisburseComponent },
+  { path: 'credit/select', component: SelectCreditComponent },
+  { path: 'credit/simulation', component: CreditSimulationComponent },
+  { path: 'credit/request', component: CreditRequestComponent },
   { path: '**', redirectTo: 'ecommerce' },
-  //{ path: '', component: CreditPreapprovedComponent },
-  //{ path: '', component: CreditApprovedComponent },
-  //{ path: '', component: CreditVerifyComponent },
-  //{ path: '', component: CreditConditionsComponent },
-  //{ path: '', component: CreditDisburseComponent },
-  //{ path: '', component: SelectCreditComponent },
-  //{ path: '', component: CreditSimulationComponent },
-  //{ path: '', component: CreditRequestComponent },
 ];
 
 @NgModule({
