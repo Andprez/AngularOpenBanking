@@ -31,7 +31,7 @@ export class ListProductVerticalComponent {
     back: '/dashboard',
     help: '/help',
     transactions: '/products/transactions',
-    addProduct: '',
+    requestProduct: '/products/add/select-entity',
   };
   ngOnInit(): void {
     this.entidadFinancieraService.getEntitiesF().subscribe({
@@ -47,9 +47,6 @@ export class ListProductVerticalComponent {
         console.error(error);
       }
     })
-
-
-    
     this.productosFService.getProductsByClient(this.clientId).subscribe({
       next: (products) => {
         products.forEach((product) => {
