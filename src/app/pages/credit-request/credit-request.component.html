@@ -3,53 +3,59 @@
     (onClickEventBack)="goToPage(routes.back)"
     (onClickEventHelp)="goToPage(routes.help)"
   ></app-header-cbit>
+    <div>
+        <h1 class="titulo">Completa los siguientes datos</h1>
+        <app-indicator></app-indicator>
+    </div>    
 
-    <h1>Completa los siguientes datos</h1>   
-    <app-indicator></app-indicator>
-
-    <div class="container">
-
+    <div class="container text-center">
         <form
-        [formGroup]="formValidation"
-        class="form-validation"
-        >
-
-        <p>¿Cuál es su actividad laboral?</p>
-            <select formControlName="work-activity" class="work-activity">
-                <option value="">Selecciona una opción</option>
-                <option value="">Opción 1</option>
-                <option value="">Opción 2</option>             
-                <option value="">Opción 3</option>
-                <option value="">Opción 4</option>
-                <option value="">Opción 5</option>
-                <option value="">Opción 6</option>
-            </select>
-        <p>¿Cuál es su actividad económica o la de su empresa?</p>
-            <input type="text" class="inputText">
-        <p>Nombre de la empresa</p>
-            <input type="text" class="inputText">
-        <p>¿Cuáles son sus ingresos mensuales?</p>
-        <select formControlName="income" class="income">
-            <option value="">Selecciona una opción</option>
-            <option value="">Opción 1</option> 
-            <option value="">Opción 2</option>              
-            <option value="">Opción 3</option> 
-            <option value="">Opción 4</option> 
-            <option value="">Opción 5</option> 
-            <option value="">Opción 6</option> 
-        </select>
-        <p>Ciudad donde vive</p>
-            <input type="text" class="inputText">
-        <p>Dirección</p>
-            <input type="text" class="inputText">
-        <p id="cboxAuthorizations">
-            <input type="checkbox" id="cboxAuthorizations" value="" /> Acepto las autorizaciones 
-            <a href="">aquí</a> descritas
-        </p>
-            <app-btn-cbit
-                [type]="'submit'"
-                [text]="'Continuar'"
-            ></app-btn-cbit>
+        class="form-validation">
+            <div class="campos-form">
+                <p>¿Cuál es su actividad laboral?</p>
+                <select formControlName="work-activity" class="rounded-input">
+                    <option value="">Selecciona una opción</option>
+                    <option value="">Opción 1</option>
+                    <option value="">Opción 2</option>             
+                    <option value="">Opción 3</option>
+                    <option value="">Opción 4</option>
+                    <option value="">Opción 5</option>
+                    <option value="">Opción 6</option>
+                </select>
+            </div>
+            <div class="campos-form">
+                <p>¿Cuál es su actividad económica o la de su empresa?</p>
+            <input type="text" class="rounded-input">
+            </div>
+            <div class="campos-form">
+                <p>Nombre de la empresa</p>
+            <input type="text" class="rounded-input">
+            </div>
+            <div class="campos-form">
+                <p>¿Cuáles son sus ingresos mensuales?</p>
+                <input type="number" class="rounded-input">
+            </div>
+            <div class="campos-form">
+                <p>Ciudad donde vive</p>
+                <input type="text" class="rounded-input">
+            </div>
+            <div class="campos-form">
+                <p>Dirección</p>
+                <input type="text" class="rounded-input">
+            </div>
+            <div class="checkbox-form">
+                <p id="cboxAuthorizations">
+                    <input type="checkbox" id="cboxAuthorizations" value="" /> Acepto las autorizaciones 
+                    <a href="">aquí</a> descritas
+                </p>
+            </div>
         </form>
     </div>
+
+    <div>
+    <app-btn-cbit
+    [text]="'Continuar'"></app-btn-cbit>
+    </div>
+    
+  
 </body>

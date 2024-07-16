@@ -36,7 +36,9 @@ import { CreditSimulationComponent } from './pages/credit-simulation/credit-simu
 import { CreditRequestComponent } from './pages/credit-request/credit-request.component';
 
 const routes: Routes = [
-  { path: '', component: IndexComponent },
+  //{ path: '', component: IndexComponent },
+  { path: 'credit/select', component: SelectCreditComponent },
+  { path: 'credit/request', component: CreditRequestComponent },
   { path: 'menu', component:MenuComponent},
   { path: 'creditreject', component: CreditRejectComponent},
   { path: 'ecommerce', component: ListProductComponent },
@@ -70,7 +72,7 @@ const routes: Routes = [
   //{ path: '', component: CreditDisburseComponent },
   //{ path: '', component: SelectCreditComponent },
   //{ path: '', component: CreditSimulationComponent },
-  //{ path: '', component: CreditRequestComponent },
+  
 ];
 
 @NgModule({
