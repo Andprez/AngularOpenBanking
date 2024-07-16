@@ -7,6 +7,7 @@ import { ProductoF } from 'src/app/models/producto-f';
 import { TipoProductoF } from 'src/app/models/tipo-producto-f';
 import { NotificationsService } from 'src/app/services/notifications.service';
 import { ProductosFService } from 'src/app/services/productos-f.service';
+import { SubtipoProducto } from 'src/app/models/subtipoProducto';
 
 @Component({
   selector: 'app-add-product',
@@ -17,6 +18,8 @@ export class AddProductComponent implements OnInit {
   shopping: boolean = false;
   user!: Cliente;
   tiposProducto!: TipoProductoF[];
+  subtipoProducto!: SubtipoProducto[];
+  subtipoPXTipoP!: SubtipoProducto[];
   selectedProduct?: TipoProductoF;
   savedProduct?: ProductoF;
   selectedEntity!: EntidadFinanciera;
@@ -58,6 +61,14 @@ export class AddProductComponent implements OnInit {
         console.error(error);
       },
     });
+    this.productosFService.getSubTypesProduct().subscribe({
+      next: (result) => {
+        this.subtipoProducto = result;
+      },
+      error: (error) => {
+        console.error(error)
+      },
+    })
     this.formProducto = this.fb.group({
       product: ['', Validators.required],
     });
@@ -68,6 +79,14 @@ export class AddProductComponent implements OnInit {
       ],
       password: ['', [Validators.minLength(8), Validators.required]],
     });
+  }
+  
+  loadSubproducts($event: any): void {
+    let idTipoP = $event.target.value;
+    this.subtipoPXTipoP = this.subtipoProducto.filter(
+      (subTipoP) => subTipoP.idTipo_Producto == idTipoP
+    );
+    console.log(this.subtipoPXTipoP);
   }
 
   onSubmitProduct(): void {
