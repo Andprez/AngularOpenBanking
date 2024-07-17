@@ -8,6 +8,7 @@ import { Transaction } from '../models/transaction';
 import { SubtipoProducto } from '../models/subtipoProducto';
 
 
+
 @Injectable({
   providedIn: 'root',
 })
@@ -45,9 +46,9 @@ export class ProductosFService {
   createProductF(product: ProductoF): Observable<ProductoF> {
     let headers = this.getHeaders();
     let url = `${this.baseUrl}/producto`;
+    console.log("Este es el producto desde el sevicio: ",product);
     return this.httpClient.post<ProductoF>(url, product, { headers: headers });
   }
-
   getProductById(productId: number): Observable<ProductoF> {
     let headers = this.getHeaders();
     let url = `${this.baseUrl}/producto/${productId}`;

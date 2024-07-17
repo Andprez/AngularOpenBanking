@@ -4,6 +4,7 @@ import { TipoProductoF } from 'src/app/models/tipo-producto-f';
 import { EntidadFinancieraService } from 'src/app/services/entidad-financiera.service';
 import { ProductosFService } from 'src/app/services/productos-f.service';
 import { Router } from '@angular/router';
+import { SubtipoProducto } from 'src/app/models/subtipoProducto';
 
 @Component({
   selector: 'app-list-product-vertical',
@@ -17,9 +18,10 @@ export class ListProductVerticalComponent {
   @Input() categorySelected: TipoProductoF = {} as TipoProductoF;
   @Output() onProductSelected = new EventEmitter<any>();
   productsByClient: any[] = [];
-  productsByType: any = {};
+  productsBySubtype: any = {};
   entitiesF: EntidadFinanciera[] = [];
-  typesProducts: TipoProductoF[] = [];
+  // typesProducts: TipoProductoF[] = [];
+  subtypesProducts: SubtipoProducto[] = [];
 
   constructor(
     private productosFService: ProductosFService,
@@ -39,9 +41,9 @@ export class ListProductVerticalComponent {
         this.entitiesF = entities;
       },
     });
-    this.productosFService.getTypesProduct().subscribe({
+    this.productosFService.getSubTypesProduct().subscribe({
       next: (types) => {
-        this.typesProducts = types;
+        this.subtypesProducts = types;
       },
       error: (error) => {
         console.error(error);
@@ -51,11 +53,13 @@ export class ListProductVerticalComponent {
       next: (products) => {
         products.forEach((product) => {
           let entidadF = this.entitiesF.find(entity => entity.idEntidadFinanciera === product.idEntidadFinanciera)
-          let tipoProducto = this.typesProducts.find(type => type.idTipo_Producto === product.idTipo_Producto)
+          // let tipoProducto = this.typesProducts.find(type => type.idTipo_Producto === product.idTipo_Producto)
+          let subtipoProducto = this.subtypesProducts.find(type => type.idSubtipo_Producto === product.idSubtipo_Producto)
           let montoProd = Math.floor(Math.random() * 10000000);
-          let newProduct = { ...product, entidadF, tipoProducto, montoProd };
-          this.productsByType[tipoProducto?.nombreTipo!] = [...(this.productsByType[tipoProducto?.nombreTipo!] || []), newProduct];
+          let newProduct = { ...product, entidadF, subtipoProducto, montoProd };
+          this.productsBySubtype[subtipoProducto?.nombre!] = [...(this.productsBySubtype[subtipoProducto?.nombre!] || []), newProduct];
           this.productsByClient.push(newProduct);
+          console.log(subtipoProducto)
         });
       },
       error: (error) => {

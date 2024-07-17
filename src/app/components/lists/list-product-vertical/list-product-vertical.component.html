@@ -1,13 +1,13 @@
 <div class="list">
   <div
     class="type-and-list"
-    *ngFor="let type of typesProducts"
+    *ngFor="let subtype of subtypesProducts"
   >
     <div class="cabecera">
       <div class="botones">
         <div class="products">
           <h5 class="nombreTipo">
-            {{ type.nombreTipo }}s
+            {{ subtype.nombre }}s
           </h5>
         </div>
         <div class="btn-adicionar" (click)="goToPage(routes.requestProduct)">
@@ -18,7 +18,7 @@
     <div
       class="product"
       *ngFor="
-        let product of productsByType[type.nombreTipo]
+        let product of productsBySubtype[subtype.nombre]
       "
       (click)="setProductSelected(product)"
     >

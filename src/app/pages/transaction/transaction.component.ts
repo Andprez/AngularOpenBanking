@@ -36,7 +36,7 @@ export class TransactionComponent implements OnInit {
       next: (product) => {
         this.product = product;
         const reqTypeProducts = this.productFService.getTypeProductById(
-          product.idTipo_Producto
+          product.idSubtipo_Producto
         );
         const reqEntities = this.entityFService.getEntityFById(
           product.idEntidadFinanciera
