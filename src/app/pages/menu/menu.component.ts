@@ -12,23 +12,13 @@ export class MenuComponent  implements OnInit {
     routes = {
     back: '/login',
     help: '/help',
-    info: '/register/info',
-    selfie: '/register/selfie',
-    products: '/dashboard',
   };
 
   constructor(
     private router: Router,
-    private clientesService: ClientesService,
-    private notifService: NotificationsService
   ) {}
 
-  ngOnInit(): void {
-    this.notifService.loadingEvent.subscribe((event) => {
-
-    });
-
-  }
+  ngOnInit(): void { }
 
   goToPage(page: string): void {
     this.router.navigate([page]);

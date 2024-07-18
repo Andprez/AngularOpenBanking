@@ -5,6 +5,9 @@ import { environment } from 'src/environments/environment.development';
 import { TipoProductoF } from '../models/tipo-producto-f';
 import { ProductoF } from '../models/producto-f';
 import { Transaction } from '../models/transaction';
+import { SubtipoProducto } from '../models/subtipoProducto';
+
+
 
 @Injectable({
   providedIn: 'root',
@@ -28,6 +31,12 @@ export class ProductosFService {
     return this.httpClient.get<TipoProductoF[]>(url, { headers: headers });
   }
 
+  getSubTypesProduct(): Observable<SubtipoProducto[]> {
+    let headers = this.getHeaders();
+    let url = `${this.baseUrl}/subtipoProducto`;
+    return this.httpClient.get<SubtipoProducto[]>(url, {headers: headers })
+  }
+
   getTypeProductById(typeProductId: number): Observable<TipoProductoF> {
     let headers = this.getHeaders();
     let url = `${this.baseUrl}/tipoProducto/${typeProductId}`;
@@ -37,9 +46,9 @@ export class ProductosFService {
   createProductF(product: ProductoF): Observable<ProductoF> {
     let headers = this.getHeaders();
     let url = `${this.baseUrl}/producto`;
+    console.log("Este es el producto desde el sevicio: ",product);
     return this.httpClient.post<ProductoF>(url, product, { headers: headers });
   }
-
   getProductById(productId: number): Observable<ProductoF> {
     let headers = this.getHeaders();
     let url = `${this.baseUrl}/producto/${productId}`;

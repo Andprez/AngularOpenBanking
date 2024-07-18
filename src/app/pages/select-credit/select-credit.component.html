@@ -1,9 +1,9 @@
 <body>
-  <app-header-entity
-    (onClickEventBack)="goToPage(routes.back)"
-    (onClickEventHelp)="goToPage(routes.help)"
-    [entity]="selectedEntity"
-  ></app-header-entity>
+  <app-header-entity>
+    <!-- (onClickEventBack)="goToPage(routes.back)" -->
+    <!-- (onClickEventHelp)="goToPage(routes.help)" -->
+    <!-- [entity]="selectedEntity" -->
+  </app-header-entity>
 
   <div class="container">
     <div *ngIf="!showAdditionalFields && !showSuccessMessage">
@@ -25,7 +25,8 @@
     </div>
 
     <div *ngIf="showAdditionalFields && !showSuccessMessage">
-      <form [formGroup]="formValidation" (ngSubmit)="onSubmitValidation()">
+       <form [formGroup]="formValidation">
+       <!--(ngSubmit)="onSubmitValidation()" -->
         <h1>Crédito</h1>
         <div>
           <label class="title" for="formControlName">Monto crédito</label>

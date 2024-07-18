@@ -52,7 +52,7 @@ export class VoucherComponent implements OnInit {
       next: ([product, typesProduct, status]) => {
         this.productF = product;
         this.typeProduct = typesProduct.find(
-          (tp) => tp.idTipo_Producto === product.idTipo_Producto
+          (tp) => tp.idTipo_Producto === product.idSubtipo_Producto
         )!;
         this.status = status;
         this.aprobado =

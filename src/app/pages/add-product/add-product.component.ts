@@ -7,6 +7,7 @@ import { ProductoF } from 'src/app/models/producto-f';
 import { TipoProductoF } from 'src/app/models/tipo-producto-f';
 import { NotificationsService } from 'src/app/services/notifications.service';
 import { ProductosFService } from 'src/app/services/productos-f.service';
+import { SubtipoProducto } from 'src/app/models/subtipoProducto';
 
 @Component({
   selector: 'app-add-product',
@@ -17,7 +18,10 @@ export class AddProductComponent implements OnInit {
   shopping: boolean = false;
   user!: Cliente;
   tiposProducto!: TipoProductoF[];
-  selectedProduct?: TipoProductoF;
+  subtipoProducto!: SubtipoProducto[];
+  subtipoPXTipoP!: SubtipoProducto[];
+  // selectedProduct?: TipoProductoF;
+  selectedProduct?: SubtipoProducto;
   savedProduct?: ProductoF;
   selectedEntity!: EntidadFinanciera;
   formProducto!: FormGroup;
@@ -50,6 +54,7 @@ export class AddProductComponent implements OnInit {
     localStorage.getItem('marketplace')
       ? (this.shopping = true)
       : (this.shopping = false);
+    //Servicio que trae los tipos de producto
     this.productosFService.getTypesProduct().subscribe({
       next: (result) => {
         this.tiposProducto = result;
@@ -58,35 +63,58 @@ export class AddProductComponent implements OnInit {
         console.error(error);
       },
     });
+    //Servicio que trae los subtipos de producto
+    this.productosFService.getSubTypesProduct().subscribe({
+      next: (result) => {
+        this.subtipoProducto = result;
+      },
+      error: (error) => {
+        console.error(error)
+      },
+    })
     this.formProducto = this.fb.group({
-      product: ['', Validators.required],
+      subtipoProduct: ['', Validators.required],
     });
     this.formValidation = this.fb.group({
-      numeroProducto: [
+      numeroCuenta: [
         '',
         [Validators.pattern('^[0-9]+$'), Validators.required],
       ],
       password: ['', [Validators.minLength(8), Validators.required]],
     });
   }
+  
+  loadSubproducts($event: any): void {
+    let idTipoP = $event.target.value;
+    this.subtipoPXTipoP = this.subtipoProducto.filter(
+      (subTipoP) => subTipoP.idTipo_Producto == idTipoP
+    );
+    console.log(this.subtipoPXTipoP);
+  }
 
   onSubmitProduct(): void {
-    let idProductSelected = this.formProducto.value.product;
-    this.selectedProduct = this.tiposProducto.find(
-      (tp) => tp.idTipo_Producto == idProductSelected
+    // let idProductSelected = this.formProducto.value.product;
+    let idProductSelected = this.formProducto.value.subtipoProduct;
+    console.log("producto selecc: ",idProductSelected)
+    // this.selectedProduct = this.tiposProducto.find(
+      this.selectedProduct = this.subtipoProducto.find(
+      // (tp) => tp.idTipo_Producto == idProductSelected
+      (tp) => tp.idSubtipo_Producto == idProductSelected
     );
     this.showAdditionalFields = true;
   }
   onSubmitValidation(): void {
     let productF: ProductoF = {
-      idTipo_Producto: this.selectedProduct?.idTipo_Producto!,
+      // idTipo_Producto: this.selectedProduct?.idTipo_Producto!,
+      idSubtipo_Producto: this.selectedProduct?.idSubtipo_Producto!,
       idEntidadFinanciera: this.selectedEntity.idEntidadFinanciera!,
-      numeroProducto: this.formValidation.value.numeroProducto,
+      numeroCuenta: this.formValidation.value.numeroCuenta,
       password: this.formValidation.value.password,
       idBilletera_CBITBank: this.user.idBilleteraCBITBank!,
       idEstado: 1,
       usuario: this.user.numeroIdentificacion,
     };
+    console.log("producto financiero: ",productF)
     this.productosFService.createProductF(productF).subscribe({
       next: (result) => {
         this.savedProduct = result;

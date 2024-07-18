@@ -77,34 +77,33 @@ export class SelectCreditComponent implements OnInit {
     );
     this.showAdditionalFields = true;
   }
-  onSubmitValidation(): void {
-    let productF: ProductoF = {
-      idTipo_Producto: this.selectedProduct?.idTipo_Producto!,
-      idEntidadFinanciera: this.selectedEntity.idEntidadFinanciera!,
-      numeroProducto: this.formValidation.value.numeroProducto,
-      password: this.formValidation.value.password,
-      idBilletera_CBITBank: this.user.idBilleteraCBITBank!,
-      idEstado: 1,
-      usuario: this.user.numeroIdentificacion,
-    };
-    this.productosFService.createProductF(productF).subscribe({
-      next: (result) => {
-        this.savedProduct = result;
-        localStorage.setItem('product', JSON.stringify(this.savedProduct));
-        this.showSuccessMessage = true;
-      },
-      error: (error) => {
-        console.error(error);
-      },
-    });
-  }
-  continue(): void {
-    localStorage.removeItem('entity');
-    this.shopping
-      ? this.goToPage(this.routes.wallet)
-      : this.goToPage(this.routes.transactions);
-  }
-  goToPage(page: string): void {
-    this.router.navigate([page]);
-  }
+  // onSubmitValidation(): void {
+    // let productF: ProductoF = {
+    //   idTipo_Producto: this.selectedProduct?.idTipo_Producto!,
+    //   idEntidadFinanciera: this.selectedEntity.idEntidadFinanciera!,
+    //   numeroProducto: this.formValidation.value.numeroProducto,
+    //   password: this.formValidation.value.password,
+    //   idBilletera_CBITBank: this.user.idBilleteraCBITBank!,
+    //   idEstado: 1,
+    //   usuario: this.user.numeroIdentificacion,
+    // };
+    
+  //   this.productosFService.createProductF(productF).subscribe({
+  //     next: (result) => {
+  //       this.savedProduct = result;
+  //       localStorage.setItem('product', JSON.stringify(this.savedProduct));
+  //       this.showSuccessMessage = true;
+  //     },
+  //     error: (error) => {
+  //       console.error(error);
+  //     },
+  //   });
+  // }
+
+  // continue(): void {
+
+  //   goToPage(page: string): void {
+  //    this.router.navigate([page]);
+  //  }
 }
+
