@@ -4,39 +4,29 @@
     (onClickEventHelp)="goToPage(routes.help)"
     [entity]="selectedEntity"
   ></app-header-entity>
+
   <div class="container">
-    <!-- <div *ngIf="!showAdditionalFields && !showSuccessMessage">
-      <form
-        [formGroup]="formProducto"
-        (ngSubmit)="formProducto.valid && onSubmitProduct()"
-        class="form-producto container"
-      >
+    <div *ngIf="!showAdditionalFields && !showSuccessMessage">
+       <form [formGroup]="formCredito" >
+       <!--(ngSubmit)="onCreditoSelect()"> -->
         <h1>Crédito</h1>
-        <select formControlName="product" class="product">
+        <select formControlName="credito" class="credito">
           <option value="">Selecciona tu crédito</option>
-          <option
-            *ngFor="let tipo of tiposProducto"
-            [value]="tipo.idTipo_Producto"
-          >
+          <option *ngFor="let tipo of tiposProducto" [value]="tipo.idTipo_Producto">
             {{ tipo.nombreTipo }}
           </option>
+          <option value="">Opción 1</option>
+          <option value="">Opción 2</option>
         </select>
-        <app-btn-cbit
-          [type]="'submit'"
-          [text]="'Continuar'"
-          [disabled]="formProducto.invalid"
-        ></app-btn-cbit>
+        <app-btn-cbit [type]="'submit'" [text]="'Continuar'" >
+        <!-- [disabled]="!formCredito.get('credito').value" -->
+        </app-btn-cbit>
       </form>
     </div>
 
-    <div *ngIf="showAdditionalFields && !showSuccessMessage"> -->
-      <div>
-      <form
-        [formGroup]="formValidation"
-        (ngSubmit)="formValidation.valid && onSubmitValidation()"
-        class="form-validation"
-      >
-      <h1>Crédito</h1>
+    <div *ngIf="showAdditionalFields && !showSuccessMessage">
+      <form [formGroup]="formValidation" (ngSubmit)="onSubmitValidation()">
+        <h1>Crédito</h1>
         <div>
           <label class="title" for="formControlName">Monto crédito</label>
           <input type="number" formControlName="montoCredito" />
@@ -55,5 +45,5 @@
         ></app-btn-cbit>
       </form>
     </div>
-  </div>
+  </div>
 </body>

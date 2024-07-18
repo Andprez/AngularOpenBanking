@@ -20,7 +20,7 @@ export class SelectCreditComponent implements OnInit {
   selectedProduct?: TipoProductoF;
   savedProduct?: ProductoF;
   selectedEntity!: EntidadFinanciera;
-  formProducto!: FormGroup;
+  formCredito!: FormGroup;
   formValidation!: FormGroup;
   showAdditionalFields = false;
   showSuccessMessage = false;
@@ -58,7 +58,7 @@ export class SelectCreditComponent implements OnInit {
         console.error(error);
       },
     });
-    this.formProducto = this.fb.group({
+    this.formCredito = this.fb.group({
       product: ['', Validators.required],
     });
     this.formValidation = this.fb.group({
@@ -71,7 +71,7 @@ export class SelectCreditComponent implements OnInit {
   }
 
   onSubmitProduct(): void {
-    let idProductSelected = this.formProducto.value.product;
+    let idProductSelected = this.formCredito.value.product;
     this.selectedProduct = this.tiposProducto.find(
       (tp) => tp.idTipo_Producto == idProductSelected
     );
