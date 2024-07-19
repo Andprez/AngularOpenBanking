@@ -31,10 +31,9 @@ export class AddProductComponent implements OnInit {
   isLoading = false;
 
   routes = {
-    back: '/products/add/select-entity',
+    back: '/dashboard',
     help: '/help',
     transactions: '/products/transactions',
-    dashboard: '/dashboard',
     wallet: '/wallet',
   };
 

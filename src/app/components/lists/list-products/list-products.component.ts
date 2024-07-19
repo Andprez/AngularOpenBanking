@@ -30,14 +30,14 @@ export class ListProductsComponent implements OnInit {
         this.entitiesF = entities;
       },
     });
-    // this.productosFService.getTypesProduct().subscribe({
-    //   next: (types) => {
-    //     this.typesProducts = types;
-    //   },
-    //   error: (error) => {
-    //     console.error(error);
-    //   }
-    // })
+    this.productosFService.getTypesProduct().subscribe({
+      next: (types) => {
+        this.typesProducts = types;
+      },
+      error: (error) => {
+        console.error(error);
+      }
+    })
     this.productosFService.getSubTypesProduct().subscribe({
       next: (subtypes) => {
         this.subtypesProducts = subtypes;
@@ -50,9 +50,11 @@ export class ListProductsComponent implements OnInit {
       next: (products) => {
         products.forEach((product) => {
           let entidadF = this.entitiesF.find(entity => entity.idEntidadFinanciera === product.idEntidadFinanciera)
-          let subtipoProducto = this.subtypesProducts.find(subtypes => subtypes.idSubtipo_Producto === product.idSubtipo_Producto)
+          let subtipoProducto = this.subtypesProducts.find(subtypes => subtypes.idSubtipo_Producto === product.idSubtipo_Producto)// comparar la lista de subtipos productos con el id de subtipo de productos que tiene la entidad producto
+          let tipoProducto = this.typesProducts.find(types => types.idTipo_Producto === subtipoProducto?.idTipo_Producto)//conseguir el tipo de producto por medio del subtipo de producto
           let montoProd = Math.floor(Math.random() * 10000000);
-          let newProduct = { ...product, entidadF, subtipoProducto, montoProd };
+          let newProduct = { ...product, entidadF, subtipoProducto, tipoProducto, montoProd };
+          console.log(newProduct)
           this.productsByClient.push(newProduct);
         });
       },
