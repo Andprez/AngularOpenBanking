@@ -1,31 +1,50 @@
 <body>
-    <app-header-entity
-    (onClickEventBack)="goToPage(routes.back)"
-    (onClickEventHelp)="goToPage(routes.help)"
-    [entity]="selectedEntity"
-    ></app-header-entity>
+  <app-header-entity>
+    <!-- (onClickEventBack)="goToPage(routes.back)" -->
+    <!-- (onClickEventHelp)="goToPage(routes.help)" -->
+    <!-- [entity]="selectedEntity" -->
+  </app-header-entity>
 
-    <div class="container">
-        <form>
-          
-          <div>
-            <h1>Crédito</h1>
-            <select formControlName="select-credit" class="select-credit">
-              <option value="">Selecciona tu producto</option>
-              <option value="">Crédito Comercial</option>
-              <option value="">Crédito de Consumo</option>             
-              <option value="">Crédito Garantizado</option>
-              <option value="">Crédito Personal</option>
-              <option value="">Crédito Hipotecario</option>
-              <option value="">Crédito Rotativo</option>
-            </select>
-          </div>
-          <app-btn-cbit
-            [type]="'submit'"
-            [text]="'Continuar'"
-            [disabled]="formValidation.invalid"
-            [loading]="isLoading"
-          ></app-btn-cbit>
-        </form>
+  <div class="container">
+    <div *ngIf="!showAdditionalFields && !showSuccessMessage">
+       <form [formGroup]="formCredito" >
+       <!--(ngSubmit)="onCreditoSelect()"> -->
+        <h1>Crédito</h1>
+        <select formControlName="credito" class="credito">
+          <option value="">Selecciona tu crédito</option>
+          <option *ngFor="let tipo of tiposProducto" [value]="tipo.idTipo_Producto">
+            {{ tipo.nombreTipo }}
+          </option>
+          <option value="">Opción 1</option>
+          <option value="">Opción 2</option>
+        </select>
+        <app-btn-cbit [type]="'submit'" [text]="'Continuar'" >
+        <!-- [disabled]="!formCredito.get('credito').value" -->
+        </app-btn-cbit>
+      </form>
     </div>
+
+    <div *ngIf="showAdditionalFields && !showSuccessMessage">
+       <form [formGroup]="formValidation">
+       <!--(ngSubmit)="onSubmitValidation()" -->
+        <h1>Crédito</h1>
+        <div>
+          <label class="title" for="formControlName">Monto crédito</label>
+          <input type="number" formControlName="montoCredito" />
+          <h4>Monto mínimo $2.000.000 de Pesos</h4>
+        </div>
+        <div>
+          <label class="title" for="formControlName">Plazo (meses)</label>
+          <input type="number" formControlName="plazoMeses" />
+          <h4>Plazo mínimo establecido 6 meses, máximo 60 meses</h4>
+        </div>
+        <app-btn-cbit
+          [type]="'submit'"
+          [text]="'Continuar'"
+          [disabled]="formValidation.invalid"
+          [loading]="isLoading"
+        ></app-btn-cbit>
+      </form>
+    </div>
+  </div>
 </body>
