@@ -57,4 +57,6 @@ export class ProductosFService {
     let url = `${this.baseUrl}/transaccion/product/${productId}`;
     return this.httpClient.get<Transaction[]>(url, { headers: headers });
   }
+
+  
 }

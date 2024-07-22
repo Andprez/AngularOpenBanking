@@ -1,0 +1,48 @@
+<body>
+  <app-header-cbit
+    (onClickEventBack)="goToPage(routes.back)"
+    (onClickEventHelp)="goToPage(routes.help)"
+  ></app-header-cbit>
+  <div class="container">
+    <h1 class="title-approve">Credito Aprobado</h1>
+    <div *ngIf="productosUser.length > 0">
+      <form
+        [formGroup]="formProducto"
+        (ngSubmit)="formProducto.valid && onSubmitProduct()"
+        class="form-producto container"
+      >
+        <h1>Cuenta a desembolsar</h1>
+        <select formControlName="product" class="product">
+          <option value="">Seleccione su cuenta </option>
+          <option
+            *ngFor="let product of productosUser"
+            [value]="product.idProducto"
+          >
+            {{product.nombreEntidadF}} - {{product.nombreSubtipo}} {{product.numeroCuenta}}
+          </option>
+        </select>
+        <app-btn-cbit
+          [type]="'submit'"
+          [text]="'Continuar'"
+        ></app-btn-cbit>
+      </form>
+    </div>
+
+
+    <div *ngIf="productosUser.length == 0" class="result">
+
+      <div class="dataProduct">
+        <h1>Necesitas  una cuenta para realizar el desembolso.</h1>
+        <h4>
+          {{ selectedProduct?.nombreTipo }} No.
+          {{ formValidation.value.numeroProducto | valueHidden }}
+        </h4>
+      </div>
+      <h4>Haz clic en "Continuar" para abrir tu cuenta.</h4>
+      <app-btn-cbit
+        [text]="shopping ? 'Seguir comprando' : 'Movimientos'"
+        (onClickEvent)="continue()"
+      ></app-btn-cbit>
+    </div>
+  </div>
+</body>

@@ -26,6 +26,7 @@ import { PaymentSummaryComponent } from './pages/payment-summary/payment-summary
 import { OtpBanksComponent } from './pages/otp-banks/otp-banks.component';
 import { MenuComponent } from './pages/menu/menu.component';
 import { CreditRejectComponent } from './pages/credit-reject/credit-reject.component';
+import { CreditDisburseComponent } from './pages/credit-disburse/credit-disburse.component';
 
 const routes: Routes = [
   { path: '', component: IndexComponent },
@@ -54,6 +55,7 @@ const routes: Routes = [
   { path: 'summary', component: PaymentSummaryComponent },
   { path: 'otp/banks', component: OtpBanksComponent },
   { path: 'tyc/banks', component: TycBanksComponent },
+  { path: 'credit/disburse', component: CreditDisburseComponent },
   { path: '**', redirectTo: 'ecommerce' },
 ];
 
