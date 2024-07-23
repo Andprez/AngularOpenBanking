@@ -21,7 +21,7 @@ export class SelectEntityComponent implements OnInit {
 
   constructor(
     private router: Router,    
-  ) {
+  ){
     let page = this.router.getCurrentNavigation()?.previousNavigation?.finalUrl?.toString();
     this.getPrevPage = page
     console.log(this.getPrevPage);
