@@ -34,14 +34,13 @@
       <div class="dataProduct">
         <h1>Necesitas  una cuenta para realizar el desembolso.</h1>
         <h4>
-          {{ selectedProduct?.nombre }} No.
-          {{ formValidation.value.numero | valueHidden }}
+                  {{ formValidation.value.numero | valueHidden }}
         </h4>
       </div>
       <h4>Haz clic en "Continuar" para abrir tu cuenta.</h4>
       <app-btn-cbit
-        [text]="shopping ? 'Seguir comprando' : 'Movimientos'"
-        (onClickEvent)="continue()"
+      [type]="'submit'"
+      [text]="'Continuar'"
       ></app-btn-cbit>
     </div>
   </div>

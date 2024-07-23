@@ -1,17 +1,14 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, forkJoin } from 'rxjs';
 import { environment } from 'src/environments/environment.development';
 import { TipoProductoF } from '../models/tipo-producto-f';
 import { ProductoF } from '../models/producto-f';
 import { Transaction } from '../models/transaction';
-<<<<<<< HEAD
-import {DetallesSolicitudP} from'../models/detallesSolicitudP';
-=======
 import { SubtipoProducto } from '../models/subtipoProducto';
+import { DetallesSolicitudP } from '../models/detallesSolicitudP';
 
 
->>>>>>> main
 
 @Injectable({
   providedIn: 'root',
