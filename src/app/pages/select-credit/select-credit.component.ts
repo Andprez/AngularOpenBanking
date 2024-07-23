@@ -7,6 +7,7 @@ import { ProductoF } from 'src/app/models/producto-f';
 import { TipoProductoF } from 'src/app/models/tipo-producto-f';
 import { NotificationsService } from 'src/app/services/notifications.service';
 import { ProductosFService } from 'src/app/services/productos-f.service';
+import { SubtipoProducto } from 'src/app/models/subtipoProducto';
 
 @Component({
   selector: 'app-select-credit',
@@ -16,8 +17,8 @@ import { ProductosFService } from 'src/app/services/productos-f.service';
 export class SelectCreditComponent implements OnInit {
   shopping: boolean = false;
   user!: Cliente;
-  tiposProducto!: TipoProductoF[];
-  selectedProduct?: TipoProductoF;
+  subtiposProducto!: SubtipoProducto[];
+  selectedSubtype?: SubtipoProducto;
   savedProduct?: ProductoF;
   selectedEntity!: EntidadFinanciera;
   formCredito!: FormGroup;
@@ -50,17 +51,20 @@ export class SelectCreditComponent implements OnInit {
     localStorage.getItem('marketplace')
       ? (this.shopping = true)
       : (this.shopping = false);
-    this.productosFService.getTypesProduct().subscribe({
+    //Servicio que trae los subtipos de producto
+    this.productosFService.getSubTypesProduct().subscribe({
       next: (result) => {
-        this.tiposProducto = result;
+        this.subtiposProducto = result;
       },
       error: (error) => {
         console.error(error);
       },
     });
+
     this.formCredito = this.fb.group({
-      product: ['', Validators.required],
+      subtipoProduct: ['', Validators.required],
     });
+    
     this.formValidation = this.fb.group({
       numeroProducto: [
         '',
@@ -71,8 +75,8 @@ export class SelectCreditComponent implements OnInit {
   }
 
   onSubmitProduct(): void {
-    let idProductSelected = this.formCredito.value.product;
-    this.selectedProduct = this.tiposProducto.find(
+    let idProductSelected = this.formCredito.value.subtipoProduct;
+    this.selectedSubtype = this.subtiposProducto.find(
       (tp) => tp.idTipo_Producto == idProductSelected
     );
     this.showAdditionalFields = true;

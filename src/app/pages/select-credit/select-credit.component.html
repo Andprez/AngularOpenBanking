@@ -10,14 +10,15 @@
        <form [formGroup]="formCredito" >
        <!--(ngSubmit)="onCreditoSelect()"> -->
         <h1>Crédito</h1>
+        
         <select formControlName="credito" class="credito">
           <option value="">Selecciona tu crédito</option>
-          <option *ngFor="let tipo of tiposProducto" [value]="tipo.idTipo_Producto">
-            {{ tipo.nombreTipo }}
+          <option *ngFor="let subtipo of subtiposProducto" 
+          [value]="subtipo.idSubtipo_Producto">
+            {{ subtipo.nombre }}
           </option>
-          <option value="">Opción 1</option>
-          <option value="">Opción 2</option>
         </select>
+
         <app-btn-cbit [type]="'submit'" [text]="'Continuar'" >
         <!-- [disabled]="!formCredito.get('credito').value" -->
         </app-btn-cbit>
