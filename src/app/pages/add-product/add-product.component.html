@@ -12,15 +12,28 @@
         class="form-producto container"
       >
         <h1>Producto</h1>
-        <select formControlName="product" class="product">
-          <option value="">Selecciona tu producto</option>
+        <select class="product" (change)="loadSubproducts($event)">
+
+          <option for="productT" value="">Selecciona tu producto</option>
           <option
             *ngFor="let tipo of tiposProducto"
             [value]="tipo.idTipo_Producto"
+
           >
             {{ tipo.nombreTipo }}
           </option>
         </select>
+
+        <select class="product" formControlName="subtipoProduct">
+          <option for="subtProduct" value="">Selecciona una opción</option>
+          <option
+            *ngFor="let subTipo of subtipoPXTipoP"
+            [value]="subTipo.idSubtipo_Producto"
+          >
+            {{ subTipo.nombre }}
+          </option>
+        </select>
+
         <app-btn-cbit
           [type]="'submit'"
           [text]="'Continuar'"
@@ -37,7 +50,7 @@
       >
         <div>
           <label for="formControlName">Número de cuenta</label>
-          <input type="tel" formControlName="numeroProducto" />
+          <input type="tel" formControlName="numeroCuenta" />
         </div>
         <div>
           <label for="formControlName">Ingresa tu clave</label>
@@ -56,8 +69,8 @@
       <div class="dataProduct">
         <h4>Producto:</h4>
         <h4>
-          {{ selectedProduct?.nombreTipo }} No.
-          {{ formValidation.value.numeroProducto | valueHidden }}
+          {{ selectedProduct?.nombre }} No.
+          {{ formValidation.value.numeroCuenta | valueHidden }}
         </h4>
       </div>
       <h1>Agregado exitosamente</h1>

@@ -4,6 +4,7 @@ import { TipoProductoF } from 'src/app/models/tipo-producto-f';
 import { EntidadFinancieraService } from 'src/app/services/entidad-financiera.service';
 import { ProductosFService } from 'src/app/services/productos-f.service';
 import { Router } from '@angular/router';
+import { SubtipoProducto } from 'src/app/models/subtipoProducto';
 
 @Component({
   selector: 'app-list-product-vertical',
@@ -20,6 +21,7 @@ export class ListProductVerticalComponent {
   productsByType: any = {};
   entitiesF: EntidadFinanciera[] = [];
   typesProducts: TipoProductoF[] = [];
+  subtypesProducts: SubtipoProducto[] = [];
 
   constructor(
     private productosFService: ProductosFService,
@@ -31,13 +33,21 @@ export class ListProductVerticalComponent {
     back: '/dashboard',
     help: '/help',
     transactions: '/products/transactions',
-    addProduct: '',
+    requestProduct: '/products/add/select-entity',
   };
   ngOnInit(): void {
     this.entidadFinancieraService.getEntitiesF().subscribe({
       next: (entities) => {
         this.entitiesF = entities;
       },
+    });
+    this.productosFService.getSubTypesProduct().subscribe({
+      next: (subtypes) => {
+        this.subtypesProducts = subtypes;
+      },
+      error: (error) => {
+        console.error(error);
+      }
     });
     this.productosFService.getTypesProduct().subscribe({
       next: (types) => {
@@ -46,19 +56,21 @@ export class ListProductVerticalComponent {
       error: (error) => {
         console.error(error);
       }
-    })
-
-
-    
+    });
     this.productosFService.getProductsByClient(this.clientId).subscribe({
       next: (products) => {
         products.forEach((product) => {
           let entidadF = this.entitiesF.find(entity => entity.idEntidadFinanciera === product.idEntidadFinanciera)
-          let tipoProducto = this.typesProducts.find(type => type.idTipo_Producto === product.idTipo_Producto)
+          // let subtipoProducto = this.subtypesProducts.find(type => type.idSubtipo_Producto === product.idSubtipo_Producto)
+          //encontrar el subtipo
+          let subtipoProducto = this.subtypesProducts.find(subtype => subtype.idSubtipo_Producto === product.idSubtipo_Producto);
+          //para comparar el subtipo
+          let tipoProducto = this.typesProducts.find(type => type.idTipo_Producto === subtipoProducto?.idTipo_Producto)//aqui es donde esta el problema
           let montoProd = Math.floor(Math.random() * 10000000);
-          let newProduct = { ...product, entidadF, tipoProducto, montoProd };
+          let newProduct = { ...product, entidadF, tipoProducto, subtipoProducto, montoProd };
           this.productsByType[tipoProducto?.nombreTipo!] = [...(this.productsByType[tipoProducto?.nombreTipo!] || []), newProduct];
           this.productsByClient.push(newProduct);
+          console.log(tipoProducto)
         });
       },
       error: (error) => {

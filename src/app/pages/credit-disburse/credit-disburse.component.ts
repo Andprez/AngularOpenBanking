@@ -5,6 +5,7 @@ import { forkJoin } from 'rxjs';
 import { Cliente } from 'src/app/models/cliente';
 import { EntidadFinanciera } from 'src/app/models/entidad-financiera';
 import { ProductoF } from 'src/app/models/producto-f';
+import { SubtipoProducto } from 'src/app/models/subtipoProducto';
 import { TipoProductoF } from 'src/app/models/tipo-producto-f';
 import { EntidadFinancieraService } from 'src/app/services/entidad-financiera.service';
 import { NotificationsService } from 'src/app/services/notifications.service';
@@ -19,11 +20,11 @@ import { ProductosFService } from 'src/app/services/productos-f.service';
 export class CreditDisburseComponent  implements OnInit {
   shopping: boolean = false;
   user!: Cliente;
-  tiposProducto!: TipoProductoF[];
+  subTiposProducto!: SubtipoProducto[];
   productosUser: any[] = [];
   entidadesF: EntidadFinanciera[] = [];
   subtipoProducto: any[] = [];
-  selectedProduct?: TipoProductoF;
+  selectedProduct?: SubtipoProducto;
   savedProduct?: ProductoF;
   selectedEntity!: EntidadFinanciera;
   formProducto!: FormGroup;
@@ -55,9 +56,9 @@ export class CreditDisburseComponent  implements OnInit {
     localStorage.getItem('marketplace')
       ? (this.shopping = true)
       : (this.shopping = false);
-    this.productosFService.getTypesProduct().subscribe({
+    this.productosFService.getSubTypesProduct().subscribe({
       next: (result) => {
-        this.tiposProducto = result;
+        this.subTiposProducto = result;
       },
       error: (error) => {
         console.error(error);
@@ -103,16 +104,16 @@ export class CreditDisburseComponent  implements OnInit {
 
   onSubmitProduct(): void {
     let idProductSelected = this.formProducto.value.product;
-    this.selectedProduct = this.tiposProducto.find(
+    this.selectedProduct = this.subTiposProducto.find(
       (tp) => tp.idTipo_Producto == idProductSelected
     );
     //this.clientHasAccounts = true;
   }
   onSubmitValidation(): void {
     let productF: ProductoF = {
-      idTipo_Producto: this.selectedProduct?.idTipo_Producto!,
+      idSubtipo_Producto: this.selectedProduct?.idSubtipo_Producto!,
       idEntidadFinanciera: this.selectedEntity.idEntidadFinanciera!,
-      numeroProducto: this.formValidation.value.numeroProducto,
+      numeroCuenta: this.formValidation.value.numeroCuenta,
       password: this.formValidation.value.password,
       idBilletera_CBITBank: this.user.idBilleteraCBITBank!,
       idEstado: 1,

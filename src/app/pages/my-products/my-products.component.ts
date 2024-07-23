@@ -25,7 +25,7 @@ export class MyProductsComponent implements OnInit {
     this.user = JSON.parse(localStorage.getItem('user') || '{}');
     localStorage.removeItem('product');
   }
-
+//texto en el cuadro de busqueda el cual se pasa por parametro como string
   setTxTFilterProduct(filter: string) {
     this.txtFilterProduct = filter;
   }
@@ -34,7 +34,7 @@ export class MyProductsComponent implements OnInit {
     localStorage.setItem('product', JSON.stringify(product));
     this.goToPage(this.routes.transactions);
   }
-
+// viene de list- category en donde se seleccionan las categorias del menú y es de tipo producto
   setCategorySelected(category: TipoProductoF) {
     this.categorySelected = category;
   }

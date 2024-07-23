@@ -2,8 +2,9 @@
   <img
     src="../../../../assets/entidadesF/{{ product.entidadF.imagen }}.png"
     class="card-img-top"
-    alt="{{ product.tipoProducto.nombreTipo }}"
   />
+  <!--     alt="{{ product.tipoProducto.nombreTipo }}" //estaba en linea 5-->
+
   <div class="card-body" *ngIf="mostrarSaldo">
     <p class="card-text">{{ product.tipoProducto.nombreTipo }}</p>
     <p class="card-text">{{ product.montoProd | currency }}</p>

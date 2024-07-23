@@ -3,6 +3,7 @@ import { EntidadFinanciera } from 'src/app/models/entidad-financiera';
 import { TipoProductoF } from 'src/app/models/tipo-producto-f';
 import { EntidadFinancieraService } from 'src/app/services/entidad-financiera.service';
 import { ProductosFService } from 'src/app/services/productos-f.service';
+import { SubtipoProducto } from 'src/app/models/subtipoProducto';
 
 @Component({
   selector: 'app-list-products',
@@ -16,6 +17,7 @@ export class ListProductsComponent implements OnInit {
   productsByClient: any[] = [];
   entitiesF: EntidadFinanciera[] = [];
   typesProducts: TipoProductoF[] = [];
+  subtypesProducts: SubtipoProducto[] = [];
 
   constructor(
     private productosFService: ProductosFService,
@@ -36,13 +38,23 @@ export class ListProductsComponent implements OnInit {
         console.error(error);
       }
     })
+    this.productosFService.getSubTypesProduct().subscribe({
+      next: (subtypes) => {
+        this.subtypesProducts = subtypes;
+      },
+      error: (error) => {
+        console.error(error);
+      }
+    })
     this.productosFService.getProductsByClient(this.clientId).subscribe({
       next: (products) => {
         products.forEach((product) => {
           let entidadF = this.entitiesF.find(entity => entity.idEntidadFinanciera === product.idEntidadFinanciera)
-          let tipoProducto = this.typesProducts.find(type => type.idTipo_Producto === product.idTipo_Producto)
+          let subtipoProducto = this.subtypesProducts.find(subtypes => subtypes.idSubtipo_Producto === product.idSubtipo_Producto)// comparar la lista de subtipos productos con el id de subtipo de productos que tiene la entidad producto
+          let tipoProducto = this.typesProducts.find(types => types.idTipo_Producto === subtipoProducto?.idTipo_Producto)//conseguir el tipo de producto por medio del subtipo de producto
           let montoProd = Math.floor(Math.random() * 10000000);
-          let newProduct = { ...product, entidadF, tipoProducto, montoProd };
+          let newProduct = { ...product, entidadF, subtipoProducto, tipoProducto, montoProd };
+          console.log(newProduct)
           this.productsByClient.push(newProduct);
         });
       },

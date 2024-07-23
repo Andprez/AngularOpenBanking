@@ -37,7 +37,9 @@ import { CreditRequestComponent } from './pages/credit-request/credit-request.co
 
 
 const routes: Routes = [
-  { path: '', component: IndexComponent },
+  //{ path: '', component: IndexComponent },
+  { path: 'credit/select', component: SelectCreditComponent },
+  { path: 'credit/request', component: CreditRequestComponent },
   { path: 'menu', component:MenuComponent},
   { path: 'creditreject', component: CreditRejectComponent},
   { path: 'ecommerce', component: ListProductComponent },
@@ -73,6 +75,13 @@ const routes: Routes = [
   { path: 'credit/simulation', component: CreditSimulationComponent },
   { path: 'credit/request', component: CreditRequestComponent },
   { path: '**', redirectTo: 'ecommerce' },
+  //{ path: '', component: CreditPreapprovedComponent },
+  //{ path: '', component: CreditApprovedComponent },
+  //{ path: '', component: CreditVerifyComponent },
+  //{ path: '', component: CreditConditionsComponent },
+  //{ path: '', component: CreditDisburseComponent },
+  //{ path: '', component: SelectCreditComponent },
+  //{ path: '', component: CreditSimulationComponent },
 ];
 
 @NgModule({

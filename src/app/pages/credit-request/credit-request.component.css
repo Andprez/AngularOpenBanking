@@ -1,51 +1,50 @@
-.form-validation {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    height: 50vh;
-    margin-top: 10%;
-  }
-  
-  .form-validation .inputText{
-    width: 100%;
-    height: 200px;
-    border-radius: 5px;
-    border: none;
-    padding: 0 1rem;
-    background-color: #DEDDFA;
-    font-size: 14px;
-  }
-
-  select {
-    margin: 0 auto;
-    border: none;
-    font-size: 20px;
-    height: 45px;
-    width: 100%;
-    font-family: "Open Sans", sans-serif;
-    font-weight: 400;
-    color: #6D6464;
-    background-color: #DEDDFA;
-    border-radius: 5px;
-    border: none;
-    text-align: center;
+body{
+  background-color: #fcfcfc;
+  height: 100vh;
 }
-
-h1{
-    text-align: center;
-    font-size: 27px;
-    font-family: "Open Sans", sans-serif;
-    color: #00A7F2;
-    font-weight: bold;
+.titulo{
+  color: #00A7F2;
+  margin-top: 1.5rem;
+  margin-bottom:1rem;
+  font-size: 22px;
+  font-family: "Open Sans", sans-serif;
+  font-weight: bold;
+  text-align: center;
 }
-
+.container{
+  display: flex;
+  flex-direction: column;
+  max-width: 95%;
+}
+.campos-form{
+  text-align: left;
+}
 p{
-    text-align: left;
-    font-size: 22px;
-    font-family: "Open Sans", sans-serif;
-    color: #6D6464;
-    font-weight: bold;
+  font-size: 16px;
+  font-family: "Open Sans", sans-serif;
+  color: #6D6464;
+  font-weight: bold;
+  margin-top: 1rem;
+  margin-bottom: 0;
 }
-#cboxAuthorizations{
-  height: 15px;
+
+.inputText{
+  width: 100%;
+  height: 45px;
+  /* padding: 0 1rem; */
+  margin-bottom: 0.7rem;
+}
+select{
+  width: 100%;
+  height: 45px;
+  border-radius: 8px;
+  /* padding: 0 1rem; */
+  font-size: 14px;
+}
+.rounded-input {
+  width: 100%;
+  height: 45px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 5px;
 }
