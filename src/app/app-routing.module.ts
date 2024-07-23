@@ -65,6 +65,7 @@ const routes: Routes = [
   { path: 'summary', component: PaymentSummaryComponent },
   { path: 'otp/banks', component: OtpBanksComponent },
   { path: 'tyc/banks', component: TycBanksComponent },
+  { path: 'credit/disburse', component: CreditDisburseComponent },
   { path: 'credit/preapproved', component: CreditPreapprovedComponent },
   { path: 'credit/approved', component: CreditApprovedComponent },
   { path: 'credit/verify', component: CreditVerifyComponent },

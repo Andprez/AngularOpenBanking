@@ -1,4 +1,4 @@
-.sidenav {
+.body {
   background-color: #00B0F9; /* Gradient for background */
   background-image: linear-gradient(to bottom, #00B0F9 0%, #00BFCF 100%);
   /* Stretch image to fill container */
@@ -18,7 +18,7 @@
     margin-right: 15px;
   }
 
-  .menu li.nav-item {
+  .menu li.nav-inicio {
     background-color: transparent; /* Remove unnecessary background color */
   }
 

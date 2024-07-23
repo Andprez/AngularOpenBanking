@@ -6,7 +6,6 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
   styleUrls: ['./item-menu.component.css']
 })
 export class ItemMenuComponent {
-  @Input() cardTitle!: string;
   @Input() icon!: string;
   @Output() onClickEvent = new EventEmitter();
 

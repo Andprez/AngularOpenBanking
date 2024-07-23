@@ -1,11 +1,12 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, forkJoin } from 'rxjs';
 import { environment } from 'src/environments/environment.development';
 import { TipoProductoF } from '../models/tipo-producto-f';
 import { ProductoF } from '../models/producto-f';
 import { Transaction } from '../models/transaction';
 import { SubtipoProducto } from '../models/subtipoProducto';
+import { DetallesSolicitudP } from '../models/detallesSolicitudP';
 
 
 
@@ -65,5 +66,11 @@ export class ProductosFService {
     let headers = this.getHeaders();
     let url = `${this.baseUrl}/transaccion/product/${productId}`;
     return this.httpClient.get<Transaction[]>(url, { headers: headers });
+  }
+
+  getRequestDetails(): Observable<DetallesSolicitudP[]> {
+    let headers = this.getHeaders();
+    let url = `${this.baseUrl}/detallesSolicitud`;
+    return this.httpClient.get<DetallesSolicitudP[]>(url, { headers: headers });
   }
 }
