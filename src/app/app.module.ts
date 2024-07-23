@@ -61,6 +61,9 @@ import { OtpBanksComponent } from './pages/otp-banks/otp-banks.component';
 import { FilterCategoryPipe } from './pipes/filter-category.pipe';
 import { FilterProductByEntityFPipe } from './pipes/filter-product-by-entity-f.pipe';
 import { LoadingInterceptor } from './interceptors/loading.interceptor';
+import { CreditVerifyComponent } from './pages/credit-verify/credit-verify.component';
+import { CreditApprovedComponent } from './pages/credit-approved/credit-approved.component';
+import { CreditPreapprovedComponent } from './pages/credit-preapproved/credit-preapproved.component';
 import { MenuComponent } from './pages/menu/menu.component';
 import { CreditRejectComponent } from './pages/credit-reject/credit-reject.component';
 import { RejectedMessageComponent } from './components/utils/rejected-message/rejected-message.component';
@@ -69,6 +72,10 @@ import { HeaderMenuComponent } from './components/headers/header-menu/header-men
 import { SelectAccountDisburseComponent } from './components/utils/select-account-disburse/select-account-disburse.component';
 import { MustCreateAccountComponent } from './components/utils/must-create-account/must-create-account.component';
 import { CreditDisburseComponent } from './pages/credit-disburse/credit-disburse.component';
+import { CreditConditionsComponent } from './pages/credit-conditions/credit-conditions.component';
+import { SelectCreditComponent } from './pages/select-credit/select-credit.component';
+import { CreditSimulationComponent } from './pages/credit-simulation/credit-simulation.component';
+import { CreditRequestComponent } from './pages/credit-request/credit-request.component';
 
 @NgModule({
   declarations: [
@@ -134,6 +141,9 @@ import { CreditDisburseComponent } from './pages/credit-disburse/credit-disburse
     OtpBanksComponent,
     FilterCategoryPipe,
     FilterProductByEntityFPipe,
+    CreditVerifyComponent,
+    CreditApprovedComponent,
+    CreditPreapprovedComponent,
     MenuComponent,
     CreditRejectComponent,
     RejectedMessageComponent,
@@ -142,6 +152,11 @@ import { CreditDisburseComponent } from './pages/credit-disburse/credit-disburse
     SelectAccountDisburseComponent,
     MustCreateAccountComponent,
     CreditDisburseComponent,
+    CreditConditionsComponent,
+    CreditDisburseComponent,
+    SelectCreditComponent,
+    CreditSimulationComponent,
+    CreditRequestComponent,
   ],
   imports: [
     BrowserModule,

@@ -16,6 +16,7 @@ export class MyProductsComponent implements OnInit {
     back: '/dashboard',
     help: '/help',
     transactions: '/products/transactions',
+    addProduct: '',
   };
 
   constructor(private router: Router) {}
@@ -37,7 +38,6 @@ export class MyProductsComponent implements OnInit {
   setCategorySelected(category: TipoProductoF) {
     this.categorySelected = category;
   }
-
   goToPage(page: string) {
     this.router.navigate([page]);
   }

@@ -24,14 +24,22 @@ import { HelpPageComponent } from './pages/help-page/help-page.component';
 import { TycBanksComponent } from './pages/tyc-banks/tyc-banks.component';
 import { PaymentSummaryComponent } from './pages/payment-summary/payment-summary.component';
 import { OtpBanksComponent } from './pages/otp-banks/otp-banks.component';
+import { CreditVerifyComponent } from './pages/credit-verify/credit-verify.component';
+import { CreditApprovedComponent } from './pages/credit-approved/credit-approved.component';
+import { CreditPreapprovedComponent } from './pages/credit-preapproved/credit-preapproved.component';
 import { MenuComponent } from './pages/menu/menu.component';
 import { CreditRejectComponent } from './pages/credit-reject/credit-reject.component';
+import { CreditConditionsComponent } from './pages/credit-conditions/credit-conditions.component';
 import { CreditDisburseComponent } from './pages/credit-disburse/credit-disburse.component';
+import { SelectCreditComponent } from './pages/select-credit/select-credit.component';
+import { CreditSimulationComponent } from './pages/credit-simulation/credit-simulation.component';
+import { CreditRequestComponent } from './pages/credit-request/credit-request.component';
+
 
 const routes: Routes = [
   { path: '', component: IndexComponent },
   { path: 'menu', component:MenuComponent},
-  { path: 'creditrejecct', component: CreditRejectComponent},
+  { path: 'creditreject', component: CreditRejectComponent},
   { path: 'ecommerce', component: ListProductComponent },
   { path: 'ecommerce/products/:id', component: DetailProductComponent },
   { path: 'ecommerce/cart', component: CartComponent },
@@ -56,6 +64,14 @@ const routes: Routes = [
   { path: 'otp/banks', component: OtpBanksComponent },
   { path: 'tyc/banks', component: TycBanksComponent },
   { path: 'credit/disburse', component: CreditDisburseComponent },
+  { path: 'credit/preapproved', component: CreditPreapprovedComponent },
+  { path: 'credit/approved', component: CreditApprovedComponent },
+  { path: 'credit/verify', component: CreditVerifyComponent },
+  { path: 'credit/conditions', component: CreditConditionsComponent },
+  { path: 'credit/disburse', component: CreditDisburseComponent },
+  { path: 'credit/select', component: SelectCreditComponent },
+  { path: 'credit/simulation', component: CreditSimulationComponent },
+  { path: 'credit/request', component: CreditRequestComponent },
   { path: '**', redirectTo: 'ecommerce' },
 ];
 

@@ -5,6 +5,7 @@ import { environment } from 'src/environments/environment.development';
 import { TipoProductoF } from '../models/tipo-producto-f';
 import { ProductoF } from '../models/producto-f';
 import { Transaction } from '../models/transaction';
+import {DetallesSolicitudP} from'../models/detallesSolicitudP';
 
 @Injectable({
   providedIn: 'root',
@@ -58,5 +59,9 @@ export class ProductosFService {
     return this.httpClient.get<Transaction[]>(url, { headers: headers });
   }
 
-  
+  getRequestDetails(): Observable<DetallesSolicitudP[]> {
+    let headers = this.getHeaders();
+    let url = `${this.baseUrl}/detallesSolicitud`;
+    return this.httpClient.get<DetallesSolicitudP[]>(url, { headers: headers });
+  }
 }

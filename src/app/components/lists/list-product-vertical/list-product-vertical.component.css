@@ -1,6 +1,35 @@
 p {
   margin: 0;
 }
+.cabecera{
+  width: 95%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+  .botones {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 0 0 0;
+  }
+  .btn-adicionar {
+    cursor: pointer;
+  }
+  .nombreTipo, .btn-adicionar {
+    display: flex;
+    align-items: center;
+  }
+  .bi-plus-circle-fill{
+    font-size: 30px;
+    color:#01A7F4;
+  }
+.txt-solicitar{
+  background-color: #FFFFFF;
+  border-radius: 12px;
+  padding: 0.2rem;
+}
 .list {
   display: flex;
   flex-direction: column;
@@ -45,9 +74,4 @@ p {
 .valores p {
   font-size: 12px;
 }
-.boton {
-  font-size: 10px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
+

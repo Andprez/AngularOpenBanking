@@ -1,0 +1,28 @@
+.form-producto{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    height: 60vh;
+  }
+  
+  .select-credit {
+    margin: 0 auto;
+    border: none;
+    font-size: 20px;
+    height: 3.5rem;
+    width: 95%;
+    font-family: "Open Sans", sans-serif;
+    font-weight: 400;
+    color: #6D6464;
+    background-color: #DEDDFA;
+    border-radius: 4px;
+    text-align: center;
+  }
+  
+  h1 {
+    text-align: center;
+    font-size: 30px;
+    font-family: "Open Sans", sans-serif;
+    color: #6D6464;
+    font-weight: bold;
+  }

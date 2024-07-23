@@ -1,0 +1,302 @@
+.body{
+    font-family: 'Open Sans', sans-serif;
+}
+    .tx-titulo {
+        padding: 2.5rem 0 0rem 0;
+    }
+    .credit-type {
+        text-align: center;
+        font-family: 'Open Sans';
+        font-style: normal;
+        font-weight: 700;
+        font-size: 20px;
+        color: #00A7F2;
+    }
+    .text-simu {
+        text-align: center;
+        font-family: 'Open Sans';
+        font-style: normal;
+        font-weight: 700;
+        font-size: 13px;
+        line-height: 18px;
+    }
+    .container {  
+        width: 90%;
+        padding: 1rem;
+        background: linear-gradient(145.62deg, rgba(0, 180, 255, 0.28) 0%, rgba(0, 108, 153, 0.28) 102.41%);
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto auto auto auto auto auto auto;
+        gap: 0px 0px;
+        grid-auto-flow: row;
+        grid-template-areas:
+        "info-values info-values"
+        "info-value-cuota info-value-cuota"
+        "inf-tasa-ea inf-cuota"
+        "inf-tasa-mv ."
+        "inf-vtua info-deuda-t"
+        "tx-sg-vida tx-sg-vida"
+        "inf-ayuda inf-ayuda";
+    }
+    
+    .info-values {  display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1fr;
+        gap: 0px 0px;
+        grid-auto-flow: row;
+        grid-template-areas:
+        "tx-monto-sm"
+        "tx-monto";
+        grid-area: info-values;
+    }
+    
+    .tx-monto-sm {
+        font-weight: 600;
+        font-size: 24px;
+        line-height: 33px;
+        justify-self: center;
+        align-self: stretch;
+        grid-area: tx-monto-sm;
+    }
+    
+    .tx-monto {
+        justify-self: center;
+        grid-area: tx-monto;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 22px;
+    }
+    
+    .info-value-cuota {  
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1fr;
+        gap: 0px 0px;
+        grid-auto-flow: row;
+        grid-template-areas:
+        "tx-monto-cuota"
+        "tx-cuota";
+        grid-area: info-value-cuota;
+    }
+    
+    .tx-monto-cuota { 
+        color: #1860BF;
+        font-weight: 700;
+        font-size: 36px;
+        line-height: 49px;
+        justify-self: center;
+        grid-area: tx-monto-cuota; 
+    }
+    
+    .tx-cuota { 
+        font-family: 'Open Sans';
+        font-style: normal;
+        font-weight: 300;
+        font-size: 16px;
+        line-height: 22px;
+        text-align: center;
+        justify-self: center;
+        grid-area: tx-cuota; 
+    }
+    .bi {
+        color: #01AAF5
+    }
+
+        .tx-vl-seguro {
+            color: #1860BF;
+        }
+    
+    .inf-tasa-ea {  display: grid;
+        grid-template-columns: 1.5fr 0.5fr;
+        grid-template-rows: 1fr 1fr;
+        gap: 0px 0px;
+        grid-auto-flow: row;
+        justify-content: stretch;
+        justify-items: stretch;
+        grid-template-areas:
+        "vl-tasa-ea ."
+        "tx-tasa-ea .";
+        grid-area: inf-tasa-ea;
+    }
+    
+    .vl-tasa-ea {
+        font-weight: 600;
+        font-size: 16px;
+        line-height: 22px;
+
+        color: #000000;
+        justify-self: stretch;
+        grid-area: vl-tasa-ea;
+    }
+    
+    .tx-tasa-ea { 
+        font-weight: 300;
+        font-size: 12px;
+        line-height: 16px;
+
+        color: #000000;
+        grid-area: tx-tasa-ea; }
+    
+    .inf-cuota {  display: grid;
+        grid-template-columns: 1.5fr 0.5fr;
+        grid-template-rows: 1fr 1fr;
+        gap: 0px 0px;
+        grid-auto-flow: row;
+        grid-template-areas:
+        "vl-cuota ."
+        "tx-cuotas .";
+        grid-area: inf-cuota;
+    }
+    
+    .vl-cuota { 
+        font-weight: 600;
+        font-size: 20px;
+        line-height: 27px;
+
+        color: #000000;
+        grid-area: vl-cuota; }
+    
+    .tx-cuotas { 
+        font-weight: 300;
+        font-size: 12px;
+        line-height: 16px;
+
+        color: #000000;
+        grid-area: tx-cuotas; }
+    
+    .inf-tasa-mv {  display: grid;
+        grid-template-columns: 1.5fr 0.5fr;
+        grid-template-rows: 1fr 1fr;
+        gap: 0px 0px;
+        grid-auto-flow: row;
+        grid-template-areas:
+        "vl-tasa-mv ."
+        "tx-tasa-mv .";
+        grid-area: inf-tasa-mv;
+    }
+    
+    .vl-tasa-mv { 
+        font-weight: 600;
+        font-size: 16px;
+        line-height: 22px;
+
+        color: #000000;
+        grid-area: vl-tasa-mv; }
+    
+    .tx-tasa-mv { 
+        font-weight: 300;
+        font-size: 12px;
+        line-height: 16px;
+
+        color: #000000;
+        grid-area: tx-tasa-mv; 
+    }
+    
+    .inf-vtua {  display: grid;
+        grid-template-columns: 1.5fr 0.5fr;
+        grid-template-rows: 1fr 1fr;
+        gap: 0px 0px;
+        grid-auto-flow: row;
+        grid-template-areas:
+        "vl-tasa-vtua ."
+        "tx-tasa-vtua .";
+        grid-area: inf-vtua;
+    }
+    
+    .vl-tasa-vtua { 
+        font-weight: 600;
+        font-size: 16px;
+        line-height: 22px;
+
+        color: #000000;
+        grid-area: vl-tasa-vtua; }
+    
+    .tx-tasa-vtua {   
+        font-weight: 300;
+        font-size: 12px;
+        line-height: 16px;
+
+        color: #000000;
+        grid-area: tx-tasa-vtua; }
+    
+    .info-deuda-t {  display: grid;
+        grid-template-columns: 1.5fr 0.5fr;
+        grid-template-rows: 1fr 1fr;
+        gap: 0px 0px;
+        grid-auto-flow: row;
+        grid-template-areas:
+        "vl-deuda-t ."
+        "tx-deuda-t .";
+        grid-area: info-deuda-t;
+    }
+    
+    .vl-deuda-t { 
+        font-weight: 600;
+        font-size: 20px;
+        line-height: 27px;
+
+        color: #000000;
+        grid-area: vl-deuda-t; }
+    
+    .tx-deuda-t { 
+        font-weight: 300;
+        font-size: 12px;
+        line-height: 16px;
+
+        color: #000000;
+        grid-area: tx-deuda-t; }
+    
+    .tx-sg-vida { 
+        font-weight: 300;
+        font-size: 12px;
+        line-height: 40px;
+
+        color: #000000;
+        justify-self: center;
+        grid-area: tx-sg-vida; 
+    }
+    
+    .inf-ayuda {  display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1fr;
+        gap: 0px 0px;
+        grid-auto-flow: row;
+        grid-template-areas:
+        "tx-inf-ayuda"
+        "tx-box-asesor";
+        grid-area: inf-ayuda;
+    }
+    
+    .tx-inf-ayuda { 
+        font-weight: 300;
+        font-size: 12px;
+        line-height: 40px;
+
+        color: #000000;
+        justify-self: center;
+        grid-area: tx-inf-ayuda; 
+    }
+    
+    .tx-box-asesor { 
+        justify-self: center;
+        grid-area: tx-box-asesor; 
+    }
+    .txbox{
+        background-color: #a0c2e6;
+        border-radius: 5px;
+        border: none; /* Quita el borde */
+        outline: none; /* Quita el resaltado al hacer clic */
+    }
+    .boton{
+        padding: 1rem 0 1rem 0;
+    }
+    .text-volver-sim {
+        padding-top: 2rem;
+        text-align: center;
+        font-family: 'Open Sans';
+        color: #1860bf;
+        font-size: 15px;
+    }
+
+
+

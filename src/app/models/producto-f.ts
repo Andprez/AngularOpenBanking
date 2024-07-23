@@ -8,5 +8,8 @@ export interface ProductoF {
   usuario?: string;
   password: string;
   numeroProducto: string;
-  numeroCuenta?: string;
+  // numeroCuenta?: string;
+  // tasaInteres: number;
+  // cuotas: number;
+  // montoCredito: number;
 }

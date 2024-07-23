@@ -19,12 +19,7 @@ export class MenuComponent  implements OnInit {
     private notifService: NotificationsService
   ) {}
 
-  ngOnInit(): void {
-    this.notifService.loadingEvent.subscribe((event) => {
-
-    });
-
-  }
+  ngOnInit(): void { }
 
   goToPage(page: string): void {
     this.router.navigate([page]);

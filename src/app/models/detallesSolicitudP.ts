@@ -1,12 +1,10 @@
-interface DetallesSolicitudP {
-  idDetallesSolicitudP: number;
-  actividadLaboral: number;
+export interface DetallesSolicitudP {
+  idDetalles_SolicitudP?: number;
+  actividadLaboral?: number;
   actividadEconomica?: string;
   nombreEmpresa?: string;
   ingresoMensual?: string;
-  ciudadDomicilio: number;
+  ciudadDomicilio?: number;
   direccionDomicilio?: string;
-  aceptaTyC?: boolean;
-  createdAt?: Date;
-  updatedAt?: Date;
+  aceptaTyC: boolean;
 }
