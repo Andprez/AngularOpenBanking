@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { EntidadFinanciera } from 'src/app/models/entidad-financiera';
+
 @Component({
   selector: 'app-credit-request',
   templateUrl: './credit-request.component.html',

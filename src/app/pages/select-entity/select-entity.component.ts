@@ -10,14 +10,22 @@ import { EntidadFinanciera } from 'src/app/models/entidad-financiera';
 export class SelectEntityComponent implements OnInit {
   txtFilter: string = '';
   shopping: boolean = false;
+  private getPrevPage: string | undefined;
   routes = {
     back: '/dashboard',
     help: '/help',
     addProduct: '/products/add/data-product',
+    createProduct: 'credit/select',
     wallet: '/wallet',
   };
 
-  constructor(private router: Router) {}
+  constructor(
+    private router: Router,    
+  ){
+    let page = this.router.getCurrentNavigation()?.previousNavigation?.finalUrl?.toString();
+    this.getPrevPage = page
+    console.log(this.getPrevPage);
+  }
 
   ngOnInit(): void {
     localStorage.removeItem('entity');
@@ -32,7 +40,12 @@ export class SelectEntityComponent implements OnInit {
 
   selectedEntity(entity: EntidadFinanciera) {
     localStorage.setItem('entity', JSON.stringify(entity));
-    this.goToPage(this.routes.addProduct);
+    let addProduct
+    if(this.getPrevPage=="/dashboard"){
+      this.goToPage(this.routes.addProduct);
+    } else if (this.getPrevPage=="/products") {
+      this.goToPage(this.routes.createProduct);
+    }
   }
 
   goBack(): void {
