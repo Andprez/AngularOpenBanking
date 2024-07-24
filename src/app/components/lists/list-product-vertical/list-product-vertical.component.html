@@ -1,7 +1,7 @@
 <div class="list">
   <div
     class="type-and-list"
-    *ngFor="let type of typesProducts"
+    *ngFor="let type of typesProducts | filterCategory : txtFilterProduct | filterCategory : txtCategorySelected"
   >
     <div class="cabecera">
       <div class="botones">
@@ -26,7 +26,7 @@
         <app-entity [entity]="product.entidadF"></app-entity>
       </div>
       <div class="datos">
-        <p class="nombreProducto">{{ product.tipoProducto.nombreTipo }}</p>
+        <p class="nombreProducto">{{ product.subtipoProducto.nombre }}</p>
         <div class="valores">
           <p class="textoSaldo">Saldo actual</p>
           <p class="valorSaldo">{{ product.montoProd | currency }}</p>
@@ -39,3 +39,6 @@
     </div>
   </div>
 </div>
+<p class="texto" *ngIf="(typesProducts | filterCategory : txtFilterProduct| filterProductByEntityF: txtFilterProduct).length == 0">
+  No hay resultados
+</p>

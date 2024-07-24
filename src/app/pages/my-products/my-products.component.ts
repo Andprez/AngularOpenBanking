@@ -11,6 +11,7 @@ import { TipoProductoF } from 'src/app/models/tipo-producto-f';
 export class MyProductsComponent implements OnInit {
   categorySelected: TipoProductoF = {} as TipoProductoF;
   txtFilterProduct: string = '';
+  txtCategorySelected: string ='';
   user: Cliente = {} as Cliente;
   routes = {
     back: '/dashboard',
@@ -37,6 +38,14 @@ export class MyProductsComponent implements OnInit {
 // viene de list- category en donde se seleccionan las categorias del menú y es de tipo producto
   setCategorySelected(category: TipoProductoF) {
     this.categorySelected = category;
+    this.txtCategorySelected = category.nombreTipo
+    console.log("solo nombre categoria selecc:::::",this.txtCategorySelected)
+    console.log("categoria::::::",category)
+  }
+  setTxtCategorySelected(filter:string){
+    this.txtCategorySelected=this.categorySelected.nombreTipo
+    filter=this.txtCategorySelected
+    console.log("filtro categoria::::::",filter)
   }
   goToPage(page: string) {
     this.router.navigate([page]);
