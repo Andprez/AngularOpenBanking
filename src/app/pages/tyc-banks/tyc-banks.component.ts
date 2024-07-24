@@ -51,6 +51,7 @@ export class TycBanksComponent implements OnInit {
               'processPayment',
               JSON.stringify(processPayment)
             );
+            console.log("valor token bancolombia ",access_token);
             this.banksService.ban_GetTermsConditions(access_token).subscribe({
               next: (response) => {
                 this.customerTerms = response.data.termsCondition.clausesCustomer.url;
