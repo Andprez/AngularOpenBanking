@@ -44,6 +44,12 @@ export class ProductosFService {
     return this.httpClient.get<TipoProductoF>(url, { headers: headers });
   }
 
+  getSubTypeProductById(subtypeProductId: number): Observable<SubtipoProducto> {
+    let headers = this.getHeaders();
+    let url = `${this.baseUrl}/subtipoProducto/${subtypeProductId}`;
+    return this.httpClient.get<SubtipoProducto>(url, { headers: headers });
+  }
+
   createProductF(product: ProductoF): Observable<ProductoF> {
     let headers = this.getHeaders();
     let url = `${this.baseUrl}/producto`;

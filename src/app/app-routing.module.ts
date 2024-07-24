@@ -37,12 +37,12 @@ import { CreditRequestComponent } from './pages/credit-request/credit-request.co
 
 
 const routes: Routes = [
-  //{ path: '', component: IndexComponent },
+  { path: '', component: IndexComponent },
   { path: 'credit/select', component: SelectCreditComponent },
   { path: 'credit/request', component: CreditRequestComponent },
   { path: 'menu', component:MenuComponent},
   { path: 'creditreject', component: CreditRejectComponent},
-  { path: '', component: CreditApprovedComponent },
+  //{ path: '', component: CreditApprovedComponent },
   //{ path: '', component: CreditVerifyComponent },
   //{ path: '', component: CreditPreapprovedComponent },
   { path: 'ecommerce', component: ListProductComponent },

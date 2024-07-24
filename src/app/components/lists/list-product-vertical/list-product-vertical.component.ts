@@ -60,12 +60,10 @@ export class ListProductVerticalComponent {
     this.productosFService.getProductsByClient(this.clientId).subscribe({
       next: (products) => {
         products.forEach((product) => {
-          let entidadF = this.entitiesF.find(entity => entity.idEntidadFinanciera === product.idEntidadFinanciera)
-          // let subtipoProducto = this.subtypesProducts.find(type => type.idSubtipo_Producto === product.idSubtipo_Producto)
+          let entidadF = this.entitiesF.find(entity => entity.idEntidadFinanciera === product.idEntidadFinanciera);
           //encontrar el subtipo
           let subtipoProducto = this.subtypesProducts.find(subtype => subtype.idSubtipo_Producto === product.idSubtipo_Producto);
-          //para comparar el subtipo
-          let tipoProducto = this.typesProducts.find(type => type.idTipo_Producto === subtipoProducto?.idTipo_Producto)//aqui es donde esta el problema
+          let tipoProducto = this.typesProducts.find(type => type.idTipo_Producto === subtipoProducto?.idTipo_Producto);
           let montoProd = Math.floor(Math.random() * 10000000);
           let newProduct = { ...product, entidadF, tipoProducto, subtipoProducto, montoProd };
           this.productsByType[tipoProducto?.nombreTipo!] = [...(this.productsByType[tipoProducto?.nombreTipo!] || []), newProduct];
