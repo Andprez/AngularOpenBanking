@@ -15,6 +15,7 @@ export class ListProductVerticalComponent {
 
   @Input() clientId!: number;
   @Input() txtFilterProduct: string = '';
+  @Input() txtCategorySelected: string = '';
   @Input() categorySelected: TipoProductoF = {} as TipoProductoF;
   @Output() onProductSelected = new EventEmitter<any>();
   productsByClient: any[] = [];
