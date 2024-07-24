@@ -4,6 +4,7 @@ import { Cliente } from 'src/app/models/cliente';
 import { Estado } from 'src/app/models/estado';
 import { ProductoF } from 'src/app/models/producto-f';
 import { TipoProductoF } from 'src/app/models/tipo-producto-f';
+import { SubtipoProducto } from 'src/app/models/subtipoProducto';
 import { Transaction } from 'src/app/models/transaction';
 import { EstadosService } from 'src/app/services/estados.service';
 import { ProductosFService } from 'src/app/services/productos-f.service';
@@ -17,9 +18,10 @@ import { Router } from '@angular/router';
 })
 export class VoucherComponent implements OnInit {
   @ViewChild('voucherContent') voucherContent: ElementRef | undefined;
-  transaction: Transaction = {} as Transaction;
+  transaction: any = {};
   user: Cliente = {} as Cliente;
   productF: ProductoF = {} as ProductoF;
+  subtypeProduct: SubtipoProducto = {} as SubtipoProducto;
   typeProduct: TipoProductoF = {} as TipoProductoF;
   status: Estado = {} as Estado;
   aprobado!: boolean;
@@ -44,13 +46,17 @@ export class VoucherComponent implements OnInit {
       this.transaction.idProducto!
     );
     const reqTypeProduct = this.productFService.getTypesProduct();
+    const reqSubTypeProduct = this.productFService.getSubTypesProduct();
     const reqStatus = this.estadosService.getEstadoById(
       this.transaction.idEstado!
     );
 
-    forkJoin([reqProduct, reqTypeProduct, reqStatus]).subscribe({
-      next: ([product, typesProduct, status]) => {
+    forkJoin([reqProduct, reqSubTypeProduct, reqTypeProduct, reqStatus]).subscribe({
+      next: ([product, subtypeProduct,typesProduct, status]) => {
         this.productF = product;
+        this.subtypeProduct = subtypeProduct.find(
+          (stp) => stp.idSubtipo_Producto === product.idSubtipo_Producto
+        )!;
         this.typeProduct = typesProduct.find(
           (tp) => tp.idTipo_Producto === product.idSubtipo_Producto
         )!;

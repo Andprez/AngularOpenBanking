@@ -159,13 +159,14 @@ export class OtpBanksComponent implements OnInit {
               idTransaccionAutorizador: res.idTransaccionAutorizador || 'NA',
               numeroAprobacion: res.numeroAprobacion || 'NA',
             };
+            console.log("datos de transacción ",transaction);
             this.transaccionService.createTransaccion(transaction).subscribe({
               next: (transaction) => {
                 let trans = { ...transaction };
-                localStorage.setItem('transaction', trans);
+                localStorage.setItem('transaction', JSON.stringify(trans));
                 this.goToPage(this.routes.voucher);
               }, error: e => {
-                console.log(e);
+                console.log("Error al crear la transaccion", e);
               }
             });
           },
