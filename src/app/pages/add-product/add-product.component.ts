@@ -71,6 +71,7 @@ export class AddProductComponent implements OnInit {
         console.error(error)
       },
     })
+    
     this.formProducto = this.fb.group({
       subtipoProduct: ['', Validators.required],
     });

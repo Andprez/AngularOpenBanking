@@ -8,6 +8,7 @@ import { TipoProductoF } from 'src/app/models/tipo-producto-f';
 import { NotificationsService } from 'src/app/services/notifications.service';
 import { ProductosFService } from 'src/app/services/productos-f.service';
 import { SubtipoProducto } from 'src/app/models/subtipoProducto';
+import { map } from 'rxjs';
 
 @Component({
   selector: 'app-select-credit',
@@ -15,6 +16,7 @@ import { SubtipoProducto } from 'src/app/models/subtipoProducto';
   styleUrls: ['./select-credit.component.css']
 })
 export class SelectCreditComponent implements OnInit {
+  typeCredit: any[] = [];
   shopping: boolean = false;
   user!: Cliente;
   subtiposProducto!: SubtipoProducto[];
@@ -51,15 +53,21 @@ export class SelectCreditComponent implements OnInit {
     localStorage.getItem('marketplace')
       ? (this.shopping = true)
       : (this.shopping = false);
-    //Servicio que trae los subtipos de producto
-    this.productosFService.getSubTypesProduct().subscribe({
-      next: (result) => {
-        this.subtiposProducto = result;
+
+    //Servicio que trae los subtipos de producto filtrando solo los créditos
+
+    //Llama al metodo de productosFService. el .pipe es un operador que nos trae la lista de los subtipos de producto  
+    this.productosFService.getSubTypesProduct().pipe(
+      //map filtra los subtipos y .filter valida que el idTipo_Producto sea igual a 4, el id para los créditos  
+      map(subtiposProducto => subtiposProducto.filter(subtipo => subtipo.idTipo_Producto === 4)) 
+    ).subscribe({
+      next: (subtiposFiltrados) => {
+        this.subtiposProducto = subtiposFiltrados;
       },
       error: (error) => {
         console.error(error);
-      },
-    });
+      },
+    });
 
     this.formCredito = this.fb.group({
       subtipoProduct: ['', Validators.required],
@@ -81,6 +89,7 @@ export class SelectCreditComponent implements OnInit {
     );
     this.showAdditionalFields = true;
   }
+  
   // onSubmitValidation(): void {
     // let productF: ProductoF = {
     //   idTipo_Producto: this.selectedProduct?.idTipo_Producto!,
@@ -104,10 +113,9 @@ export class SelectCreditComponent implements OnInit {
   //   });
   // }
 
-  // continue(): void {
 
-  //   goToPage(page: string): void {
-  //    this.router.navigate([page]);
-  //  }
+  goToPage(page: string): void {
+    this.router.navigate([page]);
+  }
 }
 

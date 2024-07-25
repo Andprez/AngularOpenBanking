@@ -1,33 +1,39 @@
 <body>
-  <app-header-entity>
-    <!-- (onClickEventBack)="goToPage(routes.back)" -->
-    <!-- (onClickEventHelp)="goToPage(routes.help)" -->
-    <!-- [entity]="selectedEntity" -->
-  </app-header-entity>
+  <app-header-entity
+    (onClickEventBack)="goToPage(routes.back)"
+    (onClickEventHelp)="goToPage(routes.help)"
+    [entity]="selectedEntity"
+  ></app-header-entity>
 
   <div class="container">
-    <div *ngIf="!showAdditionalFields && !showSuccessMessage">
-       <form [formGroup]="formCredito" >
-       <!--(ngSubmit)="onCreditoSelect()"> -->
+    <div *ngIf="!showAdditionalFields">
+       <form 
+       [formGroup]="formCredito" 
+       (ngSubmit)="formCredito.valid && onSubmitProduct()"
+       >
         <h1>Crédito</h1>
         
         <select formControlName="credito" class="credito">
           <option value="">Selecciona tu crédito</option>
           <option *ngFor="let subtipo of subtiposProducto" 
-          [value]="subtipo.idSubtipo_Producto">
+
+          [value]="subtipo.nombre">
             {{ subtipo.nombre }}
           </option>
         </select>
 
-        <app-btn-cbit [type]="'submit'" [text]="'Continuar'" >
-        <!-- [disabled]="!formCredito.get('credito').value" -->
-        </app-btn-cbit>
+        <app-btn-cbit
+          [type]="'submit'"
+          [text]="'Continuar'"
+          [disabled]="formCredito.invalid"
+        ></app-btn-cbit>
       </form>
     </div>
 
-    <div *ngIf="showAdditionalFields && !showSuccessMessage">
-       <form [formGroup]="formValidation">
-       <!--(ngSubmit)="onSubmitValidation()" -->
+    <div *ngIf="showAdditionalFields">
+       <form [formGroup]="formValidation"
+       (ngSubmit)="formValidation.valid && onSubmitProduct()"
+       >
         <h1>Crédito</h1>
         <div>
           <label class="title" for="formControlName">Monto crédito</label>
