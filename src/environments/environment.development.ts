@@ -23,7 +23,7 @@ export const environment = {
   BAN: {
     //BASEURL:'http://18.119.28.121:3002',
     //BASEURL: 'http://3.143.204.139:3001',
-    BASEURL: 'http://localhost:3001',
+    BASEURL: 'http://localhost:4001',
     GRANT_TYPE: 'client_credentials',
     CLIENT_ID: '51daaeab18363acf525e749130d9a7a5',
     CLIENT_SECRET: 'cbb2a37ea5e783de41835a83362d5897',

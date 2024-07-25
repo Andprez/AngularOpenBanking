@@ -4,6 +4,7 @@ import { forkJoin } from 'rxjs';
 import { EntidadFinanciera } from 'src/app/models/entidad-financiera';
 import { ProductoF } from 'src/app/models/producto-f';
 import { TipoProductoF } from 'src/app/models/tipo-producto-f';
+import { SubtipoProducto } from 'src/app/models/subtipoProducto';
 import { Transaction } from 'src/app/models/transaction';
 import { EntidadFinancieraService } from 'src/app/services/entidad-financiera.service';
 import { ProductosFService } from 'src/app/services/productos-f.service';
@@ -16,6 +17,7 @@ import { ProductosFService } from 'src/app/services/productos-f.service';
 export class TransactionComponent implements OnInit {
   product: ProductoF = {} as ProductoF;
   typeProduct: TipoProductoF = {} as TipoProductoF;
+  subtypeProduct: SubtipoProducto = {} as SubtipoProducto;
   entity: EntidadFinanciera = {} as EntidadFinanciera;
 
   routes = {
@@ -35,16 +37,16 @@ export class TransactionComponent implements OnInit {
     this.productFService.getProductById(this.product.idProducto!).subscribe({
       next: (product) => {
         this.product = product;
-        const reqTypeProducts = this.productFService.getTypeProductById(
+        const reqSubTypeProducts = this.productFService.getSubTypeProductById(
           product.idSubtipo_Producto
         );
         const reqEntities = this.entityFService.getEntityFById(
           product.idEntidadFinanciera
         );
 
-        forkJoin([reqTypeProducts, reqEntities]).subscribe({
-          next: ([types, entities]) => {
-            this.typeProduct = types;
+        forkJoin([reqSubTypeProducts, reqEntities]).subscribe({
+          next: ([subtypes, entities]) => {
+            this.subtypeProduct = subtypes;
             this.entity = entities;
           },
         });

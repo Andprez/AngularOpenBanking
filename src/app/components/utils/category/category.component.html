@@ -1,4 +1,4 @@
-<div class="card" (click)="setCategorySelected()">
+<div class="card" (click)="setCategorySelected()" (keyup)="setCategorySelected()">
   <img
     src="../../../../assets/categorias/{{ category.nombreTipo }}.svg"
     class="card-img-top"

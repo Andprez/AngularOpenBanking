@@ -8,7 +8,9 @@ import { ProductosFService } from 'src/app/services/productos-f.service';
   styleUrls: ['./list-category.component.css'],
 })
 export class ListCategoryComponent implements OnInit {
-  @Output() onCategorySelected = new EventEmitter<TipoProductoF>();
+  // @Output() onCategorySelected = new EventEmitter<TipoProductoF>();
+  @Output() onCategorySelected = new EventEmitter<any>();
+
   categories: TipoProductoF[] = [{ idTipo_Producto: 0, nombreTipo: 'Todas' }];
 
   constructor(private productosService: ProductosFService) {}
