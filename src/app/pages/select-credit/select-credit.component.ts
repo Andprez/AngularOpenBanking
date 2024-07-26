@@ -70,22 +70,19 @@ export class SelectCreditComponent implements OnInit {
     });
 
     this.formCredito = this.fb.group({
-      subtipoProduct: ['', Validators.required],
+      credito: ['', Validators.required],
     });
     
     this.formValidation = this.fb.group({
-      numeroProducto: [
-        '',
-        [Validators.pattern('^[0-9]+$'), Validators.required],
-      ],
-      password: ['', [Validators.minLength(8), Validators.required]],
+      montoCredito: [Validators.pattern('^[2-9]\d{6,}$'), Validators.required,],
+      plazoMeses: [Validators.pattern('^(?:[6-9]\d|[1-5]\d|60)$'), Validators.required],
     });
   }
 
   onSubmitProduct(): void {
-    let idProductSelected = this.formCredito.value.subtipoProduct;
+    let idProductSelected = this.formCredito.value.credito;
     this.selectedSubtype = this.subtiposProducto.find(
-      (tp) => tp.idTipo_Producto == idProductSelected
+      (tp) => tp.idSubtipo_Producto == idProductSelected
     );
     this.showAdditionalFields = true;
   }

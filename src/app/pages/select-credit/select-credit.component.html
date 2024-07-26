@@ -4,7 +4,6 @@
     (onClickEventHelp)="goToPage(routes.help)"
     [entity]="selectedEntity"
   ></app-header-entity>
-
   <div class="container">
     <div *ngIf="!showAdditionalFields">
        <form 
@@ -17,7 +16,7 @@
           <option value="">Selecciona tu crédito</option>
           <option *ngFor="let subtipo of subtiposProducto" 
 
-          [value]="subtipo.nombre">
+          [value]="subtipo.idSubtipo_Producto">
             {{ subtipo.nombre }}
           </option>
         </select>
@@ -30,7 +29,7 @@
       </form>
     </div>
 
-    <div *ngIf="showAdditionalFields">
+    <div *ngIf="showAdditionalFields" class="simulation">
        <form [formGroup]="formValidation"
        (ngSubmit)="formValidation.valid && onSubmitProduct()"
        >
@@ -40,16 +39,16 @@
           <input type="number" formControlName="montoCredito" />
           <h4>Monto mínimo $2.000.000 de Pesos</h4>
         </div>
-        <div>
+        <div class="plazo">
           <label class="title" for="formControlName">Plazo (meses)</label>
           <input type="number" formControlName="plazoMeses" />
           <h4>Plazo mínimo establecido 6 meses, máximo 60 meses</h4>
         </div>
         <app-btn-cbit
           [type]="'submit'"
-          [text]="'Continuar'"
+          [text]="'Simular'"
           [disabled]="formValidation.invalid"
-          [loading]="isLoading"
+          (onClickEvent)="goToPage(routes.wallet)"
         ></app-btn-cbit>
       </form>
     </div>
