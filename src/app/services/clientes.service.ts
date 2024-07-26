@@ -4,7 +4,7 @@ import { Cliente } from '../models/cliente';
 import { Observable } from 'rxjs';
 import { TipoIdentificacion } from '../models/tipo-identificacion';
 import { environment } from 'src/environments/environment.development';
-
+import {Tipo_Cliente } from '../models/tipo-cliente';
 @Injectable({
   providedIn: 'root',
 })
@@ -26,6 +26,12 @@ export class ClientesService {
     let headers = this.getHeaders();
     let url = this.baseUrl + '/cliente/' + clienteId;
     return this.httpClient.get<Cliente>(url, { headers: headers });
+  }
+
+  getTiposCliente(): Observable<Tipo_Cliente[]> {
+    let headers = this.getHeaders();
+    let url = this.baseUrl + '/tipoCliente/';
+    return this.httpClient.get<Tipo_Cliente[]>(url, { headers: headers });
   }
 
   registrarCliente(cliente: any): Observable<any> {
