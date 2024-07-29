@@ -9,24 +9,13 @@
     <div class="container text-center">
         <form class="form-validation">
             <div class="campos-form">
-                <label for="docCity" class="form-label">¿Cuál es su actividad laboral?</label>
-                <select class="form-select" aria-label="" formControlName="docCity">
-                    <option selected disabled>Selecciona una opción</option>
+                <label class="form-label">¿Cuál es su actividad laboral?</label>
+                <select class="form-select">
+                    <option value="">Selecciona una opción</option>
                     <option *ngFor="let tipoCliente of tiposCliente" [value]="tipoCliente.idTipo_Cliente">
                         {{ tipoCliente.nombre }}
                     </option>
                 </select>
-            </div>
-            <div class="campos-form">
-                <label 
-                    for="actividadEconomica" 
-                    class="form-label">
-                ¿Cuál es su actividad económica o la de suempresa?
-                </label>  
-                <input type="text" 
-                class="rounded-input" 
-                id="actividadEconomica" 
-                formControlName="actividadEconomica" />
             </div>
 
             <div class="campos-form">
@@ -43,7 +32,7 @@
             </div>
             <div class="campos-form">
                 <label for="docCity" class="form-label">Ciudad donde vive</label>
-                <select class="form-select" aria-label="" formControlName="docCity">
+                <select class="form-select" aria-label="">
                     <option selected disabled>Selecciona una opción</option>
                     <option *ngFor="let ciudad of ciudades" [value]="ciudad.idCiudad">
                         {{ ciudad.nombre }}
