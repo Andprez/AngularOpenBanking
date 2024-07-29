@@ -6,12 +6,12 @@
             ></app-header-cbit>
     </div>
     <div class="tx-titulo">
-        <p class="credit-type">Crédito Libre Inversión</p>
+        <p class="credit-type">{{ creditDataForm.tipoCredito }}</p>
         <p class="text-simu">Simulación</p>
     </div>
     <div class="container">
         <div class="info-values">
-            <div class="tx-monto-sm">$</div>
+            <div class="tx-monto-sm">{{ creditDataForm.montoCredito | currency:''}}</div>
             <div class="tx-monto">Monto</div>
         </div>
         <div class="info-value-cuota">
@@ -27,7 +27,7 @@
             <div class="tx-tasa-ea">Tasa Efectivo Anual</div>
         </div>
         <div class="inf-cuota">
-            <div class="vl-cuota">d</div>
+            <div class="vl-cuota">{{ creditDataForm.plazoMeses }}</div>
             <div class="tx-cuotas">Duración en meses</div>
         </div>
         <div class="inf-tasa-mv">

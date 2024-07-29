@@ -39,13 +39,10 @@ export class MyProductsComponent implements OnInit {
   setCategorySelected(category: TipoProductoF) {
     this.categorySelected = category;
     this.txtCategorySelected = category.nombreTipo
-    console.log("solo nombre categoria selecc:::::",this.txtCategorySelected)
-    console.log("categoria::::::",category)
   }
   setTxtCategorySelected(filter:string){
     this.txtCategorySelected=this.categorySelected.nombreTipo
     filter=this.txtCategorySelected
-    console.log("filtro categoria::::::",filter)
   }
   goToPage(page: string) {
     this.router.navigate([page]);
