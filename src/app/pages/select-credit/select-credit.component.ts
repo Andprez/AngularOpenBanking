@@ -16,6 +16,8 @@ import { map } from 'rxjs';
   styleUrls: ['./select-credit.component.css']
 })
 export class SelectCreditComponent implements OnInit {
+  monto!: ProductoF;
+  plazo!: ProductoF;
   typeCredit: any[] = [];
   shopping: boolean = false;
   user!: Cliente;
@@ -34,7 +36,7 @@ export class SelectCreditComponent implements OnInit {
     help: '/help',
     transactions: '/products/transactions',
     dashboard: '/dashboard',
-    wallet: '/wallet',
+    conditions: '/credit/conditions',
   };
 
   constructor(
@@ -48,8 +50,11 @@ export class SelectCreditComponent implements OnInit {
     this.notifService.loadingEvent.subscribe((event) => {
       this.isLoading = event;
     })
-    this.user = JSON.parse(localStorage.getItem('user') || '{}');
-    this.selectedEntity = JSON.parse(localStorage.getItem('entity') || '{}');
+
+    //this.user = JSON.parse(localStorage.getItem('user') || '{}');
+    this.selectedEntity = JSON.parse(localStorage.getItem('enti') || '{}');
+    this.monto = JSON.parse(localStorage.getItem('producto') || '{}');
+    this.plazo = JSON.parse(localStorage.getItem('producto') || '{}');
     localStorage.getItem('marketplace')
       ? (this.shopping = true)
       : (this.shopping = false);
@@ -86,6 +91,9 @@ export class SelectCreditComponent implements OnInit {
     );
     this.showAdditionalFields = true;
   }
+
+  
+  
   
   // onSubmitValidation(): void {
     // let productF: ProductoF = {

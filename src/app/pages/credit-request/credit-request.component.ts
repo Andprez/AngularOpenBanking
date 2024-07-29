@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { EntidadFinanciera } from 'src/app/models/entidad-financiera';
@@ -12,7 +12,7 @@ import { Tipo_Cliente } from 'src/app/models/tipo-cliente';
   templateUrl: './credit-request.component.html',
   styleUrls: ['./credit-request.component.css']
 })
-export class CreditRequestComponent {
+export class CreditRequestComponent implements OnInit{
 
   tiposCliente!: Tipo_Cliente[];
   ciudades!: Ciudad[];
@@ -29,7 +29,7 @@ export class CreditRequestComponent {
   constructor(
     private router: Router,
     private LocalizacionService: LocalizacionService,
-    private ClientesService: ClientesService 
+    private ClientesService: ClientesService,
   ){}
 
   ngOnInit(): void {
@@ -42,7 +42,7 @@ export class CreditRequestComponent {
       next: (result) =>{
         this.ciudades = result;
       }
-    })
+    });
 }
 
   goToPage(page: string): void {
