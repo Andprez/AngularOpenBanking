@@ -16,9 +16,6 @@ import { map } from 'rxjs';
   styleUrls: ['./select-credit.component.css']
 })
 export class SelectCreditComponent implements OnInit {
-  // @Output() monto = new EventEmitter<string>();
-  // @Output() plazo = new EventEmitter<string>();
-  // @Output() credito = new EventEmitter<string>();
   typeCredit: any[] = [];
   shopping: boolean = false;
   user!: Cliente;
@@ -52,6 +49,7 @@ export class SelectCreditComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+
     this.notifService.loadingEvent.subscribe((event) => {
       this.isLoading = event;
     })
@@ -96,9 +94,10 @@ export class SelectCreditComponent implements OnInit {
     this.productosFService.getSubTypeProductById(tipoCredito).subscribe({
       next: (subtp) =>{
         this.subtipoProducto=subtp;
-        this.credit = {"montoCredito":monto,"plazo":plazo, "subtipoProducto": this.subtipoProducto};
+        this.credit = {"montoCredito":monto,"plazo":plazo, "subtipoProductoC": this.subtipoProducto};
         localStorage.setItem("creditData",JSON.stringify(this.credit));
-        console.log("SUBTIPO PRODUCTO::::::::",this.credit);
+        this.goToPage(this.routes.conditions);
+        // console.log("SUBTIPO PRODUCTO::::::::",this.credit);
       },
       error: (e)=>{
         console.error(e)
