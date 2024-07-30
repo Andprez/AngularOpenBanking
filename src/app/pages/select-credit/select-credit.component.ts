@@ -87,18 +87,18 @@ export class SelectCreditComponent implements OnInit {
   }
 
   onSubmitCreditType(): void{
+    //se definen variables para monto, plazo y tipo crédito relacionadas con el html
     const monto = this.formValidation.value.montoCredito;
     const plazo = this.formValidation.value.plazoMeses;
     const tipoCredito = this.formCredito.value.credito;
+
+    //se llama al servico de obtener subtipo por id para que traiga el nombre del subtipo
     this.productosFService.getSubTypeProductById(tipoCredito).subscribe({
       next: (subtp) =>{
         this.subtipoProducto=subtp;
         this.credit = {"montoCredito":monto,"plazo":plazo, "subtipoProducto": this.subtipoProducto};
-        // localStorage.setItem("creditData",JSON.stringify(this.credit));
-        sessionStorage.setItem("creditData",JSON.stringify(this.credit));
+        localStorage.setItem("creditData",JSON.stringify(this.credit));
         console.log("SUBTIPO PRODUCTO::::::::",this.credit);
-        //Eventos de Almacenamiento: Detecta cambios en localStorage
-
       },
       error: (e)=>{
         console.error(e)
@@ -107,7 +107,6 @@ export class SelectCreditComponent implements OnInit {
     });
   }
   onSubmitProduct(): void {
-    this.cdr.detectChanges();
     let idProductSelected = this.formCredito.value.credito;
     this.selectedSubtype = this.subtiposProducto.find(
       (tp) => tp.idSubtipo_Producto == idProductSelected

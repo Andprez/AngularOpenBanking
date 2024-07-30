@@ -1,6 +1,5 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { SelectAccountDisburseComponent } from './select-account-disburse.component';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 describe('SelectAccountDisburseComponent', () => {
   let component: SelectAccountDisburseComponent;

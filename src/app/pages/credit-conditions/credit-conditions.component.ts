@@ -24,11 +24,14 @@ export class CreditConditionsComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    if (!sessionStorage.getItem('reloaded')) {
+      sessionStorage.setItem('reloaded', 'true');
+      location.reload();
+    }
+    //forzar cambios
+    // this.cdr.detectChanges();
 
-    this.cdr.detectChanges();
-
-    // this.creditoData=JSON.parse(localStorage.getItem("creditData")!)
-    this.creditoData=JSON.parse(sessionStorage.getItem("creditData")!)
+    this.creditoData=JSON.parse(localStorage.getItem("creditData")!)
     console.log("OBJETO CREDITO:::::::",this.creditoData)
     this.creditDataForm.montoC=this.creditoData.montoCredito;
     this.creditDataForm.plazoC=this.creditoData.plazo;
@@ -49,7 +52,7 @@ export class CreditConditionsComponent implements OnInit {
     const cuotaMensual = (montoCredito * tasaMV * Math.pow(1 + tasaMV, plazo)) / (Math.pow(1 + tasaMV, plazo) - 1);
     // Asignar la cuota mensual al formulario
     this.creditDataForm.cuotaMensual = cuotaMensual;
-    console.log("Cuota Mensual:", cuotaMensual);
+    // console.log("Cuota Mensual:", cuotaMensual);
   }
   calcularPagoTotal(): void {
     const plazo = this.creditDataForm.plazoC;
@@ -60,7 +63,7 @@ export class CreditConditionsComponent implements OnInit {
     const pagoTotal = (cuotaMensual * plazo) + valorSeguro;
     // Asignar el pago total al formulario
     this.creditDataForm.pagoTotal = pagoTotal;
-    console.log("Pago Total:", pagoTotal);
+    // console.log("Pago Total:", pagoTotal);
   }
   calcularVtua(): void {
     const montoCredito = this.creditDataForm.montoC;
@@ -68,7 +71,7 @@ export class CreditConditionsComponent implements OnInit {
     // Calcular VTUA
     const vtua = montoCredito * tasaEA;
     this.creditDataForm.vtua = vtua;
-    console.log("VTUA:", vtua);
+    // console.log("VTUA:", vtua);
   }
 
 

@@ -30,10 +30,11 @@ import { CreditPreapprovedComponent } from './pages/credit-preapproved/credit-pr
 import { MenuComponent } from './pages/menu/menu.component';
 import { CreditRejectComponent } from './pages/credit-reject/credit-reject.component';
 import { CreditConditionsComponent } from './pages/credit-conditions/credit-conditions.component';
-import { CreditDisburseComponent } from './pages/credit-disburse/credit-disburse.component';
+import { SelectAccountDisburseComponent } from './pages/select-account-disburse/select-account-disburse.component';
 import { SelectCreditComponent } from './pages/select-credit/select-credit.component';
 import { CreditSimulationComponent } from './pages/credit-simulation/credit-simulation.component';
 import { CreditRequestComponent } from './pages/credit-request/credit-request.component';
+import { CreditDisburseComponent } from './pages/credit-disburse/credit-disburse.component';
 
 
 const routes: Routes = [
@@ -68,15 +69,15 @@ const routes: Routes = [
   { path: 'summary', component: PaymentSummaryComponent },
   { path: 'otp/banks', component: OtpBanksComponent },
   { path: 'tyc/banks', component: TycBanksComponent },
-  { path: 'credit/disburse', component: CreditDisburseComponent },
   { path: 'credit/preapproved', component: CreditPreapprovedComponent },
   { path: 'credit/approved', component: CreditApprovedComponent },
   { path: 'credit/verify', component: CreditVerifyComponent },
   { path: 'credit/conditions', component: CreditConditionsComponent },
-  { path: 'credit/disburse', component: CreditDisburseComponent },
+  { path: 'credit/select.account-disburse', component: SelectAccountDisburseComponent },
   { path: 'credit/select', component: SelectCreditComponent },
   { path: 'credit/simulation', component: CreditSimulationComponent },
   { path: 'credit/request', component: CreditRequestComponent },
+  { path: 'credit/disburse', component: CreditDisburseComponent },
   { path: '**', redirectTo: 'ecommerce' },
 ];
 
