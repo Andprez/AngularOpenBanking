@@ -1,5 +1,5 @@
 import { SubtipoProducto } from './../../models/subtipoProducto';
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, ChangeDetectorRef } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Cliente } from 'src/app/models/cliente';
@@ -16,9 +16,9 @@ import { map } from 'rxjs';
   styleUrls: ['./select-credit.component.css']
 })
 export class SelectCreditComponent implements OnInit {
-  @Output() monto = new EventEmitter<string>();
-  @Output() plazo = new EventEmitter<string>();
-  @Output() credito = new EventEmitter<string>();
+  // @Output() monto = new EventEmitter<string>();
+  // @Output() plazo = new EventEmitter<string>();
+  // @Output() credito = new EventEmitter<string>();
   typeCredit: any[] = [];
   shopping: boolean = false;
   user!: Cliente;
@@ -48,6 +48,7 @@ export class SelectCreditComponent implements OnInit {
     private productosFService: ProductosFService,
     private router: Router,
     private notifService: NotificationsService,
+    private cdr: ChangeDetectorRef,
   ) {}
 
   ngOnInit(): void {
@@ -93,17 +94,20 @@ export class SelectCreditComponent implements OnInit {
       next: (subtp) =>{
         this.subtipoProducto=subtp;
         this.credit = {"montoCredito":monto,"plazo":plazo, "subtipoProducto": this.subtipoProducto};
-        localStorage.setItem("creditData",JSON.stringify(this.credit))
+        // localStorage.setItem("creditData",JSON.stringify(this.credit));
+        sessionStorage.setItem("creditData",JSON.stringify(this.credit));
         console.log("SUBTIPO PRODUCTO::::::::",this.credit);
+        //Eventos de Almacenamiento: Detecta cambios en localStorage
+
       },
       error: (e)=>{
-        console.log(e)
-      }
+        console.error(e)
+      },
+
     });
   }
-
-
   onSubmitProduct(): void {
+    this.cdr.detectChanges();
     let idProductSelected = this.formCredito.value.credito;
     this.selectedSubtype = this.subtiposProducto.find(
       (tp) => tp.idSubtipo_Producto == idProductSelected
