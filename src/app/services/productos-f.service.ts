@@ -79,4 +79,9 @@ export class ProductosFService {
     let url = `${this.baseUrl}/detallesSolicitud`;
     return this.httpClient.get<DetallesSolicitudP[]>(url, { headers: headers });
   }
+  getRequestDetailById(RequestDetailId: number): Observable<DetallesSolicitudP>{
+    let headers = this.getHeaders();
+    let url = `${this.baseUrl}/detallesSolicitud/${RequestDetailId}`;
+    return this.httpClient.get<DetallesSolicitudP>(url, { headers: headers });
+  }
 }

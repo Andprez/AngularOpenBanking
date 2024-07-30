@@ -1,46 +1,46 @@
 <body>
     <div>
         <app-header-cbit
-            (onClickEventBack)="goToPage(routes.back)"
+            (onClickEventBack)="goToPage(routes.back);"
             (onClickEventHelp)="goToPage(routes.help)"
             ></app-header-cbit>
     </div>
     <div class="tx-titulo">
-        <p class="credit-type">{{ creditDataForm.idSubtipo_Producto }}</p>
+        <p class="credit-type">{{ creditDataForm.nombreSubtipoP }}</p>
         <p class="text-simu">Simulación</p>
     </div>
     <div class="container">
         <div class="info-values">
-            <div class="tx-monto-sm">{{ creditDataForm.montoCredito | currency:''}}</div>
+            <div class="tx-monto-sm">{{ creditDataForm.montoC | currency:''}}</div>
             <div class="tx-monto">Monto</div>
         </div>
         <div class="info-value-cuota">
-            <div class="tx-monto-cuota">$</div>
+            <div class="tx-monto-cuota">{{creditDataForm.cuotaMensual | currency:''}}</div>
             <div class="tx-cuota">Tu cuota mensual aproximada más seguro de vida
                 <span class="tx-vl-seguro">
-                    [$2.140]
+                    {{ creditDataForm.valorSeguro | currency:''}}
                 </span>
             </div>
         </div>
         <div class="inf-tasa-ea">
-            <div class="vl-tasa-ea">c</div>
+            <div class="vl-tasa-ea">{{ creditDataForm.tasaEA }} %</div>
             <div class="tx-tasa-ea">Tasa Efectivo Anual</div>
         </div>
         <div class="inf-cuota">
-            <div class="vl-cuota">{{ creditDataForm.plazo }}</div>
+            <div class="vl-cuota">{{ creditDataForm.plazoC }} meses</div>
             <div class="tx-cuotas">Duración en meses</div>
         </div>
         <div class="inf-tasa-mv">
-            <div class="vl-tasa-mv">e</div>
+            <div class="vl-tasa-mv">{{ creditDataForm.tasaMV }} %</div>
             <div class="tx-tasa-mv">Tasa Mensual Vencida</div>
         </div>
         <div class="inf-vtua">
-            <div class="vl-tasa-vtua">f</div>
+            <div class="vl-tasa-vtua">{{ creditDataForm.vtua | currency:'' }}</div>
             <div class="tx-tasa-vtua">VTUA total en pesos</div>
         </div>
         <div class="info-deuda-t">
-            <div class="vl-deuda-t">g</div>
-            <div class="tx-deuda-t">Duración en meses</div>
+            <div class="vl-deuda-t">{{ creditDataForm.pagoTotal | currency:'' }}</div>
+            <div class="tx-deuda-t">Pago total</div>
         </div>
         <div class="tx-sg-vida">Todos los creditos tiene seguro de vida
             <i class="bi bi-info-circle" (click)="goToPage(routes.info)"></i>
@@ -56,7 +56,7 @@
         <app-btn-cbit
         [text]="'Continuar'"
         [type]="'button'"
-        (onClickEvent)="goToPage(routes.dashboard)"
+        (onClickEvent)="goToPage(routes.continue)"
         >
         </app-btn-cbit>
     </div>

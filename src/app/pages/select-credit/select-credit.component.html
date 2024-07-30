@@ -48,7 +48,7 @@
           [type]="'submit'"
           [text]="'Simular'"
           [disabled]="formValidation.invalid"
-          (onClickEvent)="goToPage(routes.conditions)"
+          (onClickEvent)="goToPage(routes.conditions);onSubmitCreditType()"
         ></app-btn-cbit>
       </form>
     </div>

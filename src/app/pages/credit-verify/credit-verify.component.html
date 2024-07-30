@@ -1,63 +1,62 @@
 <body>
-    <app-header-cbit
-      (onClickEventBack)="goToPage(routes.back)"
-      (onClickEventHelp)="goToPage(routes.help)"
-    ></app-header-cbit>
-    <div class="container" #voucherContent>
-        <h1 class="titulo"> Verifique las condiciones de sú crédito </h1>
-        <app-indicator></app-indicator>
-        <div class="detalleVoucher">
-            <div class="campo">
-                <p class="total-pagado">
-                  $2.700.000
-                </p>
-                <p class="nombre-item">Monto de crédito</p>
-            </div>
-            <div class="campo">
-                <p class="nombre-item">
-                  12 meses
-                </p>
-                <p class="valores">Duración en meses</p>
-            </div>
-            <div class="campo">
-                <p class="nombre-item">
-                  19% <a>E.A.</a>
-                </p>
-                <p class="valores">Tasa efectivo anual</p>
-            </div>
-            <div class="campo">
-                <p class="nombre-item">
-                  1.46% <a>M.V.</a>
-                </p>
-                <p class="valores">Tasa mensual vencida</p>
-            </div>
-            <div class="campo">
-                <p class="nombre-item">
-                  17.04% <a>M.V.</a>
-                </p>
-                <p class="valores">VTUA% total en pesos</p>
-            </div>
-            <div class="campo">
-                <p class="nombre-item">
-                  $2.977.318
-                </p>
-                <p class="valores">VTUA% en E.A.</p>
-            </div>
-            <div class="campo">
-                <p class="titulo2">
-                  $246.920
-                </p>
-                <p class="valores">Tú cuota mensual aproximada</p>
-                <p class="valores">mas seguro de vida <a class="seguro1">$2.140</a></p>
-            </div>
-        </div>
-        
-    </div>
-    <app-btn-cbit
-        [text]="'Continuar'"
-        [type]="'button'"
-        (onClickEvent)="goToPage(routes.accept)"
-    >
-    </app-btn-cbit>
-  </body>
-  
+  <div>
+      <app-header-cbit
+          (onClickEventBack)="goToPage(routes.back);"
+          (onClickEventHelp)="goToPage(routes.help)"
+          ></app-header-cbit>
+  </div>
+  <div class="tx-titulo">
+      <p class="credit-type">{{ solicitudDataForm.nombreSubtipoP }}</p>
+      <p class="text-simu">Simulación</p>
+  </div>
+  <div class="container">
+      <div class="info-values">
+          <div class="tx-monto-sm">{{ solicitudDataForm.montoC | currency:''}}</div>
+          <div class="tx-monto">Monto</div>
+      </div>
+      <div class="info-value-cuota">
+          <div class="tx-monto-cuota">{{solicitudDataForm.cuotaMensual | currency:''}}</div>
+          <div class="tx-cuota">Tu cuota mensual aproximada más seguro de vida
+              <span class="tx-vl-seguro">
+                  {{ solicitudDataForm.valorSeguro | currency:''}}
+              </span>
+          </div>
+      </div>
+      <div class="inf-tasa-ea">
+          <div class="vl-tasa-ea">{{ solicitudDataForm.tasaEA }} %</div>
+          <div class="tx-tasa-ea">Tasa Efectivo Anual</div>
+      </div>
+      <div class="inf-cuota">
+          <div class="vl-cuota">{{ solicitudDataForm.plazoC }} meses</div>
+          <div class="tx-cuotas">Duración en meses</div>
+      </div>
+      <div class="inf-tasa-mv">
+          <div class="vl-tasa-mv">{{ solicitudDataForm.tasaMV }} %</div>
+          <div class="tx-tasa-mv">Tasa Mensual Vencida</div>
+      </div>
+      <div class="inf-vtua">
+          <div class="vl-tasa-vtua">{{ solicitudDataForm.vtua | currency:'' }}</div>
+          <div class="tx-tasa-vtua">VTUA total en pesos</div>
+      </div>
+      <div class="info-deuda-t">
+          <div class="vl-deuda-t">{{ solicitudDataForm.pagoTotal | currency:'' }}</div>
+          <div class="tx-deuda-t">Pago total</div>
+      </div>
+      <div class="tx-sg-vida">Todos los creditos tiene seguro de vida
+          <i class="bi bi-info-circle"></i>
+      </div>
+      <div class="inf-ayuda">
+          <div class="tx-inf-ayuda">¿Recibiste ayuda de tu asesor?</div>
+          <div class="tx-box-asesor">
+              <input class="txbox" type="text" id="name" name="name" required minlength="4" maxlength="8" size="10" />
+          </div>
+      </div>
+  </div>
+  <div class="boton">
+      <app-btn-cbit
+      [text]="'Continuar'"
+      [type]="'button'"
+      >
+      </app-btn-cbit>
+  </div>
+</body>

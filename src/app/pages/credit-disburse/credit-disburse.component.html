@@ -1,47 +1,44 @@
 <body>
-  <app-header-cbit
-    (onClickEventBack)="goToPage(routes.back)"
-    (onClickEventHelp)="goToPage(routes.help)"
-  ></app-header-cbit>
+  <div>
+      <app-header-cbit></app-header-cbit>
+  </div>
+  <div class="container-indicator">
+      <h1 class="titulo">Su crédito [Tipocredito] fue desembolsado</h1>
+      <app-indicator></app-indicator>
+  </div>
+
   <div class="container">
-    <h1 class="title-approve">Credito Aprobado</h1>
-    <div *ngIf="productosUser.length > 0">
-      <form
-        [formGroup]="formProducto"
-        (ngSubmit)="formProducto.valid && onSubmitProduct()"
-        class="form-producto container"
-      >
-        <h1>Cuenta a desembolsar</h1>
-        <select formControlName="product" class="product">
-          <option value="">Seleccione su cuenta </option>
-          <option
-            *ngFor="let product of productosUser"
-            [value]="product.idProducto"
-          >
-            {{product.nombreEntidadF}} - {{product.nombreSubtipo}} {{product.numeroCuenta}}
-          </option>
-        </select>
-        <app-btn-cbit
-          [type]="'submit'"
-          [text]="'Continuar'"
-        ></app-btn-cbit>
-      </form>
-    </div>
-
-
-    <div *ngIf="productosUser.length == 0" class="result">
-
-      <div class="dataProduct">
-        <h1>Necesitas  una cuenta para realizar el desembolso.</h1>
-        <h4>
-                  {{ formValidation.value.numero | valueHidden }}
-        </h4>
+      <div class="info-values">
+          <div class="tittle">Producto</div>
+          <div class="tx-value">Crédito [tipo de crédito] movil</div>
+          <div class="tittle">Monto del credito</div>
+          <div class="tx-value">$2.700.000</div>
+          <div class="tittle">Duración en meses</div>
+          <div class="tx-value">12 Meses</div>
+          <div class="tittle">Fecha y hora de desembolso</div>
+          <div class="tx-value">28/06/2024  14:06:35</div>
+          <div class="tittle">Cuenta de desembolso</div>
+          <div class="tx-value">0013-97673-7445</div>
+          <div class="tittle">Tasa Efectivo Anual</div>
+          <div class="tx-value">[19]% E.A.</div>
+          <div class="tittle">Tasa Mensual Vencida </div>
+          <div class="tx-value">[1.46]% E.A.</div>
+          <div class="info-seguro">
+              <div class="tx-monto-cuota">[$246.920]</div>
+              <div class="tx-monto">Tu cuota mensual aproximada mas seguro de vida
+                  <span class="tx-vl-seguro">
+                      [$2.140]
+                  </span>
+              </div>
+          </div>
       </div>
-      <h4>Haz clic en "Continuar" para abrir tu cuenta.</h4>
+  </div>
+
+  <div class="boton">
       <app-btn-cbit
-      [type]="'submit'"
       [text]="'Continuar'"
-      ></app-btn-cbit>
-    </div>
+      [type]="'button'"
+      >
+      </app-btn-cbit>
   </div>
 </body>

@@ -69,13 +69,13 @@ import { CreditRejectComponent } from './pages/credit-reject/credit-reject.compo
 import { RejectedMessageComponent } from './components/utils/rejected-message/rejected-message.component';
 import { ItemMenuComponent } from './components/utils/item-menu/item-menu.component';
 import { HeaderMenuComponent } from './components/headers/header-menu/header-menu.component';
-import { SelectAccountDisburseComponent } from './components/utils/select-account-disburse/select-account-disburse.component';
+import { SelectAccountDisburseComponent } from './pages/select-account-disburse/select-account-disburse.component';
 import { MustCreateAccountComponent } from './components/utils/must-create-account/must-create-account.component';
-import { CreditDisburseComponent } from './pages/credit-disburse/credit-disburse.component';
 import { CreditConditionsComponent } from './pages/credit-conditions/credit-conditions.component';
 import { SelectCreditComponent } from './pages/select-credit/select-credit.component';
 import { CreditSimulationComponent } from './pages/credit-simulation/credit-simulation.component';
 import { CreditRequestComponent } from './pages/credit-request/credit-request.component';
+import { CreditDisburseComponent } from './pages/credit-disburse/credit-disburse.component';
 
 @NgModule({
   declarations: [
@@ -151,12 +151,11 @@ import { CreditRequestComponent } from './pages/credit-request/credit-request.co
     HeaderMenuComponent,
     SelectAccountDisburseComponent,
     MustCreateAccountComponent,
-    CreditDisburseComponent,
     CreditConditionsComponent,
-    CreditDisburseComponent,
     SelectCreditComponent,
     CreditSimulationComponent,
     CreditRequestComponent,
+    CreditDisburseComponent,
   ],
   imports: [
     BrowserModule,

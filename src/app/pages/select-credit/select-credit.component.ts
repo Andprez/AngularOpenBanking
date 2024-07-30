@@ -1,5 +1,5 @@
 import { SubtipoProducto } from './../../models/subtipoProducto';
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, ChangeDetectorRef } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Cliente } from 'src/app/models/cliente';
@@ -16,9 +16,9 @@ import { map } from 'rxjs';
   styleUrls: ['./select-credit.component.css']
 })
 export class SelectCreditComponent implements OnInit {
-  @Output() monto = new EventEmitter<string>();
-  @Output() plazo = new EventEmitter<string>();
-  @Output() credito = new EventEmitter<string>();
+  // @Output() monto = new EventEmitter<string>();
+  // @Output() plazo = new EventEmitter<string>();
+  // @Output() credito = new EventEmitter<string>();
   typeCredit: any[] = [];
   shopping: boolean = false;
   user!: Cliente;
@@ -37,28 +37,21 @@ export class SelectCreditComponent implements OnInit {
   routes = {
     back: '/products/add/select-entity',
     help: '/help',
-    transactions: '/products/transactions',
-    dashboard: '/dashboard',
     conditions: '/credit/conditions',
   };
-
 
   constructor(
     private fb: FormBuilder,
     private productosFService: ProductosFService,
     private router: Router,
     private notifService: NotificationsService,
+    private cdr: ChangeDetectorRef,
   ) {}
 
   ngOnInit(): void {
     this.notifService.loadingEvent.subscribe((event) => {
       this.isLoading = event;
     })
-    this.user = JSON.parse(localStorage.getItem('user') || '{}');
-    this.selectedEntity = JSON.parse(localStorage.getItem('entity') || '{}');
-    localStorage.getItem('marketplace')
-      ? (this.shopping = true)
-      : (this.shopping = false);
 
     //Servicio que trae los subtipos de producto filtrando solo los créditos
 
@@ -86,22 +79,24 @@ export class SelectCreditComponent implements OnInit {
   }
 
   onSubmitCreditType(): void{
+    //se definen variables para monto, plazo y tipo crédito relacionadas con el html
     const monto = this.formValidation.value.montoCredito;
     const plazo = this.formValidation.value.plazoMeses;
     const tipoCredito = this.formCredito.value.credito;
+
+    //se llama al servico de obtener subtipo por id para que traiga el nombre del subtipo
     this.productosFService.getSubTypeProductById(tipoCredito).subscribe({
       next: (subtp) =>{
         this.subtipoProducto=subtp;
         this.credit = {"montoCredito":monto,"plazo":plazo, "subtipoProducto": this.subtipoProducto};
-        localStorage.setItem("creditData",JSON.stringify(this.credit))
+        localStorage.setItem("creditData",JSON.stringify(this.credit));
         console.log("SUBTIPO PRODUCTO::::::::",this.credit);
       },
       error: (e)=>{
-        console.log(e)
-      }
+        console.error(e)
+      },
     });
   }
-
 
   onSubmitProduct(): void {
     let idProductSelected = this.formCredito.value.credito;

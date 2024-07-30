@@ -7,10 +7,11 @@
     </div>
 
     <div class="container text-center">
-        <form class="form-validation">
+        <form class="form-validation"
+        [formGroup]="formSolicitudCredito">
             <div class="campos-form">
-                <label class="form-label">¿Cuál es su actividad laboral?</label>
-                <select class="form-select">
+                <label class="form-label" for="formControlName"> ¿Cuál es su actividad laboral?</label>
+                <select class="form-select" formControlName="activLaboral">
                     <option value="">Selecciona una opción</option>
                     <option *ngFor="let tipoCliente of tiposCliente" [value]="tipoCliente.idTipo_Cliente">
                         {{ tipoCliente.nombre }}
@@ -19,20 +20,20 @@
             </div>
 
             <div class="campos-form">
-                <p>¿Cuál es su actividad económica o la de su empresa?</p>
-                <input type="text" class="rounded-input">
+                <label class="form-label" for="formControlName">¿Cuál es su actividad económica o la de su empresa?</label>
+                <input type="text" class="rounded-input" formControlName="activEconomica">
             </div>
             <div class="campos-form">
-                <p>Nombre de la empresa</p>
-                <input type="text" class="rounded-input">
+                <label class="form-label" for="formControlName">Nombre de la empresa</label>
+                <input type="text" class="rounded-input" formControlName="nombreEmpresa">
             </div>
             <div class="campos-form">
-                <p>¿Cuáles son sus ingresos mensuales?</p>
-                <input type="number" class="rounded-input">
+                <label class="form-label" for="formControlName">¿Cuáles son sus ingresos mensuales?</label>
+                <input type="number" class="rounded-input" formControlName="ingresosMensuales">
             </div>
             <div class="campos-form">
-                <label for="docCity" class="form-label">Ciudad donde vive</label>
-                <select class="form-select" aria-label="">
+                <label class="form-label" for="formControlName">Ciudad donde vive</label>
+                <select class="form-select" aria-label="" formControlName="ciudadDomicilio">
                     <option selected disabled>Selecciona una opción</option>
                     <option *ngFor="let ciudad of ciudades" [value]="ciudad.idCiudad">
                         {{ ciudad.nombre }}
@@ -40,21 +41,23 @@
                 </select>
             </div>
             <div class="campos-form">
-                <p>Dirección</p>
-                <input type="text" class="rounded-input">
+                <label class="form-label" for="formControlName">Dirección</label>
+                <input type="text" class="rounded-input" formControlName="direccionDomicilio">
             </div>
             <div class="checkbox-form">
-                <p id="cboxAuthorizations">
-                    <input type="checkbox" id="cboxAuthorizations" value="" /> Acepto las autorizaciones
+                <label class="form-label" for="formControlName" id="cboxAuthorizations">
+                    <input type="checkbox" id="cboxAuthorizations" value="" formControlName="aceptaTyC"/> Acepto las autorizaciones
                     <a href="">aquí</a> descritas
-                </p>
+                </label>
             </div>
         </form>
     </div>
 
     <div>
-        <app-btn-cbit [text]="'Continuar'"></app-btn-cbit>
+        <app-btn-cbit 
+        [text]="'Continuar'"
+        [disabled]="formSolicitudCredito.invalid"
+        (onClickEvent)="goToPage(routes.creditVerify)"
+        ></app-btn-cbit>
     </div>
-
-
 </body>
