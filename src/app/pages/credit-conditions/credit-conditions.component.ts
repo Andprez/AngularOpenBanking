@@ -1,6 +1,8 @@
+import { SubtipoProducto } from './../../models/subtipoProducto';
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { ProductoF } from 'src/app/models/producto-f';
+
 
 @Component({
   selector: 'app-credit-conditions',
@@ -8,8 +10,10 @@ import { ProductoF } from 'src/app/models/producto-f';
   styleUrls: ['./credit-conditions.component.css']
 })
 export class CreditConditionsComponent implements OnInit {
-  creditoData: any={};
-  creditDataForm: any={};
+  creditoDataForm: any={};
+  creditData: any={};
+  isLoading = false;
+
   routes = {
     back: '/credit/select',
     help: '/help',
@@ -20,60 +24,82 @@ export class CreditConditionsComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private cdr: ChangeDetectorRef,
   ) {}
 
   ngOnInit(): void {
-    if (!sessionStorage.getItem('reloaded')) {
-      sessionStorage.setItem('reloaded', 'true');
-      location.reload();
-    }
-    //forzar cambios
-    // this.cdr.detectChanges();
+    // window.location.reload();
 
-    this.creditoData=JSON.parse(localStorage.getItem("creditData")!)
-    console.log("OBJETO CREDITO:::::::",this.creditoData)
-    this.creditDataForm.montoC=this.creditoData.montoCredito;
-    this.creditDataForm.plazoC=this.creditoData.plazo;
-    this.creditDataForm.nombreSubtipoP=this.creditoData.subtipoProducto.nombre;
-    this.creditDataForm.tasaMV=1.46
-    this.creditDataForm.tasaEA=19
-    this.creditDataForm.valorSeguro=2140;
+    // Recuperar datos del local storage
+    let storedData = localStorage.getItem("creditData");
+    console.log("data::::::::::::",storedData)
+
+    if (storedData) {
+      this.creditData = JSON.parse(storedData);
+    } else {
+      // Si no hay datos en el local storage, inicializar con valores por defecto
+      this.creditData = {
+        montoCredito: 0,
+        plazo: 0,
+        subtipoProducto: '',
+        tasaMV: 0,
+        tasaEA: 0,
+        valorSeguro: 0
+      };
+    }
+
+    // Asignar y actualizar variables
+    this.creditData.tasaMV = 1.46;
+    this.creditData.tasaEA = 19;
+    this.creditData.valorSeguro = 2140;
+
+    // Realizar cálculos
     this.calcularCuotaMensual();
     this.calcularPagoTotal();
     this.calcularVtua();
-  }
 
+    // Guardar datos actualizados en el local storage
+    localStorage.setItem('creditData', JSON.stringify(this.creditData));
+
+    // Verificar y mostrar los datos actualizados
+    console.log('Datos recuperados del local storage:', storedData);
+    console.log('Datos actuales en el componente:', this.creditData);
+  }
+  get subtipoProductoCNombre(): string {
+    return this.creditData?.subtipoProductoC?.nombre || '';
+  }
   calcularCuotaMensual(): void {
-    const montoCredito = this.creditDataForm.montoC;
-    const plazo = this.creditDataForm.plazoC;
-    const tasaMV = this.creditDataForm.tasaMV / 100; // Convertir a decimal
+    const montoCredito = this.creditData.montoCredito;
+    const plazo = this.creditData.plazo;
+    const tasaMV = this.creditData.tasaMV / 100; // Convertir a decimal
     // Calcular la cuota mensual
     const cuotaMensual = (montoCredito * tasaMV * Math.pow(1 + tasaMV, plazo)) / (Math.pow(1 + tasaMV, plazo) - 1);
     // Asignar la cuota mensual al formulario
-    this.creditDataForm.cuotaMensual = cuotaMensual;
+    this.creditData.cuotaMensual = cuotaMensual;
     // console.log("Cuota Mensual:", cuotaMensual);
   }
   calcularPagoTotal(): void {
-    const plazo = this.creditDataForm.plazoC;
-    const valorSeguro = this.creditDataForm.valorSeguro;
+    const plazo = this.creditData.plazo;
+    const valorSeguro = this.creditData.valorSeguro;
     // Obtener la cuota mensual calculada previamente
-    const cuotaMensual = this.creditDataForm.cuotaMensual;
+    const cuotaMensual = this.creditData.cuotaMensual;
     // Calcular el pago total
-    const pagoTotal = (cuotaMensual * plazo) + valorSeguro;
+    const pagoTotal = (cuotaMensual * plazo) + (valorSeguro * plazo);
     // Asignar el pago total al formulario
-    this.creditDataForm.pagoTotal = pagoTotal;
+    this.creditData.pagoTotal = pagoTotal;
     // console.log("Pago Total:", pagoTotal);
   }
   calcularVtua(): void {
-    const montoCredito = this.creditDataForm.montoC;
-    const tasaEA = this.creditDataForm.tasaEA / 100; // Convertir a decimal
+    const montoCredito = this.creditData.montoCredito;
+    const tasaEA = this.creditData.tasaEA / 100; // Convertir a decimal
     // Calcular VTUA
     const vtua = montoCredito * tasaEA;
-    this.creditDataForm.vtua = vtua;
+    this.creditData.vtua = vtua;
     // console.log("VTUA:", vtua);
   }
-
+  guardarDatosCredito(): void {
+    // Guardar de nuevo en local storage
+    localStorage.setItem('creditData', JSON.stringify(this.creditData));
+  }
 
   goToPage(page: string): void {
     this.router.navigate([page]);
