@@ -32,7 +32,7 @@ export class SelectCreditComponent implements OnInit {
   credit: any = {};
 
   routes = {
-    back: '/products/add/select-entity',
+    back: '/products/',
     help: '/help',
     conditions: '/credit/conditions',
   };

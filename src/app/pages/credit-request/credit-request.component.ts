@@ -56,18 +56,20 @@ export class CreditRequestComponent implements OnInit {
 
     this.formSolicitudCredito = this.fb.group({
       activLaboral: ['', Validators.required],
-      activEconomica: ['', Validators.required],
+      activEconomica: [Validators.pattern('^[A-Za-z]+$'), Validators.required],
       nombreEmpresa: ['', Validators.required],
-      ingresosMensuales: ['', Validators.required],
+      ingresosMensuales: [Validators.pattern('^[0-9,$]*$'), Validators.required],
       ciudadDomicilio: ['', Validators.required],
       direccionDomicilio: ['', Validators.required],
       aceptaTyC: ['', Validators.required],
     });
   }
 
+  
+
   onSubmitCreditRequest(): void {
 
-    // se definen variables para monto, plazo y tipo crédito relacionadas con el html
+    // se definen variables a traer al LocalStorage relacionadas con el html
     const activLaboral = this.formSolicitudCredito.value.activLaboral;
     const activEconomica = this.formSolicitudCredito.value.activEconomica;
     const nombreEmpresa = this.formSolicitudCredito.value.nombreEmpresa;
@@ -76,41 +78,10 @@ export class CreditRequestComponent implements OnInit {
     const direccionDomicilio = this.formSolicitudCredito.value.direccionDomicilio;
     const aceptaTyC = this.formSolicitudCredito.value.aceptaTyC;
 
-     //se llama al servico de obtener subtipo por id para que traiga el nombre del subtipo
-    this.productosFService.getRequestDetails().subscribe({
-      next: () => {
-        this.detallesS = {"activLaboral": activLaboral, "activEconomica": activEconomica, "nombreEmpresa": nombreEmpresa, "ingresosMensuales": ingresosMensuales, "ciudadDomicilio": ciudadDomicilio, "direccionDomicilio": direccionDomicilio, "aceptaTyC": aceptaTyC};
-        localStorage.setItem("detalilData", JSON.stringify(this.detallesS));
-        console.log("DETALLE SOLICITUD PRODUCTO::::::::", this.detallesS);
-      },
-      error: (e) => {
-        console.error(e)
-      },
-    });
+    this.detallesS = {"activLaboral": activLaboral, "activEconomica": activEconomica, "nombreEmpresa": nombreEmpresa, "ingresosMensuales": ingresosMensuales, "ciudadDomicilio": ciudadDomicilio, "direccionDomicilio": direccionDomicilio, "aceptaTyC": aceptaTyC};
+    localStorage.setItem("detailData", JSON.stringify(this.detallesS));
+    console.log("DETALLE SOLICITUD PRODUCTO::::::::", this.detallesS);
 
-    // Almacenar los datos en localStorage
-    //localStorage.setItem('creditData', JSON.stringify(detallesSolicitud));
-
-    //se definen variables para monto, plazo y tipo crédito relacionadas con el html
-    // const activLaboral = this.formSolicitudCredito.value.activLaboral;
-    // const activEconomica = this.formSolicitudCredito.value.activEconomica;
-    // const nombreEmpresa = this.formSolicitudCredito.value.nombreEmpresa;
-    // const ingresosMensuales = this.formSolicitudCredito.value.ingresosMensuales;
-    // const ciudadDomicilio = this.formSolicitudCredito.value.ciudadDomicilio;
-    // const direccionDomicilio = this.formSolicitudCredito.value.direccionDomicilio;
-    // const aceptaTyC = this.formSolicitudCredito.value.aceptaTyC;
-
-    //se llama al servico de obtener subtipo por id para que traiga el nombre del subtipo
-    // this.productosFService.getRequestDetails().subscribe({
-    //   next: () => {
-    //     this.detallesS = { "detalleSolicitud": this.detalleSolicitud };
-    //     localStorage.setItem("detailData", JSON.stringify(this.detallesS));
-    //     console.log("DETALLE SOLICITUD PRODUCTO::::::::", this.detallesS);
-    //   },
-    //   error: (e) => {
-    //     console.error(e)
-    //   },
-    // });
   }
 
   goToPage(page: string): void {

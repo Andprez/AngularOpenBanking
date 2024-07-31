@@ -57,7 +57,7 @@
         <app-btn-cbit 
         [text]="'Continuar'"
         [disabled]="formSolicitudCredito.invalid"
-        (onClickEvent)="goToPage(routes.creditVerify)"
+        (onClickEvent)="goToPage(routes.creditVerify);onSubmitCreditRequest()"
         ></app-btn-cbit>
     </div>
 </body>
