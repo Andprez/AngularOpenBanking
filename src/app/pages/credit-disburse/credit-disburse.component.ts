@@ -13,10 +13,17 @@ export class CreditDisburseComponent implements OnInit{
   ngOnInit(): void {
     // Recuperar datos del local storage
     this.creditData = JSON.parse(localStorage.getItem("creditData")!);
+  }
+  obtenerFechaHoraActual() {
+    const fecha = new Date();
+    const dia = String(fecha.getDate()).padStart(2, '0');
+    const mes = String(fecha.getMonth() + 1).padStart(2, '0'); // Los meses empiezan desde 0
+    const anio = fecha.getFullYear();
+    const horas = String(fecha.getHours()).padStart(2, '0');
+    const minutos = String(fecha.getMinutes()).padStart(2, '0');
+    const segundos = String(fecha.getSeconds()).padStart(2, '0');
 
-
-    // Obtener variables con datos de los componentes anteriores por medio de local storage
-
+    return `${dia}/${mes}/${anio} ${horas}:${minutos}:${segundos}`;
   }
 
 }
