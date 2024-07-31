@@ -51,6 +51,8 @@ export class SelectCreditComponent implements OnInit {
       this.isLoading = event;
     })
 
+    this.selectedEntity = JSON.parse(localStorage.getItem('entity') || '{}');
+
     //Servicio que trae los subtipos de producto filtrando solo los créditos
 
     //Llama al metodo de productosFService. el .pipe es un operador que nos trae la lista de los subtipos de producto

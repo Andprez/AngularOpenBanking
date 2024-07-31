@@ -56,7 +56,7 @@ export class CreditRequestComponent implements OnInit {
 
     this.formSolicitudCredito = this.fb.group({
       activLaboral: ['', Validators.required],
-      activEconomica: [Validators.pattern('^[A-Za-z]+$'), Validators.required],
+      activEconomica: ['', Validators.required],
       nombreEmpresa: ['', Validators.required],
       ingresosMensuales: [Validators.pattern('^[0-9,$]*$'), Validators.required],
       ciudadDomicilio: ['', Validators.required],
@@ -64,8 +64,6 @@ export class CreditRequestComponent implements OnInit {
       aceptaTyC: ['', Validators.required],
     });
   }
-
-  
 
   onSubmitCreditRequest(): void {
 
