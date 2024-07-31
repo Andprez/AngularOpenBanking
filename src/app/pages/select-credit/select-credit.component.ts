@@ -32,13 +32,10 @@ export class SelectCreditComponent implements OnInit {
   credit: any = {};
 
   routes = {
-    back: '/products/add/select-entity',
+    back: '/products/',
     help: '/help',
-    transactions: '/products/transactions',
-    dashboard: '/dashboard',
     conditions: '/credit/conditions',
   };
-
 
   constructor(
     private fb: FormBuilder,
@@ -53,11 +50,8 @@ export class SelectCreditComponent implements OnInit {
     this.notifService.loadingEvent.subscribe((event) => {
       this.isLoading = event;
     })
-    this.user = JSON.parse(localStorage.getItem('user') || '{}');
+
     this.selectedEntity = JSON.parse(localStorage.getItem('entity') || '{}');
-    localStorage.getItem('marketplace')
-      ? (this.shopping = true)
-      : (this.shopping = false);
 
     //Servicio que trae los subtipos de producto filtrando solo los créditos
 
@@ -102,9 +96,9 @@ export class SelectCreditComponent implements OnInit {
       error: (e)=>{
         console.error(e)
       },
-
     });
   }
+
   onSubmitProduct(): void {
     let idProductSelected = this.formCredito.value.credito;
     this.selectedSubtype = this.subtiposProducto.find(
@@ -116,4 +110,3 @@ export class SelectCreditComponent implements OnInit {
     this.router.navigate([page]);
   }
 }
-
