@@ -3,28 +3,28 @@
       <app-header-cbit></app-header-cbit>
   </div>
   <div class="container-indicator">
-      <h1 class="titulo">Su crédito [Tipocredito] fue desembolsado</h1>
+      <h1 class="titulo">Su crédito {{creditData.tasaEA}} fue desembolsado</h1>
       <app-indicator></app-indicator>
   </div>
 
   <div class="container">
       <div class="info-values">
           <div class="tittle">Producto</div>
-          <div class="tx-value">Crédito [tipo de crédito] movil</div>
+          <div class="tx-value">Crédito {{creditData?.subtipoProductoC?.nombre}} movil</div>
           <div class="tittle">Monto del credito</div>
-          <div class="tx-value">$2.700.000</div>
+          <div class="tx-value">{{creditData.montoCredito}}</div>
           <div class="tittle">Duración en meses</div>
-          <div class="tx-value">12 Meses</div>
+          <div class="tx-value">{{creditData.cuotaMensual}}</div>
           <div class="tittle">Fecha y hora de desembolso</div>
           <div class="tx-value">28/06/2024  14:06:35</div>
           <div class="tittle">Cuenta de desembolso</div>
           <div class="tx-value">0013-97673-7445</div>
           <div class="tittle">Tasa Efectivo Anual</div>
-          <div class="tx-value">[19]% E.A.</div>
+          <div class="tx-value">{{ creditData.tasaEA }}% E.A.</div>
           <div class="tittle">Tasa Mensual Vencida </div>
-          <div class="tx-value">[1.46]% E.A.</div>
+          <div class="tx-value">{{ creditData.tasaMV }}% M.V.</div>
           <div class="info-seguro">
-              <div class="tx-monto-cuota">[$246.920]</div>
+              <div class="tx-monto-cuota">{{ creditData.valorSeguro | currency:''}}</div>
               <div class="tx-monto">Tu cuota mensual aproximada mas seguro de vida
                   <span class="tx-vl-seguro">
                       [$2.140]
