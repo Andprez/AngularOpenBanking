@@ -93,6 +93,8 @@ export class PaymentSummaryComponent {
           next: (res) => {
             let transferCode = res.data[0].transferCode;
             let redirectURL = res.data[0].redirectURL;
+            console.log("datos redirect ", redirectURL);
+            console.log("datos trasnfer ", transferCode);
             this.processPayment = {
               ...this.processPayment,
               transferCode,
@@ -102,6 +104,7 @@ export class PaymentSummaryComponent {
               'processPayment',
               JSON.stringify(this.processPayment)
             );
+            console.log("datos process ", this.processPayment);
             window.open(redirectURL, '_blank');
             // TODO: Servicio no disponible, pendiente validar respuesta y callback
           },
