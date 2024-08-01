@@ -1,6 +1,9 @@
 <body>
   <div>
-      <app-header-cbit></app-header-cbit>
+      <app-header-cbit
+        (onClickEventBack)="goToPage(routes.back);"
+        (onClickEventHelp)="goToPage(routes.help)"
+      ></app-header-cbit>
   </div>
   <div class="container-indicator">
       <h1 class="titulo">Su {{ subtipoProductoCNombre }} fue desembolsado</h1>
@@ -12,7 +15,7 @@
           <div class="tittle">Producto</div>
           <div class="tx-value">{{ subtipoProductoCNombre }} móvil</div>
           <div class="tittle">Monto del credito</div>
-          <div class="tx-value">{{ creditData.montoCredito|currency }}</div>
+          <div class="tx-value">{{ creditData.montoCredito | currency }}</div>
           <div class="tittle">Duración en meses</div>
           <div class="tx-value">{{creditData.plazo}} Meses</div>
           <div class="tittle">Fecha y hora de desembolso</div>
@@ -38,6 +41,7 @@
       <app-btn-cbit
       [text]="'Continuar'"
       [type]="'button'"
+      (onClickEvent)="goToPage(this.routes.continue);cleanLocalStorage()"
       >
       </app-btn-cbit>
   </div>
