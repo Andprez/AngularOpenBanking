@@ -1,39 +1,41 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { forkJoin } from 'rxjs';
 import { Cliente } from 'src/app/models/cliente';
 import { EntidadFinanciera } from 'src/app/models/entidad-financiera';
 import { ProductoF } from 'src/app/models/producto-f';
+import { SubtipoProducto } from 'src/app/models/subtipoProducto';
 import { TipoProductoF } from 'src/app/models/tipo-producto-f';
+import { EntidadFinancieraService } from 'src/app/services/entidad-financiera.service';
 import { NotificationsService } from 'src/app/services/notifications.service';
 import { ProductosFService } from 'src/app/services/productos-f.service';
-import { SubtipoProducto } from 'src/app/models/subtipoProducto';
+
 
 @Component({
-  selector: 'app-add-product',
-  templateUrl: './add-product.component.html',
-  styleUrls: ['./add-product.component.css', '../../templates/background3.css'],
+  selector: 'app-select-account-disburse',
+  templateUrl: './select-account-disburse.component.html',
+  styleUrls: ['./select-account-disburse.component.css']
 })
-export class AddProductComponent implements OnInit {
+export class SelectAccountDisburseComponent implements OnInit {
   shopping: boolean = false;
   user!: Cliente;
-  tiposProducto!: TipoProductoF[];
-  subtipoProducto!: SubtipoProducto[];
-  subtipoPXTipoP!: SubtipoProducto[];
-  // selectedProduct?: TipoProductoF;
+  subTiposProducto!: SubtipoProducto[];
+  productosUser: any[] = [];
+  entidadesF: EntidadFinanciera[] = [];
+  subtipoProducto: any[] = [];
   selectedProduct?: SubtipoProducto;
   savedProduct?: ProductoF;
   selectedEntity!: EntidadFinanciera;
   formProducto!: FormGroup;
   formValidation!: FormGroup;
-  showAdditionalFields = false;
-  showSuccessMessage = false;
   isLoading = false;
 
   routes = {
-    back: '/dashboard',
+    back: '/products/add/select-entity',
     help: '/help',
     transactions: '/products/transactions',
+    dashboard: '/dashboard',
     wallet: '/wallet',
   };
 
@@ -41,7 +43,8 @@ export class AddProductComponent implements OnInit {
     private fb: FormBuilder,
     private productosFService: ProductosFService,
     private router: Router,
-    private notifService: NotificationsService
+    private notifService: NotificationsService,
+    private entidadesFService: EntidadFinancieraService
   ) {}
 
   ngOnInit(): void {
@@ -53,59 +56,61 @@ export class AddProductComponent implements OnInit {
     localStorage.getItem('marketplace')
       ? (this.shopping = true)
       : (this.shopping = false);
-    //Servicio que trae los tipos de producto
-    this.productosFService.getTypesProduct().subscribe({
+    this.productosFService.getSubTypesProduct().subscribe({
       next: (result) => {
-        this.tiposProducto = result;
+        this.subTiposProducto = result;
       },
       error: (error) => {
         console.error(error);
       },
     });
-    //Servicio que trae los subtipos de producto
-    this.productosFService.getSubTypesProduct().subscribe({
-      next: (result) => {
-        this.subtipoProducto = result;
-      },
-      error: (error) => {
-        console.error(error)
-      },
+    this.entidadesFService.getEntitiesF().subscribe({
+      next: (entidades) => {
+        this.entidadesF = entidades;
+      }
     })
-    
+
+    let idCliente: number = this.user.idCliente!;
+    //let idCliente = 15
+    this.productosFService.getProductsByClient(idCliente).subscribe({
+      next: (products : any[]) => {
+        products.forEach((producto) => {
+          // Filtrar productos que sean Cuenta de ahorros o Corriente (Subtipos 19 - 20)
+          if(producto.idSubtipo_Producto == 19 || producto.idSubtipo_Producto == 20){
+            // Encontrar la entidad financiera del producto
+            let entidad = this.entidadesF.find(
+              entidad => entidad.idEntidadFinanciera == producto.idEntidadFinanciera)
+              // Traer el nombre de la entidad y guardarlo en una nueva llave en producto
+            producto["nombreEntidadF"] = entidad?.nombre
+              // Asignar el nombre del subtipo en una nueva llave en producto
+            producto["nombreSubtipo"] = producto.idSubtipo_Producto == 19 ? "Ahorros" : "Corriente"
+            // Agregar el producto actual en el arreglo de productos del usuario
+            this.productosUser.push(producto)
+          }
+        })
+      }
+    })
     this.formProducto = this.fb.group({
-      subtipoProduct: ['', Validators.required],
+      product: ['', Validators.required],
     });
     this.formValidation = this.fb.group({
-      numeroCuenta: [
+      numeroProducto: [
         '',
         [Validators.pattern('^[0-9]+$'), Validators.required],
       ],
       password: ['', [Validators.minLength(8), Validators.required]],
     });
   }
-  
-  loadSubproducts($event: any): void {
-    let idTipoP = $event.target.value;
-    this.subtipoPXTipoP = this.subtipoProducto.filter(
-      (subTipoP) => subTipoP.idTipo_Producto == idTipoP
-    );
-    console.log(this.subtipoPXTipoP);
-  }
 
   onSubmitProduct(): void {
-    // let idProductSelected = this.formProducto.value.product;
-    let idProductSelected = this.formProducto.value.subtipoProduct;
-    console.log("producto selecc: ",idProductSelected)
-    // this.selectedProduct = this.tiposProducto.find(
-      this.selectedProduct = this.subtipoProducto.find(
-      // (tp) => tp.idTipo_Producto == idProductSelected
-      (tp) => tp.idSubtipo_Producto == idProductSelected
+    let idProductSelected = this.formProducto.value.product;
+    this.selectedProduct = this.subTiposProducto.find(
+      (tp) => tp.idTipo_Producto == idProductSelected
     );
-    this.showAdditionalFields = true;
+    //this.clientHasAccounts = true;
   }
   onSubmitValidation(): void {
     let productF: ProductoF = {
-      // idTipo_Producto: this.selectedProduct?.idTipo_Producto!,
       idSubtipo_Producto: this.selectedProduct?.idSubtipo_Producto!,
       idEntidadFinanciera: this.selectedEntity.idEntidadFinanciera!,
       numeroCuenta: this.formValidation.value.numeroCuenta,
@@ -114,12 +119,11 @@ export class AddProductComponent implements OnInit {
       idEstado: 1,
       usuario: this.user.numeroIdentificacion,
     };
-    console.log("producto financiero: ",productF)
     this.productosFService.createProductF(productF).subscribe({
       next: (result) => {
         this.savedProduct = result;
         localStorage.setItem('product', JSON.stringify(this.savedProduct));
-        this.showSuccessMessage = true;
+        //this.showSuccessMessage = true;
       },
       error: (error) => {
         console.error(error);
@@ -136,3 +140,8 @@ export class AddProductComponent implements OnInit {
     this.router.navigate([page]);
   }
 }
+
+
+
+
+

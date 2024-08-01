@@ -28,6 +28,7 @@ export class RequestBanksService {
 
   ban_GetTermsConditions(access_token: string): Observable<any> {
     let url = `${this.BAN.BASEURL}/termsConditions`;
+    console.log("URL:::: ",url)
     let headers: HttpHeaders = new HttpHeaders({
       Authorization: access_token,
     });

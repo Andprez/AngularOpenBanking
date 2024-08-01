@@ -1,6 +1,6 @@
 body{
-  background-color: #fcfcfc;
-  height: 100vh;
+  background-color: #f7f7f7;
+  height: 109vh;
 }
 .titulo{
   color: #00A7F2;
@@ -19,7 +19,8 @@ body{
 .campos-form{
   text-align: left;
 }
-p{
+
+p, .form-label{
   font-size: 16px;
   font-family: "Open Sans", sans-serif;
   color: #6D6464;
@@ -38,13 +39,21 @@ select{
   width: 100%;
   height: 45px;
   border-radius: 8px;
-  /* padding: 0 1rem; */
+  /*padding: 0 1rem;*/
   font-size: 14px;
+} 
+.form-select{
+  background-color: #deddfa;
 }
+
 .rounded-input {
   width: 100%;
   height: 45px;
   border: 1px solid #ccc;
   border-radius: 8px;
   padding: 5px;
+}
+.checkbox-form{
+  margin-top: 1rem;
+  margin-bottom: 3rem;
 }

@@ -1,31 +1,29 @@
-.form-credito{
+.form-producto{
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
   height: 60vh;
-  width: 95%; 
+}
+
+.title-approve {
+  color: #00A7F2;
+  margin-top: 3rem;
+  margin-bottom:8rem;
+  font-size: 22px;
+  font-family: "Open Sans", sans-serif;
+  font-weight: bold;
 }
 
 h1 {
   text-align: center;
-  font-size: 30px;
-  font-family: "Open Sans", sans-serif;
-  color: #6D6464;
-  font-weight: bold;
-  margin-top: 5rem;
-}
-
-h4{
-  font-size: 13px;
+  font-size: 24px;
   font-family: "Open Sans", sans-serif;
   color: #6D6464;
   font-weight: bold;
 }
 
-.credito {
-  margin-top: 4rem;
-  margin-bottom: 6rem;
-  margin-left: 0.5rem;
+.product {
+  margin: 0 auto;
   border: none;
   font-size: 20px;
   height: 3.5rem;
@@ -38,34 +36,16 @@ h4{
   text-align: center;
 }
 
-.simulation {
+.form-validation {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
   height: 50vh;
-  /* margin-top: 10%; */
-}
-
-.simulation input{
-  width: 100%;
-  height: 60px;
-  border-radius: 5px;
-  border: none;
-  padding: 0 1rem;
-  background-color: #DEDDFA;
-  font-size: 14px;
-
+  margin-top: 10%;
 }
 
 label {
   font-size: 16px;
-  font-family: "Open Sans", sans-serif;
-  color: #6D6464;
-  font-weight: bold;
-}
-
-.title{
-  font-size: 20px;
   font-family: "Open Sans", sans-serif;
   color: #6D6464;
   font-weight: bold;
@@ -78,12 +58,10 @@ label {
   justify-content: space-evenly;
   align-items: center;
 }
-
 .dataProduct{
   text-align: center;
 }
-
-.plazo{
-  margin-bottom: 3rem;
+app-btn-cbit {
+  margin-top: 4rem;
 }
 

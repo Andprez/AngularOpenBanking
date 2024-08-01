@@ -1,46 +1,46 @@
 <body>
     <div>
         <app-header-cbit
-            (onClickEventBack)="goToPage(routes.back)"
+            (onClickEventBack)="goToPage(routes.back);"
             (onClickEventHelp)="goToPage(routes.help)"
             ></app-header-cbit>
     </div>
     <div class="tx-titulo">
-        <p class="credit-type">Crédito Libre Inversión</p>
+        <p class="credit-type">{{ subtipoProductoCNombre }}</p>
         <p class="text-simu">Simulación</p>
     </div>
     <div class="container">
         <div class="info-values">
-            <div class="tx-monto-sm">$</div>
+            <div class="tx-monto-sm">{{ creditData.montoCredito | currency:''}}</div>
             <div class="tx-monto">Monto</div>
         </div>
         <div class="info-value-cuota">
-            <div class="tx-monto-cuota">$</div>
+            <div class="tx-monto-cuota">{{creditData.cuotaMensual | currency:''}}</div>
             <div class="tx-cuota">Tu cuota mensual aproximada más seguro de vida
                 <span class="tx-vl-seguro">
-                    [$2.140]
+                    {{ creditData.valorSeguro | currency:''}}
                 </span>
             </div>
         </div>
         <div class="inf-tasa-ea">
-            <div class="vl-tasa-ea">c</div>
+            <div class="vl-tasa-ea">{{ creditData.tasaEA }} %</div>
             <div class="tx-tasa-ea">Tasa Efectivo Anual</div>
         </div>
         <div class="inf-cuota">
-            <div class="vl-cuota">d</div>
+            <div class="vl-cuota">{{ creditData.plazo }} meses</div>
             <div class="tx-cuotas">Duración en meses</div>
         </div>
         <div class="inf-tasa-mv">
-            <div class="vl-tasa-mv">e</div>
+            <div class="vl-tasa-mv">{{ creditData.tasaMV }} %</div>
             <div class="tx-tasa-mv">Tasa Mensual Vencida</div>
         </div>
         <div class="inf-vtua">
-            <div class="vl-tasa-vtua">f</div>
+            <div class="vl-tasa-vtua">{{ creditData.vtua | currency:'' }}</div>
             <div class="tx-tasa-vtua">VTUA total en pesos</div>
         </div>
         <div class="info-deuda-t">
-            <div class="vl-deuda-t">g</div>
-            <div class="tx-deuda-t">Duración en meses</div>
+            <div class="vl-deuda-t">{{ creditData.pagoTotal | currency:'' }}</div>
+            <div class="tx-deuda-t">Pago total</div>
         </div>
         <div class="tx-sg-vida">Todos los creditos tiene seguro de vida
             <i class="bi bi-info-circle" (click)="goToPage(routes.info)"></i>
@@ -56,7 +56,7 @@
         <app-btn-cbit
         [text]="'Continuar'"
         [type]="'button'"
-        (onClickEvent)="goToPage(routes.dashboard)"
+        (onClickEvent)="goToPage(routes.continue)"
         >
         </app-btn-cbit>
     </div>

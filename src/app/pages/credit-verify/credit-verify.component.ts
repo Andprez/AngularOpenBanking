@@ -6,15 +6,16 @@ import { Router } from '@angular/router';
   styleUrls: ['./credit-verify.component.css']
 })
 export class CreditVerifyComponent {
+
   routes = {
     back: '/products/transactions',
     help: '/help',
     accept: '',
   };
   constructor(
-
     private router: Router
   ) {}
+
   goToPage(page: string): void {
     this.router.navigate([page]);
   }

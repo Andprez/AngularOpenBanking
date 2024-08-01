@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { SubtipoProducto } from './../../models/subtipoProducto';
+import { Component, OnInit, Output, EventEmitter, ChangeDetectorRef } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Cliente } from 'src/app/models/cliente';
@@ -7,6 +8,7 @@ import { ProductoF } from 'src/app/models/producto-f';
 import { TipoProductoF } from 'src/app/models/tipo-producto-f';
 import { NotificationsService } from 'src/app/services/notifications.service';
 import { ProductosFService } from 'src/app/services/productos-f.service';
+import { map } from 'rxjs';
 
 @Component({
   selector: 'app-select-credit',
@@ -14,10 +16,12 @@ import { ProductosFService } from 'src/app/services/productos-f.service';
   styleUrls: ['./select-credit.component.css']
 })
 export class SelectCreditComponent implements OnInit {
+  typeCredit: any[] = [];
   shopping: boolean = false;
   user!: Cliente;
-  tiposProducto!: TipoProductoF[];
-  selectedProduct?: TipoProductoF;
+  subtiposProducto!: SubtipoProducto[];
+  subtipoProducto?: SubtipoProducto;
+  selectedSubtype?: SubtipoProducto;
   savedProduct?: ProductoF;
   selectedEntity!: EntidadFinanciera;
   formCredito!: FormGroup;
@@ -25,85 +29,84 @@ export class SelectCreditComponent implements OnInit {
   showAdditionalFields = false;
   showSuccessMessage = false;
   isLoading = false;
+  credit: any = {};
 
   routes = {
-    back: '/products/add/select-entity',
+    back: '/products/',
     help: '/help',
-    transactions: '/products/transactions',
-    dashboard: '/dashboard',
-    wallet: '/wallet',
+    conditions: '/credit/conditions',
   };
 
   constructor(
     private fb: FormBuilder,
     private productosFService: ProductosFService,
     private router: Router,
-    private notifService: NotificationsService
+    private notifService: NotificationsService,
+    private cdr: ChangeDetectorRef,
   ) {}
 
   ngOnInit(): void {
+
     this.notifService.loadingEvent.subscribe((event) => {
       this.isLoading = event;
     })
-    this.user = JSON.parse(localStorage.getItem('user') || '{}');
+
     this.selectedEntity = JSON.parse(localStorage.getItem('entity') || '{}');
-    localStorage.getItem('marketplace')
-      ? (this.shopping = true)
-      : (this.shopping = false);
-    this.productosFService.getTypesProduct().subscribe({
-      next: (result) => {
-        this.tiposProducto = result;
+
+    //Servicio que trae los subtipos de producto filtrando solo los créditos
+
+    //Llama al metodo de productosFService. el .pipe es un operador que nos trae la lista de los subtipos de producto
+    this.productosFService.getSubTypesProduct().pipe(
+      //map filtra los subtipos y .filter valida que el idTipo_Producto sea igual a 4, el id para los créditos
+      map(subtiposProducto => subtiposProducto.filter(subtipo => subtipo.idTipo_Producto === 4))
+    ).subscribe({
+      next: (subtiposFiltrados) => {
+        this.subtiposProducto = subtiposFiltrados;
       },
       error: (error) => {
         console.error(error);
-      },
-    });
+      },
+    });
+
     this.formCredito = this.fb.group({
-      product: ['', Validators.required],
+      credito: ['', Validators.required],
     });
+
     this.formValidation = this.fb.group({
-      numeroProducto: [
-        '',
-        [Validators.pattern('^[0-9]+$'), Validators.required],
-      ],
-      password: ['', [Validators.minLength(8), Validators.required]],
+      montoCredito: [Validators.pattern('^[2-9]\d{6,}$'), Validators.required,],
+      plazoMeses: [Validators.pattern('^(?:[6-9]\d|[1-5]\d|60)$'), Validators.required],
+    });
+  }
+
+  onSubmitCreditType(): void{
+    //se definen variables para monto, plazo y tipo crédito relacionadas con el html
+    const monto = this.formValidation.value.montoCredito;
+    const plazo = this.formValidation.value.plazoMeses;
+    const tipoCredito = this.formCredito.value.credito;
+
+    //se llama al servico de obtener subtipo por id para que traiga el nombre del subtipo
+    this.productosFService.getSubTypeProductById(tipoCredito).subscribe({
+      next: (subtp) =>{
+        this.subtipoProducto=subtp;
+        this.credit = {"montoCredito":monto,"plazo":plazo, "subtipoProductoC": this.subtipoProducto};
+        localStorage.setItem("creditData",JSON.stringify(this.credit));
+        this.goToPage(this.routes.conditions);
+        // console.log("SUBTIPO PRODUCTO::::::::",this.credit);
+      },
+      error: (e)=>{
+        console.error(e)
+      },
     });
   }
 
   onSubmitProduct(): void {
-    let idProductSelected = this.formCredito.value.product;
-    this.selectedProduct = this.tiposProducto.find(
-      (tp) => tp.idTipo_Producto == idProductSelected
+    let idProductSelected = this.formCredito.value.credito;
+    this.selectedSubtype = this.subtiposProducto.find(
+      (tp) => tp.idSubtipo_Producto == idProductSelected
     );
     this.showAdditionalFields = true;
   }
-  // onSubmitValidation(): void {
-    // let productF: ProductoF = {
-    //   idTipo_Producto: this.selectedProduct?.idTipo_Producto!,
-    //   idEntidadFinanciera: this.selectedEntity.idEntidadFinanciera!,
-    //   numeroProducto: this.formValidation.value.numeroProducto,
-    //   password: this.formValidation.value.password,
-    //   idBilletera_CBITBank: this.user.idBilleteraCBITBank!,
-    //   idEstado: 1,
-    //   usuario: this.user.numeroIdentificacion,
-    // };
-    
-  //   this.productosFService.createProductF(productF).subscribe({
-  //     next: (result) => {
-  //       this.savedProduct = result;
-  //       localStorage.setItem('product', JSON.stringify(this.savedProduct));
-  //       this.showSuccessMessage = true;
-  //     },
-  //     error: (error) => {
-  //       console.error(error);
-  //     },
-  //   });
-  // }
-
-  // continue(): void {
-
-  //   goToPage(page: string): void {
-  //    this.router.navigate([page]);
-  //  }
+  goToPage(page: string): void {
+    this.router.navigate([page]);
+  }
 }
-
