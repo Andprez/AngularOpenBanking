@@ -32,6 +32,7 @@ import { ProductosFService } from 'src/app/services/productos-f.service';
     isLoading = false;
     storedData: any={};
     accountSelected!: ProductoF[];
+    account: any={};
 
     routes = {
       back: '/products/add/select-entity',
@@ -143,7 +144,8 @@ import { ProductosFService } from 'src/app/services/productos-f.service';
       this.productosFService.getProductById(idProdActual).subscribe({
         next:(sp)=>{
           this.savedProduct=sp;
-          creditData.accountDisburse=this.savedProduct;
+          this.account={"idProducto":this.savedProduct.idProducto,"idEntidadF":this.savedProduct.idEntidadFinanciera,"idBilletera":this.savedProduct.idBilletera_CBITBank,"idEstado":this.savedProduct.idEstado,"idSubtipoP":this.savedProduct.idSubtipo_Producto,"numeroCuenta":this.savedProduct.numeroCuenta}
+          creditData.accountDisburse=this.account;
           localStorage.setItem('creditData', JSON.stringify(creditData));
           // Imprimir los datos actualizados en la consola para verificación
           console.log("stored data::::::", creditData);
