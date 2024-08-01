@@ -9,9 +9,10 @@ import { Router } from '@angular/router';
   styleUrls: ['./credit-reject.component.css']
 })
 export class CreditRejectComponent implements OnInit{
-    routes = {
-    back: '/login',
+  routes = {
+    back: '/credit/verify',
     help: '/help',
+    accept: '',
   };
 
   constructor(

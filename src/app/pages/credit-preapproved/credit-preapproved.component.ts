@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
 })
 export class CreditPreapprovedComponent {
   routes = {
-    back: '/products/transactions',
+    back: '/credit/verify',
     help: '/help',
     accept: '',
   };
