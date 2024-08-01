@@ -72,6 +72,7 @@ export class CreditRequestComponent implements OnInit {
       activEconomica: ['', Validators.required],
       nombreEmpresa: ['', Validators.required],
       ingresosMensuales: [Validators.pattern('^[0-9,$]*$'), Validators.required],
+      deptoDomicilio: ['', Validators.required],
       ciudadDomicilio: ['', Validators.required],
       direccionDomicilio: ['', Validators.required],
       aceptaTyC: ['', Validators.required],
