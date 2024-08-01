@@ -4,6 +4,9 @@ export const environment = {
   //api que retorna IP de una url
   URL_IP: 'https://api.ipify.org?format=json',
   TWILIO_ACTIVE: false,
+  TASA_EA: 19,
+  TASA_MV: 1.46,
+  VALOR_SEGURO: 2149,
   DAV: {
     //BASEURL:'http://18.119.28.121:3002',
     //BASEURL: 'http://3.143.204.139:3002',

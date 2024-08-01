@@ -10,7 +10,7 @@ export class CreditVerifyComponent {
   routes = {
     back: '/products/transactions',
     help: '/help',
-    accept: '',
+    accept: 'credit/select-account-disburse',
   };
   constructor(
     private router: Router

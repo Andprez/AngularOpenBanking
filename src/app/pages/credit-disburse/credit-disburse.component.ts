@@ -7,13 +7,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CreditDisburseComponent implements OnInit{
   creditData: any={};
-
+  fechaHoraActual: String = '';
 
 
   ngOnInit(): void {
+    //Obtener fecha/hora actual
+    this.fechaHoraActual=this.obtenerFechaHoraActual();
     // Recuperar datos del local storage
     this.creditData = JSON.parse(localStorage.getItem("creditData")!);
+
+    console.log(this.creditData)
   }
+  //Obtener nombre del subtipo de producto
+  get subtipoProductoCNombre(): string {
+    return this.creditData?.subtipoProductoC?.nombre || '';
+  }
+
   obtenerFechaHoraActual() {
     const fecha = new Date();
     const dia = String(fecha.getDate()).padStart(2, '0');
