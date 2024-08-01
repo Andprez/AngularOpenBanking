@@ -12,13 +12,13 @@
           <div class="tittle">Producto</div>
           <div class="tx-value">{{ subtipoProductoCNombre }} móvil</div>
           <div class="tittle">Monto del credito</div>
-          <div class="tx-value">{{creditData.montoCredito|currency}}</div>
+          <div class="tx-value">{{ creditData.montoCredito|currency }}</div>
           <div class="tittle">Duración en meses</div>
           <div class="tx-value">{{creditData.plazo}} Meses</div>
           <div class="tittle">Fecha y hora de desembolso</div>
           <div class="tx-value">{{ fechaHoraActual }}</div>
           <div class="tittle">Cuenta de desembolso</div>
-          <div class="tx-value">0013-97673-7445</div>
+          <div class="tx-value">{{ numeroCuenta }}</div>
           <div class="tittle">Tasa Efectivo Anual</div>
           <div class="tx-value">{{ creditData.tasaEA }}% E.A.</div>
           <div class="tittle">Tasa Mensual Vencida </div>

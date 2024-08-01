@@ -16,11 +16,15 @@ export class CreditDisburseComponent implements OnInit{
     // Recuperar datos del local storage
     this.creditData = JSON.parse(localStorage.getItem("creditData")!);
 
-    console.log(this.creditData)
+    console.log("esta es la data que llega de selctAccount:::::",this.creditData)
   }
   //Obtener nombre del subtipo de producto
   get subtipoProductoCNombre(): string {
     return this.creditData?.subtipoProductoC?.nombre || '';
+  }
+  //obtener el número de cuenta
+  get numeroCuenta(): string {
+    return this.creditData?.accountDisburse?.numeroCuenta || '';
   }
 
   obtenerFechaHoraActual() {

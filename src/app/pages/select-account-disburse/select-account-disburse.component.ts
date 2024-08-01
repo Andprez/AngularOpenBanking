@@ -31,7 +31,7 @@ import { ProductosFService } from 'src/app/services/productos-f.service';
     formValidation!: FormGroup;
     isLoading = false;
     storedData: any={};
-    accountSelected?: ProductoF;
+    accountSelected!: ProductoF[];
 
     routes = {
       back: '/products/add/select-entity',
@@ -139,14 +139,21 @@ import { ProductosFService } from 'src/app/services/productos-f.service';
       // Parsear los datos almacenados si existen, de lo contrario inicializar como un objeto vacío
       let creditData = storedData ? JSON.parse(storedData) : {};
       // Añadir la nueva información a los datos existentes
-      creditData.accountDisburse = this.onSubmitProduct();
-      console.log('account:::::::',creditData.accountDisburse);
-      // Guardar los datos actualizados en localStorage
-      localStorage.setItem('creditData', JSON.stringify(creditData));
-      // Imprimir los datos actualizados en la consola para verificación
-      console.log("storeddata::::::", creditData);
-      // Navegar a la siguiente página
-      this.goToPage(this.routes.continue);
+      let idProdActual = this.formProducto.value.product
+      this.productosFService.getProductById(idProdActual).subscribe({
+        next:(sp)=>{
+          this.savedProduct=sp;
+          creditData.accountDisburse=this.savedProduct;
+          localStorage.setItem('creditData', JSON.stringify(creditData));
+          // Imprimir los datos actualizados en la consola para verificación
+          console.log("stored data::::::", creditData);
+          // Navegar a la siguiente página
+          this.goToPage(this.routes.continue);
+        },
+        error: (e)=>{
+          console.error(e)
+        },
+      })
     }
 
     goToPage(page: string): void {
