@@ -2,6 +2,7 @@ import { SubtipoProducto } from './../../models/subtipoProducto';
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { ProductoF } from 'src/app/models/producto-f';
+import { environment } from 'src/environments/environment.development';
 
 
 @Component({
@@ -48,9 +49,9 @@ export class CreditConditionsComponent implements OnInit {
     }
 
     // Asignar y actualizar variables
-    this.creditData.tasaMV = 1.46;
-    this.creditData.tasaEA = 19;
-    this.creditData.valorSeguro = 2140;
+    this.creditData.tasaMV = environment.TASA_MV;
+    this.creditData.tasaEA = environment.TASA_EA;
+    this.creditData.valorSeguro = environment.VALOR_SEGURO  ;
 
     // Realizar cálculos
     this.calcularCuotaMensual();
@@ -64,9 +65,10 @@ export class CreditConditionsComponent implements OnInit {
     console.log('Datos recuperados del local storage:', storedData);
     console.log('Datos actuales en el componente:', this.creditData);
   }
-  get subtipoProductoCNombre(): string {
-    return this.creditData?.subtipoProductoC?.nombre || '';
-  }
+    //Obtener nombre del subtipo de producto
+    get subtipoProductoCNombre(): string {
+      return this.creditData?.subtipoProductoC?.nombre || '';
+    }
   calcularCuotaMensual(): void {
     const montoCredito = this.creditData.montoCredito;
     const plazo = this.creditData.plazo;

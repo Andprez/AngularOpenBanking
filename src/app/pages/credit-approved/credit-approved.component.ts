@@ -7,14 +7,18 @@ import { Router } from '@angular/router';
   styleUrls: ['./credit-approved.component.css']
 })
 export class CreditApprovedComponent {
+  datosCredito: any = {};
   routes = {
-    back: '/products/transactions',
+    back: '/credit/verify',
     help: '/help',
     accept: '',
   };
   constructor(
     private router: Router
   ) {}
+  ngOnInit(): void{
+    this.datosCredito = JSON.parse(localStorage.getItem("creditData")!);
+  }
   goToPage(page: string): void {
     this.router.navigate([page]);
   }

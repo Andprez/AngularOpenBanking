@@ -20,9 +20,7 @@ export class CreditSimulationComponent {
 
   constructor(
     private router: Router,
-  ){
-
-  }
+  ){}
 
   goToPage(page: string): void {
     this.router.navigate([page]);
