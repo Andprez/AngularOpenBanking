@@ -34,14 +34,41 @@
                 <input type="number" class="rounded-input" formControlName="ingresosMensuales">
             </div>
             <div class="campos-form">
+                <label 
+                class="form-label" 
+                for="formControlName">
+                Departamento de residencia</label
+                >
+                <select
+                    class="form-select" 
+                    aria-label="" 
+                    formControlName="deptoDomicilio"
+                    (change)="loadCities($event)"
+                >
+                  <option selected disabled>Selecciona una opción</option>
+                  <option
+                    *ngFor="let dep of departamentos"
+                    [value]="dep.idDepartamento"
+                  >
+                    {{ dep.nombre }}
+                  </option>
+                </select>
+              </div>
+
+            <div class="campos-form">
                 <label class="form-label" for="formControlName">Ciudad donde vive</label>
-                <select class="form-select" aria-label="" formControlName="ciudadDomicilio">
+                <select 
+                    class="form-select" 
+                    aria-label="" 
+                    formControlName="docCity"
+                >
                     <option selected disabled>Selecciona una opción</option>
-                    <option *ngFor="let ciudad of ciudades" [value]="ciudad.idCiudad">
+                    <option *ngFor="let ciudad of ciudadesPorDep" 
+                    [value]="ciudad.idCiudad">
                         {{ ciudad.nombre }}
                     </option>
                 </select>
-            </div>
+            </div>  
             <div class="campos-form">
                 <label class="form-label" for="formControlName">Dirección</label>
                 <input type="text" class="rounded-input" formControlName="direccionDomicilio">

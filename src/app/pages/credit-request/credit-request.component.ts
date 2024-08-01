@@ -1,8 +1,10 @@
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { forkJoin } from 'rxjs';
 import { EntidadFinanciera } from 'src/app/models/entidad-financiera';
 import { Ciudad } from 'src/app/models/ciudad';
+import { Departamento } from 'src/app/models/departamento';
 import { ClientesService } from 'src/app/services/clientes.service';
 import { LocalizacionService } from 'src/app/services/localizacion.service';
 import { Tipo_Cliente } from 'src/app/models/tipo-cliente';
@@ -16,9 +18,11 @@ import { DetallesSolicitudP } from 'src/app/models/detallesSolicitudP';
   styleUrls: ['./credit-request.component.css']
 })
 export class CreditRequestComponent implements OnInit {
-
+  
   tiposCliente!: Tipo_Cliente[];
   ciudades!: Ciudad[];
+  ciudadesPorDep!: Ciudad[];
+  departamentos!: Departamento[];
   selectedEntity!: EntidadFinanciera;
   isLoading = false;
   formValidation!: FormGroup;
@@ -44,6 +48,15 @@ export class CreditRequestComponent implements OnInit {
 
   ngOnInit(): void {
 
+    const reqCities = this.LocalizacionService.getCiudades();
+    const reqDeps = this.LocalizacionService.getDepartamentos();
+    forkJoin([ reqCities, reqDeps]).subscribe({
+      next: ([ cities, deps]) => {
+        this.ciudades = cities;
+        this.departamentos = deps;
+      },
+    });
+
     this.ClientesService.getTiposCliente().subscribe((result) => {
       this.tiposCliente = result;
     });
@@ -65,6 +78,14 @@ export class CreditRequestComponent implements OnInit {
     });
   }
 
+  loadCities($event: any): void {
+    let idDep = $event.target.value;
+    this.ciudadesPorDep = this.ciudades.filter(
+      (city) => city.idDepartamento == idDep
+    );
+    console.log(this.ciudadesPorDep);
+  }
+
   onSubmitCreditRequest(): void {
 
     // se definen variables a traer al LocalStorage relacionadas con el html
@@ -82,6 +103,7 @@ export class CreditRequestComponent implements OnInit {
 
   }
 
+  
   goToPage(page: string): void {
     this.router.navigate([page]);
   }
