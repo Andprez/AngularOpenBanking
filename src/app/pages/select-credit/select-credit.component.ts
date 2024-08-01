@@ -17,6 +17,7 @@ import { map } from 'rxjs';
 })
 export class SelectCreditComponent implements OnInit {
   typeCredit: any[] = [];
+  entityF!: EntidadFinanciera;
   shopping: boolean = false;
   user!: Cliente;
   subtiposProducto!: SubtipoProducto[];
@@ -88,7 +89,8 @@ export class SelectCreditComponent implements OnInit {
     this.productosFService.getSubTypeProductById(tipoCredito).subscribe({
       next: (subtp) =>{
         this.subtipoProducto=subtp;
-        this.credit = {"montoCredito":monto,"plazo":plazo, "subtipoProductoC": this.subtipoProducto};
+        this.entityF = JSON.parse(localStorage.getItem('entity')!);
+        this.credit = {"montoCredito":monto,"plazo":plazo, "subtipoProductoC": this.subtipoProducto, "entidadF":this.entityF};
         localStorage.setItem("creditData",JSON.stringify(this.credit));
         this.goToPage(this.routes.conditions);
         // console.log("SUBTIPO PRODUCTO::::::::",this.credit);

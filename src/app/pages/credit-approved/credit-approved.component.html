@@ -39,16 +39,16 @@
             </div>
             <div class="campo">
                 <p class="nombre-item">
-                  $2.977.318
+                  ${{datosCredito.vtua}}
                 </p>
                 <p class="valores">VTUA% en E.A.</p>
             </div>
             <div class="campo">
                 <p class="titulo2">
-                  {{datosCredito.vtua | currency}}
+                  {{datosCredito.cuotaMensual | currency}} 
                 </p>
                 <p class="valores">Tú cuota mensual aproximada</p>
-                <p class="valores">mas seguro de vida <a class="seguro1">$2.140</a></p>
+                <p class="valores">mas seguro de vida <a class="seguro1">{{datosCredito.valorSeguro | currency}}</a></p>
             </div>
         </div>
         

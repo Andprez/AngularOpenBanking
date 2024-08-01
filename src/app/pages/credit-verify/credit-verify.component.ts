@@ -18,7 +18,7 @@ export class CreditVerifyComponent {
 
   evaluateCredit: any ={
     "stateCredit": true,
-    "account": true
+    "account": false
   }
   constructor(
     private router: Router
