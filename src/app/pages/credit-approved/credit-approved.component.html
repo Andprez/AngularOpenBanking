@@ -9,31 +9,31 @@
         <div class="detalleVoucher">
             <div class="campo">
                 <p class="total-pagado">
-                  $2.700.000
+                  {{datosCredito.montoCredito | currency}}
                 </p>
                 <p class="nombre-item">Monto de crédito</p>
             </div>
             <div class="campo">
                 <p class="nombre-item">
-                  12 meses
+                  {{datosCredito.plazo}} meses
                 </p>
                 <p class="valores">Duración en meses</p>
             </div>
             <div class="campo">
                 <p class="nombre-item">
-                  19% <a>E.A.</a>
+                  {{datosCredito.tasaEA}}% <a>E.A.</a>
                 </p>
                 <p class="valores">Tasa efectivo anual</p>
             </div>
             <div class="campo">
                 <p class="nombre-item">
-                  1.46% <a>M.V.</a>
+                  {{datosCredito.tasaMV}}% <a>M.V.</a>
                 </p>
                 <p class="valores">Tasa mensual vencida</p>
             </div>
             <div class="campo">
                 <p class="nombre-item">
-                  17.04% <a>M.V.</a>
+                  {{datosCredito.vtua}} % <a>M.V.</a>
                 </p>
                 <p class="valores">VTUA% total en pesos</p>
             </div>
@@ -45,7 +45,7 @@
             </div>
             <div class="campo">
                 <p class="titulo2">
-                  $246.920
+                  {{datosCredito.vtua | currency}}
                 </p>
                 <p class="valores">Tú cuota mensual aproximada</p>
                 <p class="valores">mas seguro de vida <a class="seguro1">$2.140</a></p>
