@@ -14,14 +14,14 @@ export class ClientesService {
 
   constructor(private httpClient: HttpClient) {}
 
-  getHeaders(): HttpHeaders {
+  getHeadersCentralR(): HttpHeaders {
     let header = new HttpHeaders({
       'x-api-key': 'ESTAESMIAPIKEY',
     });
     return header;
   }
 
-  getHeadersCentralR(): HttpHeaders {
+  getHeaders(): HttpHeaders {
     let headers = new HttpHeaders({
       'Content-Type': 'application/json',
       Authorization: `Bearer ${localStorage.getItem('token')}`,
