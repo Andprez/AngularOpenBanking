@@ -19,11 +19,6 @@ export class CreditVerifyComponent {
     noapproved:'credit/reject'
   };
 
-
-  evaluateCredit: any ={
-    "stateCredit": true,
-    "account": true,
-  }
   constructor(
     private router: Router,
     private clienteServices: ClientesService
@@ -42,21 +37,27 @@ export class CreditVerifyComponent {
       next:(dataCred)=>{
         this.resultDataCredito = dataCred;
         console.log("resultado data credito!!!!!!! ",this.resultDataCredito);
+        let creditScore = this.resultDataCredito.result.data.experian_score;
+        let cupo = this.resultDataCredito.result.data.informes.informe.info_agregada.evolucion_deuda.trimestre.cupo_total;
+        console.log("resultado score!!!!!!! ",creditScore);
+        console.log("resultado cupo!!!!!!! ",cupo);
+       /* if(this.this.resultDataCredito.stateCredit == true){
+          if(this.evaluateCredit.account == true){
+            this.goToPage(this.routes.approved);
+          }else{
+            this.goToPage(this.routes.preapproved);
+          }
+        }
+        else{
+          this.goToPage(this.routes.noapproved);
+        }
+*/
       },
       error:(e)=>{
         console.log("Error al ingresar al servicio data credito", e);
       }
     });
-    if(this.evaluateCredit.stateCredit == true){
-      if(this.evaluateCredit.account == true){
-        this.goToPage(this.routes.approved);
-      }else{
-        this.goToPage(this.routes.preapproved);
-      }
-    }
-    else{
-      this.goToPage(this.routes.noapproved);
-    }
+    
   }
 
 }

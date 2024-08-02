@@ -16,6 +16,9 @@ export class ClientesService {
 
   getHeadersCentralR(): HttpHeaders {
     let header = new HttpHeaders({
+      'Access-Control-Allow-Origin':'http://127.0.0.1:4002',
+      'Access-Control-Allow-Methods': 'POST,GET,OPTIONS,PUT,DELETE',
+      'Access-Control-Allow-Headers': 'Content-type, x-auth-token, origin, Autorization',
       'x-api-key': 'ESTAESMIAPIKEY',
     });
     return header;
@@ -133,7 +136,8 @@ export class ClientesService {
    */
   getStatusDataCredito(clienteId: string): Observable<any>{
     let headers = this.getHeadersCentralR();
-    let url = this.urlDataCred+'api/datacredito'+clienteId;
+    let url = this.urlDataCred+'/api/datacredito/'+clienteId;
+    console.log("URL DATACREDITO #########", url)
     return this.httpClient.get<Cliente>(url, { headers: headers });
   }
 }
