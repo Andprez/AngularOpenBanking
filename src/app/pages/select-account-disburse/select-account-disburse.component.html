@@ -24,6 +24,7 @@
         <app-btn-cbit
           [type]="'submit'"
           [text]="'Continuar'"
+          (onClickEvent)="onSubmitData()"
         ></app-btn-cbit>
       </form>
     </div>
@@ -41,6 +42,7 @@
       <app-btn-cbit
       [type]="'submit'"
       [text]="'Continuar'"
+      [disabled]="formValidation.invalid"
       ></app-btn-cbit>
     </div>
   </div>

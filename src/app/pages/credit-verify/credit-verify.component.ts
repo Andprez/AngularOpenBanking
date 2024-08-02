@@ -6,17 +6,41 @@ import { Router } from '@angular/router';
   styleUrls: ['./credit-verify.component.css']
 })
 export class CreditVerifyComponent {
-
+  datosCredito: any ={};
   routes = {
-    back: '/products/transactions',
+    back: '/credit/request',
     help: '/help',
-    accept: '',
+    approved: 'credit/approved',
+    preapproved:'credit/preapproved',
+    noapproved:'credit/reject'
   };
+
+
+  evaluateCredit: any ={
+    "stateCredit": true,
+    "account": true,
+  }
   constructor(
     private router: Router
-  ) {}
+  ){}
 
+  ngOnInit(): void{
+    this.datosCredito = JSON.parse(localStorage.getItem("creditData")!);
+    console.log("datos credito: ", this.datosCredito);
+  }
   goToPage(page: string): void {
     this.router.navigate([page]);
+  }
+  evaluateAppliCredit(): void{
+    if(this.evaluateCredit.stateCredit == true){
+      if(this.evaluateCredit.account == true){
+        this.goToPage(this.routes.approved);
+      }else{
+        this.goToPage(this.routes.preapproved);
+      }
+    }
+    else{
+      this.goToPage(this.routes.noapproved);
+    }
   }
 }

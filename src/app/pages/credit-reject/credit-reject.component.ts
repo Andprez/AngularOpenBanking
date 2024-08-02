@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-// import { ClientesService } from 'src/app/services/clientes.service';
-// import { NotificationsService } from 'src/app/services/notifications.service';
 
 @Component({
   selector: 'app-credit-reject',
@@ -9,16 +7,18 @@ import { Router } from '@angular/router';
   styleUrls: ['./credit-reject.component.css']
 })
 export class CreditRejectComponent implements OnInit{
-    routes = {
-    back: '/login',
+  routes = {
+    back: '/credit/verify',
     help: '/help',
+    accept: '',
   };
 
   constructor(
     private router: Router,
   ) {}
 
-  ngOnInit(): void { }
+  ngOnInit(): void{
+  }
 
   goToPage(page: string): void {
     this.router.navigate([page]);

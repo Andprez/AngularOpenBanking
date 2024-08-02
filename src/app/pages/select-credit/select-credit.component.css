@@ -1,9 +1,9 @@
 .form-credito{
   display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-  height: 60vh;
-  width: 95%; 
+  /* flex-direction: column; */
+  /* justify-content: space-evenly; */
+  height: 100%;
+  width: 100%;
 }
 
 h1 {
@@ -22,14 +22,19 @@ h4{
   font-weight: bold;
 }
 
+.container{
+  margin-left: none;
+  margin-right: none;
+}
+
 .credito {
   margin-top: 4rem;
   margin-bottom: 6rem;
-  margin-left: 0.5rem;
+  /* margin-left: 0.5rem; */
   border: none;
   font-size: 20px;
   height: 3.5rem;
-  width: 95%;
+  width: 100%;
   font-family: "Open Sans", sans-serif;
   font-weight: 400;
   color: #6D6464;
@@ -48,7 +53,7 @@ h4{
 
 .simulation input{
   width: 100%;
-  height: 60px;
+  height: 45px;
   border-radius: 5px;
   border: none;
   padding: 0 1rem;

@@ -40,7 +40,6 @@ export class SelectEntityComponent implements OnInit {
 
   selectedEntity(entity: EntidadFinanciera) {
     localStorage.setItem('entity', JSON.stringify(entity));
-    let addProduct
     if(this.getPrevPage=="/dashboard"){
       this.goToPage(this.routes.addProduct);
     } else if (this.getPrevPage=="/products") {
