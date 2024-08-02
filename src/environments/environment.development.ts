@@ -3,6 +3,7 @@ export const environment = {
   URL_FAKEAPI: 'https://fakestoreapi.com',
   //api que retorna IP de una url
   URL_IP: 'https://api.ipify.org?format=json',
+  URL_CENTRAL_R: 'http://127.0.0.1:4002',
   TWILIO_ACTIVE: false,
   TASA_EA: 19,
   TASA_MV: 1.46,

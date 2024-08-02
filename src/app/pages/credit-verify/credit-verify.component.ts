@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { Cliente } from 'src/app/models/cliente';
+import { ClientesService } from 'src/app/services/clientes.service';
 @Component({
   selector: 'app-credit-verify',
   templateUrl: './credit-verify.component.html',
@@ -7,6 +9,8 @@ import { Router } from '@angular/router';
 })
 export class CreditVerifyComponent {
   datosCredito: any ={};
+  resultDataCredito: any ={};
+  cliente!: Cliente;
   routes = {
     back: '/credit/request',
     help: '/help',
@@ -21,17 +25,28 @@ export class CreditVerifyComponent {
     "account": true,
   }
   constructor(
-    private router: Router
+    private router: Router,
+    private clienteServices: ClientesService
   ){}
 
   ngOnInit(): void{
     this.datosCredito = JSON.parse(localStorage.getItem("creditData")!);
-    console.log("datos credito: ", this.datosCredito);
+    this.cliente = JSON.parse(localStorage.getItem("user")!);
+    console.log("datos cliente: ", this.cliente);
   }
   goToPage(page: string): void {
     this.router.navigate([page]);
   }
   evaluateAppliCredit(): void{
+    this.clienteServices.getStatusDataCredito(this.cliente.numeroIdentificacion).subscribe({
+      next:(dataCred)=>{
+        this.resultDataCredito = dataCred;
+        console.log("resultado data credito!!!!!!! ",this.resultDataCredito);
+      },
+      error:(e)=>{
+        console.log("Error al ingresar al servicio data credito", e);
+      }
+    });
     if(this.evaluateCredit.stateCredit == true){
       if(this.evaluateCredit.account == true){
         this.goToPage(this.routes.approved);
@@ -43,4 +58,5 @@ export class CreditVerifyComponent {
       this.goToPage(this.routes.noapproved);
     }
   }
+
 }
