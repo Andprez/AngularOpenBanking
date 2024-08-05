@@ -74,9 +74,22 @@ export class SelectCreditComponent implements OnInit {
     });
 
     this.formValidation = this.fb.group({
-      montoCredito: [Validators.pattern('^[2-9]\d{6,}$'), Validators.required,],
-      plazoMeses: [Validators.pattern('^(?:[6-9]\d|[1-5]\d|60)$'), Validators.required],
-    });
+      montoCredito: [
+        null,
+        [
+          Validators.required,
+          Validators.min(2000000), // Monto mínimo de 2.000.000
+        ],
+      ],
+      plazoMeses: [
+        null,
+        [
+          Validators.required,
+          Validators.min(6),
+          Validators.max(60),
+        ],
+      ],
+    });
   }
 
   onSubmitCreditType(): void{
