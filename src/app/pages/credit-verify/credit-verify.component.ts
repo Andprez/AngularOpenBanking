@@ -33,6 +33,7 @@ export class CreditVerifyComponent {
   goToPage(page: string): void {
     this.router.navigate([page]);
     this.indicatorComponent.avanzar();
+
   }
   evaluateAppliCredit(): void{
     if(this.evaluateCredit.stateCredit == true){

@@ -4,7 +4,7 @@
       (onClickEventHelp)="goToPage(routes.help)"
     ></app-header-cbit>
     <h1 class="titulo"> Verifique las condiciones de sú crédito </h1>
-    <app-indicator></app-indicator>
+    <app-indicator [completados]="2"></app-indicator>
     <div class="container" #voucherContent>
         <div class="detalleVoucher">
             <div class="header">
@@ -20,13 +20,13 @@
             </div>
             <div class="campo">
                 <p class="titulo2">
-                  {{datosCredito.cuotaMensual | currency}} 
+                  {{datosCredito.cuotaMensual | currency}}
                 </p>
                 <p class="valores">Tú cuota mensual aproximada</p>
                 <p class="valores">mas seguro de vida <a class="seguro1">{{datosCredito.valorSeguro | currency}}</a></p>
             </div>
         </div>
-        
+
     </div>
     <app-btn-cbit
         [text]="'Continuar'"
@@ -35,5 +35,5 @@
     >
     </app-btn-cbit>
   </body>
-  
+
 

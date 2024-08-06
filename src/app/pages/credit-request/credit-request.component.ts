@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef, ViewChild } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { forkJoin } from 'rxjs';
@@ -11,6 +11,7 @@ import { Tipo_Cliente } from 'src/app/models/tipo-cliente';
 import { ProductoF } from 'src/app/models/producto-f';
 import { ProductosFService } from 'src/app/services/productos-f.service';
 import { DetallesSolicitudP } from 'src/app/models/detallesSolicitudP';
+import { IndicatorComponent } from 'src/app/components/utils/indicator/indicator.component';
 
 @Component({
   selector: 'app-credit-request',
@@ -30,6 +31,8 @@ export class CreditRequestComponent implements OnInit {
   savedProduct?: ProductoF;
   detalleSolicitud?: DetallesSolicitudP;
   detallesS: any = {};
+  @ViewChild(IndicatorComponent) indicatorComponent!: IndicatorComponent;
+
 
   routes = {
     back: '/credit/conditions',
@@ -47,7 +50,6 @@ export class CreditRequestComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-
     const reqCities = this.LocalizacionService.getCiudades();
     const reqDeps = this.LocalizacionService.getDepartamentos();
     forkJoin([ reqCities, reqDeps]).subscribe({
@@ -88,7 +90,7 @@ export class CreditRequestComponent implements OnInit {
   }
 
   onSubmitCreditRequest(): void {
-
+    this.goToPage(this.routes.creditVerify)
     // se definen variables a traer al LocalStorage relacionadas con el html
     const activLaboral = this.formSolicitudCredito.value.activLaboral;
     const activEconomica = this.formSolicitudCredito.value.activEconomica;

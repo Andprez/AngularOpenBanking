@@ -1,5 +1,5 @@
 <body>
-    <app-header-cbit 
+    <app-header-cbit
     (onClickEventBack)="goToPage(routes.back)"
     (onClickEventHelp)="goToPage(routes.help)">
     </app-header-cbit>
@@ -34,14 +34,14 @@
                 <input type="number" class="rounded-input" formControlName="ingresosMensuales">
             </div>
             <div class="campos-form">
-                <label 
-                class="form-label" 
+                <label
+                class="form-label"
                 for="formControlName">
                 Departamento de residencia</label
                 >
                 <select
-                    class="form-select" 
-                    aria-label="" 
+                    class="form-select"
+                    aria-label=""
                     formControlName="deptoDomicilio"
                     (change)="loadCities($event)"
                 >
@@ -57,18 +57,18 @@
 
             <div class="campos-form">
                 <label class="form-label" for="formControlName">Ciudad donde vive</label>
-                <select 
-                    class="form-select" 
-                    aria-label="" 
+                <select
+                    class="form-select"
+                    aria-label=""
                     formControlName="ciudadDomicilio"
                 >
                     <option selected disabled>Selecciona una opción</option>
-                    <option *ngFor="let ciudad of ciudadesPorDep" 
+                    <option *ngFor="let ciudad of ciudadesPorDep"
                     [value]="ciudad.idCiudad">
                         {{ ciudad.nombre }}
                     </option>
                 </select>
-            </div>  
+            </div>
             <div class="campos-form">
                 <label class="form-label" for="formControlName">Dirección</label>
                 <input type="text" class="rounded-input" formControlName="direccionDomicilio">
@@ -83,10 +83,10 @@
     </div>
 
     <div>
-        <app-btn-cbit 
+        <app-btn-cbit
         [text]="'Continuar'"
         [disabled]="formSolicitudCredito.invalid"
-        (onClickEvent)="goToPage(routes.creditVerify);onSubmitCreditRequest()"
+        (onClickEvent)="onSubmitCreditRequest()"
         ></app-btn-cbit>
     </div>
 </body>
