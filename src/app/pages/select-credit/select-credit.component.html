@@ -30,27 +30,38 @@
     </div>
 
     <div *ngIf="showAdditionalFields" class="simulation">
-       <form [formGroup]="formValidation"
-       (ngSubmit)="formValidation.valid && onSubmitProduct()"
-       >
+      <form [formGroup]="formValidation" (ngSubmit)="onSubmitProduct()">
         <h1>Crédito</h1>
         <div>
-          <label class="title" for="formControlName">Monto crédito</label>
+          <label class="title" for="montoCredito">Monto crédito</label>
           <input type="number" formControlName="montoCredito" />
-          <h4>Monto mínimo $2.000.000 de Pesos</h4>
+          <div *ngIf="formValidation.get('montoCredito')?.hasError('required')">
+            <h4>El monto del crédito es requerido</h4>
+          </div>
+          <div *ngIf="formValidation.get('montoCredito')?.hasError('min')">
+            <h4>El monto mínimo del crédito es de $2.000.000</h4>
+          </div>
         </div>
         <div class="plazo">
-          <label class="title" for="formControlName">Plazo (meses)</label>
+          <label class="title" for="plazoMeses">Plazo (meses)</label>
           <input type="number" formControlName="plazoMeses" />
-          <h4>Plazo mínimo establecido 6 meses, máximo 60 meses</h4>
+          <div *ngIf="formValidation.get('plazoMeses')?.hasError('required')">
+            <h4>El plazo en meses es requerido</h4>
+          </div>
+          <div *ngIf="formValidation.get('plazoMeses')?.hasError('min')">
+            <h4>El plazo mínimo es de 6 meses</h4>
+          </div>
+          <div *ngIf="formValidation.get('plazoMeses')?.hasError('max')">
+          <h4>El plazo máximo es de 60 meses</h4>
+          </div>
         </div>
-        <app-btn-cbit
+        </form>
+      <app-btn-cbit
           [type]="'submit'"
           [text]="'Simular'"
           [disabled]="formValidation.invalid"
           (onClickEvent)="onSubmitCreditType();"
-        ></app-btn-cbit>
-      </form>
+      ></app-btn-cbit>
     </div>
   </div>
 </body>

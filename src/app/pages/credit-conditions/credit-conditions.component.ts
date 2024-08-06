@@ -3,7 +3,8 @@ import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { ProductoF } from 'src/app/models/producto-f';
 import { environment } from 'src/environments/environment.development';
-
+import { IconModalComponent } from '../icon-modal/icon-modal.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-credit-conditions',
@@ -14,6 +15,7 @@ export class CreditConditionsComponent implements OnInit {
   creditoDataForm: any={};
   creditData: any={};
   isLoading = false;
+  title = 'modal';
 
   routes = {
     back: '/credit/select',
@@ -25,8 +27,15 @@ export class CreditConditionsComponent implements OnInit {
 
   constructor(
     private router: Router,
+    private _matDialog: MatDialog
   ) {}
 
+  openModal():void{
+    this._matDialog.open(IconModalComponent, {
+      width: '302px',
+      height: '295px',
+    })
+  }
   ngOnInit(): void {
     // window.location.reload();
 

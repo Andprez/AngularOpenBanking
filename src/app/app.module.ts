@@ -76,6 +76,10 @@ import { SelectCreditComponent } from './pages/select-credit/select-credit.compo
 import { CreditSimulationComponent } from './pages/credit-simulation/credit-simulation.component';
 import { CreditRequestComponent } from './pages/credit-request/credit-request.component';
 import { CreditDisburseComponent } from './pages/credit-disburse/credit-disburse.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { IconModalComponent } from './pages/icon-modal/icon-modal.component';
+import { MatButtonModule } from '@angular/material/button';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -156,6 +160,7 @@ import { CreditDisburseComponent } from './pages/credit-disburse/credit-disburse
     CreditSimulationComponent,
     CreditRequestComponent,
     CreditDisburseComponent,
+    IconModalComponent,
   ],
   imports: [
     BrowserModule,
@@ -163,6 +168,9 @@ import { CreditDisburseComponent } from './pages/credit-disburse/credit-disburse
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    BrowserAnimationsModule,
+    MatDialogModule,
+    MatButtonModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: LoadingInterceptor, multi: true },
