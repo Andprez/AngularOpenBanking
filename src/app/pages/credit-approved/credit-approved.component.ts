@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
+import { IndicatorComponent } from 'src/app/components/utils/indicator/indicator.component';
 
 @Component({
   selector: 'app-credit-approved',
@@ -7,6 +8,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./credit-approved.component.css']
 })
 export class CreditApprovedComponent {
+  @ViewChild(IndicatorComponent) indicatorComponent!: IndicatorComponent;
   datosCredito: any = {};
   routes = {
     back: '/credit/verify',
@@ -18,8 +20,9 @@ export class CreditApprovedComponent {
   ) {}
   ngOnInit(): void{
     this.datosCredito = JSON.parse(localStorage.getItem("creditData")!);
-  }
+  };
   goToPage(page: string): void {
     this.router.navigate([page]);
-  }
+    this.indicatorComponent.avanzar();
+  };
 }

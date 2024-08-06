@@ -18,7 +18,7 @@ import { DetallesSolicitudP } from 'src/app/models/detallesSolicitudP';
   styleUrls: ['./credit-request.component.css']
 })
 export class CreditRequestComponent implements OnInit {
-  
+
   tiposCliente!: Tipo_Cliente[];
   ciudades!: Ciudad[];
   ciudadesPorDep!: Ciudad[];
@@ -101,10 +101,9 @@ export class CreditRequestComponent implements OnInit {
     this.detallesS = {"activLaboral": activLaboral, "activEconomica": activEconomica, "nombreEmpresa": nombreEmpresa, "ingresosMensuales": ingresosMensuales, "ciudadDomicilio": ciudadDomicilio, "direccionDomicilio": direccionDomicilio, "aceptaTyC": aceptaTyC};
     localStorage.setItem("detailData", JSON.stringify(this.detallesS));
     console.log("DETALLE SOLICITUD PRODUCTO::::::::", this.detallesS);
-
   }
 
-  
+
   goToPage(page: string): void {
     this.router.navigate([page]);
   }

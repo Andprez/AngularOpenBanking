@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
+import { IndicatorComponent } from 'src/app/components/utils/indicator/indicator.component';
 @Component({
   selector: 'app-credit-verify',
   templateUrl: './credit-verify.component.html',
@@ -14,6 +15,7 @@ export class CreditVerifyComponent {
     preapproved:'credit/preapproved',
     noapproved:'credit/reject'
   };
+  @ViewChild(IndicatorComponent) indicatorComponent!: IndicatorComponent;
 
 
   evaluateCredit: any ={
@@ -30,6 +32,7 @@ export class CreditVerifyComponent {
   }
   goToPage(page: string): void {
     this.router.navigate([page]);
+    this.indicatorComponent.avanzar();
   }
   evaluateAppliCredit(): void{
     if(this.evaluateCredit.stateCredit == true){
