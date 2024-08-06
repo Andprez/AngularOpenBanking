@@ -11,7 +11,7 @@ export class CreditApprovedComponent {
   routes = {
     back: '/credit/verify',
     help: '/help',
-    accept: '',
+    accept: 'credit/select-account-disburse',
   };
   constructor(
     private router: Router

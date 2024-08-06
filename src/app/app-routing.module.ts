@@ -45,7 +45,7 @@ const routes: Routes = [
   { path: 'credit/preapproved', component: CreditPreapprovedComponent },
   { path: 'credit/reject', component: CreditRejectComponent},
   { path: 'credit/request', component: CreditRequestComponent },
-  { path: 'credit/select.account-disburse', component: SelectAccountDisburseComponent },
+  { path: 'credit/select-account-disburse', component: SelectAccountDisburseComponent },
   { path: 'credit/select', component: SelectCreditComponent },
   { path: 'credit/simulation', component: CreditSimulationComponent },
   { path: 'credit/verify', component: CreditVerifyComponent },

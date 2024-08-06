@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -8,8 +9,14 @@ import { Component, OnInit } from '@angular/core';
 export class CreditDisburseComponent implements OnInit{
   creditData: any={};
   fechaHoraActual: String = '';
-
-
+  routes = {
+    back: 'credit/select-account-disburse',
+    help: '/help',
+    continue: '/dashboard'
+  }
+  constructor(
+    private router: Router
+  ) {}
   ngOnInit(): void {
     //Obtener fecha/hora actual
     this.fechaHoraActual=this.obtenerFechaHoraActual();
@@ -37,6 +44,14 @@ export class CreditDisburseComponent implements OnInit{
     const segundos = String(fecha.getSeconds()).padStart(2, '0');
 
     return `${dia}/${mes}/${anio} ${horas}:${minutos}:${segundos}`;
+  }
+  cleanLocalStorage(): void{
+        //borrar dataCredit y detailData
+        localStorage.removeItem('creditData');
+        localStorage.removeItem('detailData');
+  }
+  goToPage(page: string): void {
+    this.router.navigate([page]);
   }
 
 }
