@@ -10,11 +10,16 @@
             {{ type.nombreTipo }}s
           </h5>
         </div>
-        <div class="btn-adicionar" (click)="goToPage(routes.requestProduct)">
+        <div
+          class="btn-adicionar"
+          [ngClass]="{'disabled': type.nombreTipo !== 'Crédito'}"
+          (click)="type.nombreTipo === 'Crédito' ? goToPage(routes.requestProduct) : null"
+        >
           <i class="bi bi-plus-circle-fill"></i>
           <p class="txt-solicitar">Solicitar productos</p>
         </div>
       </div>
+    </div>
     <div
       class="product"
       *ngFor="
