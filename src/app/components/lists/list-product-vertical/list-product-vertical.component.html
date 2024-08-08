@@ -12,8 +12,8 @@
         </div>
         <div
           class="btn-adicionar"
-          [ngClass]="{'disabled': type.nombreTipo !== 'Crédito'}"
-          (click)="type.nombreTipo === 'Crédito' ? goToPage(routes.requestProduct) : null"
+          [ngClass]="{'disabled': type.idTipo_Producto !== 4}"
+          (click)="type.idTipo_Producto === 4 ? goToPage(routes.requestProduct) : null"
         >
           <i class="bi bi-plus-circle-fill"></i>
           <p class="txt-solicitar">Solicitar productos</p>
@@ -44,6 +44,7 @@
     </div>
   </div>
 </div>
-<p class="texto" *ngIf="(typesProducts | filterCategory : txtFilterProduct| filterProductByEntityF: txtFilterProduct).length == 0">
+<p class="texto" *ngIf="(typesProducts | filterCategory : txtFilterProduct).length == 0">
   No hay resultados
 </p>
+
