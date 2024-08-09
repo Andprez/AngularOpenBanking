@@ -1,6 +1,6 @@
 body{
   background-color: #f7f7f7;
-  height: 109vh;
+  height: 100%;
 }
 .titulo{
   color: #00A7F2;
@@ -64,4 +64,8 @@ select{
 .checkbox-form{
   margin-top: 1rem;
   margin-bottom: 3rem;
+}
+
+.boton {
+  padding-bottom: 3rem;
 }

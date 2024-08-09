@@ -12,6 +12,8 @@ import { ProductoF } from 'src/app/models/producto-f';
 import { ProductosFService } from 'src/app/services/productos-f.service';
 import { DetallesSolicitudP } from 'src/app/models/detallesSolicitudP';
 import { IndicatorComponent } from 'src/app/components/utils/indicator/indicator.component';
+import { MatDialog } from '@angular/material/dialog';
+import { TycCreditComponent } from 'src/app/components/modals/tyc-credit/tyc-credit.component';
 
 @Component({
   selector: 'app-credit-request',
@@ -46,8 +48,16 @@ export class CreditRequestComponent implements OnInit {
     private productosFService: ProductosFService,
     private LocalizacionService: LocalizacionService,
     private ClientesService: ClientesService,
-    private cdr: ChangeDetectorRef
-  ) { }
+    private cdr: ChangeDetectorRef,
+    private _matDialog: MatDialog
+  ){}
+
+  openModal():void{
+    this._matDialog.open(TycCreditComponent, {
+      width: '302px',
+      height: '500px',
+    })
+  }
 
   ngOnInit(): void {
     const reqCities = this.LocalizacionService.getCiudades();

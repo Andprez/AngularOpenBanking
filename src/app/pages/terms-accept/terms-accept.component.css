@@ -86,10 +86,13 @@
 }
 input[type="checkbox"] {
   cursor: pointer;
+  width: 1.5em;
+  height: 1.5em;
 }
+
 input[type="checkbox"]:hover {
-  border: 4px solid #1F2894;
-}
+  border: 4px solid #393d6b;
+} 
 
 input[type="checkbox"]::before {
   content: "";
@@ -98,8 +101,17 @@ input[type="checkbox"]::before {
 input[type="checkbox"]:checked::before {
   content: "\2714";
   filter: invert(1);
+  font-size: 1.5em; /* Ajusta el tamaño del chulo */
 }
-
+.check {
+  appearance: none;
+  width: 3em;
+  height: 3em;
+  border: 4px solid #00bfcf;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .boton {
   padding: 3rem;
 }

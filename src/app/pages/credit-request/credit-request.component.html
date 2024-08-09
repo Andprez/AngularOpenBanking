@@ -76,17 +76,16 @@
             <div class="checkbox-form">
                 <label class="form-label" for="formControlName" id="cboxAuthorizations">
                     <input type="checkbox" id="cboxAuthorizations" value="" formControlName="aceptaTyC"/> Acepto las autorizaciones
-                    <a href="">aquí</a> descritas
+                    <a class="tyc-check" (click)="openModal()">aquí</a> descritas
                 </label>
             </div>
         </form>
-    </div>
-
-    <div>
-        <app-btn-cbit
-        [text]="'Continuar'"
-        [disabled]="formSolicitudCredito.invalid"
-        (onClickEvent)="onSubmitCreditRequest()"
-        ></app-btn-cbit>
+        <div class="boton">
+            <app-btn-cbit
+            [text]="'Continuar'"
+            [disabled]="formSolicitudCredito.invalid"
+            (onClickEvent)="onSubmitCreditRequest()"
+            ></app-btn-cbit>
+        </div>
     </div>
 </body>
