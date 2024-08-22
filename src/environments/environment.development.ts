@@ -8,6 +8,7 @@ export const environment = {
   TASA_EA: 19,
   TASA_MV: 1.46,
   VALOR_SEGURO: 2149,
+  LLAVE_API_CENTRALES_R:"ESTAESMIAPIKEY",
   DAV: {
     //BASEURL:'http://18.119.28.121:3002',
     //BASEURL: 'http://3.143.204.139:3002',

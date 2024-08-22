@@ -58,6 +58,17 @@ export class RequestBanksService {
     return this.httpClient.get<any>(url);
   } 
 
+  ban_evaluateCredit(monto_credito: string, cuota_mensual: string): Observable<any>{
+    let url = `${this.BAN.BASEURL}/transfer-intention`;
+    let headers: HttpHeaders = new HttpHeaders({
+      "x-api-key": environment.LLAVE_API_CENTRALES_R,
+    });
+    let body = {
+      monto_credito,
+      cuota_mensual,
+    };
+    return this.httpClient.post<any>(url,body,{headers})
+  }
   //#region Daviplata
 
   dav_getToken(): Observable<any> {

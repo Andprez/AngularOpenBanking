@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { Cliente } from 'src/app/models/cliente';
 import { ClientesService } from 'src/app/services/clientes.service';
 import { RequestBanksService } from 'src/app/services/request-banks.service';
-import { environment } from 'src/environments/environment.development';
+
 @Component({
   selector: 'app-credit-verify',
   templateUrl: './credit-verify.component.html',
@@ -24,7 +24,6 @@ export class CreditVerifyComponent {
 
   constructor(
     private router: Router,
-    private clienteServices: ClientesService,
     private bankServices: RequestBanksService
   ){}
 
@@ -37,76 +36,23 @@ export class CreditVerifyComponent {
     this.router.navigate([page]);
   }
   evaluateAppliCredit(): void{
-    let creditScore = 0;
-    let cupo = 0;
-    let resultDocumentsCredit;
     //obtener nombre entidad financiera
     let nombreEntidadF = this.datosCredito.entidadF.nombre;
     let cuotaMensualCredt = this.datosCredito.cuotaMensual;
-    this.clienteServices.getStatusDataCredito(this.cliente.numeroIdentificacion).subscribe({
-      next:(dataCred)=>{
-        this.resultDataCredito = dataCred;
-        creditScore = this.resultDataCredito.result.data.experian_score;
-        cupo = this.resultDataCredito.result.data.informes.informe.info_agregada.evolucion_deuda.trimestre[0].cupo_total;
-        if(cupo > cuotaMensualCredt){
-          console.log("cupo datacredito "+cupo+" > cuotaMensual "+cuotaMensualCredt);
-          if(nombreEntidadF == "Bancolombia"){
-            if(creditScore >= environment.BAN.CREDITO.SCORE_MIN_CRED){
-              console.log("score datacredito "+creditScore+" > score_min_banco "+environment.BAN.CREDITO.SCORE_MIN_CRED);
-              //llamado al servicio de bancolombia
-              this.bankServices.ban_documentsCredit().subscribe({
-                next:(bancolombia)=>{
-                  resultDocumentsCredit = bancolombia; 
-                  console.log("resultado docs bancolombia!!!!!!! ",resultDocumentsCredit);
-                  //resultado documentación solicitud crédito 
-                  if(resultDocumentsCredit==true){
-                    this.goToPage(this.routes.approved);
-
-                  }
-                  else{
-                    this.goToPage(this.routes.preapproved);
-                  }
-                },
-                error:(e)=>{
-                  console.log("Error al ingresar al servicio - documentos crédito bancolombia", e);
-                }
-              });
-            }else{
-              this.goToPage(this.routes.preapproved);
-            }
-          }
-          if(nombreEntidadF == "Daviplata"){
-            if(creditScore >= environment.DAV.CREDITO.SCORE_MIN_CRED){
-              console.log("score datacredito "+creditScore+" > score_min_banco "+environment.BAN.CREDITO.SCORE_MIN_CRED);
-              //llamado al servicio de daviplata
-              this.bankServices.dav_documentsCredit().subscribe({
-                next:(daviplata)=>{
-                  resultDocumentsCredit = daviplata; 
-                  console.log("resultado docs daviplata!!!!!!! ",resultDocumentsCredit);
-                  //resultado documentación solicitud crédito 
-                  if(resultDocumentsCredit==true){
-                    this.goToPage(this.routes.approved);
-                  }
-                  else{
-                    this.goToPage(this.routes.preapproved);
-                  }
-                },
-                error:(e)=>{
-                  console.log("Error al ingresar al servicio - documentos crédito Daviplata", e);
-                }
-              });
-            }else{
-              this.goToPage(this.routes.preapproved);
-            }
-          }
-        }else{
-          this.goToPage(this.routes.noapproved);
+    let montoCredit = this.datosCredito.monto_credito;
+    if(nombreEntidadF == "Bancolombia"){
+      this.bankServices.ban_evaluateCredit(montoCredit,cuotaMensualCredt).subscribe({
+        next:(respuesta)=>{
+          let evaluateCredit = respuesta;
+          console.log("respuesta services evaluateCredit ",evaluateCredit);
+        },
+        error:(e)=>{
+          console.log("Error al llamar el servicio de evaluar credito: ", e);
         }
-      },
-      error:(e)=>{
-        console.log("Error al ingresar al servicio data credito", e);
-      }
-    });    
-  }
+      });
+    }
+    if(nombreEntidadF == "Daviplata"){
 
+    } 
+  }
 }
