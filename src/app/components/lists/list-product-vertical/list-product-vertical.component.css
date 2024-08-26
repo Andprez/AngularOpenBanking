@@ -17,6 +17,10 @@ p {
   .btn-adicionar {
     cursor: pointer;
   }
+    .disabled {
+      pointer-events: none;
+      opacity: 0.5;
+    }
   .nombreTipo, .btn-adicionar {
     display: flex;
     align-items: center;

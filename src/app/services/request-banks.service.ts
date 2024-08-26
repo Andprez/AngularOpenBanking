@@ -58,6 +58,16 @@ export class RequestBanksService {
     return this.httpClient.get<any>(url);
   } 
 
+  ban_evaluateCredit(cuota_mensual: string, num_identificacion: string): Observable<any>{
+    let url = `${this.BAN.BASEURL}/evaluateCredit/${num_identificacion}`;
+    let headers: HttpHeaders = new HttpHeaders({
+      "x-api-key": environment.LLAVE_API_CENTRALES_R,
+    });
+    let body = {
+      "cuotaMensual": cuota_mensual,
+    };
+    return this.httpClient.post<any>(url,body,{headers})
+  }
   //#region Daviplata
 
   dav_getToken(): Observable<any> {
@@ -129,4 +139,14 @@ export class RequestBanksService {
     let url = `${this.DAV.BASEURL}/doc-validation`;
     return this.httpClient.get<any>(url);
   } 
+  dav_evaluateCredit(cuota_mensual: string, num_identificacion: string): Observable<any>{
+    let url = `${this.DAV.BASEURL}/evaluateCredit/${num_identificacion}`;
+    let headers: HttpHeaders = new HttpHeaders({
+      "x-api-key": environment.LLAVE_API_CENTRALES_R,
+    });
+    let body = {
+      "cuotaMensual": cuota_mensual,
+    };
+    return this.httpClient.post<any>(url,body,{headers})
+  }
 }

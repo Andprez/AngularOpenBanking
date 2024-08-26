@@ -23,6 +23,7 @@ export class CreditVerifyComponent {
   datosCredito: any = {};
   resultDataCredito: any = {};
   processBancolombia: any = {};
+  evaluateCredit: any = {};
   cliente!: Cliente;
   routes = {
     back: '/credit/request',
@@ -92,9 +93,58 @@ onSubmit() {
   .catch(error => {
     console.error('Error:', error);
   });
+
+  }
+  evaluateAppliCredit(): void{
+    //obtener nombre entidad financiera
+    let nombreEntidadF = this.datosCredito.entidadF.nombre;
+    let numIdentificacion = this.cliente.numeroIdentificacion;
+    let cuotaMensualCredt = this.datosCredito.cuotaMensual;
+    console.log("nombre banco ",nombreEntidadF);
+    if(nombreEntidadF == "Bancolombia"){
+      this.bankServices.ban_evaluateCredit(cuotaMensualCredt, numIdentificacion).subscribe({
+        next:(respuesta)=>{
+          this.evaluateCredit = respuesta;
+          console.log("respuesta services evaluateCredit ",this.evaluateCredit.codResponse);
+          this.directPage(this.evaluateCredit.codResponse);
+        },
+        error:(e)=>{
+          console.log("Error al llamar el servicio de evaluar credito: ", e);
+        }
+      });
+    }
+    if(nombreEntidadF == "Daviplata"){
+      this.bankServices.dav_evaluateCredit(cuotaMensualCredt, numIdentificacion).subscribe({
+        next:(respuesta)=>{
+          this.evaluateCredit = respuesta;
+          console.log("respuesta services evaluateCredit ",this.evaluateCredit.codResponse);
+          this.directPage(this.evaluateCredit.codResponse);
+        },
+        error:(e)=>{
+          console.log("Error al llamar el servicio de evaluar credito: ", e);
+        }
+      });
+    } 
+  }
+  directPage(codigoRespuesta: string): void {
+    switch (codigoRespuesta) {
+      case "R-01":
+        this.goToPage(this.routes.approved);
+        break;
+      case "R-02":
+        this.goToPage(this.routes.preapproved);
+        break;
+      case "R-03":
+        this.goToPage(this.routes.noapproved);
+        break;
+      default:
+        console.log("Código de respuesta no reconocido: ", codigoRespuesta);
+        break;
+    }
+  }
 }
 
-    evaluateAppliCredit(): void {
+    /*evaluateAppliCredit(): void {
       let creditScore = 0;
       let cupo = 0;
       let resultDocumentsCredit;
@@ -166,7 +216,7 @@ onSubmit() {
           console.log("Error al ingresar al servicio data credito", e);
         }
       });
-    }
-}
+    }*/
+
 
 

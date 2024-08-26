@@ -126,6 +126,7 @@ export class ClientesService {
   createBilletera(billetera: any): Observable<any> {
     let headers = this.getHeaders();
     let url = this.baseUrl + '/billetera';
+    console.log("parametros ", headers , "url ",url, "billetera data: ", billetera );
     return this.httpClient.post<any>(url, billetera, { headers: headers });
   }
 

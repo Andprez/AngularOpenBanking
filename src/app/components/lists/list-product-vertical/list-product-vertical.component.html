@@ -10,11 +10,16 @@
             {{ type.nombreTipo }}s
           </h5>
         </div>
-        <div class="btn-adicionar" (click)="goToPage(routes.requestProduct)">
+        <div
+          class="btn-adicionar"
+          [ngClass]="{'disabled': type.idTipo_Producto !== 4}"
+          (click)="type.idTipo_Producto === 4 ? goToPage(routes.requestProduct) : null"
+        >
           <i class="bi bi-plus-circle-fill"></i>
           <p class="txt-solicitar">Solicitar productos</p>
         </div>
       </div>
+    </div>
     <div
       class="product"
       *ngFor="
@@ -39,6 +44,7 @@
     </div>
   </div>
 </div>
-<p class="texto" *ngIf="(typesProducts | filterCategory : txtFilterProduct| filterProductByEntityF: txtFilterProduct).length == 0">
+<p class="texto" *ngIf="(typesProducts | filterCategory : txtFilterProduct).length == 0">
   No hay resultados
 </p>
+

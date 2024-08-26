@@ -8,7 +8,7 @@
       <app-search (onTxtFilter)="setTxTFilterProduct($event)"></app-search>
     </div>
     <div class="contenido">
-      <div class="list-category">
+      <div class="list-category" *ngIf="!txtFilterProduct">
         <h5 class="titulo">Categorías</h5>
         <app-list-category
           (onCategorySelected)="setCategorySelected($event)"

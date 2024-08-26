@@ -25,7 +25,7 @@
           <label for="docType" class="form-label">Tipo de documento</label>
           <div class="input-group">
             <select class="form-select" formControlName="docType">
-              <option selected disabled>Selecciona una opción</option>
+              <option value="" disabled selected>Selecciona una opción</option>
               <option
                 *ngFor="let tipo of tiposIdentificacion"
                 [value]="tipo.idTipoIdentificacion"
