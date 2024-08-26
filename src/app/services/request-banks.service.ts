@@ -53,6 +53,11 @@ export class RequestBanksService {
     return this.httpClient.post<any>(url, body, { headers });
   }
 
+  ban_documentsCredit(): Observable<any> {
+    let url = `${this.BAN.BASEURL}/doc-validation`;
+    return this.httpClient.get<any>(url);
+  } 
+
   //#region Daviplata
 
   dav_getToken(): Observable<any> {
@@ -119,4 +124,9 @@ export class RequestBanksService {
     };
     return this.httpClient.post<any>(url, body, { headers });
   }
+
+  dav_documentsCredit(): Observable<any> {
+    let url = `${this.DAV.BASEURL}/doc-validation`;
+    return this.httpClient.get<any>(url);
+  } 
 }

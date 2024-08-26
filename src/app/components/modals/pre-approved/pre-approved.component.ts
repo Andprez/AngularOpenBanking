@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-pre-approved',
@@ -6,5 +7,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./pre-approved.component.css']
 })
 export class PreApprovedComponent {
-
+  constructor(
+    public _MatDialogRef: MatDialogRef<PreApprovedComponent>
+  ){}
 }

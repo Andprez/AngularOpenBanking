@@ -10,8 +10,19 @@ import {Tipo_Cliente } from '../models/tipo-cliente';
 })
 export class ClientesService {
   baseUrl: string = environment.URL_BACKEND;
+  urlDataCred: string = environment.URL_CENTRAL_R;
 
   constructor(private httpClient: HttpClient) {}
+
+  getHeadersCentralR(): HttpHeaders {
+    let header = new HttpHeaders({
+      'Access-Control-Allow-Origin':'http://127.0.0.1:4002',
+      'Access-Control-Allow-Methods': 'POST,GET,OPTIONS,PUT,DELETE',
+      'Access-Control-Allow-Headers': 'Content-type, x-auth-token, origin, Autorization',
+      'x-api-key': 'ESTAESMIAPIKEY',
+    });
+    return header;
+  }
 
   getHeaders(): HttpHeaders {
     let headers = new HttpHeaders({
@@ -20,7 +31,7 @@ export class ClientesService {
     });
     return headers;
   }
-
+  
   // #region CLIENTES
   getCliente(clienteId: number): Observable<Cliente> {
     let headers = this.getHeaders();
@@ -116,5 +127,17 @@ export class ClientesService {
     let headers = this.getHeaders();
     let url = this.baseUrl + '/billetera';
     return this.httpClient.post<any>(url, billetera, { headers: headers });
+  }
+
+  /**
+   * Metodo que obtiene respuestas del servicio de data crédito muck
+   * @param clienteId es el número de idenfiticacion de la persona 
+   * @returns 
+   */
+  getStatusDataCredito(clienteId: string): Observable<any>{
+    let headers = this.getHeadersCentralR();
+    let url = this.urlDataCred+'/api/datacredito/'+clienteId;
+    console.log("URL DATACREDITO #########", url)
+    return this.httpClient.get<Cliente>(url, { headers: headers });
   }
 }
