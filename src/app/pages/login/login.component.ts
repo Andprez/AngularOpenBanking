@@ -64,6 +64,7 @@ export class LoginComponent implements OnInit {
       next: (data) => {
         localStorage.setItem('user', JSON.stringify(data.cliente));
         localStorage.setItem('token', data.token);
+        console.log("token..... ",data.token);
         if (data.cliente.idAnexos) {
           this.clientesService.getAnexo(data.cliente.idAnexos).subscribe({
             next: (anexo) => {

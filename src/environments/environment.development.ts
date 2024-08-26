@@ -3,10 +3,12 @@ export const environment = {
   URL_FAKEAPI: 'https://fakestoreapi.com',
   //api que retorna IP de una url
   URL_IP: 'https://api.ipify.org?format=json',
+  URL_CENTRAL_R: 'http://127.0.0.1:4002',
   TWILIO_ACTIVE: false,
   TASA_EA: 19,
   TASA_MV: 1.46,
   VALOR_SEGURO: 2149,
+  LLAVE_API_CENTRALES_R:"ESTAESMIAPIKEY",
   DAV: {
     //BASEURL:'http://18.119.28.121:3002',
     //BASEURL: 'http://3.143.204.139:3002',
@@ -20,6 +22,10 @@ export const environment = {
     COMERCIO_ID: '0010203040',
     TERMINAL_ID: 'ESB10934',
     USER_TEST: { tipoDocumento: '01', numeroDocumento: '1134568019' },
+    CREDITO:{
+      MONTO_MIN_CRED: 1500000,
+      SCORE_MIN_CRED: 725
+    }
     // USER_TEST: { tipoDocumento: '02', numeroDocumento: '786630' },
     // USER_TEST: { tipoDocumento: '04', numeroDocumento: '1389123506' },
   },
@@ -35,5 +41,9 @@ export const environment = {
     COMMERCE_URL: 'https://gateway.com/payment/route?commerce=Telovendo',
     CONFIRMATION_URL:
       'https://pagos-api-dev.tigocloud.net/bancolombia/callback',
+    CREDITO:{
+      MONTO_MIN_CRED: 2000000,
+      SCORE_MIN_CRED: 750
+    }      
   },
 };

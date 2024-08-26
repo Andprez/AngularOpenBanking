@@ -23,6 +23,14 @@ export class ListProductVerticalComponent {
   entitiesF: EntidadFinanciera[] = [];
   typesProducts: TipoProductoF[] = [];
   subtypesProducts: SubtipoProducto[] = [];
+  habilitarBoton: boolean = false;
+  tipoProducto: string = '';
+
+  // Método para actualizar el estado del botón basado en type.nombreTipo
+  actualizarTipoProducto(type: any): void {
+    this.tipoProducto = type.nombreTipo;
+  }
+
 
   constructor(
     private productosFService: ProductosFService,
