@@ -24,6 +24,7 @@ export class CreditVerifyComponent {
   resultDataCredito: any = {};
   processBancolombia: any = {};
   evaluateCredit: any = {};
+  creditSelected: any={};
   cliente!: Cliente;
   routes = {
     back: '/credit/request',
@@ -50,6 +51,7 @@ export class CreditVerifyComponent {
   }
 
   ngOnInit(): void {
+    this.creditSelected = JSON.parse(localStorage.getItem("creditSelected")!);
     this.datosCredito = JSON.parse(localStorage.getItem("creditData")!);
     this.cliente = JSON.parse(localStorage.getItem("user")!);
     console.log("datos cliente: ", this.cliente);

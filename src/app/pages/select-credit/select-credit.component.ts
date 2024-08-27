@@ -35,7 +35,7 @@ export class SelectCreditComponent implements OnInit {
   routes = {
     back: '/products/',
     help: '/help',
-    conditions: '/credit/conditions',
+    proposals: '/credit/proposals',
   };
 
   constructor(
@@ -105,7 +105,7 @@ export class SelectCreditComponent implements OnInit {
         this.entityF = JSON.parse(localStorage.getItem('entity')!);
         this.credit = {"montoCredito":monto,"plazo":plazo, "subtipoProductoC": this.subtipoProducto, "entidadF":this.entityF};
         localStorage.setItem("creditData",JSON.stringify(this.credit));
-        this.goToPage(this.routes.conditions);
+        this.goToPage(this.routes.proposals);
         // console.log("SUBTIPO PRODUCTO::::::::",this.credit);
       },
       error: (e)=>{

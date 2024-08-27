@@ -16,8 +16,8 @@ export class MyProductsComponent implements OnInit {
   routes = {
     back: '/dashboard',
     help: '/help',
-    transactions: '/products/transactions',
-    addProduct: '',
+    transactions: '/credit/select',
+    addProduct: '/credit/select',
   };
 
   constructor(private router: Router) {}

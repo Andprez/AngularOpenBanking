@@ -1,0 +1,43 @@
+
+  <app-header-cbit></app-header-cbit>
+  <!-- (onClickEventBack)="goToPage(routes.back)"
+  (onClickEventHelp)="goToPage(routes.help)" -->
+
+ <body>
+  <div class="credit-type">
+    {{ creditData.subtipoProductoC.nombre }}  </div>
+  <div class="tittle">
+    <h3>Selecciona la opción que más te conviene</h3>
+  </div>
+  <div class="card-proposal" *ngFor="let entity of entityProposal">
+    <div class="entity">
+      <img src="{{entity.imagen}}">
+    </div>
+    <div class="container-info" (click)="handleContainerClick(entity)">
+      <div class="credit-info">
+        <p class="vl-monto">{{ entity.monto | currency }}</p>
+        <p class="tx">Monto</p>
+        <p class="vl-plazo">{{ entity.plazo | number }}</p>
+        <p class="tx">Plazo</p>
+      </div>
+      <div class="tmv-info">
+        <p class="vl-tasaMV">{{ entity.tasaMV | number }}</p>
+        <p class="tx-tasaMV">Tasa mensual vencida</p>
+      </div>
+    </div>
+      <div class="estimate">
+        <p class="tx-cuota-m">{{ entity.cuotaMensual | currency }}</p>
+        <p class="tx-estimated-fee">Tu cuota mensual aproximada mas seguro de vida <span class="vl-seg-vid">$3,483</span></p>
+      </div>
+      <div class="button-next">
+        <i class="bi bi-chevron-right"></i>
+      </div>
+    </div>
+  <div class="button-cbit">
+    <app-btn-cbit
+    [text]="'Volver a simular'"
+    [type]="'button'"
+    >
+    </app-btn-cbit>
+  </div>
+</body>
