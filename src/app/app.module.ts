@@ -82,6 +82,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
 import { TycCreditComponent } from './components/modals/tyc-credit/tyc-credit.component';
 import { PreApprovedComponent } from './components/modals/pre-approved/pre-approved.component';
+import { ProductProposalsComponent } from './pages/product-proposals/product-proposals.component';
 
 @NgModule({
   declarations: [
@@ -165,6 +166,7 @@ import { PreApprovedComponent } from './components/modals/pre-approved/pre-appro
     IconModalComponent,
     TycCreditComponent,
     PreApprovedComponent,
+    ProductProposalsComponent,
   ],
   imports: [
     BrowserModule,

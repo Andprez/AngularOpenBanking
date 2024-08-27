@@ -1,9 +1,8 @@
 <body>
-  <app-header-entity
+  <app-header-cbit
     (onClickEventBack)="goToPage(routes.back)"
     (onClickEventHelp)="goToPage(routes.help)"
-    [entity]="selectedEntity"
-  ></app-header-entity>
+  ></app-header-cbit>
   <div class="container">
     <div *ngIf="!showAdditionalFields">
        <form

@@ -1,0 +1,98 @@
+body{
+  margin: 30px 20px 20px 20px; /* Margen: arriba, derecha, abajo, izquierda */}
+div.credit-type{
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 33px;
+  text-align: center;
+  color: #00A7F2;
+}
+.tittle{
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 19px;
+  text-align: center;
+}
+.entity {
+  width: 100px; /* Ancho deseado para el div */
+  height: 100px; /* Alto deseado para el div */
+  overflow: hidden; /* Para recortar la imagen si es necesario */
+}
+  .entity img {
+    margin: auto;
+    width: 100%; /* La imagen ocupará todo el ancho del div */
+    height: 100%; /* La imagen se ajustará proporcionalmente al alto del div */
+    object-fit: cover; /* Ajusta la imagen manteniendo la relación de aspecto */
+  }
+.card-proposal{
+  padding: 1rem;
+  background-color: #D9D9D9;
+  border-radius: .5rem;
+  display: grid;
+  grid-template-columns: 2fr 5fr 3fr;
+  gap: 0.5rem;
+  cursor: pointer;
+  margin-top: 3px;
+}
+
+p.tx,
+.tx-tasaMV{
+  text-align: center;
+  font-size: 10px;
+  font-family: "Open Sans", sans-serif;
+  margin-bottom: 4px;
+}
+
+p.vl-monto,
+.vl-plazo{
+  text-align: center;
+  font-size: 12px;
+  font-family: "Open Sans", sans-serif;
+  font-weight: bold;
+  margin-bottom: -7px;
+}
+.vl-tasaMV{
+  text-align: center;
+  font-size: 12px;
+  font-family: "Open Sans", sans-serif;
+  font-weight: bold;
+  margin-bottom: -7px;
+  color:#1860BF
+}
+.vl-seg-vid{
+  color:#1860BF;
+  font-weight: bold;
+}
+p.tx-cuota-m{
+  font-family: 'Open Sans';
+font-style: normal;
+font-weight: 700;
+font-size: 20px;
+line-height: 27px;
+text-align: center;
+
+color: #1860BF;
+}
+.tx-estimated-fee{
+  /* Tu cuota mensual aproximada mas seguro de vida $3,483 */
+
+width: 120px;
+height: 45px;
+left: calc(50% - 120px/2 + 90px);
+top: 151px;
+
+font-family: 'Open Sans';
+font-style: normal;
+font-weight: 300;
+font-size: 10px;
+line-height: 14px;
+text-align: center;
+color: #000000;
+}
+.button-cbit{
+  margin-top: 50px
+}

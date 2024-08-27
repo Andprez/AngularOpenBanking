@@ -42,7 +42,7 @@ export class ListProductVerticalComponent {
     back: '/dashboard',
     help: '/help',
     transactions: '/products/transactions',
-    requestProduct: '/products/add/select-entity',
+    requestProduct: '/credit/select',
   };
   ngOnInit(): void {
     this.entidadFinancieraService.getEntitiesF().subscribe({

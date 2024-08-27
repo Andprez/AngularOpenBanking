@@ -24,6 +24,7 @@ export class CreditVerifyComponent {
   resultDataCredito: any = {};
   processBancolombia: any = {};
   evaluateCredit: any = {};
+  creditSelected: any={};
   cliente!: Cliente;
   routes = {
     back: '/credit/request',
@@ -50,6 +51,7 @@ export class CreditVerifyComponent {
   }
 
   ngOnInit(): void {
+    this.creditSelected = JSON.parse(localStorage.getItem("creditSelected")!);
     this.datosCredito = JSON.parse(localStorage.getItem("creditData")!);
     this.cliente = JSON.parse(localStorage.getItem("user")!);
     console.log("datos cliente: ", this.cliente);
@@ -124,7 +126,7 @@ onSubmit() {
           console.log("Error al llamar el servicio de evaluar credito: ", e);
         }
       });
-    } 
+    }
   }
   directPage(codigoRespuesta: string): void {
     switch (codigoRespuesta) {
@@ -166,7 +168,7 @@ onSubmit() {
                   next: (bancolombia) => {
                     resultDocumentsCredit = bancolombia;
                     console.log("resultado docs bancolombia!!!!!!! ", resultDocumentsCredit);
-                    //resultado documentación solicitud crédito 
+                    //resultado documentación solicitud crédito
                     if (resultDocumentsCredit == true) {
                       this.goToPage(this.routes.approved);
 
@@ -191,7 +193,7 @@ onSubmit() {
                   next: (daviplata) => {
                     resultDocumentsCredit = daviplata;
                     console.log("resultado docs daviplata!!!!!!! ", resultDocumentsCredit);
-                    //resultado documentación solicitud crédito 
+                    //resultado documentación solicitud crédito
                     if (resultDocumentsCredit == true) {
                       this.goToPage(this.routes.approved);
                     }

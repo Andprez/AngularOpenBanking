@@ -35,6 +35,7 @@ import { SelectCreditComponent } from './pages/select-credit/select-credit.compo
 import { CreditSimulationComponent } from './pages/credit-simulation/credit-simulation.component';
 import { CreditRequestComponent } from './pages/credit-request/credit-request.component';
 import { CreditDisburseComponent } from './pages/credit-disburse/credit-disburse.component';
+import { ProductProposalsComponent } from './pages/product-proposals/product-proposals.component';
 
 
 const routes: Routes = [
@@ -73,6 +74,7 @@ const routes: Routes = [
   { path: 'tyc/accept', component: TermsAcceptComponent },
   { path: 'tyc/banks', component: TycBanksComponent },
   { path: 'wallet', component: WalletComponent },
+  { path: 'credit/proposals', component: ProductProposalsComponent },
   { path: '**', redirectTo: 'ecommerce' },
 ];
 
