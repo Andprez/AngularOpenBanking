@@ -25,11 +25,14 @@
         <p class="tx-tasaMV">Tasa mensual vencida</p>
       </div>
     </div>
-    <div class="estimate">
-      <p class="tx-cuota-m">{{ entity.cuotaMensual | currency }}</p>
-      <p class="tx-estimated-fee">Tu cuota mensual aproximada mas seguro de vida <span class="vl-seg-vid">$3,483</span></p>
+      <div class="estimate">
+        <p class="tx-cuota-m">{{ entity.cuotaMensual | currency }}</p>
+        <p class="tx-estimated-fee">Tu cuota mensual aproximada mas seguro de vida <span class="vl-seg-vid">$3,483</span></p>
+      </div>
+      <div class="button-next">
+        <i class="bi bi-chevron-right"></i>
+      </div>
     </div>
-  </div>
   <div class="button-cbit">
     <app-btn-cbit
     [text]="'Volver a simular'"

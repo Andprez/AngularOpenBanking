@@ -33,12 +33,17 @@ div.credit-type{
   background-color: #D9D9D9;
   border-radius: .5rem;
   display: grid;
-  grid-template-columns: 2fr 5fr 3fr;
+  grid-template-columns: 2fr 5fr 3fr 1fr;
   gap: 0.5rem;
   cursor: pointer;
-  margin-top: 3px;
+  margin-top: 5px;
+  align-items: center;
 }
+.button-next{
+  margin:auto;
+  color:#1860BF;
 
+}
 p.tx,
 .tx-tasaMV{
   text-align: center;
