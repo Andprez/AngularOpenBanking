@@ -21,13 +21,13 @@
         <p class="tx">Plazo</p>
       </div>
       <div class="tmv-info">
-        <p class="vl-tasaMV">{{ entity.tasaMV | number }}</p>
+        <p class="vl-tasaMV">{{ entity.tasaMV | number }}%</p>
         <p class="tx-tasaMV">Tasa mensual vencida</p>
       </div>
     </div>
       <div class="estimate">
         <p class="tx-cuota-m">{{ entity.cuotaMensual | currency }}</p>
-        <p class="tx-estimated-fee">Tu cuota mensual aproximada mas seguro de vida <span class="vl-seg-vid">$3,483</span></p>
+        <p class="tx-estimated-fee">Tu cuota mensual aproximada mas seguro de vida <span class="vl-seg-vid">{{entity.seguroVida}}</span></p>
       </div>
       <div class="button-next">
         <i class="bi bi-chevron-right"></i>

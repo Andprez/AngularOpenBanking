@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { EntidadFinanciera } from 'src/app/models/entidad-financiera';
-
+import { RequestBanksService } from 'src/app/services/request-banks.service';
 @Component({
   selector: 'app-product-proposals',
   templateUrl: './product-proposals.component.html',
@@ -9,32 +9,9 @@ import { EntidadFinanciera } from 'src/app/models/entidad-financiera';
 })
 export class ProductProposalsComponent implements OnInit{
   creditData: any={};
-  entityProposal = [
-    {
-      nombre: 'daviplata',
-      imagen: '../../../../assets/entidadesF/daviplata.png',
-      monto: 2700000,
-      tasaMV: 1.78,
-      plazo: 48,
-      cuotaMensual: 84131,
-    },
-    {
-      nombre: 'banco de bogotá',
-      imagen: "../../../../assets/entidadesF/ban-bogota.png",
-      monto: 2700000,
-      tasaMV: 1.48,
-      plazo: 48,
-      cuotaMensual: 85148,
-    },
-    {
-      nombre: 'pibank',
-      imagen: "../../../../assets/entidadesF/pibank.png",
-      monto: 2700000,
-      tasaMV: 1.86,
-      plazo: 48,
-      cuotaMensual: 246920,
-    }
-  ];
+  entityProposal: any=[];
+
+
 
   routes={
     back: '/dashboard',
@@ -43,12 +20,56 @@ export class ProductProposalsComponent implements OnInit{
   }
 
   constructor(
-    private router: Router
+    private router: Router,
+    private requestsimulation: RequestBanksService,
   ) {
 
   }
   ngOnInit(): void {
    this.creditData=JSON.parse(localStorage.getItem('creditData')!);
+   let typeCredit = this.creditData.subtipoProductoC.nombre;
+   let montoCredit = this.creditData.montoCredito;
+   let plazoCredit = this.creditData.plazo;
+
+   this.requestsimulation.ban_simulateCredit(typeCredit, montoCredit, plazoCredit).subscribe({
+    next:(res) =>{
+      let result = res;
+      this.entityProposal =[
+        {
+          nombre: 'Bancolombia',
+          imagen: '../../../../assets/entidadesF/bancolombia.png',
+          monto: result.MontoCredito,
+          tasaMV: result.TasaMensualVencida,
+          plazo: result.NumeroCuotas,
+          cuotaMensual: result.MontoCuotaMensual,
+          seguroVida:result.ValorSeguro,
+        }
+      ]
+    },
+    error:(err) =>{
+      console.log("Error al llamar el servicio SimulateCredit",err)
+    },
+   });
+   //servicio simulacion credit daviplata
+   this.requestsimulation.dav_simulateCredit(typeCredit, montoCredit, plazoCredit).subscribe({
+    next:(res) =>{
+      let result = res;
+      this.entityProposal =[
+        {
+          nombre: 'Daviplata',
+          imagen: '../../../../assets/entidadesF/daviplata.png',
+          monto: result.credito.montoCredito,
+          tasaMV: result.tmv,
+          plazo: result.NumeroCuotas,
+          cuotaMensual: result.cuotaMensual,
+          seguroVida:result.seguroVida,
+        }
+      ]
+    },
+    error:(err) =>{
+      console.log("Error al llamar el servicio SimulateCredit",err)
+    },
+   });
   };
   handleContainerClick(entity: any) {
     // Guarda la información en el Local Storage
