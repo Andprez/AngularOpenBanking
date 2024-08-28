@@ -44,6 +44,7 @@ const routes: Routes = [
   { path: 'credit/conditions', component: CreditConditionsComponent },
   { path: 'credit/disburse', component: CreditDisburseComponent },
   { path: 'credit/preapproved', component: CreditPreapprovedComponent },
+  { path: 'credit/proposals', component: ProductProposalsComponent },
   { path: 'credit/reject', component: CreditRejectComponent},
   { path: 'credit/request', component: CreditRequestComponent },
   { path: 'credit/select-account-disburse', component: SelectAccountDisburseComponent },
@@ -74,7 +75,6 @@ const routes: Routes = [
   { path: 'tyc/accept', component: TermsAcceptComponent },
   { path: 'tyc/banks', component: TycBanksComponent },
   { path: 'wallet', component: WalletComponent },
-  { path: 'credit/proposals', component: ProductProposalsComponent },
   { path: '**', redirectTo: 'ecommerce' },
 ];
 

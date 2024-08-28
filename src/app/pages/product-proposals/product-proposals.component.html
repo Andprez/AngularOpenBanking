@@ -1,7 +1,8 @@
 
-  <app-header-cbit></app-header-cbit>
-  <!-- (onClickEventBack)="goToPage(routes.back)"
-  (onClickEventHelp)="goToPage(routes.help)" -->
+  <app-header-cbit
+    (onClickEventBack)="goToPage(routes.back)"
+    (onClickEventHelp)="goToPage(routes.help)">
+  </app-header-cbit>
 
  <body>
   <div class="credit-type">
@@ -37,6 +38,7 @@
     <app-btn-cbit
     [text]="'Volver a simular'"
     [type]="'button'"
+    (onClickEvent)="goToPage(routes.back)"
     >
     </app-btn-cbit>
   </div>

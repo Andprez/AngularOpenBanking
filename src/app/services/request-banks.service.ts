@@ -72,6 +72,7 @@ export class RequestBanksService {
   //#servicio de simulacion de tipocredito
   ban_simulateCredit( tipocredito: string, monto_credito: string, plazoCredito: number,): Observable<any>{
     let url = `${this.BAN.BASEURL}/simulateCredit`;
+    console.log("Url bancolombia simulate credit ", url); 
     let headers: HttpHeaders = new HttpHeaders({
       "x-api-key": environment.LLAVE_API_CENTRALES_R,
     });
@@ -163,28 +164,16 @@ export class RequestBanksService {
     };
     return this.httpClient.post<any>(url,body,{headers})
   }
-  dav_credit_simulation(montoCredito: number, plazo:number){
+  dav_credit_simulation(tipocredito: string, montoCredito: string, plazo:number): Observable<any>{
     let url = `${this.DAV.BASEURL}/creditSimulation`;
+    console.log("url daviplata ", url)
     let headers: HttpHeaders = new HttpHeaders({
       "x-api-key": environment.LLAVE_API_CENTRALES_R,
     });
     let body = {
       "montoCredito": montoCredito,
       "plazo": plazo,
-    };
-    return this.httpClient.post<any>(url,body,{headers})
-  }
-  //#servicio de simulacion de tipocredito
-  dav_simulateCredit( tipocredito: string, monto_credito: string, plazoCredito: number,): Observable<any>{
-    let url = `${this.DAV.BASEURL}/creditSimulation`;
-    console.log("url daviplata",url)
-    let headers: HttpHeaders = new HttpHeaders({
-      "x-api-key": environment.LLAVE_API_CENTRALES_R,
-    });
-    let body = {
-      "tipoCredito": tipocredito,
-      "montoCredito": monto_credito,
-      "numeroCuotas": plazoCredito
+      "tipoCredito": tipocredito
     };
     return this.httpClient.post<any>(url,body,{headers})
   }

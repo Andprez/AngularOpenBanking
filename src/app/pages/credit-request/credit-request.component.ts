@@ -37,7 +37,7 @@ export class CreditRequestComponent implements OnInit {
 
 
   routes = {
-    back: '/credit/conditions',
+    back: 'credit/proposals',
     help: '/help',
     creditVerify: '/credit/verify'
   };
