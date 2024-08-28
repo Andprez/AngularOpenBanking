@@ -35,7 +35,7 @@ import { ProductosFService } from 'src/app/services/productos-f.service';
     account: any={};
 
     routes = {
-      back: '/products/add/select-entity',
+      back: '/credit/verify',
       help: '/help',
       transactions: '/products/transactions',
       dashboard: '/dashboard',

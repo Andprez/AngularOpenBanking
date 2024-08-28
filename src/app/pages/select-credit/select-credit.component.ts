@@ -78,7 +78,7 @@ export class SelectCreditComponent implements OnInit {
         null,
         [
           Validators.required,
-          Validators.min(2000000), // Monto mínimo de 2.000.000
+          Validators.min(1200000), // Monto mínimo de 2.000.000
         ],
       ],
       plazoMeses: [

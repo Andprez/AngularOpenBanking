@@ -111,6 +111,7 @@ export class CreditVerifyComponent {
               tasaMensualVencida: this.datosCredito.entidadF.tasaMV,
               vtua: this.datosCredito.entidadF.vtua,
             };
+            console.log("datos producto a guardar ", productF);
             this.productoServices.createProductF(productF);
             this.directPage(this.evaluateCredit.codResponse);
           }else{
