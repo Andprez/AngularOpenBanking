@@ -18,7 +18,7 @@ export class CreditPreapprovedComponent {
     private router: Router
   ) {}
   ngOnInit(): void{
-    this.datosCredito = JSON.parse(localStorage.getItem("creditData")!);
+    this.datosCredito = JSON.parse(localStorage.getItem("selectedEntity")!);
     console.log("datos credito: ", this.datosCredito);
   }
 

@@ -19,7 +19,7 @@ export class CreditApprovedComponent {
     private router: Router
   ) {}
   ngOnInit(): void{
-    this.datosCredito = JSON.parse(localStorage.getItem("creditData")!);
+    this.datosCredito = JSON.parse(localStorage.getItem("selectedEntity")!);
   };
   goToPage(page: string): void {
     this.router.navigate([page]);

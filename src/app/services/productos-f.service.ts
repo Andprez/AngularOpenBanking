@@ -89,4 +89,10 @@ export class ProductosFService {
     let url = `${this.baseUrl}/detallesSolicitud/${RequestDetailId}`;
     return this.httpClient.get<DetallesSolicitudP>(url, { headers: headers });
   }
+  createDetallesProdF(detallesPF: DetallesSolicitudP): Observable<DetallesSolicitudP> {
+    let headers = this.getHeaders();
+    let url = `${this.baseUrl}/detalleSolicitud`;
+    console.log("Este es el producto desde el sevicio: ",detallesPF);
+    return this.httpClient.post<DetallesSolicitudP>(url, detallesPF, { headers: headers });
+  }
 }

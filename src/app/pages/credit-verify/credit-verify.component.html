@@ -21,43 +21,49 @@
             </div>
             <div class="campo">
                 <p class="nombre-item">
-                  {{datosCredito.tasaEA}}% <a>E.A.</a>
+                  {{datosCredito.entidadF.tasaEA | currency}}% <a>E.A.</a>
                 </p>
                 <p class="valores">Tasa efectivo anual</p>
             </div>
             <div class="campo">
                 <p class="nombre-item">
-                  {{datosCredito.tasaMV}}% <a>M.V.</a>
+                  {{datosCredito.entidadF.tasaMV | currency}}% <a>M.V.</a>
                 </p>
                 <p class="valores">Tasa mensual vencida</p>
             </div>
             <div class="campo">
                 <p class="nombre-item">
-                  {{datosCredito.vtua}} <a>M.V.</a>
+                  {{datosCredito.entidadF.vtua | currency}} <a>M.V.</a>
                 </p>
                 <p class="valores">VTUA% total en pesos</p>
             </div>
             <div class="campo">
                 <p class="nombre-item">
-                  {{datosCredito.vtua | currency}}
+                  {{datosCredito.entidadF.vtua | currency}}
                 </p>
                 <p class="valores">VTUA% en E.A.</p>
             </div>
             <div class="campo">
                 <p class="titulo2">
-                  {{datosCredito.cuotaMensual | currency}}
+                  {{datosCredito.entidadF.cuotaMensual | currency}}
                 </p>
                 <p class="valores">Tú cuota mensual aproximada</p>
-                <p class="valores">mas seguro de vida <a class="seguro1">{{datosCredito.valorSeguro | currency}} </a></p>
+                <p class="valores">mas seguro de vida <a class="seguro1">{{datosCredito.entidadF.seguroVida | currency}} </a></p>
             </div>
         </div>
 
     </div>
-    <app-btn-cbit
+    <!--app-btn-cbit
         [text]="'Continuar'"
         [type]="'button'"
         (onClickEvent)="evaluateAppliCredit()"
         (click)="openModal()"
+    >
+    </app-btn-cbit-->
+    <app-btn-cbit
+        [text]="'Continuar'"
+        [type]="'button'"
+        (onClickEvent)="evaluateAppliCredit()"
     >
     </app-btn-cbit>
   </body>

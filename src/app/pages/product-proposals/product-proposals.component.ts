@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { forkJoin } from 'rxjs';
-import { EntidadFinanciera } from 'src/app/models/entidad-financiera';
+import { EntidadFinancieraService } from 'src/app/services/entidad-financiera.service';
 import { RequestBanksService } from 'src/app/services/request-banks.service';
 @Component({
   selector: 'app-product-proposals',
@@ -10,6 +10,7 @@ import { RequestBanksService } from 'src/app/services/request-banks.service';
 })
 export class ProductProposalsComponent implements OnInit{
   creditData: any={};
+  entidadesF: any={};
   entityProposal: any=[];
   routes={
     back: '/credit/select',
@@ -20,6 +21,7 @@ export class ProductProposalsComponent implements OnInit{
   constructor(
     private router: Router,
     private requestsimulation: RequestBanksService,
+    private entidadServices: EntidadFinancieraService
   ) {
 
   }
@@ -42,19 +44,26 @@ export class ProductProposalsComponent implements OnInit{
             nombre: 'Daviplata',
             imagen: '../../../../assets/entidadesF/daviplata.png',
             monto: result.serviceDaviplata.credito.montoCredito,
-            tasaMV: result.serviceDaviplata.credito.tmv,
-            plazo: result.serviceDaviplata.credito.numeroCuotas,
             cuotaMensual: result.serviceDaviplata.credito.cuotaMensual,
-            seguroVida: result.serviceDaviplata.credito.seguroVida
+            montoFinal: result.serviceDaviplata.credito.montoFinal,
+            plazo: result.serviceDaviplata.credito.numeroCuotas,
+            tasaEA: result.serviceDaviplata.credito.tea,
+            tasaMV: result.serviceDaviplata.credito.tmv,
+            vtua: result.serviceDaviplata.credito.vtua,
+            seguroVida: result.serviceDaviplata.credito.seguroVida,
+
           },
           {
             nombre: 'Bancolombia',
             imagen: '../../../../assets/entidadesF/bancolombia.png',
             monto: result.serviceBancolombia.MontoCredito,
-            tasaMV: result.serviceBancolombia.TasaMensualVencida,
-            plazo: result.serviceBancolombia.NumeroCuotas,
             cuotaMensual: result.serviceBancolombia.MontoCuotaMensual,
-            seguroVida: result.serviceBancolombia.ValorSeguro
+            montoFinal: result.serviceBancolombia.MontoFinal,
+            plazo: result.serviceBancolombia.NumeroCuotas,
+            tasaEA: result.serviceBancolombia.TasaEfectivaAnual,
+            tasaMV: result.serviceBancolombia.TasaMensualVencida,
+            seguroVida: result.serviceBancolombia.ValorSeguro,
+            vtua: result.serviceBancolombia.vtua,
           }
         ];
       },
@@ -67,7 +76,19 @@ export class ProductProposalsComponent implements OnInit{
   handleContainerClick(entity: any) {
     // Guarda la información en el Local Storage
     console.log("entidad seleccionada okkkaa ",entity)
-    let varLocalS= localStorage.setItem('selectedEntity', JSON.stringify(entity));
+    this.entidadServices.getEntitiesF().subscribe({
+      next:(resp)=>{
+        this.entidadesF = resp;
+      },
+      error:(err)=>{
+        console.log("Error al llamar al servicio de obtener bancos ", err);
+      }
+    });
+    entity = {entity}
+    let user = JSON.parse(localStorage.getItem('user') || '{}');
+    let detallesSolicitudP = JSON.parse(localStorage.getItem('detailData') || '{}');
+    this.creditData = {...this.creditData, "entidadF": entity.entity, user ,detallesSolicitudP};
+    let varLocalS= localStorage.setItem('selectedEntity', JSON.stringify(this.creditData));
     this.goToPage(this.routes.request);
     console.log("esto es lo que guardo del proposal:::::::::",varLocalS)
 
