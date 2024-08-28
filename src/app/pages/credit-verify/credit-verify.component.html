@@ -21,34 +21,34 @@
             </div>
             <div class="campo">
                 <p class="nombre-item">
-                  {{datosCredito.entidadF.tasaEA | currency}}% <a>E.A.</a>
+                  {{datosCredito.entidadF.tasaEA | number: '1.0-2'}}% <a>E.A.</a>
                 </p>
                 <p class="valores">Tasa efectivo anual</p>
             </div>
             <div class="campo">
                 <p class="nombre-item">
-                  {{datosCredito.entidadF.tasaMV | currency}}% <a>M.V.</a>
+                  {{datosCredito.entidadF.tasaMV | number: '1.0-2'}}% <a>M.V.</a>
                 </p>
                 <p class="valores">Tasa mensual vencida</p>
             </div>
             <div class="campo">
                 <p class="nombre-item">
-                  {{datosCredito.entidadF.vtua | currency}} <a>M.V.</a>
+                  {{datosCredito.entidadF.vtua | number: '1.0-2'}} <a>M.V.</a>
                 </p>
-                <p class="valores">VTUA% total en pesos</p>
+                <p class="valores">Valor total unificado</p>
             </div>
             <div class="campo">
                 <p class="nombre-item">
-                  {{datosCredito.entidadF.vtua | currency}}
+                  {{datosCredito.entidadF.montoFinal | currency}}
                 </p>
-                <p class="valores">VTUA% en E.A.</p>
+                <p class="valores">Pago total</p>
             </div>
             <div class="campo">
                 <p class="titulo2">
                   {{datosCredito.entidadF.cuotaMensual | currency}}
                 </p>
                 <p class="valores">Tú cuota mensual aproximada</p>
-                <p class="valores">mas seguro de vida <a class="seguro1">{{datosCredito.entidadF.seguroVida | currency}} </a></p>
+                <p class="valores">mas seguro de vida <a class="seguro1">${{datosCredito.entidadF.seguroVida | number: '1.0-0'}} </a></p>
             </div>
         </div>
 
