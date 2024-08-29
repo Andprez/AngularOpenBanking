@@ -25,7 +25,7 @@
         <p class="nombre-item">Producto de origen</p>
         <p class="valores">
           {{ subtypeProduct.nombre }}
-          {{ productF.numeroCuenta | valueHidden }}
+          {{ (productF.numeroCuenta || 'N/A') | valueHidden }}
         </p>
       </div>
       <div class="campo">
