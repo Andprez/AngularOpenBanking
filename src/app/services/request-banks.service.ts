@@ -70,15 +70,15 @@ export class RequestBanksService {
   }
 
   //#servicio de simulacion de tipocredito
-  ban_simulateCredit( tipocredito: string, monto_credito: string, plazoCredito: number,): Observable<any>{
+  ban_simulateCredit( tipoCredito: string, montoCredito: string, plazoCredito: number,): Observable<any>{
     let url = `${this.BAN.BASEURL}/simulateCredit`;
-    console.log("Url bancolombia simulate credit ", url); 
+    console.log("Url bancolombia simulate credit ", url);
     let headers: HttpHeaders = new HttpHeaders({
       "x-api-key": environment.LLAVE_API_CENTRALES_R,
     });
     let body = {
-      "tipoCredito": tipocredito,
-      "montoCredito": monto_credito,
+      "tipoCredito": tipoCredito,
+      "montoCredito": montoCredito,
       "numeroCuotas": plazoCredito
     };
     return this.httpClient.post<any>(url,body,{headers})

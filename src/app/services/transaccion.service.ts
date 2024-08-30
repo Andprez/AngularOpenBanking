@@ -45,7 +45,7 @@ export class TransaccionService {
   }
 
   createTransaccion(body: Transaction): Observable<any> {
-    console.log({ ...body, "idOrdenCompra": 1 });
+    console.log("esto se esta enviando desde el sevicio transacción de angular:::::::",{ ...body });
     let headers = this.getHeaders();
     let url = this.baseUrl + '/transaccion';
     return this.http.post<any>(url, body, { headers: headers });

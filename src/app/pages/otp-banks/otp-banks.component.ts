@@ -153,13 +153,14 @@ export class OtpBanksComponent implements OnInit {
               idTipo_Transaccion: 3, // 1. Transferencia, 2. Pago, 3. Compra, 4. Crédito
               idEstado: res.codigoError ? 2 : 1, // 1: Correcto, 2: Error
               idProducto: this.product.idProducto,
+              idOrdenCompra: 1,
               montoTransaccion: this.marketplace.total,
               destinoPago: this.marketplace.destinoPago.nombre,
               motivo: this.marketplace.motivo,
               idTransaccionAutorizador: res.idTransaccionAutorizador || 'NA',
               numeroAprobacion: res.numeroAprobacion || 'NA',
             };
-            console.log("datos de transacción ",transaction);
+            console.log("datos de transacción que salen de otp-bank:::::: ",transaction);
             this.transaccionService.createTransaccion(transaction).subscribe({
               next: (transaction) => {
                 let trans = { ...transaction };

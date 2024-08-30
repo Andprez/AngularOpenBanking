@@ -3,6 +3,7 @@ export interface Transaction {
   idTipo_Transaccion: number;
   idEstado: number;
   idProducto: number;
+  idOrdenCompra?: number;
   IP?: string;
   montoTransaccion: number;
   destinoPago: string;

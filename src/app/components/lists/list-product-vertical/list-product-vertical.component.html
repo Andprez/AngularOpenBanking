@@ -37,7 +37,7 @@
           <p class="valorSaldo">{{ product.montoProd | currency }}</p>
         </div>
       </div>
-      <div class="boton">
+      <div class="boton" (click)="goToPage(routes.transactions)">
         <p>Ver movimientos</p>
         <i class="bi bi-chevron-right"></i>
       </div>

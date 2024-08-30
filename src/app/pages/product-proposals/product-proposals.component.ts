@@ -30,7 +30,7 @@ export class ProductProposalsComponent implements OnInit{
    let typeCredit = this.creditData.subtipoProductoC.nombre;
    let montoCredit = this.creditData.montoCredito;
    let plazoCredit = this.creditData.plazo;
-   this.listbanks(typeCredit,montoCredit,plazoCredit);   
+   this.listbanks(typeCredit,montoCredit,plazoCredit);
   };
 
   listbanks(typeCredit: string, montoCredit: string, plazoCredit: number) {
@@ -51,19 +51,18 @@ export class ProductProposalsComponent implements OnInit{
             tasaMV: result.serviceDaviplata.credito.tmv,
             vtua: result.serviceDaviplata.credito.vtua,
             seguroVida: result.serviceDaviplata.credito.seguroVida,
-
           },
           {
             nombre: 'Bancolombia',
             imagen: '../../../../assets/entidadesF/bancolombia.png',
-            monto: result.serviceBancolombia.MontoCredito,
-            cuotaMensual: result.serviceBancolombia.MontoCuotaMensual,
-            montoFinal: result.serviceBancolombia.MontoFinal,
-            plazo: result.serviceBancolombia.NumeroCuotas,
-            tasaEA: result.serviceBancolombia.TasaEfectivaAnual,
-            tasaMV: result.serviceBancolombia.TasaMensualVencida,
-            seguroVida: result.serviceBancolombia.ValorSeguro,
-            vtua: result.serviceBancolombia.vtua,
+            monto: result.serviceBancolombia.credito.montoCredito,
+            cuotaMensual: result.serviceBancolombia.credito.cuotaMensual,
+            montoFinal: result.serviceBancolombia.credito.montoFinal,
+            plazo: result.serviceBancolombia.credito.numeroCuotas,
+            tasaEA: result.serviceBancolombia.credito.tea,
+            tasaMV: result.serviceBancolombia.credito.tmv,
+            vtua: result.serviceBancolombia.credito.vtua,
+            seguroVida: result.serviceBancolombia.credito.seguroVida,
           }
         ];
       },
