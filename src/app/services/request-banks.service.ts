@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment.development';
+import { OrdenCompra } from '../models/ordenCompra';
 
 @Injectable({
   providedIn: 'root',
@@ -12,6 +13,7 @@ export class RequestBanksService {
   // VARIABLES
   private DAV = environment.DAV;
   private BAN = environment.BAN;
+  private apiUrl = 'http://localhost:3000/api/ordenCompra';
 
   //#region Bancolombia
 
@@ -176,5 +178,26 @@ export class RequestBanksService {
       "tipoCredito": tipocredito
     };
     return this.httpClient.post<any>(url,body,{headers})
-  }
+  };
+  // Obtener el consecutivo de idOrdenCompra
+  async getConsecutiveOrder(): Promise<number> {
+    try {
+        const url = `${this.apiUrl}/consecutiveOrder`;
+        const nextIdOrdenCompra = await this.httpClient.get<number>(url).toPromise();
+
+        if (nextIdOrdenCompra === undefined) {
+            // Si no se encontró una última orden, comenzamos desde 1
+            return 1;
+        }
+
+        return nextIdOrdenCompra;
+    } catch (error) {
+        console.error("Error al obtener el consecutivo de la orden de compra:", error);
+        throw new Error("Error del servidor");
+    }
 }
+  createOrdenCompra(orden: OrdenCompra): Observable<any>{
+    return this.httpClient.post<OrdenCompra>(this.apiUrl, orden);
+  };
+}
+

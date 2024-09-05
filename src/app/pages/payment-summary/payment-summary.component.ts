@@ -8,6 +8,7 @@ import { EcommercesService } from 'src/app/services/ecommerces.service';
 import { LocalizacionService } from 'src/app/services/localizacion.service';
 import { NotificationsService } from 'src/app/services/notifications.service';
 import { RequestBanksService } from 'src/app/services/request-banks.service';
+import { OrdenCompra } from 'src/app/models/ordenCompra';
 
 @Component({
   selector: 'app-payment-summary',
@@ -20,6 +21,10 @@ export class PaymentSummaryComponent {
   selectedBank: EntidadFinanciera = {} as EntidadFinanciera;
   processPayment: any = {};
   product: any = {};
+  nuevaOrdenCompra: OrdenCompra = {} as OrdenCompra;
+  productSelected: any={};
+  idOrdenCompraCreada:number=0;
+
   summaryPayment = {
     ip: '',
     tipoDocumento: '',
@@ -53,14 +58,45 @@ export class PaymentSummaryComponent {
       .getTipoIdentificacion(this.user.idTipoIdentificacion)
       .subscribe({
         next: (typeDocument) => {
+          idOrdenCompra: Number;
           this.summaryPayment.ip = marketplace.ipUser;
           this.summaryPayment.tipoDocumento = typeDocument.nombre;
           this.summaryPayment.numeroDocumento = this.user.numeroIdentificacion;
           this.summaryPayment.observaciones = marketplace.motivo;
           this.summaryPayment.comercio = marketplace.destinoPago.nombre;
           this.summaryPayment.totalPagar = marketplace ? marketplace.total : 0;
+
         },
       });
+      // Generar objeto de orden de compra
+      //  Generar objeto de orden de compra
+      this.nuevaOrdenCompra = {
+        costoTotal: marketplace ? marketplace.total : 0,
+        codigoEstado: 2,
+        idCliente: this.user.idCliente!,
+        idEstado: 2, // Evalúa el estado según tu lógica
+        idEcommerce: marketplace.destinoPago.idEcommerce,
+      };
+
+      this.banksService.createOrdenCompra(this.nuevaOrdenCompra).subscribe({
+        next: (createdOrder) => {
+            const idOrdenCompraCreada = createdOrder?.idOrdenCompra;
+            console.log("ID generado:", idOrdenCompraCreada);
+                this.nuevaOrdenCompra = {
+                    ...this.nuevaOrdenCompra,
+                    idOrdenCompra: idOrdenCompraCreada
+                };
+                this.productSelected = localStorage.getItem('productSelected')
+                ? JSON.parse(localStorage.getItem('productSelected')!)
+                : {};
+                this.productSelected.ordenCompra = this.nuevaOrdenCompra;
+
+                // Guarda productSelected en localStorage
+                localStorage.setItem('productSelected', JSON.stringify(this.productSelected));
+
+        },
+    });
+
   }
 
   redirect() {
@@ -69,6 +105,7 @@ export class PaymentSummaryComponent {
       localStorage.getItem('processPayment') || '{}'
     );
     this.selectedBank = this.product.entidadF;
+    console.log("este es el resultado de nombre entidad::::::",this.selectedBank.nombre)
     switch (this.selectedBank.nombre) {
       case 'Bancolombia':
         this.processBancolombia();

@@ -31,6 +31,8 @@ export class OtpBanksComponent implements OnInit {
   minRestantes!: number;
   suscripcionContador!: Subscription;
   twilioActive!: boolean;
+  idOrdenCompraG: number=0;
+  transaccion: any={}
   routes = {
     back: '/products/transactions',
     help: '/help',
@@ -47,6 +49,9 @@ export class OtpBanksComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.product = JSON.parse(localStorage.getItem('productSelected') || '{}');
+    this.idOrdenCompraG = this.product.ordenCompra.idOrdenCompra;
+    console.log("idOrdenCompra:::::"+this.idOrdenCompraG)
     this.notifService.loadingEvent.subscribe((event) => {
       this.isLoading = event;
     })
@@ -149,19 +154,19 @@ export class OtpBanksComponent implements OnInit {
         )
         .subscribe({
           next: (res) => {
-            const transaction: Transaction = {
+            const transaccion:Transaction={
               idTipo_Transaccion: 3, // 1. Transferencia, 2. Pago, 3. Compra, 4. Crédito
               idEstado: res.codigoError ? 2 : 1, // 1: Correcto, 2: Error
               idProducto: this.product.idProducto,
-              idOrdenCompra: 1,
+              idOrdenCompra: this.idOrdenCompraG || 1,
               montoTransaccion: this.marketplace.total,
               destinoPago: this.marketplace.destinoPago.nombre,
               motivo: this.marketplace.motivo,
               idTransaccionAutorizador: res.idTransaccionAutorizador || 'NA',
               numeroAprobacion: res.numeroAprobacion || 'NA',
             };
-            console.log("datos de transacción que salen de otp-bank:::::: ",transaction);
-            this.transaccionService.createTransaccion(transaction).subscribe({
+            console.log("datos de transacción ",transaccion);
+            this.transaccionService.createTransaccion(transaccion).subscribe({
               next: (transaction) => {
                 let trans = { ...transaction };
                 localStorage.setItem('transaction', JSON.stringify(trans));
