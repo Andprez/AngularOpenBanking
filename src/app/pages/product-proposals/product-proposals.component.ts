@@ -94,5 +94,5 @@ export class ProductProposalsComponent implements OnInit{
   }
   goToPage(page: string) {
     this.router.navigate([page]);
-  }
+  }
 }

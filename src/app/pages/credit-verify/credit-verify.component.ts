@@ -6,6 +6,7 @@ import { Cliente } from 'src/app/models/cliente';
 import { ClientesService } from 'src/app/services/clientes.service';
 import { ProductosFService } from 'src/app/services/productos-f.service';
 import { RequestBanksService } from 'src/app/services/request-banks.service';
+import { EntidadFinancieraService } from 'src/app/services/entidad-financiera.service';
 import { environment } from 'src/environments/environment.development';
 import { MatDialog } from '@angular/material/dialog';
 import { HttpClient } from '@angular/common/http';
@@ -44,7 +45,8 @@ export class CreditVerifyComponent {
     private productoServices: ProductosFService,
     private bankServices: RequestBanksService,
     private _matDialog: MatDialog,
-    private http: HttpClient
+    private http: HttpClient,
+    private entidadFService: EntidadFinancieraService,
   ){}
 
  /* openModal(): void {
@@ -71,6 +73,7 @@ export class CreditVerifyComponent {
     let numIdentificacion = this.cliente.numeroIdentificacion;
     let cuotaMensualCredt = this.datosCredito.entidadF.cuotaMensual;
     let idEntidadF = 0;
+    let dataEntidadF : any = {};
     console.log("nombre banco ",nombreEntidadF);
     if(nombreEntidadF == "Bancolombia"){
       this.bankServices.ban_evaluateCredit(cuotaMensualCredt, numIdentificacion).subscribe({
@@ -78,12 +81,15 @@ export class CreditVerifyComponent {
           this.evaluateCredit = respuesta;
           console.log("respuesta services evaluateCredit ",this.evaluateCredit.codResponse);
           if(this.evaluateCredit.codResponse == "R-01"){
-            if(nombreEntidadF == "Bancolombia"){
-              idEntidadF = 4;
-            }
-            if(nombreEntidadF == "Daviplata"){
-              idEntidadF = 12;
-            }
+            this.entidadFService.getEntityByName(nombreEntidadF).subscribe({
+              next(value) {
+                dataEntidadF = value;
+                console.log("Resultado dataEntidadF: ", dataEntidadF)
+              },
+              error(err) {
+                console.log("Error en el servicio getEntityByName: ", err)
+              },
+            })
            /* let detallesProductoF:{
               actividadLaboral: this.datosCredito
               actividadEconomica:
@@ -97,7 +103,7 @@ export class CreditVerifyComponent {
             let productF: ProductoF = {
               numeroCuenta: "00000000",
               //idEntidadFinanciera: this.datosCredito.entidadF.idEntidadFinanciera!,
-              idEntidadFinanciera: idEntidadF,
+              idEntidadFinanciera: dataEntidadF.idEntidadFinanciera,
               idBilletera_CBITBank: this.datosCredito.user.idBilleteraCBITBank!,
               idEstado: 1,
               idSubtipo_Producto: this.datosCredito.subtipoProductoC.idSubtipo_Producto!,
