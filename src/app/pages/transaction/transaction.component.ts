@@ -62,4 +62,7 @@ export class TransactionComponent implements OnInit {
   goToPage(page: string) {
     this.router.navigate([page]);
   }
+  get accountNumber(): string {
+    return this.product?.numeroCuenta || 'Número de cuenta no disponible';
+  }
 }
