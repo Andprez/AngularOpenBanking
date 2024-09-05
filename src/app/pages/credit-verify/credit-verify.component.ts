@@ -67,108 +67,31 @@ export class CreditVerifyComponent {
     //this.indicatorComponent.avanzar();
   }
 
-  // evaluateAppliCredit(): void{
-  //   //obtener nombre entidad financiera
-  //   let nombreEntidadF = this.datosCredito.entidadF.nombre;
-  //   let numIdentificacion = this.cliente.numeroIdentificacion;
-  //   let cuotaMensualCredt = this.datosCredito.entidadF.cuotaMensual;
-  //   let idEntidadF = 0;
-  //   let dataEntidadF : any = {};
-  //   console.log("nombre banco ",nombreEntidadF);
-  //   if(nombreEntidadF == "Bancolombia"){
-  //     this.bankServices.ban_evaluateCredit(cuotaMensualCredt, numIdentificacion).subscribe({
-  //       next:(respuesta)=>{
-  //         this.evaluateCredit = respuesta;
-  //         console.log("respuesta services evaluateCredit ",this.evaluateCredit.codResponse);
-  //         if(this.evaluateCredit.codResponse == "R-01"){
-  //           this.entidadFService.getEntityByName(nombreEntidadF).subscribe({
-  //             next(value) {
-  //               dataEntidadF = value;
-  //             },
-  //             error(err) {
-  //               console.log("Error en el servicio getEntityByName: ", err)
-  //             },
-  //           })
-  //          /* let detallesProductoF:{
-  //             actividadLaboral: this.datosCredito
-  //             actividadEconomica:
-  //             nombreEmpresa:
-  //             ingresoMensual:
-  //             ciudadDomicilio:
-  //             direccionDomicilio:
-  //             aceptaTyC:
-  //           }
-  //           this.productoServices.createDetallesProdF(detallesProductoF);*/
-  //           console.log("Resultado dataEntidadF: ", dataEntidadF)
-  //           let productF: ProductoF = {
-  //             numeroCuenta: "00000000",
-  //             //idEntidadFinanciera: this.datosCredito.entidadF.idEntidadFinanciera!,
-  //             idEntidadFinanciera: dataEntidadF.idEntidadFinanciera,
-  //             idBilletera_CBITBank: this.datosCredito.user.idBilleteraCBITBank!,
-  //             idEstado: 1,
-  //             idSubtipo_Producto: this.datosCredito.subtipoProductoC.idSubtipo_Producto!,
-  //             //idDetalles_SolicitudP: 1,
-  //             tasaInteres: this.datosCredito.entidadF.tasaEA,
-  //             plazo: this.datosCredito.entidadF.plazo,
-  //             montoCredito: this.datosCredito.entidadF.monto,
-  //             cuotaMensual: this.datosCredito.entidadF.cuotaMensual,
-  //             seguroVida: this.datosCredito.entidadF.seguroVida,
-  //             tasaEfectivaAnual: this.datosCredito.entidadF.tasaEA,
-  //             tasaMensualVencida: this.datosCredito.entidadF.tasaMV,
-  //             vtua: this.datosCredito.entidadF.vtua,
-  //           };
-  //           console.log("datos producto a guardar ", productF);
-  //           this.productoServices.createProductF(productF);
-  //           this.directPage(this.evaluateCredit.codResponse);
-  //         }else{
-  //           this.directPage(this.evaluateCredit.codResponse);
-  //         }
-  //       },
-  //       error:(e)=>{
-  //         console.log("Error al llamar el servicio de evaluar credito: ", e);
-  //       }
-  //     });
-  //   }
-  //   if(nombreEntidadF == "Daviplata"){
-  //     this.bankServices.dav_evaluateCredit(cuotaMensualCredt, numIdentificacion).subscribe({
-  //       next:(respuesta)=>{
-  //         this.evaluateCredit = respuesta;
-  //         console.log("respuesta services evaluateCredit ",this.evaluateCredit.codResponse);
-  //         this.directPage(this.evaluateCredit.codResponse);
-  //       },
-  //       error:(e)=>{
-  //         console.log("Error al llamar el servicio de evaluar credito: ", e);
-  //       }
-  //     });
-  //   }
-  // }
-
   evaluateAppliCredit(): void {
     // Obtener nombre de la entidad financiera
     let nombreEntidadF = this.datosCredito.entidadF.nombre;
     let numIdentificacion = this.cliente.numeroIdentificacion;
     let cuotaMensualCredt = this.datosCredito.entidadF.cuotaMensual;
     let dataEntidadF: any = {};
-  
+
     console.log("nombre banco ", nombreEntidadF);
-  
+
     if (nombreEntidadF == "Bancolombia") {
       this.bankServices.ban_evaluateCredit(cuotaMensualCredt, numIdentificacion).subscribe({
         next: (respuesta) => {
           this.evaluateCredit = respuesta;
           console.log("respuesta services evaluateCredit ", this.evaluateCredit.codResponse);
-  
+
           if (this.evaluateCredit.codResponse == "R-01") {
             this.entidadFService.getEntityByName(nombreEntidadF).subscribe({
               next: (value) => {
                 dataEntidadF = value;
-  
+
                 // Verifica si dataEntidadF tiene el valor esperado
                 if (dataEntidadF && dataEntidadF.idEntidadFinanciera) {
                   console.log("Resultado dataEntidadF: ", dataEntidadF);
-  
+
                   let productF: ProductoF = {
-                    numeroCuenta: "00000000",
                     idEntidadFinanciera: dataEntidadF.idEntidadFinanciera,
                     idBilletera_CBITBank: this.datosCredito.user.idBilleteraCBITBank!,
                     idEstado: 1,
@@ -187,7 +110,7 @@ export class CreditVerifyComponent {
                 } else {
                   console.log("dataEntidadF no tiene los datos esperados");
                 }
-  
+
                 this.directPage(this.evaluateCredit.codResponse);
               },
               error: (err) => {
@@ -203,7 +126,7 @@ export class CreditVerifyComponent {
         },
       });
     }
-  
+
     if (nombreEntidadF == "Daviplata") {
       this.bankServices.dav_evaluateCredit(cuotaMensualCredt, numIdentificacion).subscribe({
         next: (respuesta) => {
@@ -217,7 +140,7 @@ export class CreditVerifyComponent {
       });
     }
   }
-  
+
 
   directPage(codigoRespuesta: string): void {
     switch (codigoRespuesta) {
