@@ -7,7 +7,7 @@ export interface ProductoF {
   idDetalles_SolicitudP?: number;
   usuario?: string;
   password?: string;
-  numeroCuenta: string;
+  numeroCuenta?: string;
   tasaInteres?: number;
   plazo?: number;
   montoCredito?: number;
