@@ -30,6 +30,8 @@ export class CreditVerifyComponent {
   evaluateCredit: any = {};
   creditSelected: any={};
   cliente!: Cliente;
+  savedProduct?: ProductoF;
+  showSuccesMessage = false;
   routes = {
     back: '/credit/request',
     help: '/help',
@@ -106,7 +108,16 @@ export class CreditVerifyComponent {
                     vtua: this.datosCredito.entidadF.vtua,
                   };
                   console.log("datos producto a guardar ", productF);
-                  this.productoServices.createProductF(productF);
+                  this.productoServices.createProductoCredit(productF).subscribe({
+                    next: (result) => {
+                      this.savedProduct = result;
+                      localStorage.setItem('productoCreado', JSON.stringify(this.savedProduct));
+                      this.showSuccesMessage = true;
+                    },
+                    error: (error) => {
+                      console.error(error);
+                    },
+                  })
                 } else {
                   console.log("dataEntidadF no tiene los datos esperados");
                 }

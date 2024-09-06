@@ -56,6 +56,14 @@ export class ProductosFService {
     console.log("Este es el producto desde el sevicio: ",product);
     return this.httpClient.post<ProductoF>(url, product, { headers: headers });
   }
+  
+  createProductoCredit(credit: ProductoF): Observable<ProductoF> {
+    let headers = this.getHeaders();
+    let url = `${this.baseUrl}/producto/credit/`;
+    console.log("Este es el prodcuto credito desde el servicio: ", credit);
+    return this.httpClient.post<ProductoF>(url, credit, { headers: headers})
+  }
+
   getProductById(productId: number): Observable<ProductoF> {
     let headers = this.getHeaders();
     let url = `${this.baseUrl}/producto/${productId}`;
@@ -95,4 +103,37 @@ export class ProductosFService {
     console.log("Este es el producto desde el sevicio: ",detallesPF);
     return this.httpClient.post<DetallesSolicitudP>(url, detallesPF, { headers: headers });
   }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
 }

@@ -1,9 +1,9 @@
 export interface ProductoF {
   idProducto?: number;
+  idSubtipo_Producto: number;
   idEntidadFinanciera: number;
   idBilletera_CBITBank: number;
   idEstado: number;
-  idSubtipo_Producto: number;
   idDetalles_SolicitudP?: number;
   usuario?: string;
   password?: string;
